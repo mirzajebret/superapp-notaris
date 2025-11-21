@@ -1,0 +1,231 @@
+[
+  {
+    "id": "1763543141381",
+    "createdAt": "2025-11-19T09:05:41.381Z",
+    "clientName": "Bapak Havis Akbar",
+    "items": [
+      {
+        "deskripsi": "Pendirian PT",
+        "biaya": 2000000
+      },
+      {
+        "deskripsi": "Pengurusan NIB",
+        "biaya": 1000000
+      },
+      {
+        "deskripsi": "Pengurusan NPWP",
+        "biaya": 1000000
+      }
+    ],
+    "total": 4000000,
+    "nomorSurat": "INV/2025/864"
+  },
+  {
+    "id": "1763544246342",
+    "createdAt": "2025-11-19T09:24:06.342Z",
+    "recipient": {
+      "name": "Komisaris",
+      "position": "",
+      "company": "PT. WE TECH",
+      "address": "- di Tempat"
+    },
+    "items": [
+      {
+        "deskripsi": "",
+        "biaya": 0,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [
+      {
+        "description": "Pembayaran pertama sebesar 70% setelah penawaran disetujui",
+        "amount": 0
+      },
+      {
+        "description": "",
+        "amount": 0
+      }
+    ],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar"
+    },
+    "total": 0,
+    "nomorInvoice": "INV/2025/6",
+    "tanggalInvoice": "2025-11-19T09:24:06.308Z"
+  },
+  {
+    "id": "1763607465227",
+    "createdAt": "2025-11-20T02:57:45.227Z",
+    "recipient": {
+      "name": "",
+      "position": "",
+      "company": "",
+      "address": ""
+    },
+    "items": [
+      {
+        "deskripsi": "",
+        "biaya": 0,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [
+      {
+        "description": "Pembayaran pertama sebesar 70% setelah penawaran disetujui",
+        "amount": 0
+      }
+    ],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar, S.H., M.Kn"
+    },
+    "total": 0,
+    "nomorInvoice": "INV/2025/191",
+    "tanggalInvoice": "2025-11-20T02:57:45.208Z"
+  },
+  {
+    "id": "1763611189197",
+    "createdAt": "2025-11-20T03:59:49.197Z",
+    "recipient": {
+      "name": "",
+      "position": "",
+      "company": "",
+      "address": ""
+    },
+    "items": [
+      {
+        "deskripsi": "",
+        "biaya": 0,
+        "keterangan": ""
+      },
+      {
+        "deskripsi": "",
+        "biaya": 0,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [
+      {
+        "description": "Pembayaran pertama sebesar 70% setelah penawaran disetujui",
+        "amount": 0
+      }
+    ],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar, S.H., M.Kn"
+    },
+    "total": 0,
+    "nomorInvoice": "INV/2025/360",
+    "tanggalInvoice": "2025-11-20T03:59:49.116Z"
+  },
+  {
+    "id": "1763611401345",
+    "createdAt": "2025-11-20T04:03:21.345Z",
+    "recipient": {
+      "name": "Presiden Direktur PT. WE TECH ",
+      "position": "",
+      "company": "",
+      "address": "Jl. Jabeka II G Blok C 16 AC, Kawasan Industri Jababeka,  \nKabupaten Bekasi. "
+    },
+    "items": [
+      {
+        "deskripsi": "Melakukan proses Pendaftaran Ulang KBLI : -  1  26512 (Industri Alat Ukur Dan Alat Uji  Elektrik) -  28221 (Industri Mesin Dan Perkakas  Mesin Untuk Pengerjaan Logam).",
+        "biaya": 17500000,
+        "keterangan": "Biaya tersebut sudah  mencakup keseluruhan dari  penanganan pekerjaan ini  hingga selesai.  "
+      },
+      {
+        "deskripsi": "Melakukan finalisasi proses hingga status  kedua KBLI baru tersebut \"Berlaku Efektif\"  dengan tetap menggunakan NIB PT. WE  TECH yang existing",
+        "biaya": 17500000,
+        "keterangan": "Notes : durasi tersebut diatas  jika system OSS tidak  mengalami kendala. "
+      }
+    ],
+    "paymentSchemes": [
+      {
+        "description": "Pembayaran pertama sebesar 70% setelah penawaran disetujui",
+        "amount": 24500000
+      },
+      {
+        "description": "Pembayaran kedua (pelunasan) sebesar 30% dibayar setelah  pekerjaan selesai. ",
+        "amount": 12250000
+      }
+    ],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar, S.H., M.Kn"
+    },
+    "total": 35000000,
+    "nomorInvoice": "INV/2025/541",
+    "tanggalInvoice": "2025-11-20T04:03:21.260Z"
+  },
+  {
+    "id": "1763620082336",
+    "createdAt": "2025-11-20T06:28:02.336Z",
+    "recipient": {
+      "name": "",
+      "position": "",
+      "company": "",
+      "address": ""
+    },
+    "items": [
+      {
+        "deskripsi": "",
+        "biaya": 0,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [
+      {
+        "description": "Pembayaran pertama sebesar 70% setelah penawaran disetujui",
+        "amount": 0
+      }
+    ],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar, S.H., M.Kn"
+    },
+    "invoiceDate": "2025-11-20",
+    "showStamp": true,
+    "total": 0,
+    "nomorInvoice": "INV/2025/734",
+    "tanggalInvoice": "2025-11-20"
+  },
+  {
+    "id": "1763620086327",
+    "createdAt": "2025-11-20T06:28:06.327Z",
+    "recipient": {
+      "name": "",
+      "position": "",
+      "company": "",
+      "address": ""
+    },
+    "items": [
+      {
+        "deskripsi": "",
+        "biaya": 0,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [
+      {
+        "description": "Pembayaran pertama sebesar 70% setelah penawaran disetujui",
+        "amount": 0
+      }
+    ],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar, S.H., M.Kn"
+    },
+    "invoiceDate": "2025-11-20",
+    "showStamp": true,
+    "total": 0,
+    "nomorInvoice": "INV/2025/676",
+    "tanggalInvoice": "2025-11-20"
+  }
+]
