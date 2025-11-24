@@ -3,9 +3,23 @@
 
 import fs from 'fs/promises';
 import path from 'path';
+import { revalidatePath } from 'next/cache';
 
 // Tentukan lokasi folder data (pastikan folder 'data' ada di root project)
 const DATA_DIR = path.join(process.cwd(), 'data');
+const PUBLIC_DIR = path.join(process.cwd(), 'public');
+const DRAFTS_DIR = path.join(PUBLIC_DIR, 'uploads', 'drafts');
+const DRAFTS_FILENAME = 'drafts.json';
+const ALLOWED_DRAFT_EXTENSIONS = ['.pdf', '.doc', '.docx'];
+const ALLOWED_DRAFT_MIME_TYPES = [
+  'application/pdf',
+  'application/msword',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+];
+
+async function ensureDraftsDirectory() {
+  await fs.mkdir(DRAFTS_DIR, { recursive: true });
+}
 
 // Helper untuk memastikan file ada
 async function ensureFile(filename, defaultData = []) {
@@ -255,5 +269,107 @@ export async function deleteDeed(id) {
   const deeds = await readJson(filePath);
   const filtered = deeds.filter((deed) => deed.id !== id);
   await writeJson(filePath, filtered);
+  return { success: true, deletedId: id };
+}
+
+// --- FUNCTION UNTUK DRAFT AKTA ---
+
+function sanitizeFilename(name = '') {
+  return name.replace(/[^a-zA-Z0-9.\-_]/g, '_');
+}
+
+function buildDraftRecord({ title, category, filename, storedFilename }) {
+  const now = new Date().toISOString();
+  return {
+    id: Date.now().toString(),
+    title: title?.toString().trim() || 'Draft Tanpa Judul',
+    category: category === 'PPAT' ? 'PPAT' : 'Notaris',
+    filename: filename,
+    fileUrl: `/uploads/drafts/${storedFilename}`,
+    uploadDate: now,
+  };
+}
+
+export async function getDrafts(category) {
+  const filePath = await ensureFile(DRAFTS_FILENAME);
+  const drafts = await readJson(filePath);
+
+  const filtered = category
+    ? drafts.filter((draft) => draft.category === category)
+    : drafts;
+
+  return filtered.sort(
+    (a, b) => new Date(b.uploadDate).getTime() - new Date(a.uploadDate).getTime()
+  );
+}
+
+export async function uploadDraft(formData) {
+  const title = formData.get('title');
+  const category = formData.get('category');
+  const file = formData.get('file');
+
+  if (!file || typeof file === 'string') {
+    throw new Error('File wajib diunggah.');
+  }
+
+  const originalName = file.name || 'draft.docx';
+  const ext = path.extname(originalName).toLowerCase();
+
+  if (!ALLOWED_DRAFT_EXTENSIONS.includes(ext) && !ALLOWED_DRAFT_MIME_TYPES.includes(file.type)) {
+    throw new Error('Format file tidak didukung. Gunakan PDF, DOC, atau DOCX.');
+  }
+
+  const arrayBuffer = await file.arrayBuffer();
+  const buffer = Buffer.from(arrayBuffer);
+
+  await ensureDraftsDirectory();
+
+  const storedFilename = `${Date.now()}-${sanitizeFilename(originalName)}`;
+  const diskPath = path.join(DRAFTS_DIR, storedFilename);
+
+  await fs.writeFile(diskPath, buffer);
+
+  const filePath = await ensureFile(DRAFTS_FILENAME);
+  const drafts = await readJson(filePath);
+  const newDraft = buildDraftRecord({
+    title,
+    category,
+    filename: originalName,
+    storedFilename,
+  });
+
+  drafts.unshift(newDraft);
+  await writeJson(filePath, drafts);
+  revalidatePath('/modules/bank-draft');
+
+  return { success: true, data: newDraft };
+}
+
+export async function deleteDraft(id) {
+  if (!id) {
+    throw new Error('ID draft wajib diisi.');
+  }
+
+  const filePath = await ensureFile(DRAFTS_FILENAME);
+  const drafts = await readJson(filePath);
+  const target = drafts.find((draft) => draft.id === id);
+
+  if (!target) {
+    throw new Error('Draft tidak ditemukan.');
+  }
+
+  const remaining = drafts.filter((draft) => draft.id !== id);
+  await writeJson(filePath, remaining);
+
+  if (target.fileUrl) {
+    const diskPath = path.join(PUBLIC_DIR, target.fileUrl.replace(/^\//, ''));
+    try {
+      await fs.unlink(diskPath);
+    } catch (error) {
+      console.warn(`Gagal menghapus file draft ${diskPath}:`, error);
+    }
+  }
+
+  revalidatePath('/modules/bank-draft');
   return { success: true, deletedId: id };
 }

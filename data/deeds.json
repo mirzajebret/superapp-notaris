@@ -1,20 +1,199 @@
 [
   {
-    "id": "1763716729658",
-    "createdAt": "2025-11-21T09:18:49.658Z",
-    "updatedAt": "2025-11-21T09:18:49.658Z",
+    "id": "1763970586671",
+    "createdAt": "2025-11-24T07:49:46.671Z",
+    "updatedAt": "2025-11-24T07:49:46.671Z",
     "jenis": "Notaris",
-    "nomorAkta": "2",
-    "tanggalAkta": "2025-10-31",
-    "judulAkta": "PENDIRIAN PT\n",
+    "nomorAkta": "1",
+    "tanggalAkta": "2025-11-12",
+    "judulAkta": "Jual Beli Saham PT. Mini Air Mengalir antara Tuan Andriawan dengan Nona Sutina",
     "pihak": [
       {
-        "name": "A",
+        "name": "Tn. Andriawan",
         "role": "Pihak I"
       },
       {
-        "name": "B",
+        "name": "Ny. Mira",
         "role": "Pihak II"
+      },
+      {
+        "name": "Nn. Sutina",
+        "role": "Pihak 3"
+      }
+    ],
+    "detailPPAT": null,
+    "kategori": "Akta",
+    "bulanPelaporan": 11,
+    "tahunPelaporan": 2025
+  },
+  {
+    "id": "1763970638488",
+    "createdAt": "2025-11-24T07:50:38.488Z",
+    "updatedAt": "2025-11-24T07:50:38.488Z",
+    "jenis": "Notaris",
+    "nomorAkta": "2",
+    "tanggalAkta": "2025-11-12",
+    "judulAkta": "Jual Beli Saham PT. Mini Air Mengalir antara Tuan Andriawan dengan Tuan Octario Ciami",
+    "pihak": [
+      {
+        "name": "Tn. Andriawan",
+        "role": "Pihak I"
+      },
+      {
+        "name": "Ny. Mira",
+        "role": "Pihak II"
+      },
+      {
+        "name": "Tn. Octario Ciami",
+        "role": "Pihak 3"
+      }
+    ],
+    "detailPPAT": null,
+    "kategori": "Akta",
+    "bulanPelaporan": 11,
+    "tahunPelaporan": 2025
+  },
+  {
+    "id": "1763970738376",
+    "createdAt": "2025-11-24T07:52:18.376Z",
+    "updatedAt": "2025-11-24T07:52:18.376Z",
+    "jenis": "Notaris",
+    "nomorAkta": "3",
+    "tanggalAkta": "2025-11-13",
+    "judulAkta": "Pernyataan Keputusan Para Pemegang Saham PT. Mini Air Mengalir",
+    "pihak": [
+      {
+        "name": "Tn. Octario Ciami, untuk dirinya sendiri, dan atas nama :",
+        "role": "Pihak I"
+      },
+      {
+        "name": "Nn. Sutina",
+        "role": "Kuasa"
+      },
+      {
+        "name": "Tn. Andriawan",
+        "role": "Kuasa"
+      }
+    ],
+    "detailPPAT": null,
+    "kategori": "Akta",
+    "bulanPelaporan": 11,
+    "tahunPelaporan": 2025
+  },
+  {
+    "id": "1763970898786",
+    "createdAt": "2025-11-24T07:54:58.786Z",
+    "updatedAt": "2025-11-24T07:54:58.786Z",
+    "jenis": "Notaris",
+    "nomorAkta": "4",
+    "tanggalAkta": "2025-11-13",
+    "judulAkta": "Akta Pendirian Koperasi Produsen Bumi Lestari Garut",
+    "pihak": [
+      {
+        "name": "Tn. Dede Rano",
+        "role": "Pihak I"
+      },
+      {
+        "name": "Tn. Wage Nasahudin",
+        "role": "Pihak II"
+      },
+      {
+        "name": "Tn. Miptah",
+        "role": "Pihak 3"
+      },
+      {
+        "name": "Tn. Muslimin",
+        "role": "Pihak 4"
+      },
+      {
+        "name": "Untuk dirinya sendiri, dan untuk atas nama:",
+        "role": "Kuasa"
+      },
+      {
+        "name": "Tn. Yudi Abdulloh",
+        "role": "Kuasa"
+      },
+      {
+        "name": "Tn. Asep Maosul",
+        "role": "Kuasa"
+      },
+      {
+        "name": "Tn. Setiawan",
+        "role": "Kuasa"
+      }
+    ],
+    "detailPPAT": null,
+    "kategori": "Akta",
+    "bulanPelaporan": 11,
+    "tahunPelaporan": 2025
+  },
+  {
+    "id": "1763970949545",
+    "createdAt": "2025-11-24T07:55:49.545Z",
+    "updatedAt": "2025-11-24T07:55:49.545Z",
+    "jenis": "Notaris",
+    "nomorAkta": "5",
+    "tanggalAkta": "2025-11-17",
+    "judulAkta": "Kuasa Untuk Menjual",
+    "pihak": [
+      {
+        "name": "Tn. Iwan Wahyudi",
+        "role": "Pihak I"
+      }
+    ],
+    "detailPPAT": null,
+    "kategori": "Akta",
+    "bulanPelaporan": 11,
+    "tahunPelaporan": 2025
+  },
+  {
+    "id": "1763971161130",
+    "createdAt": "2025-11-24T07:59:21.130Z",
+    "updatedAt": "2025-11-24T07:59:36.224Z",
+    "jenis": "Notaris",
+    "nomorAkta": "7",
+    "tanggalAkta": "2025-11-24",
+    "judulAkta": "Akta Pendirian Perkumpulan Paguyuban Pengelola Pariwisata Pantai Karang Papak",
+    "pihak": [
+      {
+        "name": "Tn. Muhrom Suhandi",
+        "role": "Pihak I"
+      },
+      {
+        "name": "Tn. Ayi Priatna",
+        "role": "Pihak II"
+      },
+      {
+        "name": "Tn. Ahmad Rosadi, S. Pd. I",
+        "role": "Pihak 3"
+      },
+      {
+        "name": "Tn. Drs. Rudy Harianto, M.Si",
+        "role": "Pihak 4"
+      },
+      {
+        "name": "Tn. Ilan Ruslani",
+        "role": "Pihak 5"
+      },
+      {
+        "name": "Ny. Heni Ernawati",
+        "role": "Pihak 6"
+      },
+      {
+        "name": "Tn. Ridwan, S. Pd",
+        "role": "Pihak 7"
+      },
+      {
+        "name": "Ny. Navisha Aulia Avrina",
+        "role": "Pihak 8"
+      },
+      {
+        "name": "Tn. Dimas Cakra Andita",
+        "role": "Pihak 9"
+      },
+      {
+        "name": "Ny. Cucu Pritniawati, S. Pd",
+        "role": "Pihak 10"
       }
     ],
     "detailPPAT": null,

@@ -286,13 +286,6 @@ export default function CoverAktaModulePage() {
              >
                 {formData.judulAkta || ''}
              </div>
-
-             {/* Sub Judul / Nama PT (Bold & Quoted) */}
-             <div className="border-b-[2px] border-black font-bold min-h-[1em] mt-1">
-                {formData.subJudulAkta ? `“${formData.subJudulAkta}”` : ''}
-             </div>
-
-            
           </div>
         </div>
 

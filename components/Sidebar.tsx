@@ -19,6 +19,7 @@ const menuItems = [
   { name: 'Absensi Akad', icon: Users, href: '/modules/daftar-hadir'},
   { name: 'Cover Akta', icon: BookOpen, href: '/modules/cover-akta' },
   { name: 'Laporan Bulanan', icon: BarChart3, href: '/modules/laporan-bulanan'},
+  { name: 'Draft Akta', icon: FileText, href: '/modules/bank-draft'},
 ];
 
 export default function Sidebar() {

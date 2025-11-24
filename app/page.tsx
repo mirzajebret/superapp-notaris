@@ -86,7 +86,32 @@ export default function Dashboard() {
                 <span className="text-blue-600 text-sm font-medium flex items-center gap-1">Buka Modul <ArrowRight size={16} /></span>
             </div>
         </Link>
+
+        <Link href="/modules/laporan-bulanan" className="group bg-white p-6 rounded-xl border border-gray-200 hover:border-blue-400 hover:shadow-md transition-all duration-300 cursor-pointer relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+            <div className="relative z-10">
+                <div className="w-12 h-12 bg-indigo-600 text-white rounded-lg flex items-center justify-center mb-4 shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform">
+                    <FileText size={24} />
+                </div>
+                <h3 className="font-bold text-gray-800 text-lg group-hover:text-blue-600 transition-colors">Laporan Bulanan</h3>
+                <p className="text-gray-500 text-sm mt-2 mb-4">cetak laporan bulanan notaris & ppat.</p>
+            </div>
+            <span className="text-blue-600 text-sm font-medium flex items-center gap-1">Buka Modul <ArrowRight size={16} /></span>
+        </Link>
+
+        <Link href="/modules/bank-draft" className="group bg-white p-6 rounded-xl border border-gray-200 hover:border-blue-400 hover:shadow-md transition-all duration-300 cursor-pointer relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+            <div className="relative z-10">
+                <div className="w-12 h-12 bg-indigo-600 text-white rounded-lg flex items-center justify-center mb-4 shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform">
+                    <FileText size={24} />
+                </div>
+                <h3 className="font-bold text-gray-800 text-lg group-hover:text-blue-600 transition-colors">Draft Akta</h3>
+                <p className="text-gray-500 text-sm mt-2 mb-4">Lihat draft akta yang telah dibuat.</p>
+                <span className="text-blue-600 text-sm font-medium flex items-center gap-1">Buka Modul <ArrowRight size={16} /></span>
+            </div>
+        </Link>
       </div>
     </div>
+    
   );
 }

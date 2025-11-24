@@ -28,6 +28,7 @@ export default function DaftarHadirModulePage() {
     participants: [{ nama: '' }],
   });
 
+  // --- HANDLERS (Tidak berubah) ---
   const handleInputChange = (field: keyof DaftarHadirForm, value: string | Participant[]) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
@@ -84,14 +85,14 @@ export default function DaftarHadirModulePage() {
     try {
       const html2pdf = (await import('html2pdf.js')).default;
       const opt = {
-        margin: 0,
+        // Margin di set 0 di sini karena kita mengaturnya via CSS @page
+        margin: 0, 
         filename: `Daftar-Hadir-${formData.nomorAkta.replace(/[^a-zA-Z0-9]/g, '-') || 'Draft'}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: {
           scale: 2,
           useCORS: true,
-          width: 750,
-          windowWidth: 750,
+          // Hapus width/windowWidth fix agar responsif terhadap margin CSS
         },
         jsPDF: {
           unit: 'mm',
@@ -100,6 +101,7 @@ export default function DaftarHadirModulePage() {
         },
       } as const;
 
+      // Gunakan element parent dari documentRef agar style global @page terbaca
       await html2pdf().set(opt).from(documentRef.current).save();
     } catch (error) {
       console.error('PDF Generation Error:', error);
@@ -124,20 +126,51 @@ export default function DaftarHadirModulePage() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-8 flex gap-8 font-sans text-gray-800 print:p-0 print:bg-white">
+      
+      {/* --- CSS GLOBAL UNTUK PRINTING --- */}
       <style jsx global>{`
         @media print {
-          body * { visibility: hidden; }
-          html, body { height: 100vh; overflow: hidden; margin: 0; padding: 0; background: white; }
-          #print-target, #print-target * { visibility: visible; }
-          #print-target {
-            position: absolute; left: 0; top: 0; width: 210mm; min-height: 297mm;
-            padding: 0; margin: 0; transform: none !important; box-shadow: none !important; background: white;
+          /* 1. Mengatur Margin Fisik Kertas */
+          @page {
+            size: A4;
+            margin: 20mm; /* Margin 2cm di semua sisi untuk SETIAP halaman */
           }
+
+          body * { visibility: hidden; }
+          html, body { height: auto; overflow: visible; margin: 0; padding: 0; background: white; }
+          
+          /* 2. Reset Container A4 saat Print */
+          #print-target {
+            visibility: visible;
+            position: relative;
+            width: 100% !important; /* Gunakan lebar penuh area cetak */
+            height: auto !important;
+            min-height: 0 !important;
+            /* Hapus padding/margin container karena sudah dihandle @page */
+            padding: 0 !important; 
+            margin: 0 !important; 
+            transform: none !important; 
+            box-shadow: none !important; 
+            background: white;
+            display: block !important; /* Pastikan block agar flow normal */
+          }
+          #print-target * { visibility: visible; }
+          
+          /* 3. Agar Header Tabel Berulang di Halaman Baru */
+          thead {
+            display: table-header-group;
+          }
+          
+          /* 4. Agar Baris Tabel Tidak Terpotong di Tengah */
+          tr {
+            page-break-inside: avoid;
+          }
+
           .no-print { display: none !important; }
         }
       `}</style>
 
-      {/* KOLOM KIRI: FORM INPUT */}
+      {/* KOLOM KIRI: FORM INPUT (Tidak Berubah) */}
       <div className="w-1/3 bg-white p-6 rounded-xl shadow-sm h-fit border border-gray-200 overflow-y-auto max-h-screen no-print space-y-6">
         <div>
           <h2 className="text-xl font-bold mb-1">Edit Data Daftar Hadir Akad</h2>
@@ -253,14 +286,15 @@ export default function DaftarHadirModulePage() {
 
         {/* AREA KERTAS (PREVIEW) */}
         <div className="flex-1 w-full overflow-auto flex justify-center print:overflow-visible print:block print:w-full">
+          {/* Note: A4Container akan memiliki padding di layar, tapi paddingnya di-reset saat print via CSS global di atas */}
           <A4Container ref={documentRef} className="print-wrapper flex flex-col" id="print-target">
             
             {/* 1. KOP SURAT */}
             <KopSurat />
             
-            {/* 2. TEKS LEGAL (PARAGRAF PEMBUKA) */}
+            {/* 2. TEKS LEGAL */}
             <div className="text-[12pt] text-justify leading-[1.5] font-serif text-black">
-              <p className="mb-3">
+              <p className="mb-1">
                 Demikian berdasarkan dan untuk memenuhi ketentuan Pasal 16 ayat (1) huruf c, Undang-undang Nomor 
                 2 Tahun 2014 tentang perubahan atas Undang-undang Nomor 30 Tahun 2014 tentang Jabatan Notaris.
               </p>
@@ -270,7 +304,7 @@ export default function DaftarHadirModulePage() {
               </p>
             </div>
 
-            {/* 3. INFORMASI AKTA (Alignment Titik Dua Presisi) */}
+            {/* 3. INFORMASI AKTA */}
             <div className="mb-3 text-[12pt] font-bold font-serif text-black w-full">
               <div className="flex">
                 <div className="w-[140px]">Hari, Tanggal</div>
@@ -289,36 +323,34 @@ export default function DaftarHadirModulePage() {
               </div>
             </div>
 
-            {/* 4. TABEL PESERTA (Fixed Height Rows) */}
-            <table className="w-full border-collapse border border-black text-[11pt] font-serif mb-3">
+            {/* 4. TABEL PESERTA */}
+            <table className="w-full border-collapse border border-black text-[11pt] font-serif mb-4">
+              {/* thead akan otomatis berulang di halaman baru berkat CSS */}
               <thead>
-                <tr className="font-bold text-center">
-                  <th className="border border-black p-2 w-12 align-middle">No.</th>
-                  <th className="border border-black p-2 align-middle">Nama</th>
-                  <th className="border border-black p-2 w-40 align-middle">Tanda Tangan</th>
-                  <th className="border border-black w-40 align-middle">Sidik Jari<br/><span className="text-[8pt]">(IBU JARI KANAN)</span></th>
-                  <th className="border border-black p-2 w-48 align-middle">Alamat & Telp.</th>
+                <tr className="font-bold text-center bg-gray-50 print:bg-white">
+                  <th className="border border-black p-2 w-10 align-middle">No.</th>
+                  <th className="border border-black p-2 w-[170px] align-middle">Nama</th>
+                  <th className="border border-black p-2 w-[140px] align-middle">Tanda Tangan</th>
+                  <th className="border border-black w-32 align-middle">Sidik Jari<br/><span className="text-[8pt]">(IBU JARI KANAN)</span></th>
+                  <th className="border border-black p-2 w-[160px] align-middle">Alamat & Telp.</th>
                 </tr>
               </thead>
               <tbody>
                 {formData.participants.length > 0 ? (
                   formData.participants.map((participant, index) => (
-                    // Class h-32 memberikan tinggi fix untuk area tanda tangan
-                    <tr key={index} className="h-32"> 
+                    // Class h-32 tetap ada untuk tinggi visual, CSS 'page-break-inside: avoid' menjaga agar tidak terpotong
+                    <tr key={index} className="h-[110px]"> 
                       <td className="border border-black p-2 text-center align-middle font-bold">{index + 1}</td>
                       <td className="border border-black p-4 align-middle font-bold">
-                        {/* Menambahkan 'Tuan/Nyonya' jika diperlukan logic-nya, atau render langsung */}
                         {participant.nama}
                       </td>
-                      {/* Kolom Kosong untuk TTD & Sidik Jari */}
                       <td className="border border-black p-2"></td>
                       <td className="border border-black p-2"></td>
                       <td className="border border-black p-2"></td>
                     </tr>
                   ))
                 ) : (
-                  // Tampilan Default Kosong (Agar layout tidak gepeng saat belum ada data)
-                  <tr className="h-36">
+                  <tr className="h-32">
                     <td className="border border-black p-2 text-center align-middle">1</td>
                     <td className="border border-black p-2 align-middle font-bold uppercase">
                       (Belum ada peserta)
@@ -331,15 +363,6 @@ export default function DaftarHadirModulePage() {
               </tbody>
             </table>
 
-            {/* Spacer agar footer turun ke bawah */}
-            <div className="flex-grow"></div>
-
-            {/* 5. FOOTER (Alamat Notaris) */}
-            <div className="text-[9pt] text-center text-gray-600 pt-2 pb-4">
-              <p>Jl. Jendral Sudirman, No.31 B, Sukamentri, Garut Kota</p>
-              <p>Kabupaten Garut, Jawa Barat - Indonesia</p>
-              <p>e-mail : hakbar.notpat@gmail.com ; Mobile Phone 0877 366 88 999</p>
-            </div>
 
           </A4Container>
         </div>
@@ -347,4 +370,3 @@ export default function DaftarHadirModulePage() {
     </div>
   );
 }
-
