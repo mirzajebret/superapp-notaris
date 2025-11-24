@@ -285,7 +285,7 @@ export default function NewInvoicePage() {
              </div>
           </div>
 
-          <button onClick={handleSubmit} disabled={loading} className="w-full bg-gray-800 text-white py-3 rounded-lg hover:bg-black transition font-medium">{loading ? 'Menyimpan...' : 'Simpan ke Database'}</button>
+          <button onClick={handleSubmit} disabled={loading} className="w-full bg-black  font-semibold text-white py-3 rounded-lg hover:bg-black transition font-medium">{loading ? 'Menyimpan...' : 'Simpan ke Database'}</button>
         </div>
       </div>
 

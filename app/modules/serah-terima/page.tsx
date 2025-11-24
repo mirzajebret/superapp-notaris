@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import A4Container from '@/components/documents/A4Container';
 import KopSurat from '@/components/documents/KopSurat';
 import { saveSerahTerima } from '@/app/actions';
+import Image from 'next/image';
 
 type DocumentTypeKey = 'dokumen' | 'surat' | 'barang';
 
@@ -16,6 +17,7 @@ interface TransferItem {
 interface PartyInfo {
   name: string;
   position: string;
+  signature?: string;
 }
 
 interface SerahTerimaForm {
@@ -26,6 +28,12 @@ interface SerahTerimaForm {
   handoverDate: string;
   items: TransferItem[];
 }
+
+const SIGNATURE_OPTIONS = [
+  { value: '', label: '- Tanpa Tanda Tangan -' },
+  { value: 'mirza', label: 'Mirza Alby Assidiqie' },
+  { value: 'nepi', label: 'Nepi Meinti' },
+];
 
 const DEFAULT_ITEMS: TransferItem[] = [
   { description: 'Akta Pendirian Perusahaan', note: '', noteType: 'Fotokopi' },
@@ -46,15 +54,31 @@ export default function SerahTerimaModulePage() {
     receiver: {
       name: 'Mirza Alby Assidiqie',
       position: 'Staff Administrasi',
+      signature: '', // Default kosong
     },
     deliverer: {
       name: 'Nepi Meinti',
       position: 'Client',
+      signature: '', // Default kosong
     },
     location: 'Garut',
     handoverDate: new Date().toISOString().split('T')[0],
     items: DEFAULT_ITEMS,
   });
+
+  // --- HELPER: GET IMAGE PATH ---
+  const getSignatureImage = (sigValue?: string) => {
+    if (sigValue === 'mirza') return '/images/ttd-mirza-cap.png';
+    if (sigValue === 'nepi') return '/images/ttd-nepi.png';
+    return null;
+  };
+
+  const handleSignatureChange = (role: 'receiver' | 'deliverer', value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [role]: { ...prev[role], signature: value },
+    }));
+  };
 
   const toggleDocumentType = (key: DocumentTypeKey) => {
     setFormData((prev) => ({
@@ -175,6 +199,7 @@ export default function SerahTerimaModulePage() {
   return (
     <div className="min-h-screen bg-gray-100 p-8 flex gap-8 font-sans text-gray-800 print:p-0 print:bg-white">
 
+      {/* --- KOLOM KIRI: FORM INPUT --- */}
       <div className="w-1/3 bg-white p-6 rounded-xl shadow-sm h-fit border border-gray-200 overflow-y-auto max-h-screen no-print space-y-6">
         <div>
           <h2 className="text-xl font-bold mb-1">Edit Data Serah Terima</h2>
@@ -220,6 +245,18 @@ export default function SerahTerimaModulePage() {
             value={formData.receiver.position}
             onChange={(e) => handlePartyChange('receiver', 'position', e.target.value)}
           />
+          <div>
+            <label className="text-xs font-semibold text-gray-500 block mb-1">Pilih Tanda Tangan</label>
+            <select
+              className="w-full border border-gray-300 rounded-lg p-2 text-sm"
+              value={formData.receiver.signature || ''}
+              onChange={(e) => handleSignatureChange('receiver', e.target.value)}
+            >
+              {SIGNATURE_OPTIONS.map(opt => (
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
+              ))}
+            </select>
+          </div>
         </section>
 
         <section className="space-y-3">
@@ -234,10 +271,22 @@ export default function SerahTerimaModulePage() {
           <input
             type="text"
             className="w-full border border-gray-300 rounded-lg p-2 text-sm"
-            placeholder="Jabatan / Status (Staff / Client)"
+            placeholder="Jabatan / Status"
             value={formData.deliverer.position}
             onChange={(e) => handlePartyChange('deliverer', 'position', e.target.value)}
           />
+          <div>
+            <label className="text-xs font-semibold text-gray-500 block mb-1">Pilih Tanda Tangan</label>
+            <select
+              className="w-full border border-gray-300 rounded-lg p-2 text-sm"
+              value={formData.deliverer.signature || ''}
+              onChange={(e) => handleSignatureChange('deliverer', e.target.value)}
+            >
+              {SIGNATURE_OPTIONS.map(opt => (
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
+              ))}
+            </select>
+          </div>
         </section>
 
         <section className="grid grid-cols-2 gap-3">
@@ -323,6 +372,7 @@ export default function SerahTerimaModulePage() {
         </button>
       </div>
 
+      {/* --- KOLOM KANAN: PREVIEW --- */}
       <div className="flex-1 flex flex-col items-center h-screen print:h-auto print:block">
         <div className="w-[210mm] mb-4 flex justify-between items-center no-print">
           <div className="text-sm text-gray-500 italic">Preview Dokumen A4</div>
@@ -332,7 +382,7 @@ export default function SerahTerimaModulePage() {
               className="flex items-center gap-2 bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded shadow-sm hover:bg-gray-50 transition font-medium"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-                    Print
+              Print
             </button>
             <button
               onClick={handleDownloadPDF}
@@ -410,15 +460,51 @@ export default function SerahTerimaModulePage() {
             </div>
 
             <div className="flex justify-between text-[11pt]">
-              <div className="w-1/2 text-center">
-                <p className="font-medium mb-16">Yang Menerima</p>
-                <p className="font-bold underline decoration-1 underline-offset-4">{formData.receiver.name || '................'}</p>
-                <p className="text-[10pt]">{formData.receiver.position || '-'}</p>
+
+              {/* KOLOM PENERIMA */}
+              <div className="w-1/2 text-center flex flex-col items-center">
+                <p className="font-medium mb-2">Yang Menerima</p>
+
+                <div className="h-24 flex items-center justify-center w-full relative">
+                  {/* RENDER IMAGE DINAMIS */}
+                  {getSignatureImage(formData.receiver.signature) ? (
+                    <Image
+                      src={getSignatureImage(formData.receiver.signature)!}
+                      width={250}
+                      height={200}
+                      alt="TTD Penerima"
+                      className="object-contain"
+                    />
+                  ) : (
+                    <div className="w-full h-full"></div>
+                  )}
+                </div>
+
+                <p className="font-bold underline decoration-1 underline-offset-4 mt-1">{formData.receiver.name}</p>
+                <p className="text-[10pt]">{formData.receiver.position}</p>
               </div>
-              <div className="w-1/2 text-center">
-                <p className="font-medium mb-16">Yang Menyerahkan</p>
-                <p className="font-bold underline decoration-1 underline-offset-4">{formData.deliverer.name || '................'}</p>
-                <p className="text-[10pt]">{formData.deliverer.position || '-'}</p>
+
+              {/* KOLOM PENYERAH */}
+              <div className="w-1/2 text-center flex flex-col items-center">
+                <p className="font-medium mb-2">Yang Menyerahkan</p>
+
+                <div className="h-24 flex items-center justify-center w-full relative">
+                  {/* RENDER IMAGE DINAMIS */}
+                  {getSignatureImage(formData.deliverer.signature) ? (
+                    <Image
+                      src={getSignatureImage(formData.deliverer.signature)!}
+                      width={230}
+                      height={180}
+                      alt="TTD Penyerah"
+                      className="object-contain"
+                    />
+                  ) : (
+                    <div className="w-full h-full"></div>
+                  )}
+                </div>
+
+                <p className="font-bold underline decoration-1 underline-offset-4 mt-1">{formData.deliverer.name}</p>
+                <p className="text-[10pt]">{formData.deliverer.position}</p>
               </div>
             </div>
           </A4Container>
@@ -427,4 +513,3 @@ export default function SerahTerimaModulePage() {
     </div>
   );
 }
-
