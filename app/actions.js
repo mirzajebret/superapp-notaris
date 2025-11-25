@@ -29,10 +29,10 @@ async function ensureFile(filename, defaultData = []) {
   } catch {
     // Jika error (file tidak ada), buat folder dan file baru
     try {
-        await fs.mkdir(DATA_DIR, { recursive: true });
-        await fs.writeFile(filePath, JSON.stringify(defaultData, null, 2));
+      await fs.mkdir(DATA_DIR, { recursive: true });
+      await fs.writeFile(filePath, JSON.stringify(defaultData, null, 2));
     } catch (err) {
-        console.error("Gagal membuat file:", err);
+      console.error("Gagal membuat file:", err);
     }
   }
   return filePath;
@@ -51,22 +51,22 @@ async function writeJson(filePath, data) {
 
 export async function saveInvoice(invoiceData) {
   const filePath = await ensureFile('invoices.json');
-  
+
   // Baca data lama
   const invoices = await readJson(filePath);
-  
+
   // Tambah data baru (Generate ID simple pakai timestamp)
   const newInvoice = {
     id: Date.now().toString(),
     createdAt: new Date().toISOString(),
     ...invoiceData
   };
-  
+
   invoices.push(newInvoice);
-  
+
   // Simpan balik ke file
   await writeJson(filePath, invoices);
-  
+
   return { success: true, data: newInvoice };
 }
 
@@ -78,8 +78,8 @@ export async function getInvoices() {
 // --- FUNCTION UNTUK KLIEN ---
 
 export async function getClients() {
-    const filePath = await ensureFile('clients.json');
-    return readJson(filePath);
+  const filePath = await ensureFile('clients.json');
+  return readJson(filePath);
 }
 
 // --- FUNCTION UNTUK SERAH TERIMA ---
@@ -200,15 +200,15 @@ function normalizeDeedPayload(payload = {}) {
     detailPPAT:
       jenis === 'PPAT' && detailPPAT
         ? {
-            nop: detailPPAT.nop ?? '',
-            njop: detailPPAT.njop ?? '',
-            luasTanah: detailPPAT.luasTanah ?? '',
-            luasBangunan: detailPPAT.luasBangunan ?? '',
-            lokasiObjek: detailPPAT.lokasiObjek ?? '',
-            nilaiTransaksi: detailPPAT.nilaiTransaksi ?? '',
-            ssb: detailPPAT.ssb ?? '',
-            ssp: detailPPAT.ssp ?? '',
-          }
+          nop: detailPPAT.nop ?? '',
+          njop: detailPPAT.njop ?? '',
+          luasTanah: detailPPAT.luasTanah ?? '',
+          luasBangunan: detailPPAT.luasBangunan ?? '',
+          lokasiObjek: detailPPAT.lokasiObjek ?? '',
+          nilaiTransaksi: detailPPAT.nilaiTransaksi ?? '',
+          ssb: detailPPAT.ssb ?? '',
+          ssp: detailPPAT.ssp ?? '',
+        }
         : null,
     kategori: jenis === 'Notaris' ? kategori : null,
     bulanPelaporan: bulanPelaporan ?? period.month,
@@ -372,4 +372,68 @@ export async function deleteDraft(id) {
 
   revalidatePath('/modules/bank-draft');
   return { success: true, deletedId: id };
+}
+
+// --- TAMBAHAN UNTUK FITUR PENGGARIS AKTA ---
+import { exec } from 'child_process';
+import util from 'util';
+
+const execPromise = util.promisify(exec);
+
+export async function processGarisAkta(formData) {
+  const file = formData.get('file');
+  const type = formData.get('type'); // 'salinan' atau 'minuta'
+
+  if (!file) return { success: false, message: "File tidak ditemukan" };
+
+  // 1. Simpan File Input Sementara
+  const buffer = Buffer.from(await file.arrayBuffer());
+  const timestamp = Date.now();
+  // Sanitasi nama file agar aman di command line
+  const cleanName = file.name.replace(/[^a-zA-Z0-9]/g, '_');
+  const inputFileName = `input_${timestamp}_${cleanName}.pdf`;
+
+  // Path lengkap (Gunakan process.cwd() agar path absolut)
+  const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+  const inputPath = path.join(uploadDir, inputFileName);
+
+  // Pastikan folder ada
+  try {
+    await fs.mkdir(uploadDir, { recursive: true });
+    await fs.writeFile(inputPath, buffer);
+  } catch (err) {
+    console.error("Error saving file:", err);
+    return { success: false, message: "Gagal menyimpan file upload" };
+  }
+
+  // 2. Tentukan Path Script & Output
+  const scriptPath = path.join(process.cwd(), 'scripts', 'ToolGarisAktaNot.py');
+  // Output path ditentukan oleh logic Python script Anda (suffix _SALINAN atau _MINUTA)
+  // Kita perlu path output eksplisit agar Node.js tahu di mana mencarinya
+  const outputFileName = `output_${timestamp}_${cleanName}.pdf`;
+  const outputPath = path.join(uploadDir, outputFileName);
+
+  // 3. Jalankan Python Script
+  // Command: python script.py input output --type salinan
+  const command = `python "${scriptPath}" "${inputPath}" "${outputPath}" --type ${type}`;
+
+  try {
+    console.log("Executing Python:", command);
+    const { stdout, stderr } = await execPromise(command);
+
+    console.log("Python Output:", stdout);
+    if (stderr) console.error("Python Error:", stderr);
+
+    // 4. Return URL File Hasil
+    // Karena disimpan di public/uploads, bisa diakses via browser
+    return {
+      success: true,
+      fileUrl: `/uploads/${outputFileName}`,
+      fileName: outputFileName
+    };
+
+  } catch (error) {
+    console.error("Execution Failed:", error);
+    return { success: false, message: "Gagal memproses garis akta. Pastikan Python terinstall." };
+  }
 }

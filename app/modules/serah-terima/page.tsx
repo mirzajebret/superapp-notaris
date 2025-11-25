@@ -470,8 +470,8 @@ export default function SerahTerimaModulePage() {
                   {getSignatureImage(formData.receiver.signature) ? (
                     <Image
                       src={getSignatureImage(formData.receiver.signature)!}
-                      width={250}
-                      height={200}
+                      width={230}
+                      height={180}
                       alt="TTD Penerima"
                       className="object-contain"
                     />
