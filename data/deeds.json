@@ -200,5 +200,37 @@
     "kategori": "Akta",
     "bulanPelaporan": 11,
     "tahunPelaporan": 2025
+  },
+  {
+    "id": "1764164109243",
+    "createdAt": "2025-11-26T13:35:09.243Z",
+    "updatedAt": "2025-11-26T13:35:09.243Z",
+    "jenis": "PPAT",
+    "nomorAkta": "123",
+    "tanggalAkta": "2025-10-31",
+    "judulAkta": "ajb",
+    "pihak": [
+      {
+        "name": "1",
+        "role": "Pihak I"
+      },
+      {
+        "name": "2",
+        "role": "Pihak II"
+      }
+    ],
+    "detailPPAT": {
+      "nop": "3",
+      "njop": "4",
+      "luasTanah": "5",
+      "luasBangunan": "6",
+      "lokasiObjek": "7",
+      "nilaiTransaksi": "8",
+      "ssb": "0",
+      "ssp": "9"
+    },
+    "kategori": null,
+    "bulanPelaporan": 11,
+    "tahunPelaporan": 2025
   }
 ]

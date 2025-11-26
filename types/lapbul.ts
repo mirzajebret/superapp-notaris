@@ -1,41 +1,47 @@
-export type DeedType = 'Notaris' | 'PPAT';
+// src/types/lapbul.ts
 
-export type NotarisCategory = 'Akta' | 'Legalisasi' | 'Waarmerking' | 'Wasiat';
+export type DeedType = 'Notaris' | 'PPAT';
+export type NotarisCategory = 'Akta' | 'Legalisasi' | 'Waarmerking' | 'Protes' | 'Wasiat';
 
 export interface DeedParty {
   name: string;
-  role: string;
+  role: string; // Pihak Pertama, Kedua, dll
 }
 
 export interface DeedPPATDetails {
   nop: string;
-  njop: string;
+  njop: string; // Simpan sebagai string "Rp ..." atau number
   luasTanah: string;
   luasBangunan: string;
   lokasiObjek: string;
   nilaiTransaksi: string;
-  ssp: string;
-  ssb: string;
+  ssp: string; // Pajak Penjual
+  tglSsp: string;
+  ssb: string; // Pajak Pembeli
+  tglSsb: string;
+  jenisHak: string; // HM / HGB
+  pihakPenerima: string; // Khusus kolom "Pihak yang Menerima"
 }
 
 export interface DeedRecord {
   id: string;
   jenis: DeedType;
+
+  // Common Fields
   nomorAkta: string;
-  tanggalAkta: string; // format YYYY-MM-DD
-  judulAkta: string;
+  tanggalAkta: string;
+  judulAkta: string; // Sifat Akta / Bentuk Perbuatan Hukum
   pihak: DeedParty[];
-  detailPPAT: DeedPPATDetails | null;
-  kategori: NotarisCategory | null;
+
+  // Notaris Specific
+  kategori?: NotarisCategory;
+  nomorBulanan?: string; // No Urut di Laporan Bulanan
+
+  // PPAT Specific
+  detailPPAT?: DeedPPATDetails;
+
+  // Metadata Laporan (Agar data terikat ke bulan tertentu)
   bulanPelaporan: number;
   tahunPelaporan: number;
   createdAt: string;
-  updatedAt: string;
 }
-
-export interface DeedPayload
-  extends Partial<Omit<DeedRecord, 'id' | 'createdAt' | 'updatedAt'>> {
-  pihak?: DeedParty[];
-  detailPPAT?: DeedPPATDetails | null;
-}
-

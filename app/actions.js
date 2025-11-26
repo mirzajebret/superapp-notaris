@@ -217,59 +217,53 @@ function normalizeDeedPayload(payload = {}) {
 }
 
 export async function getDeeds() {
-  const filePath = await ensureFile(DEEDS_FILENAME);
-  return readJson(filePath);
+  const filePath = await ensureFile('deeds.json');
+  const fileContent = await fs.readFile(filePath, 'utf-8');
+  try {
+    return JSON.parse(fileContent);
+  } catch (e) {
+    return [];
+  }
 }
 
-export async function createDeed(record) {
-  const filePath = await ensureFile(DEEDS_FILENAME);
-  const deeds = await readJson(filePath);
-  const normalized = normalizeDeedPayload(record);
+export async function createDeed(data) {
+  const filePath = await ensureFile('deeds.json');
+  const fileContent = await fs.readFile(filePath, 'utf-8');
+  const deeds = JSON.parse(fileContent);
 
-  const newRecord = {
+  const newDeed = {
     id: Date.now().toString(),
     createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-    ...normalized,
+    ...data
   };
 
-  deeds.push(newRecord);
-  await writeJson(filePath, deeds);
-  return { success: true, data: newRecord };
+  deeds.push(newDeed);
+  await fs.writeFile(filePath, JSON.stringify(deeds, null, 2));
+  return { success: true, data: newDeed };
 }
 
-export async function updateDeed(id, updates) {
-  if (!id) {
-    throw new Error('ID deed wajib diisi untuk update.');
+export async function updateDeed(id, data) {
+  const filePath = await ensureFile('deeds.json');
+  const fileContent = await fs.readFile(filePath, 'utf-8');
+  let deeds = JSON.parse(fileContent);
+
+  const index = deeds.findIndex(d => d.id === id);
+  if (index !== -1) {
+    deeds[index] = { ...deeds[index], ...data };
+    await fs.writeFile(filePath, JSON.stringify(deeds, null, 2));
+    return { success: true, data: deeds[index] };
   }
-  const filePath = await ensureFile(DEEDS_FILENAME);
-  const deeds = await readJson(filePath);
-  const index = deeds.findIndex((deed) => deed.id === id);
-
-  if (index === -1) {
-    throw new Error('Data akta tidak ditemukan.');
-  }
-
-  const merged = {
-    ...deeds[index],
-    ...normalizeDeedPayload({ ...deeds[index], ...updates }),
-    updatedAt: new Date().toISOString(),
-  };
-
-  deeds[index] = merged;
-  await writeJson(filePath, deeds);
-  return { success: true, data: merged };
+  return { success: false };
 }
 
 export async function deleteDeed(id) {
-  if (!id) {
-    throw new Error('ID deed wajib diisi untuk delete.');
-  }
-  const filePath = await ensureFile(DEEDS_FILENAME);
-  const deeds = await readJson(filePath);
-  const filtered = deeds.filter((deed) => deed.id !== id);
-  await writeJson(filePath, filtered);
-  return { success: true, deletedId: id };
+  const filePath = await ensureFile('deeds.json');
+  const fileContent = await fs.readFile(filePath, 'utf-8');
+  let deeds = JSON.parse(fileContent);
+
+  deeds = deeds.filter(d => d.id !== id);
+  await fs.writeFile(filePath, JSON.stringify(deeds, null, 2));
+  return { success: true };
 }
 
 // --- FUNCTION UNTUK DRAFT AKTA ---
