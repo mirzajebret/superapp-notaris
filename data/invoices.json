@@ -227,5 +227,42 @@
     "total": 0,
     "nomorInvoice": "INV/2025/676",
     "tanggalInvoice": "2025-11-20"
+  },
+  {
+    "id": "1764061174577",
+    "createdAt": "2025-11-25T08:59:34.577Z",
+    "recipient": {
+      "name": "PT. WE TECH",
+      "position": "",
+      "company": "di - Tempat",
+      "address": ""
+    },
+    "items": [
+      {
+        "deskripsi": "1. Pengurusan kehilangan Asli Sertipikat Hak Guna Bangunan     No. 02315/Sukaresmi, luas 306 M2, an. PT. We Tech, termasuk     mengurus penerbitan SHGB duplikat a quo\n2. Pengurusam kehilangan Asli IMB (Izin Mendirikan Bangunan) No. 503/11/760/C/BPMPPT an. PT. Lippo Cikarang/PT. We Tech, termasuk mengurus penerbitan IMB a quo\n3. Pengurusan Perpanjangan Sertipikat Hak Guna Bangunan (SHGB) No. 02315/Sukaresmi, luas 306 M2, an. PT. We Tech, yang akan berakhir pada tanggal 24-09-2025.",
+        "biaya": 150000000,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [
+      {
+        "description": "Skema Pembayaran\tPembayaran pertama sebesar 70% setelah penandatanganan Surat Kuasa dan Perjanjian ini (telah dibayar pada tanggal 20 Juni 2025)",
+        "amount": 105000000
+      },
+      {
+        "description": "\tPembayaran kedua (pelunasan) sebesar 30% dibayar setelah pekerjaan selesai dan perjanjian ini dan dokumen diserahkan.",
+        "amount": 0
+      }
+    ],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar, S.H., M.Kn"
+    },
+    "invoiceDate": "2025-11-25",
+    "showStamp": true,
+    "total": 150000000,
+    "nomorInvoice": "INV/2025/507",
+    "tanggalInvoice": "2025-11-25"
   }
 ]

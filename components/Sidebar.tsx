@@ -21,6 +21,7 @@ const menuItems = [
   { name: 'Laporan Bulanan', icon: BarChart3, href: '/modules/laporan-bulanan' },
   { name: 'Draft Akta', icon: FileText, href: '/modules/bank-draft' },
   { name: 'Penggaris Akta', icon: FileText, href: '/modules/penggaris-akta' },
+  { name: 'Kalkulator Pajak', icon: FileText, href: '/modules/kalkulator-pajak' },
 ];
 
 export default function Sidebar() {
@@ -42,23 +43,13 @@ export default function Sidebar() {
           const isActive = pathname === item.href;
           const Icon = item.icon;
 
-          if (item.disabled) {
-            return (
-              <div key={item.name} className="flex items-center gap-3 px-3 py-2 text-gray-400 cursor-not-allowed opacity-60">
-                <Icon size={18} />
-                <span className="text-sm font-medium">{item.name}</span>
-                <span className="ml-auto text-[10px] bg-gray-100 px-1.5 py-0.5 rounded">SOON</span>
-              </div>
-            )
-          }
-
           return (
             <Link
               key={item.name}
               href={item.href}
               className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 group ${isActive
-                  ? 'bg-blue-50 text-blue-600'
-                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                ? 'bg-blue-50 text-blue-600'
+                : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                 }`}
             >
               <Icon size={18} className={isActive ? 'text-blue-600' : 'text-gray-400 group-hover:text-gray-600'} />

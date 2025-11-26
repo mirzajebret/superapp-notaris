@@ -359,7 +359,7 @@ export default function NewInvoicePage() {
             {/* KOP SURAT */}
             <KopSurat />
 
-            <h3 className="font-bold text-[14pt] underline decoration-1 underline-offset-4 uppercase text-center mb-5">INVOICE</h3>
+            <h3 className="font-bold text-[12pt] underline decoration-1 underline-offset-4 uppercase text-center mb-5">INVOICE</h3>
 
             {/* KONTEN SURAT */}
             <div className="text-[11pt] mb-2">
@@ -377,8 +377,8 @@ export default function NewInvoicePage() {
                 <tr style={{ backgroundColor: '#f3f4f6' }} className="text-center print:bg-gray-200">
                   <th className="border border-black p-1 w-10">No.</th>
                   <th className="border border-black p-1">Deskripsi Pekerjaan</th>
-                  <th className="border border-black p-1 w-36">Biaya</th>
-                  <th className="border border-black p-1 w-48">Keterangan</th>
+                  <th className="border border-black p-1 w-32">Biaya</th>
+                  <th className="border border-black p-1 w-36">Keterangan</th>
                 </tr>
               </thead>
               <tbody>
