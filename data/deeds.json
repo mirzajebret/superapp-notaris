@@ -10,21 +10,28 @@
     "pihak": [
       {
         "name": "Tn. Andriawan",
-        "role": "Pihak I"
+        "role": "Pihak I",
+        "actingCapacity": "self",
+        "representedParties": []
       },
       {
         "name": "Ny. Mira",
-        "role": "Pihak II"
+        "role": "Pihak II",
+        "actingCapacity": "self",
+        "representedParties": []
       },
       {
         "name": "Nn. Sutina",
-        "role": "Pihak 3"
+        "role": "Pihak 3",
+        "actingCapacity": "self",
+        "representedParties": []
       }
     ],
     "detailPPAT": null,
     "kategori": "Akta",
     "bulanPelaporan": 11,
-    "tahunPelaporan": 2025
+    "tahunPelaporan": 2025,
+    "nomorBulanan": "38"
   },
   {
     "id": "1763970638488",
@@ -37,21 +44,28 @@
     "pihak": [
       {
         "name": "Tn. Andriawan",
-        "role": "Pihak I"
+        "role": "Pihak I",
+        "actingCapacity": "self",
+        "representedParties": []
       },
       {
         "name": "Ny. Mira",
-        "role": "Pihak II"
+        "role": "Pihak II",
+        "actingCapacity": "self",
+        "representedParties": []
       },
       {
         "name": "Tn. Octario Ciami",
-        "role": "Pihak 3"
+        "role": "Pihak 3",
+        "actingCapacity": "self",
+        "representedParties": []
       }
     ],
     "detailPPAT": null,
     "kategori": "Akta",
     "bulanPelaporan": 11,
-    "tahunPelaporan": 2025
+    "tahunPelaporan": 2025,
+    "nomorBulanan": "39"
   },
   {
     "id": "1763970738376",
@@ -76,7 +90,7 @@
     "kategori": "Akta",
     "bulanPelaporan": 11,
     "tahunPelaporan": 2025,
-    "nomorBulanan": ""
+    "nomorBulanan": "40"
   },
   {
     "id": "1763970898786",
@@ -120,7 +134,7 @@
     "kategori": "Akta",
     "bulanPelaporan": 11,
     "tahunPelaporan": 2025,
-    "nomorBulanan": ""
+    "nomorBulanan": "41"
   },
   {
     "id": "1763970949545",
@@ -133,13 +147,16 @@
     "pihak": [
       {
         "name": "Tn. Iwan Wahyudi",
-        "role": "Pihak I"
+        "role": "Pihak I",
+        "actingCapacity": "self",
+        "representedParties": []
       }
     ],
     "detailPPAT": null,
     "kategori": "Akta",
     "bulanPelaporan": 11,
-    "tahunPelaporan": 2025
+    "tahunPelaporan": 2025,
+    "nomorBulanan": "42"
   },
   {
     "id": "1763971161130",
@@ -152,49 +169,70 @@
     "pihak": [
       {
         "name": "Tn. Muhrom Suhandi",
-        "role": "Pihak I"
+        "role": "Pihak I",
+        "actingCapacity": "self",
+        "representedParties": []
       },
       {
         "name": "Tn. Ayi Priatna",
-        "role": "Pihak II"
+        "role": "Pihak II",
+        "actingCapacity": "self",
+        "representedParties": []
       },
       {
         "name": "Tn. Ahmad Rosadi, S. Pd. I",
-        "role": "Pihak 3"
+        "role": "Pihak 3",
+        "actingCapacity": "self",
+        "representedParties": []
       },
       {
         "name": "Tn. Drs. Rudy Harianto, M.Si",
-        "role": "Pihak 4"
+        "role": "Pihak 4",
+        "actingCapacity": "self",
+        "representedParties": []
       },
       {
         "name": "Tn. Ilan Ruslani",
-        "role": "Pihak 5"
+        "role": "Pihak 5",
+        "actingCapacity": "self",
+        "representedParties": []
       },
       {
         "name": "Ny. Heni Ernawati",
-        "role": "Pihak 6"
+        "role": "Pihak 6",
+        "actingCapacity": "self",
+        "representedParties": []
       },
       {
         "name": "Tn. Ridwan, S. Pd",
-        "role": "Pihak 7"
+        "role": "Pihak 7",
+        "actingCapacity": "self",
+        "representedParties": []
       },
       {
         "name": "Ny. Navisha Aulia Avrina",
-        "role": "Pihak 8"
+        "role": "Pihak 8",
+        "actingCapacity": "self",
+        "representedParties": []
       },
       {
         "name": "Tn. Dimas Cakra Andita",
-        "role": "Pihak 9"
+        "role": "Pihak 9",
+        "actingCapacity": "self",
+        "representedParties": []
       },
       {
         "name": "Ny. Cucu Pritniawati, S. Pd",
-        "role": "Pihak 10"
+        "role": "Pihak 10",
+        "actingCapacity": "self",
+        "representedParties": []
       }
     ],
     "detailPPAT": null,
     "kategori": "Akta",
     "bulanPelaporan": 11,
-    "tahunPelaporan": 2025
+    "tahunPelaporan": 2025,
+    "nomorBulanan": "44"
   },
   {
     "id": "1764171564057",

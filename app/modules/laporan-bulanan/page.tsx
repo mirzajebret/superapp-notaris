@@ -413,10 +413,10 @@ export default function LapbulModulePage() {
             </div>
 
             <div className="space-y-3 text-sm">
-              <div><label className="block text-xs font-bold text-gray-500 mb-1">NOMOR AKTA</label><input className="w-full border p-2 rounded" value={formState.nomorAkta} onChange={e => setFormState({ ...formState, nomorAkta: e.target.value })} placeholder="01/2025" /></div>
+              <div><label className="block text-xs font-bold text-gray-500 mb-1">NO URUT BULANAN</label><input className="w-full border p-2 rounded" value={formState.nomorAkta} onChange={e => setFormState({ ...formState, nomorAkta: e.target.value })} /></div>
 
               {formState.jenis === 'Notaris' && (
-                <div><label className="block text-xs font-bold text-gray-500 mb-1">NO URUT BULANAN</label><input className="w-full border p-2 rounded" value={formState.nomorBulanan} onChange={e => setFormState({ ...formState, nomorBulanan: e.target.value })} placeholder="1" /></div>
+                <div><label className="block text-xs font-bold text-gray-500 mb-1">NOMOR AKTA</label><input className="w-full border p-2 rounded" value={formState.nomorBulanan} onChange={e => setFormState({ ...formState, nomorBulanan: e.target.value })} placeholder="1" /></div>
               )}
 
               <div><label className="block text-xs font-bold text-gray-500 mb-1">TANGGAL AKTA</label><input type="date" className="w-full border p-2 rounded" value={formState.tanggalAkta} onChange={e => setFormState({ ...formState, tanggalAkta: e.target.value })} /></div>
@@ -531,7 +531,7 @@ export default function LapbulModulePage() {
                 <tbody>
                   {monthlyDeeds.map((d, i) => (
                     <tr key={d.id} className="border-b hover:bg-gray-50">
-                      <td className="p-3">{i + 1}</td>
+                      <td className="p-3">{d.nomorBulanan}</td>
                       <td className="p-3"><span className={`px-2 py-1 rounded text-xs font-bold ${d.jenis === 'PPAT' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800'}`}>{d.jenis}</span></td>
                       <td className="p-3"><div className="font-bold">{d.nomorAkta}</div><div className="text-xs text-gray-500">{formatDateIndo(d.tanggalAkta)}</div></td>
                       <td className="p-3"><div className="font-bold line-clamp-1">{d.judulAkta}</div><div className="text-xs text-gray-500 line-clamp-1">{d.pihak.map(p => p.name).join(', ')}</div></td>
@@ -869,14 +869,14 @@ export default function LapbulModulePage() {
               ].map((m, idx) => (
                 <div key={m.code} className="print-item-wrapper">
                   <A4Container className="print-wrapper print-clean font-serif text-black w-[297mm] min-h-[210mm]">
-                    <div className="text-center font-bold mb-2">
+                    <div className="text-center font-bold">
                       <h3 className="uppercase text-[11pt]">{m.title}</h3>
                       <p className="text-[11pt] font-normal">Bulan {MONTHS[selectedMonth - 1]} {selectedYear}</p>
                     </div>
 
                     {/* SUB-HEADER KHUSUS N-1 SESUAI GAMBAR */}
                     {m.code === 'N-1' && (
-                      <p className="text-center text-[10pt] mb-4">Yang dimaksud dalam Pasal 61 ayat 1 dan 2 Undang-Undang Jabatan Notaris Nomor 30 Tahun 2004</p>
+                      <p className="text-center text-[10pt] mb-3">Yang dimaksud dalam Pasal 61 ayat 1 dan 2 Undang-Undang Jabatan Notaris Nomor 30 Tahun 2004</p>
                     )}
 
                     <table className="w-full border-collapse border border-black text-[10pt]">
@@ -906,7 +906,6 @@ export default function LapbulModulePage() {
                           if (data.length === 0) return <tr><td colSpan={m.code === 'N-1' ? 5 : m.cols.length} className="border border-black p-4 text-center font-bold text-lg">NIHIL</td></tr>;
 
                           return data.map((d, i) => {
-                            // Format Pihak menjadi list bernomor 1. ..., 2. ...
                             const formattedParties = d.pihak.map((p, idx) => (
                               <div key={idx} className="flex items-start">
                                 <span className="mr-1 shrink-0">{idx + 1}.</span>
@@ -917,32 +916,32 @@ export default function LapbulModulePage() {
                             return (
                               <tr key={i} className="align-top">
                                 {/* KOLOM 1: NO URUT (GLOBAL) */}
-                                <td className="border border-black p-1 text-center align-middle">{d.nomorBulanan || '-'}</td>
+                                <td className="border border-black text-center align-middle">{d.nomorBulanan || '-'}</td>
 
                                 {/* FIX: UBAH BODY MENJADI 2 KOLOM TERPISAH (BUKAN DIV DI DALAM TD) */}
                                 {m.code === 'N-1' && (
                                   <>
                                     {/* KOLOM 2: NOMOR BULANAN */}
-                                    <td className="border border-black p-1 text-center align-middle">
-                                      {i + 1}
+                                    <td className="border border-black text-center align-middle">
+                                      {d.nomorAkta}
                                     </td>
 
                                     {/* KOLOM 3: TANGGAL */}
-                                    <td className="border border-black p-1 text-center align-middle">
+                                    <td className="border border-black text-center align-middle">
                                       {formatDateIndo(d.tanggalAkta)}
                                     </td>
 
                                     {/* KOLOM 4: SIFAT AKTA */}
-                                    <td className="border border-black p-1 text-center align-middle">{d.judulAkta}</td>
+                                    <td className="border border-black text-center align-middle">{d.judulAkta}</td>
 
                                     {/* KOLOM 5: PIHAK */}
-                                    <td className="border border-black p-1 text-left align-top">
+                                    <td className="border border-black text-left align-top p-1">
                                       {/* Wrapper Grid: Jika pihak > 1, bagi menjadi 2 kolom */}
                                       <div className={`${d.pihak.length > 1 ? 'columns-2  gap-x-2' : ''}`}>
                                         {d.pihak.map((p, pIdx) => (
                                           <div key={pIdx} className="break-inside-avoid">
                                             {/* Nama Pihak Utama */}
-                                            <div className="flex items-start font-medium">
+                                            <div className="flex items-start">
                                               <span className="mr-1">{pIdx + 1}.</span>
                                               <span>{p.name}</span>
                                             </div>
@@ -953,7 +952,7 @@ export default function LapbulModulePage() {
                                                 <div></div>
                                               )}
                                               {(p.actingCapacity === 'representative' || p.actingCapacity === 'both') && (
-                                                <div>- untuk dirinya sendiri <br /> - untuk & atas nama :</div>
+                                                <div>- untuk dirinya sendiri, untuk & atas nama :</div>
                                               )}
                                               {/* Daftar Kuasa (a, b, c) - Nested Grid jika banyak */}
                                               {p.representedParties && p.representedParties.length > 0 && (
@@ -977,9 +976,9 @@ export default function LapbulModulePage() {
                                 {/* LOGIC MODEL LAIN (N2-N5) - TETAP SAMA */}
                                 {(m.code === 'N-2' || m.code === 'N-3' || m.code === 'N-4' || m.code === 'N-5') && (
                                   <>
-                                    <td className="border border-black p-1">{formatDateIndo(d.tanggalAkta)}</td>
-                                    <td className="border border-black p-1">{d.judulAkta}</td>
-                                    <td className="border border-black p-1">
+                                    <td className="border border-black text-center align-middle">{formatDateIndo(d.tanggalAkta)}</td>
+                                    <td className="border border-black text-center align-middle">{d.judulAkta}</td>
+                                    <td className="border border-black text-center align-middle">
                                       {d.pihak.map((p, idx) => (
                                         <div key={idx} className="flex items-start">
                                           <span className="mr-1 shrink-0">{idx + 1}.</span>
@@ -995,11 +994,11 @@ export default function LapbulModulePage() {
                         })()}
                       </tbody>
                     </table>
-                    <div className="mt-8 text-[11pt] text-right">
+                    <div className="mt-5 text-[11pt] text-right">
                       <p>Salinan ini sesuai dengan aslinya,</p>
                       <p>Garut, {formatDateLong(new Date().toISOString())}</p>
                       <div className="h-16"></div>
-                      <p className="font-bold underline">(HAVIS AKBAR, S.H., M.Kn.)</p>
+                      <p className="font-bold">(HAVIS AKBAR, S.H., M.Kn.)</p>
                     </div>
                   </A4Container>
                   {/* Spacer no-print */}
