@@ -601,13 +601,13 @@ export default function LapbulModulePage() {
                                 <td className="border border-gray-300 px-1 py-1">{record.detailPPAT?.lokasiObjek || '-'}</td>
                                 <td className="border border-gray-300 px-1 py-1 text-center">{record.detailPPAT?.luasTanah || 0}</td>
                                 <td className="border border-gray-300 px-1 py-1 text-center">{record.detailPPAT?.luasBangunan || 0}</td>
-                                <td className="border border-gray-300 px-1 py-1 text-right">{currency(record.detailPPAT?.nilaiTransaksi || '-')}</td>
+                                <td className="border border-gray-300 px-1 py-1 text-center">{currency(record.detailPPAT?.nilaiTransaksi || '-')}</td>
                                 <td className="border border-gray-300 px-1 py-1">{record.detailPPAT?.nop || '-'}<br />{selectedYear}</td>
-                                <td className="border border-gray-300 px-1 py-1 text-right">{record.detailPPAT?.njop || '-'}</td>
+                                <td className="border border-gray-300 px-1 py-1 text-center">{record.detailPPAT?.njop || '-'}</td>
                                 <td className="border border-gray-300 px-1 py-1 text-center">{formatDateIndo(record.detailPPAT?.tglSsp || '-')}</td>
-                                <td className="border border-gray-300 px-1 py-1 text-right">{currency(record.detailPPAT?.ssp || '-')}</td>
+                                <td className="border border-gray-300 px-1 py-1 text-center">{currency(record.detailPPAT?.ssp || '-')}</td>
                                 <td className="border border-gray-300 px-1 py-1 text-center">{formatDateIndo(record.detailPPAT?.tglSsb || '-')}</td>
-                                <td className="border border-gray-300 px-1 py-1 text-right">{currency(record.detailPPAT?.ssb || '-')}</td>
+                                <td className="border border-gray-300 px-1 py-1 text-center">{currency(record.detailPPAT?.ssb || '-')}</td>
                                 <td className="border border-gray-300 px-1 py-1 text-center">-</td>
                               </tr>
                             );
