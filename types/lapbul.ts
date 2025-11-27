@@ -6,6 +6,8 @@ export type NotarisCategory = 'Akta' | 'Legalisasi' | 'Waarmerking' | 'Protes' |
 export interface DeedParty {
   name: string;
   role: string; // Pihak Pertama, Kedua, dll
+  actingCapacity?: 'self' | 'representative' | 'both'
+  representedParties?: string[];
 }
 
 export interface DeedPPATDetails {

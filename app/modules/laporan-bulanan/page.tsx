@@ -23,11 +23,10 @@ import {
   FileText,
   Printer,
   Trash2,
+  Plus,
+  Minus,
 } from 'lucide-react';
-// --- FITUR PRINT (NATIVE) ---
-const handlePrint = () => {
-  window.print();
-};
+
 // --- CONSTANTS ---
 const MONTHS = [
   'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
@@ -46,7 +45,6 @@ const PPAT_CATEGORIES = [
   'Akta APHT',
   'Akta APHB',
   'Akta Hibah',
-
 ];
 
 interface LapbulFormState {
@@ -68,7 +66,12 @@ const createEmptyFormState = (month: number, year: number): LapbulFormState => (
   tanggalAkta: new Date(year, month - 1, 1).toISOString().split('T')[0],
   judulAkta: '',
   kategori: 'Akta',
-  pihak: [{ name: '', role: 'Pihak Pengalih / Penghadap' }],
+  pihak: [{
+    name: '',
+    role: 'Pihak Pengalih / Penghadap',
+    actingCapacity: 'self', // Default bertindak untuk diri sendiri
+    representedParties: []
+  }],
   detailPPAT: { ...DEFAULT_PPAT_DETAIL },
   bulanPelaporan: month,
   tahunPelaporan: year,
@@ -95,6 +98,7 @@ const getRomanMonth = (month: number) => {
   const romans = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
   return romans[month - 1] || "";
 };
+
 export default function LapbulModulePage() {
   const today = new Date();
   const [selectedMonth, setSelectedMonth] = useState(today.getMonth() + 1);
@@ -151,13 +155,20 @@ export default function LapbulModulePage() {
 
   const handleEdit = (rec: DeedRecord) => {
     setEditingId(rec.id);
+    // Ensure backward compatibility for old records without new fields
+    const cleanPihak = rec.pihak.map(p => ({
+      ...p,
+      actingCapacity: p.actingCapacity || 'self',
+      representedParties: p.representedParties || []
+    }));
+
     setFormState({
       jenis: rec.jenis,
       nomorAkta: rec.nomorAkta,
       tanggalAkta: rec.tanggalAkta,
       judulAkta: rec.judulAkta,
       kategori: rec.kategori || 'Akta',
-      pihak: rec.pihak,
+      pihak: cleanPihak,
       detailPPAT: rec.detailPPAT || { ...DEFAULT_PPAT_DETAIL },
       bulanPelaporan: rec.bulanPelaporan,
       tahunPelaporan: rec.tahunPelaporan,
@@ -172,7 +183,30 @@ export default function LapbulModulePage() {
       loadData();
     }
   };
-  // ... existing code ...
+
+  // ============================================================
+  // --- HELPERS FOR FORM ARRAY (BAGIAN INI YANG SEBELUMNYA HILANG) ---
+  // ============================================================
+  const addRepresentedParty = (partyIndex: number) => {
+    const newPihak = [...formState.pihak];
+    if (!newPihak[partyIndex].representedParties) newPihak[partyIndex].representedParties = [];
+    newPihak[partyIndex].representedParties!.push('');
+    setFormState({ ...formState, pihak: newPihak });
+  };
+
+  const updateRepresentedParty = (partyIndex: number, repIndex: number, val: string) => {
+    const newPihak = [...formState.pihak];
+    newPihak[partyIndex].representedParties![repIndex] = val;
+    setFormState({ ...formState, pihak: newPihak });
+  };
+
+  const removeRepresentedParty = (partyIndex: number, repIndex: number) => {
+    const newPihak = [...formState.pihak];
+    newPihak[partyIndex].representedParties = newPihak[partyIndex].representedParties!.filter((_, i) => i !== repIndex);
+    setFormState({ ...formState, pihak: newPihak });
+  };
+  // ============================================================
+
   // --- PRINT HANDLER KHUSUS LAMPIRAN ---
   const handlePrintLampiran = useCallback(() => {
     // 1. Buat Style Khusus Print secara dinamis
@@ -417,17 +451,62 @@ export default function LapbulModulePage() {
               )}
 
               <div className="border-t pt-3">
-                <label className="block text-xs font-bold text-gray-500 mb-2">PIHAK TERLIBAT</label>
-                {formState.pihak.map((p, idx) => (
-                  <div key={idx} className="flex gap-2 mb-2">
-                    <input className="flex-1 border p-2 rounded" placeholder="Nama" value={p.name} onChange={e => { const newPihak = [...formState.pihak]; newPihak[idx].name = e.target.value; setFormState({ ...formState, pihak: newPihak }); }} />
-                    {idx === 0 ? <button onClick={() => setFormState({ ...formState, pihak: [...formState.pihak, { name: '', role: '' }] })} className="px-2 bg-gray-200 rounded">+</button> : <button onClick={() => { const newPihak = formState.pihak.filter((_, i) => i !== idx); setFormState({ ...formState, pihak: newPihak }); }} className="px-2 bg-red-100 text-red-600 rounded">x</button>}
-                  </div>
-                ))}
+                <div className="flex justify-between items-center mb-2">
+                  <label className="block text-xs font-bold text-gray-500">PIHAK TERLIBAT</label>
+                  <button onClick={() => setFormState({ ...formState, pihak: [...formState.pihak, { name: '', role: '', actingCapacity: 'self', representedParties: [] }] })} className="text-xs flex items-center gap-1 bg-blue-50 text-blue-600 px-2 py-1 rounded hover:bg-blue-100"><Plus size={12} /> Tambah Pihak</button>
+                </div>
+
+                <div className="space-y-3">
+                  {formState.pihak.map((p, idx) => (
+                    <div key={idx} className="border rounded-lg p-3 bg-gray-50 relative">
+                      <button onClick={() => { const newPihak = formState.pihak.filter((_, i) => i !== idx); setFormState({ ...formState, pihak: newPihak }); }} className="absolute top-2 right-2 text-red-400 hover:text-red-600"><Trash2 size={14} /></button>
+
+                      <div className="mb-2">
+                        <label className="text-[10px] uppercase text-gray-400 font-bold">Nama Penghadap</label>
+                        <input className="w-full border p-1.5 rounded bg-white text-sm" placeholder="Nama Lengkap" value={p.name} onChange={e => { const newPihak = [...formState.pihak]; newPihak[idx].name = e.target.value; setFormState({ ...formState, pihak: newPihak }); }} />
+                      </div>
+
+                      {/* Opsi Bertindak Hanya Muncul untuk Notaris */}
+                      {formState.jenis === 'Notaris' && (
+                        <div className="mt-2 pt-2 border-t border-gray-200">
+                          <label className="text-[10px] uppercase text-gray-400 font-bold mb-1 block">Kapasitas Bertindak</label>
+                          <div className="flex gap-2 mb-2">
+                            <label className="flex items-center gap-1 text-xs cursor-pointer">
+                              <input type="radio" name={`cap-${idx}`} checked={p.actingCapacity === 'self'} onChange={() => { const np = [...formState.pihak]; np[idx].actingCapacity = 'self'; setFormState({ ...formState, pihak: np }) }} /> Sendiri
+                            </label>
+                            <label className="flex items-center gap-1 text-xs cursor-pointer hidden">
+                              <input type="radio" name={`cap-${idx}`} checked={p.actingCapacity === 'representative'} onChange={() => { const np = [...formState.pihak]; np[idx].actingCapacity = 'representative'; setFormState({ ...formState, pihak: np }) }} /> Kuasa
+                            </label>
+                            <label className="flex items-center gap-1 text-xs cursor-pointer">
+                              <input type="radio" name={`cap-${idx}`} checked={p.actingCapacity === 'both'} onChange={() => { const np = [...formState.pihak]; np[idx].actingCapacity = 'both'; setFormState({ ...formState, pihak: np }) }} /> dan untuk atas nama :
+                            </label>
+                          </div>
+
+                          {(p.actingCapacity === 'representative' || p.actingCapacity === 'both') && (
+                            <div className="pl-2 border-l-2 border-blue-200 mt-2">
+                              <div className="flex justify-between items-center mb-1">
+                                <span className="text-[10px] font-bold text-blue-600">Daftar Yang Diwakili:</span>
+                                <button onClick={() => addRepresentedParty(idx)} className="text-[10px] bg-white border px-1 rounded hover:bg-gray-100">+ Tambah</button>
+                              </div>
+                              {p.representedParties?.map((rp, rIdx) => (
+                                <div key={rIdx} className="flex gap-1 mb-1">
+                                  <span className="text-xs w-4 text-center text-gray-400">{String.fromCharCode(97 + rIdx)}.</span>
+                                  <input className="flex-1 border p-1 rounded text-xs" placeholder="Nama yang diwakili" value={rp} onChange={(e) => updateRepresentedParty(idx, rIdx, e.target.value)} />
+                                  <button onClick={() => removeRepresentedParty(idx, rIdx)} className="text-red-400 hover:text-red-600"><Minus size={12} /></button>
+                                </div>
+                              ))}
+                              {(!p.representedParties || p.representedParties.length === 0) && <div className="text-[10px] text-gray-400 italic">Belum ada data kuasa.</div>}
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {formState.jenis === 'PPAT' && (
-                <div className="bg-blue-50 p-3 rounded-lg space-y-2">
+                <div className="bg-blue-50 p-3 rounded-lg space-y-2 mt-4">
                   <p className="text-xs font-bold text-blue-700 uppercase">Detail PPAT</p>
                   <input className="w-full border p-2 rounded text-xs" placeholder="Pihak Penerima" value={formState.detailPPAT.pihakPenerima} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, pihakPenerima: e.target.value } })} />
                   <input className="w-full border p-2 rounded text-xs" placeholder="Jenis & No Hak (HM 123)" value={formState.detailPPAT.jenisHak} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, jenisHak: e.target.value } })} />
@@ -436,8 +515,6 @@ export default function LapbulModulePage() {
                   <div className="grid grid-cols-2 gap-2"><input className="border p-2 rounded text-xs" placeholder="Harga Transaksi" value={formState.detailPPAT.nilaiTransaksi} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, nilaiTransaksi: e.target.value } })} /><input className="border p-2 rounded text-xs" placeholder="NJOP" value={formState.detailPPAT.njop} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, njop: e.target.value } })} /></div>
                   <input className="w-full border p-2 rounded text-xs" placeholder="NOP" value={formState.detailPPAT.nop} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, nop: e.target.value } })} />
                   <div className="grid grid-cols-2 gap-2"><input className="border p-2 rounded text-xs" placeholder="SSP (Rp)" value={formState.detailPPAT.ssp} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, ssp: e.target.value } })} /><input className="border p-2 rounded text-xs" placeholder="SSB (Rp)" value={formState.detailPPAT.ssb} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, ssb: e.target.value } })} /></div>
-                  {/* TANGGAL SSP & SSB */}
-                  <div className="grid grid-cols-2 gap-2"><input type="date" className="w-full border p-2 rounded" value={formState.detailPPAT.tglSsp} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, tglSsp: e.target.value } })} /><input type="date" className="w-full border p-2 rounded" value={formState.detailPPAT.tglSsb} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, tglSsb: e.target.value } })} /></div>
                 </div>
               )}
 
@@ -563,7 +640,7 @@ export default function LapbulModulePage() {
                       <div className="p-2 mb-4">
                         <table className="w-full">
                           <tbody>
-                            {Object.entries(ppatSummary.types).map(([k, v]) => <tr key={k}><td className="font-bold w-1/4">{k}</td><td>: {v} Akta</td></tr>)}
+                            {Object.entries(ppatSummary.types).map(([k, v]) => <tr key={k}><td className="font-bold w-1/3">{k}</td><td>: {v} Akta</td></tr>)}
                             {Object.keys(ppatSummary.types).length === 0 && <tr><td className="text-center italic">0 (NIHIL)</td></tr>}
                             <tr><td colSpan={2} className="h-4"></td></tr>
                             <tr><td>Jumlah BPHTB (SSB)</td><td>: {currency(ppatSummary.totalSSB)}</td></tr>
@@ -804,7 +881,6 @@ export default function LapbulModulePage() {
 
                     <table className="w-full border-collapse border border-black text-[10pt]">
                       <thead>
-                        {/* FIX: UBAH STRUKTUR HEADER MENJADI 2 BARIS (ROWSPAN & COLSPAN) AGAR BORDER RAPI */}
                         {m.code === 'N-1' ? (
                           <>
                             <tr className="bg-white text-center font-bold">
@@ -814,8 +890,8 @@ export default function LapbulModulePage() {
                               <th rowSpan={2} className="border border-black p-1 w-[40%] align-middle">Nama Penghadap dan Atau yang diwakili/Kuasa</th>
                             </tr>
                             <tr className="bg-white text-center">
-                              <th className="border border-black p-1 font-normal">Nomor Bulanan</th>
-                              <th className="border border-black p-1 font-normal">Tanggal</th>
+                              <th className="border border-black font-normal">Nomor Bulanan</th>
+                              <th className="border border-black font-normal">Tanggal</th>
                             </tr>
                           </>
                         ) : (
@@ -841,29 +917,58 @@ export default function LapbulModulePage() {
                             return (
                               <tr key={i} className="align-top">
                                 {/* KOLOM 1: NO URUT (GLOBAL) */}
-                                <td className="border border-black p-2 text-center">{i + 1}</td>
+                                <td className="border border-black p-1 text-center align-middle">{d.nomorBulanan || '-'}</td>
 
                                 {/* FIX: UBAH BODY MENJADI 2 KOLOM TERPISAH (BUKAN DIV DI DALAM TD) */}
                                 {m.code === 'N-1' && (
                                   <>
                                     {/* KOLOM 2: NOMOR BULANAN */}
-                                    <td className="border border-black p-2 text-center align-top">
-                                      {d.nomorBulanan || '-'}
+                                    <td className="border border-black p-1 text-center align-middle">
+                                      {i + 1}
                                     </td>
 
                                     {/* KOLOM 3: TANGGAL */}
-                                    <td className="border border-black p-2 text-center align-top">
+                                    <td className="border border-black p-1 text-center align-middle">
                                       {formatDateIndo(d.tanggalAkta)}
                                     </td>
 
                                     {/* KOLOM 4: SIFAT AKTA */}
-                                    <td className="border border-black p-2 text-center align-top">{d.judulAkta}</td>
+                                    <td className="border border-black p-1 text-center align-middle">{d.judulAkta}</td>
 
                                     {/* KOLOM 5: PIHAK */}
-                                    <td className="border border-black p-2 text-left align-top">
-                                      {/* MODIFIKASI: Gunakan Grid 2 Kolom jika pihak > 1 */}
-                                      <div className={`text-sm ${d.pihak.length > 1 ? 'grid grid-cols-2 gap-x-1' : ''}`}>
-                                        {formattedParties}
+                                    <td className="border border-black p-1 text-left align-top">
+                                      {/* Wrapper Grid: Jika pihak > 1, bagi menjadi 2 kolom */}
+                                      <div className={`${d.pihak.length > 1 ? 'columns-2  gap-x-2' : ''}`}>
+                                        {d.pihak.map((p, pIdx) => (
+                                          <div key={pIdx} className="break-inside-avoid">
+                                            {/* Nama Pihak Utama */}
+                                            <div className="flex items-start font-medium">
+                                              <span className="mr-1">{pIdx + 1}.</span>
+                                              <span>{p.name}</span>
+                                            </div>
+
+                                            {/* Kapasitas Bertindak & Yang Diwakili */}
+                                            <div className="ml-1 text-sm text-gray-800">
+                                              {(p.actingCapacity === 'self' || p.actingCapacity === 'both') && (
+                                                <div></div>
+                                              )}
+                                              {(p.actingCapacity === 'representative' || p.actingCapacity === 'both') && (
+                                                <div>- untuk dirinya sendiri <br /> - untuk & atas nama :</div>
+                                              )}
+                                              {/* Daftar Kuasa (a, b, c) - Nested Grid jika banyak */}
+                                              {p.representedParties && p.representedParties.length > 0 && (
+                                                <div className={`${p.representedParties.length > 1 ? 'columns-2 gap-x-2' : ''}`}>
+                                                  {p.representedParties.map((repName, rIdx) => (
+                                                    <div key={rIdx} className="pl-2 flex items-start">
+                                                      <span className="w-3">{String.fromCharCode(97 + rIdx)}.</span>
+                                                      <span>{repName}</span>
+                                                    </div>
+                                                  ))}
+                                                </div>
+                                              )}
+                                            </div>
+                                          </div>
+                                        ))}
                                       </div>
                                     </td>
                                   </>
@@ -872,9 +977,9 @@ export default function LapbulModulePage() {
                                 {/* LOGIC MODEL LAIN (N2-N5) - TETAP SAMA */}
                                 {(m.code === 'N-2' || m.code === 'N-3' || m.code === 'N-4' || m.code === 'N-5') && (
                                   <>
-                                    <td className="border border-black p-2">{formatDateIndo(d.tanggalAkta)}</td>
-                                    <td className="border border-black p-2">{d.judulAkta}</td>
-                                    <td className="border border-black p-2">
+                                    <td className="border border-black p-1">{formatDateIndo(d.tanggalAkta)}</td>
+                                    <td className="border border-black p-1">{d.judulAkta}</td>
+                                    <td className="border border-black p-1">
                                       {d.pihak.map((p, idx) => (
                                         <div key={idx} className="flex items-start">
                                           <span className="mr-1 shrink-0">{idx + 1}.</span>

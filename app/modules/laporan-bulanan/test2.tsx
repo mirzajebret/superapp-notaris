@@ -1,167 +1,89 @@
-<div ref={ppatLampiranRef}>
-    {[
-        { to: 'Kepala Kantor\nBadan Pertanahan Nasional Kabupaten Garut', address: 'Jl. Suherman, Desa Jati, Tarogong Kaler, Kabupaten Garut 44151' },
-        { to: 'Kepala Kantor Wilayah\nBadan Pertanahan Nasional Provinsi Jawa Barat', address: 'Jl. Soekarno Hatta No. 586 Sekejati, Kec. BuahBatu, Kota Bandung 40286' },
-        { to: 'Kepala Kantor\nBadan Pendapatan Daerah Kabupaten Garut', address: 'Jl. Otista No. 278, Sukagalih, Kec. Tarogong Kidul, Kabupaten Garut 44151' },
-        { to: 'Kepala Kantor\nPelayanan Pajak Pratama Garut', address: 'Jl. Pembangunan No.224, Sukagalih, Kec. Tarogong Kidul, Kabupaten Garut 44151' }
-    ].map((r, idx) => (
-        <div key={idx} className={idx > 0 ? "break-before-page" : ""}>
-            <div className="bg-white p-8 print-wrapper" style={{ width: '297mm', minHeight: '210mm' }}>
+<table className="w-full border-collapse border border-black text-[10pt]">
+    <thead>
+        {m.code === 'N-1' ? (
+            <>
+                <tr className="bg-white text-center font-bold">
+                    <th rowSpan={2} className="border border-black p-1 w-[5%] align-middle">Nomor Urut</th>
+                    <th colSpan={2} className="border border-black p-1 w-[20%] align-middle">Akta</th>
+                    <th rowSpan={2} className="border border-black p-1 w-[35%] align-middle">Sifat Akta</th>
+                    <th rowSpan={2} className="border border-black p-1 w-[40%] align-middle">Nama Penghadap dan Atau yang diwakili/Kuasa</th>
+                </tr>
+                <tr className="bg-white text-center">
+                    <th className="border border-black p-1 font-normal">Nomor Bulanan</th>
+                    <th className="border border-black p-1 font-normal">Tanggal</th>
+                </tr>
+            </>
+        ) : (
+            <tr className="bg-white text-center font-bold">
+                {m.cols.map((c, i) => <th key={i} className="border border-black p-2">{c}</th>)}
+            </tr>
+        )}
+    </thead>
+    <tbody>
+        {(() => {
+            const data = notarisRecords.filter(r => r.kategori === m.filter);
+            if (data.length === 0) return <tr><td colSpan={m.code === 'N-1' ? 5 : m.cols.length} className="border border-black p-4 text-center font-bold text-lg">NIHIL</td></tr>;
 
-                <div className="flex justify-between items-start mb-5 font-serif text-[10pt] font-bold">
-                    <div className="w-[60%]">
-                        <table className="w-full border-collapse ">
-                            <tbody>
-                                <tr>
-                                    <td className="align-top w-[30%] pb-1">Nama PPAT</td>
-                                    <td className="align-top w-[70%] pb-1">: HAVIS AKBAR, S.H., M.Kn</td>
-                                </tr>
-                                <tr>
-                                    <td className="align-top pb-1">Daerah Kerja</td>
-                                    <td className="align-top pb-1">: Seluruh Kecamatan Kabupaten Garut</td>
-                                </tr>
-                                <tr>
-                                    <td className="align-top pb-1">Alamat</td>
-                                    <td className="align-top font-thin pb-1 whitespace-pre-line leading-tight">: Jalan Jendral Sudirman - Ruko Mandala Residence No. 31, Kel. Sukamentri, Kec. Garut Kota, Kab. Garut, Jawa Barat 44116</td>
-                                </tr>
-                                <tr>
-                                    <td className="align-top pb-1">NPWP/KTP</td>
-                                    <td className="align-top font-thin pb-1">: 55.743.562.5-013.000 / 3217062010780024</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+            return data.map((d, i) => (
+                <tr key={i} className="align-top">
+                    <td className="border border-black p-2 text-center">{i + 1}</td>
 
-                    {/* SISI KANAN: Alamat Tujuan */}
-                    <div className="w-[50%] pl-10">
-                        <p className="mb-1">KEPADA YTH.</p>
-                        <div className="whitespace-pre-line leading-tight">
-                            {r.to}
-                        </div>
-                        <div className="whitespace-pre-line leading-tight">
-                            {r.address}
-                        </div>
-                    </div>
+                    {m.code === 'N-1' && (
+                        <>
+                            <td className="border border-black p-2 text-center align-top">{d.nomorBulanan || '-'}</td>
+                            <td className="border border-black p-2 text-center align-top">{formatDateIndo(d.tanggalAkta)}</td>
+                            <td className="border border-black p-2 text-center align-top">{d.judulAkta}</td>
+                            <td className="border border-black p-2 text-left align-top">
+                                {d.pihak.map((p, pIdx) => (
+                                    <div key={pIdx} className="mb-3">
+                                        {/* Nama Pihak Utama */}
+                                        <div className="flex items-start font-medium">
+                                            <span className="mr-1">{pIdx + 1}.</span>
+                                            <span>{p.name}</span>
+                                        </div>
 
-                </div>
-                {/* --- END HEADER --- */}
+                                        {/* Kapasitas Bertindak & Yang Diwakili */}
+                                        <div className="ml-4 text-sm text-gray-800">
+                                            {(p.actingCapacity === 'self' || p.actingCapacity === 'both') && (
+                                                <div>- untuk dirinya sendiri</div>
+                                            )}
+                                            {(p.actingCapacity === 'representative' || p.actingCapacity === 'both') && (
+                                                <div>- untuk & atas nama :</div>
+                                            )}
+                                            {/* Daftar Kuasa (a, b, c) - Grid jika banyak */}
+                                            {p.representedParties && p.representedParties.length > 0 && (
+                                                <div className={`ml-2 mt-1 ${p.representedParties.length > 1 ? 'grid grid-cols-2 gap-x-4' : ''}`}>
+                                                    {p.representedParties.map((repName, rIdx) => (
+                                                        <div key={rIdx} className="flex items-start">
+                                                            <span className="mr-1 w-4">{String.fromCharCode(97 + rIdx)}.</span>
+                                                            <span>{repName}</span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </td>
+                        </>
+                    )}
 
-                <div className="text-center font-bold mb-4 text-[11pt]">
-                    <p>LAPORAN BULANAN PEMBUATAN AKTA OLEH PPAT</p>
-                    <p>BULAN {MONTHS[selectedMonth - 2].toUpperCase()} TAHUN {selectedYear}</p>
-                </div>
-
-                <table className="w-full text-[6pt] border border-gray-300 border-collapse">
-                    <thead>
-                        <tr className="bg-gray-100 text-center font-semibold">
-                            <th rowSpan={2} className="border border-gray-300 px-1 py-1 w-8">NO.<br />URUT</th>
-                            <th colSpan={2} className="border border-gray-300 px-1 py-1">AKTA</th>
-                            <th rowSpan={2} className="border border-gray-300 px-1 py-1 w-24">BENTUK<br />PERBUATAN<br />HUKUM</th>
-                            <th colSpan={2} className="border border-gray-300 px-1 py-1">NAMA, ALAMAT DAN NPWP</th>
-                            <th rowSpan={2} className="border border-gray-300 px-1 py-1 w-24">JENIS<br />DAN<br />NOMOR HAK</th>
-                            <th rowSpan={2} className="border border-gray-300 px-1 py-1 w-32">NOP.<br />LETAK<br />TANAH DAN<br />BANGUNAN</th>
-                            <th colSpan={2} className="border border-gray-300 px-1 py-1">LUAS (m2)</th>
-                            <th rowSpan={2} className="border border-gray-300 px-1 py-1 w-24">HARGA<br />TRANSAKSI<br />PEROLEHAN<br />PENGALIHAN HAK</th>
-                            <th colSpan={2} className="border border-gray-300 px-1 py-1">SPPT PBB</th>
-                            <th colSpan={2} className="border border-gray-300 px-1 py-1">SSP</th>
-                            <th colSpan={2} className="border border-gray-300 px-1 py-1">SSB</th>
-                            <th rowSpan={2} className="border border-gray-300 px-1 py-1 w-10">KET</th>
-                        </tr>
-                        <tr className="bg-gray-100 text-center font-semibold">
-                            <th className="border border-gray-300 px-1 py-1 w-16">NOMOR</th>
-                            <th className="border border-gray-300 px-1 py-1 w-16">TANGGAL</th>
-                            <th className="border border-gray-300 px-1 py-1 w-32">PIHAK YANG<br />MENGALIHKAN</th>
-                            <th className="border border-gray-300 px-1 py-1 w-32">PIHAK YANG<br />MENERIMA</th>
-                            <th className="border border-gray-300 px-1 py-1 w-12">TNH</th>
-                            <th className="border border-gray-300 px-1 py-1 w-12">BGN</th>
-                            <th className="border border-gray-300 px-1 py-1 w-20">NOP<br />TAHUN</th>
-                            <th className="border border-gray-300 px-1 py-1 w-20">NJOP</th>
-                            <th className="border border-gray-300 px-1 py-1 w-16">TANGGAL</th>
-                            <th className="border border-gray-300 px-1 py-1 w-20">(Rp.)</th>
-                            <th className="border border-gray-300 px-1 py-1 w-16">TANGGAL</th>
-                            <th className="border border-gray-300 px-1 py-1 w-20">(Rp.)</th>
-                        </tr>
-                        <tr className="bg-gray-50 text-[7pt] text-center text-gray-500">
-                            {Array.from({ length: 18 }).map((_, i) => (
-                                <th key={i} className="border border-gray-300 px-1 py-0.5">{i + 1}</th>
-                            ))}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {ppatRecords.length === 0 ? (
-                            <tr>
-                                <td
-                                    colSpan={18}
-                                    className="text-center py-6 text-gray-500 text-sm"
-                                >
-                                    NIHIL
-                                </td>
-                            </tr>
-                        ) : (
-                            ppatRecords.map((record, index) => {
-                                const mengalihkan = record.pihak
-                                    .filter(p => /penjual|pemberi|ahli waris|pemilik/i.test(p.role))
-                                    .map(p => p.name)
-                                    .join(', ');
-                                const menerima = record.pihak
-                                    .filter(p => /pembeli|penerima/i.test(p.role))
-                                    .map(p => p.name)
-                                    .join(', ');
-
-                                const displayMengalihkan = mengalihkan || (!menerima ? record.pihak.map(p => p.name).join(', ') : '-');
-                                const displayMenerima = menerima || (!mengalihkan ? record.pihak.map(p => p.name).join(', ') : '-');
-
-                                return (
-                                    <tr key={record.id} className="align-top">
-                                        <td className="border border-gray-300 px-1 py-1 text-center">{index + 1}</td>
-                                        <td className="border border-gray-300 px-1 py-1">{record.nomorAkta}</td>
-                                        <td className="border border-gray-300 px-1 py-1 text-center">
-                                            {formatDateIndo(record.tanggalAkta)}
-                                        </td>
-                                        <td className="border border-gray-300 px-1 py-1">{record.judulAkta}</td>
-                                        <td className="border border-gray-300 px-1 py-1">{displayMengalihkan}</td>
-                                        <td className="border border-gray-300 px-1 py-1">{record.detailPPAT?.pihakPenerima}</td>
-                                        <td className="border border-gray-300 px-1 py-1">{record.detailPPAT?.jenisHak || '-'}</td>
-                                        <td className="border border-gray-300 px-1 py-1">
-                                            {record.detailPPAT?.lokasiObjek || '-'}
-                                        </td>
-                                        <td className="border border-gray-300 px-1 py-1 text-center">
-                                            {record.detailPPAT?.luasTanah || 0}
-                                        </td>
-                                        <td className="border border-gray-300 px-1 py-1 text-center">
-                                            {record.detailPPAT?.luasBangunan || 0}
-                                        </td>
-                                        <td className="border border-gray-300 px-1 py-1 text-right">
-                                            {currency(record.detailPPAT?.nilaiTransaksi || '-')}
-                                        </td>
-                                        <td className="border border-gray-300 px-1 py-1">
-                                            {record.detailPPAT?.nop || '-'}<br />
-                                            {selectedYear}
-                                        </td>
-                                        <td className="border border-gray-300 px-1 py-1 text-right">
-                                            {record.detailPPAT?.njop || '-'}
-                                        </td>
-                                        <td className="border border-gray-300 px-1 py-1 text-center">-</td>
-                                        <td className="border border-gray-300 px-1 py-1 text-right">
-                                            {currency(record.detailPPAT?.ssp || '-')}
-                                        </td>
-                                        <td className="border border-gray-300 px-1 py-1 text-center">-</td>
-                                        <td className="border border-gray-300 px-1 py-1 text-right">
-                                            {currency(record.detailPPAT?.ssb || '-')}
-                                        </td>
-                                        <td className="border border-gray-300 px-1 py-1 text-center">-</td>
-                                    </tr>
-                                );
-                            })
-                        )}
-                    </tbody>
-                </table>
-
-                <div className="mt-8 flex justify-end text-[10pt] font-serif text-center">
-                    <div><p>Garut, {formatDateIndo(new Date().toISOString())}</p><div className="h-16"></div><p className="font-bold underline">HAVIS AKBAR, S.H., M.Kn.</p></div>
-                </div>
-            </div>
-            {/* Spacer no-print */}
-        </div>
-    ))}
-</div>
+                    {(m.code === 'N-2' || m.code === 'N-3' || m.code === 'N-4' || m.code === 'N-5') && (
+                        <>
+                            <td className="border border-black p-2">{formatDateIndo(d.tanggalAkta)}</td>
+                            <td className="border border-black p-2">{d.judulAkta}</td>
+                            <td className="border border-black p-2">
+                                {d.pihak.map((p, idx) => (
+                                    <div key={idx} className="flex items-start">
+                                        <span className="mr-1 shrink-0">{idx + 1}.</span>
+                                        <span>{p.name}</span>
+                                    </div>
+                                ))}
+                            </td>
+                        </>
+                    )}
+                </tr>
+            ));
+        })()}
+    </tbody>
+</table>

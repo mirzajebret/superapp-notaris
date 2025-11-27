@@ -232,5 +232,62 @@
     "bulanPelaporan": 11,
     "tahunPelaporan": 2025,
     "nomorBulanan": ""
+  },
+  {
+    "id": "1764250815522",
+    "createdAt": "2025-11-27T13:40:15.522Z",
+    "jenis": "Notaris",
+    "nomorAkta": "8",
+    "tanggalAkta": "2025-10-31",
+    "judulAkta": "PT Test",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "Mirza",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      },
+      {
+        "name": "Alby",
+        "role": "",
+        "actingCapacity": "both",
+        "representedParties": [
+          "Assidiqie",
+          "awfwafwaf",
+          "awrfwafawf",
+          "awfwafwa",
+          "awfwafwa",
+          "awfwafwaf"
+        ]
+      },
+      {
+        "name": "awfawfwa",
+        "role": "",
+        "actingCapacity": "self",
+        "representedParties": []
+      },
+      {
+        "name": "awfawfwaf",
+        "role": "",
+        "actingCapacity": "self",
+        "representedParties": []
+      },
+      {
+        "name": "awfwafaw",
+        "role": "",
+        "actingCapacity": "self",
+        "representedParties": []
+      },
+      {
+        "name": "awfwafwaf",
+        "role": "",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "bulanPelaporan": 11,
+    "tahunPelaporan": 2025,
+    "nomorBulanan": "88"
   }
 ]
