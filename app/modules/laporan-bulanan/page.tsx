@@ -33,6 +33,51 @@ const MONTHS = [
   'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember',
 ] as const;
 
+// --- HELPER TERBILANG ---
+const terbilang = (angka: number): string => {
+  const units = ['', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan'];
+  const teens = ['sepuluh', 'sebelas', 'dua belas', 'tiga belas', 'empat belas', 'lima belas', 'enam belas', 'tujuh belas', 'delapan belas', 'sembilan belas'];
+  const tens = ['', '', 'dua puluh', 'tiga puluh', 'empat puluh', 'lima puluh', 'enam puluh', 'tujuh puluh', 'delapan puluh', 'sembilan puluh'];
+  const scales = ['', 'ribu', 'juta', 'miliar', 'triliun'];
+
+  if (angka === 0) return 'nol';
+
+  function convertHundreds(num: number): string {
+    if (num === 0) return '';
+    if (num < 10) return units[num];
+    if (num < 20) return teens[num - 10];
+    if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 !== 0 ? ' ' + units[num % 10] : '');
+    if (num < 200) return 'seratus' + (num % 100 !== 0 ? ' ' + convertHundreds(num % 100) : '');
+    return units[Math.floor(num / 100)] + ' ratus' + (num % 100 !== 0 ? ' ' + convertHundreds(num % 100) : '');
+  }
+
+  let result = '';
+  let i = 0;
+  let num = angka;
+
+  while (num > 0) {
+    const chunk = num % 1000;
+    if (chunk !== 0) {
+      let chunkText = convertHundreds(chunk);
+      if (i === 1 && chunk === 1) {
+        chunkText = 'seribu';
+      } else if (i > 0) {
+        chunkText += ' ' + scales[i];
+      }
+      result = chunkText + (result ? ' ' + result : '');
+    }
+    num = Math.floor(num / 1000);
+    i++;
+  }
+  return result.trim();
+};
+
+// --- HELPER FORMAT JUMLAH AKTA ---
+const formatDeedCount = (count: number) => {
+  if (count === 0) return "0 (nihil)";
+  return `${count} (${terbilang(count)})`;
+};
+
 const YEAR_RANGE = Array.from({ length: 5 }, (_, i) => new Date().getFullYear() - 2 + i);
 
 const DEFAULT_PPAT_DETAIL: DeedPPATDetails = {
@@ -378,7 +423,7 @@ export default function LapbulModulePage() {
       {/* HEADER & FILTER */}
       <div className="bg-white p-6 rounded-xl shadow-sm mb-6 flex justify-between items-center no-print">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Laporan Bulanan</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Laporan Bulanan Kantor Notaris & PPAT Havis Akbar</h1>
           <p className="text-sm text-gray-500">Periode: {MONTHS[selectedMonth - 1]} {selectedYear}</p>
         </div>
         <div className="flex gap-3">
@@ -555,15 +600,15 @@ export default function LapbulModulePage() {
                 onClick={handlePrintSurat}
                 className="w-full bg-gray-800 text-white py-2 px-4 rounded mb-3 flex items-center justify-center gap-2 text-sm"
               >
-                <Printer size={18} />
-                Print Surat
+                <Printer size={16} />
+                Print Surat Pengantar
               </button>
 
               <button
                 onClick={handlePrintLampiran}
                 className="w-full border border-gray-300 text-gray-700 py-2 px-4 rounded flex items-center justify-center gap-2 text-sm"
               >
-                <Printer size={18} />
+                <Printer size={16} />
                 Print Lampiran
               </button>
 
@@ -635,12 +680,12 @@ export default function LapbulModulePage() {
                       </tbody>
                     </table>
 
-                    <div className="text-[12pt] text-justify leading-relaxed">
+                    <div className="text-[12pt] text-justify">
                       <p className="mb-4">Dengan hormat,<br />Bersama dengan ini kami menyampaikan Laporan Bulanan Pembuatan Akta PPAT untuk Bulan <strong>{MONTHS[selectedMonth - 2].toUpperCase()} {selectedYear}</strong>, sesuai daftar terlampir dengan perincian sebagai berikut:</p>
-                      <div className="p-2 mb-4">
+                      <div className="pl-12 mb-4">
                         <table className="w-full">
                           <tbody>
-                            {Object.entries(ppatSummary.types).map(([k, v]) => <tr key={k}><td className="font-bold w-1/3">{k}</td><td>: {v} Akta</td></tr>)}
+                            {Object.entries(ppatSummary.types).map(([k, v]) => <tr key={k}><td className="font-bold w-1/3">{k}</td><td>: {formatDeedCount(v)} Akta.</td></tr>)}
                             {Object.keys(ppatSummary.types).length === 0 && <tr><td className="text-center italic">0 (NIHIL)</td></tr>}
                             <tr><td colSpan={2} className="h-4"></td></tr>
                             <tr><td>Jumlah BPHTB (SSB)</td><td>: {currency(ppatSummary.totalSSB)}</td></tr>
@@ -786,8 +831,8 @@ export default function LapbulModulePage() {
           <div className="lg:col-span-3 space-y-4 no-print h-fit sticky top-6">
             <div className="bg-white p-4 rounded-xl shadow border border-gray-200 no-print">
               <h3 className="font-bold mb-4 text-gray-700">Cetak Laporan</h3>
-              <button onClick={handlePrintSurat} className="w-full bg-gray-800 text-white py-2 px-4 rounded mb-3 flex items-center justify-center gap-2 text-sm"><Download size={16} /> 1. Surat Pengantar</button>
-              <button onClick={handlePrintLampiran} className="w-full border border-gray-300 text-gray-700 py-2 px-4 rounded flex items-center justify-center gap-2 text-sm"><Printer size={16} /> 2. Model N-1 s/d N-5</button>
+              <button onClick={handlePrintSurat} className="w-full bg-gray-800 text-white py-2 px-4 rounded mb-3 flex items-center justify-center gap-2 text-sm"><Printer size={16} /> Print Surat Pengantar</button>
+              <button onClick={handlePrintLampiran} className="w-full border border-gray-300 text-gray-700 py-2 px-4 rounded flex items-center justify-center gap-2 text-sm"><Printer size={16} /> Print Lampiran</button>
             </div>
           </div>
 
@@ -845,12 +890,12 @@ export default function LapbulModulePage() {
                   </table>
                   <p className="mb-4 text-justify">Dengan Hormat,<br />Bersama ini, saya Havis Akbar, S.H., M.Kn. selaku Notaris di Kabupaten Garut, dengan ini menyampaikan kepada Majelis Pengawas Daerah Kabupaten Garut untuk dicatat dalam Register dan disimpan di Majelis Pengawas Daerah Kabupaten Garut, yaitu masing-masing 1 (satu) Salinan :</p>
                   <ol className="list-decimal pl-5 space-y-2 mb-6">
-                    <li>Daftar Akta, yang terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {notarisRecords.filter(r => r.kategori === 'Akta').length} Akta.</li>
-                    <li>Daftar Surat Dibawah Tangan yang disahkan terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {notarisRecords.filter(r => r.kategori === 'Legalisasi').length} Akta.
-                      <br />Daftar Surat Dibawah Tangan yang dibukukan terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {notarisRecords.filter(r => r.kategori === 'Waarmerking').length} Akta.
+                    <li>Daftar Akta, yang terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {formatDeedCount(notarisRecords.filter(r => r.kategori === 'Akta').length)} Akta.</li>
+                    <li>Daftar Surat Dibawah Tangan yang disahkan terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {formatDeedCount(notarisRecords.filter(r => r.kategori === 'Legalisasi').length)} Akta.
+                      <br />Daftar Surat Dibawah Tangan yang dibukukan terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {formatDeedCount(notarisRecords.filter(r => r.kategori === 'Waarmerking').length)} Akta.
                     </li>
-                    <li>Daftar Protes seperti yang dimaksud dalam Pasal 143 C dan Pasal 218 C Kitab Undang - Undang Hukum Perniagaan, yang terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {notarisRecords.filter(r => r.kategori === 'Protes').length} Akta.</li>
-                    <li>Daftar Wasiat, yang terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {notarisRecords.filter(r => r.kategori === 'Wasiat').length} Akta.</li>
+                    <li>Daftar Protes seperti yang dimaksud dalam Pasal 143 C dan Pasal 218 C Kitab Undang - Undang Hukum Perniagaan, yang terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {formatDeedCount(notarisRecords.filter(r => r.kategori === 'Protes').length)} Akta.</li>
+                    <li>Daftar Wasiat, yang terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {formatDeedCount(notarisRecords.filter(r => r.kategori === 'Wasiat').length)} Akta.</li>
                   </ol>
                   <p className="mb-4 text-justify">Untuk memenuhi ketentuan Pasal 61 ayat (1) undang – undang Nomor 30 Tahun 2004 tentang Jabatan Notaris. Atas perhatian dan kerjasamanya kami ucapkan terima kasih.</p>
                   <div className="mt-12 text-right"><p className="pr-2">Notaris Kabupaten Garut</p><div className="h-20"></div><p className="font-bold">Havis Akbar, S.H., M.Kn.</p></div>
@@ -862,32 +907,27 @@ export default function LapbulModulePage() {
             <div ref={notarisModelsRef} id="print-lampiran-notaris">
               {[
                 { code: 'N-1', title: 'SALINAN DAFTAR NOTARIIL', filter: 'Akta', cols: ['No Urut', 'No Bulanan', 'Tanggal', 'Sifat Akta', 'Nama Penghadap'] },
-                { code: 'N-2', title: 'DAFTAR LEGALISASI', filter: 'Legalisasi', cols: ['No Urut', 'Tanggal', 'Sifat Surat', 'Nama Penandatangan'] },
-                { code: 'N-3', title: 'DAFTAR WAARMERKING', filter: 'Waarmerking', cols: ['No Urut', 'Tanggal', 'Sifat Surat', 'Nama Penandatangan'] },
-                { code: 'N-4', title: 'DAFTAR PROTES', filter: 'Protes', cols: ['No', 'Tgl', 'Pihak', 'Ket'] },
-                { code: 'N-5', title: 'DAFTAR WASIAT', filter: 'Wasiat', cols: ['No', 'Tgl', 'Pemberi Wasiat', 'Ket'] }
+                { code: 'N-2', title: 'SALINAN SURAT DIBAWAH TANGAN YANG DISAHKAN', filter: 'Legalisasi', cols: ['No Urut', 'Tanggal Surat', 'Tanggal Didaftarkan', 'Sifat Surat', 'Nama yang Menandatangani dan atau yang Diwakili/ Kuasa'] },
+                { code: 'N-3', title: 'SALINAN WAARMERKING', filter: 'Waarmerking', cols: ['No Urut', 'Tanggal Surat', 'Tanggal Didaftarkan', 'Sifat Surat', 'Nama yang Menandatangani dan atau yang Diwakili/ Kuasa'] },
+                { code: 'N-4', title: 'SALINAN PROTES', filter: 'Protes', cols: ['No. Urut', 'Nomor Akta', 'Tanggal', 'Yang Ditagih', 'Yang Menagih', 'Tanggal Wesel/ Cheque', 'Tanggal Jatuh Tempo Wesel/ Cheque'] }
               ].map((m, idx) => (
                 <div key={m.code} className="print-item-wrapper">
                   <A4Container className="print-wrapper print-clean font-serif text-black w-[297mm] min-h-[210mm]">
-                    <div className="text-center font-bold">
-                      <h3 className="uppercase text-[11pt]">{m.title}</h3>
-                      <p className="text-[11pt] font-normal">Bulan {MONTHS[selectedMonth - 1]} {selectedYear}</p>
-                    </div>
-
-                    {/* SUB-HEADER KHUSUS N-1 SESUAI GAMBAR */}
-                    {m.code === 'N-1' && (
+                    <div className="text-center">
+                      <h3 className="uppercase text-[11pt] font-bold">{m.title}</h3>
+                      <p className="text-[11pt] font-normal pb-2">Bulan {MONTHS[selectedMonth - 1]} {selectedYear}</p>
                       <p className="text-center text-[10pt] mb-3">Yang dimaksud dalam Pasal 61 ayat 1 dan 2 Undang-Undang Jabatan Notaris Nomor 30 Tahun 2004</p>
-                    )}
+                    </div>
 
                     <table className="w-full border-collapse border border-black text-[10pt]">
                       <thead>
                         {m.code === 'N-1' ? (
                           <>
                             <tr className="bg-white text-center font-bold">
-                              <th rowSpan={2} className="border border-black p-1 w-[5%] align-middle">Nomor Urut</th>
-                              <th colSpan={2} className="border border-black p-1 w-[20%] align-middle">Akta</th>
-                              <th rowSpan={2} className="border border-black p-1 w-[35%] align-middle">Sifat Akta</th>
-                              <th rowSpan={2} className="border border-black p-1 w-[40%] align-middle">Nama Penghadap dan Atau yang diwakili/Kuasa</th>
+                              <th rowSpan={2} className="border border-black w-[5%] align-middle">Nomor Urut</th>
+                              <th colSpan={2} className="border border-black w-[20%] align-middle">Akta</th>
+                              <th rowSpan={2} className="border border-black w-[35%] align-middle">Sifat Akta</th>
+                              <th rowSpan={2} className="border border-black w-[40%] align-middle">Nama Penghadap dan Atau yang diwakili/Kuasa</th>
                             </tr>
                             <tr className="bg-white text-center">
                               <th className="border border-black font-normal">Nomor Bulanan</th>
@@ -974,11 +1014,46 @@ export default function LapbulModulePage() {
                                 )}
 
                                 {/* LOGIC MODEL LAIN (N2-N5) - TETAP SAMA */}
-                                {(m.code === 'N-2' || m.code === 'N-3' || m.code === 'N-4' || m.code === 'N-5') && (
+                                {(m.code === 'N-2' || m.code === 'N-3' || m.code === 'N-4') && (
                                   <>
                                     <td className="border border-black text-center align-middle">{formatDateIndo(d.tanggalAkta)}</td>
                                     <td className="border border-black text-center align-middle">{d.judulAkta}</td>
-                                    <td className="border border-black text-center align-middle">
+                                    <td className="border border-black text-center align-middle w-[20%]">
+                                      {d.pihak.map((p, idx) => (
+                                        <div key={idx} className="flex items-start">
+                                          <span className="mr-1 shrink-0">{idx + 1}.</span>
+                                          <span>{p.name}</span>
+                                        </div>
+                                      ))}
+                                    </td>
+                                  </>
+                                )}
+
+                                {/* UPDATE: Logic Khusus N-2 (5 Kolom) */}
+                                {m.code === 'N-4' && (
+                                  <>
+                                    {/* Tanggal Surat (Placeholder karena belum ada input khusus) */}
+                                    <td className="border border-black p-2 text-center">-</td>
+                                    {/* Tanggal Didaftarkan (Ambil dari Tanggal Akta) */}
+                                    <td className="border border-black p-2 text-center">{formatDateIndo(d.tanggalAkta)}</td>
+                                    <td className="border border-black p-2">{d.judulAkta}</td>
+                                    <td className="border border-black p-2">
+                                      {d.pihak.map((p, idx) => (
+                                        <div key={idx} className="flex items-start">
+                                          <span className="mr-1 shrink-0">{idx + 1}.</span>
+                                          <span>{p.name}</span>
+                                        </div>
+                                      ))}
+                                    </td>
+                                  </>
+                                )}
+
+                                {/* Logic N-3 s/d N-4 */}
+                                {(m.code === 'N-3' || m.code === 'N-4') && (
+                                  <>
+                                    <td className="border border-black p-2">{formatDateIndo(d.tanggalAkta)}</td>
+                                    <td className="border border-black p-2">{d.judulAkta}</td>
+                                    <td className="border border-black p-2">
                                       {d.pihak.map((p, idx) => (
                                         <div key={idx} className="flex items-start">
                                           <span className="mr-1 shrink-0">{idx + 1}.</span>
