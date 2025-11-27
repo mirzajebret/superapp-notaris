@@ -172,6 +172,7 @@ export default function LapbulModulePage() {
       loadData();
     }
   };
+  // ... existing code ...
   // --- PRINT HANDLER KHUSUS LAMPIRAN ---
   const handlePrintLampiran = useCallback(() => {
     // 1. Buat Style Khusus Print secara dinamis
@@ -198,18 +199,25 @@ export default function LapbulModulePage() {
           padding: 0;
         }
 
-        /* Paksa orientasi Landscape & Margin Kertas */
-        @page {
-          size: landscape;
-        }
-
-        /* Pastikan Page Break berfungsi */
-        .break-before-page {
-          page-break-before: always !important;
-          break-before: page !important;
+        /* Wrapper per halaman agar tidak menumpuk */
+        .print-item-wrapper {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          page-break-after: always;
           display: block;
         }
         
+        .print-item-wrapper:last-child {
+          page-break-after: auto;
+        }
+
+        /* Paksa orientasi Landscape */
+        @page {
+          size: landscape;
+          margin: 0;
+        }
+
         /* Hilangkan background/shadow container saat print agar bersih */
         .print-clean {
           box-shadow: none !important;
@@ -217,13 +225,21 @@ export default function LapbulModulePage() {
           margin: 0 !important;
           width: 100% !important;
         }
+        
+        .no-print {
+            display: none !important;
+        }
       }
     `;
 
     document.head.appendChild(style);
-    window.print();
-    document.head.removeChild(style);
+    // Timeout sedikit agar style render dulu
+    setTimeout(() => {
+      window.print();
+      document.head.removeChild(style);
+    }, 100);
   }, []);
+
 
   const downloadPDF = async (element: HTMLElement | null, filename: string, orientation: 'portrait' | 'landscape') => {
     if (!element) return;
@@ -420,14 +436,14 @@ export default function LapbulModulePage() {
 
           <div className="lg:col-span-9 space-y-8 overflow-auto h-[calc(100vh-150px)] pr-2">
             {/* SURAT PENGANTAR (4 HALAMAN) */}
-            <div ref={ppatLetterRef} id="print-lampiran-area">
+            <div ref={ppatLetterRef}>
               {[
                 { to: 'Kepala Kantor\nBadan Pertanahan Nasional\n Kabupaten Garut', address: 'Jl. Suherman, Desa Jati,\nTarogong Kaler, Kabupaten Garut 44151' },
                 { to: 'Kepala Kantor Wilayah\nBadan Pertanahan Nasional \nProvinsi Jawa Barat', address: 'Jl. Soekarno Hatta No. 586\nSekejati, Kec. BuahBatu,\nKota Bandung 40286' },
                 { to: 'Kepala Kantor\nBadan Pendapatan Daerah Kabupaten Garut', address: 'Jl. Otista No. 278, Sukagalih,\nKec. Tarogong Kidul, Kabupaten Garut 44151' },
                 { to: 'Kepala Kantor\nPelayanan Pajak Pratama Garut', address: 'Jl. Pembangunan No.224,\nSukagalih, Kec. Tarogong Kidul, Kabupaten Garut 44151' }
               ].map((r, idx) => (
-                <div key={idx} className={idx > 0 ? "break-before-page" : ""}>
+                <div key={idx} className="print-item-wrapper">
                   <A4Container className="print-wrapper font-serif text-black">
                     <KopLapbulPPAT />
 
@@ -514,7 +530,7 @@ export default function LapbulModulePage() {
                 { to: 'Kepala Kantor\nBadan Pendapatan Daerah Kabupaten Garut', address: 'Jl. Otista No. 278, Sukagalih, Kec. Tarogong Kidul, Kabupaten Garut 44151' },
                 { to: 'Kepala Kantor\nPelayanan Pajak Pratama Garut', address: 'Jl. Pembangunan No.224, Sukagalih, Kec. Tarogong Kidul, Kabupaten Garut 44151' }
               ].map((r, idx) => (
-                <div key={idx} className={idx > 0 ? "break-before-page" : ""}>
+                <div key={idx} className="print-item-wrapper">
                   <div className="bg-white p-8 print-wrapper print-clean" style={{ width: '297mm', minHeight: '210mm' }}>
 
                     <div className="flex justify-between items-start mb-12 font-serif text-[10pt] font-bold">
