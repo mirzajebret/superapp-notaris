@@ -185,12 +185,12 @@ export default function LapbulModulePage() {
         }
         
         /* Tampilkan HANYA area lampiran */
-        #print-lampiran-area, #print-lampiran-area * {
+        #print-lampiran-area, #print-lampiran-area * , #print-lampiran-notaris, #print-lampiran-notaris * {
           visibility: visible;
         }
 
         /* Atur posisi container agar mulai dari pojok kiri atas kertas */
-        #print-lampiran-area {
+        #print-lampiran-area, #print-lampiran-notaris {
           position: absolute;
           left: 0;
           top: 0;
@@ -240,19 +240,72 @@ export default function LapbulModulePage() {
     }, 100);
   }, []);
 
+  // --- PRINT HANDLER KHUSUS SURAT PENGANTAR (PORTRAIT) ---
+  const handlePrintSurat = useCallback(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @media print {
+        /* Sembunyikan semua elemen body */
+        body * {
+          visibility: hidden;
+        }
+        
+        /* Tampilkan HANYA area surat */
+        #print-surat-area, #print-surat-area * , #print-surat-notaris, #print-surat-notaris * {
+          visibility: visible;
+        }
 
-  const downloadPDF = async (element: HTMLElement | null, filename: string, orientation: 'portrait' | 'landscape') => {
-    if (!element) return;
-    const html2pdf = (await import('html2pdf.js')).default;
-    const opt = {
-      margin: 0,
-      filename: `${filename}.pdf`,
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true, windowWidth: orientation === 'landscape' ? 1123 : 794 },
-      jsPDF: { unit: 'mm', format: 'a4', orientation }
-    };
-    html2pdf().set(opt).from(element).save();
-  };
+        /* Atur posisi container agar mulai dari pojok kiri atas kertas */
+        #print-surat-area, #print-surat-notaris {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+        }
+
+        /* Wrapper per halaman agar tidak menumpuk */
+        .print-item-wrapper {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          page-break-after: always;
+          display: block;
+        }
+        
+        .print-item-wrapper:last-child {
+          page-break-after: auto;
+        }
+
+        /* Paksa orientasi Portrait */
+        @page {
+          size: portrait;
+          margin: 0;
+        }
+
+        /* Hilangkan background/shadow container saat print agar bersih */
+        .print-clean {
+          box-shadow: none !important;
+          border: none !important;
+          margin: 0 !important;
+          width: 100% !important;
+        }
+        
+        .no-print {
+            display: none !important;
+        }
+      }
+    `;
+
+    document.head.appendChild(style);
+    setTimeout(() => {
+      window.print();
+      document.head.removeChild(style);
+    }, 100);
+  }, []);
+
+
   // --- REVISI: LOGIC REKAP PPAT ---
   const ppatSummary = useMemo(() => {
     // Inisialisasi counter untuk semua kategori baku agar tetap muncul meski 0
@@ -421,11 +474,17 @@ export default function LapbulModulePage() {
           <div className="lg:col-span-3 space-y-4 no-print h-fit sticky top-6">
             <div className="bg-white p-4 rounded-xl shadow border border-gray-200">
               <h3 className="font-bold mb-4 text-gray-700">Cetak Laporan</h3>
-              <button onClick={() => downloadPDF(ppatLetterRef.current, `Surat_Pengantar_PPAT`, 'portrait')} className="w-full bg-gray-800 text-white py-2 px-4 rounded mb-3 flex items-center justify-center gap-2 text-sm"><Download size={16} /> 1. Surat Pengantar</button>
-              <button onClick={() => downloadPDF(ppatLampiranRef.current, `Lampiran_PPAT`, 'landscape')} className="w-full border border-gray-300 text-gray-700 py-2 mb-3 px-4 rounded flex items-center justify-center gap-2 text-sm"><Printer size={16} /> 2. Lampiran Tabel</button>
+              <button
+                onClick={handlePrintSurat}
+                className="w-full bg-gray-800 text-white py-2 px-4 rounded mb-3 flex items-center justify-center gap-2 text-sm"
+              >
+                <Printer size={18} />
+                Print Surat
+              </button>
+
               <button
                 onClick={handlePrintLampiran}
-                className="flex justify-center w-full bg-blue-600 text-white gap-2 px-4 py-2 rounded shadow-sm hover:bg-blue-700 transition font-medium"
+                className="w-full border border-gray-300 text-gray-700 py-2 px-4 rounded flex items-center justify-center gap-2 text-sm"
               >
                 <Printer size={18} />
                 Print Lampiran
@@ -433,10 +492,9 @@ export default function LapbulModulePage() {
 
             </div>
           </div>
-
           <div className="lg:col-span-9 space-y-8 overflow-auto h-[calc(100vh-150px)] pr-2">
             {/* SURAT PENGANTAR (4 HALAMAN) */}
-            <div ref={ppatLetterRef}>
+            <div ref={ppatLetterRef} id="print-surat-area">
               {[
                 { to: 'Kepala Kantor\nBadan Pertanahan Nasional\n Kabupaten Garut', address: 'Jl. Suherman, Desa Jati,\nTarogong Kaler, Kabupaten Garut 44151' },
                 { to: 'Kepala Kantor Wilayah\nBadan Pertanahan Nasional \nProvinsi Jawa Barat', address: 'Jl. Soekarno Hatta No. 586\nSekejati, Kec. BuahBatu,\nKota Bandung 40286' },
@@ -444,7 +502,7 @@ export default function LapbulModulePage() {
                 { to: 'Kepala Kantor\nPelayanan Pajak Pratama Garut', address: 'Jl. Pembangunan No.224,\nSukagalih, Kec. Tarogong Kidul, Kabupaten Garut 44151' }
               ].map((r, idx) => (
                 <div key={idx} className="print-item-wrapper">
-                  <A4Container className="print-wrapper font-serif text-black">
+                  <A4Container className="print-wrapper print-clean font-serif text-black">
                     <KopLapbulPPAT />
 
                     <table className="text-[11pt] font-serif mb-6 w-full border-collapse">
@@ -649,17 +707,18 @@ export default function LapbulModulePage() {
       {activeTab === 'notaris' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <div className="lg:col-span-3 space-y-4 no-print h-fit sticky top-6">
-            <div className="bg-white p-4 rounded-xl shadow border border-gray-200">
+            <div className="bg-white p-4 rounded-xl shadow border border-gray-200 no-print">
               <h3 className="font-bold mb-4 text-gray-700">Cetak Laporan</h3>
-              <button onClick={() => downloadPDF(notarisLetterRef.current, `Pengantar_MPD`, 'portrait')} className="w-full bg-gray-800 text-white py-2 px-4 rounded mb-3 flex items-center justify-center gap-2 text-sm"><Download size={16} /> 1. Surat Pengantar</button>
-              <button onClick={() => downloadPDF(notarisModelsRef.current, `Model_N1_N5`, 'portrait')} className="w-full border border-gray-300 text-gray-700 py-2 px-4 rounded flex items-center justify-center gap-2 text-sm"><Printer size={16} /> 2. Model N-1 s/d N-5</button>
+              <button onClick={handlePrintSurat} className="w-full bg-gray-800 text-white py-2 px-4 rounded mb-3 flex items-center justify-center gap-2 text-sm"><Download size={16} /> 1. Surat Pengantar</button>
+              <button onClick={handlePrintLampiran} className="w-full border border-gray-300 text-gray-700 py-2 px-4 rounded flex items-center justify-center gap-2 text-sm"><Printer size={16} /> 2. Model N-1 s/d N-5</button>
             </div>
           </div>
 
           <div className="lg:col-span-9 space-y-8 overflow-auto h-[calc(100vh-150px)] pr-2">
             {/* SURAT PENGANTAR */}
-            <div ref={notarisLetterRef}>
-              <A4Container className="print-wrapper font-serif text-black">
+            <div ref={notarisLetterRef} id="print-surat-notaris">
+
+              <A4Container className="print-wrapper print-clean font-serif text-black">
                 <KopSurat />
                 <div className="text-[11pt] leading-[1.3] mt-6">
                   <table className="text-[11pt] font-serif mb-3 w-full border-collapse">
@@ -723,7 +782,7 @@ export default function LapbulModulePage() {
             </div>
 
             {/* MODEL N1 - N5 */}
-            <div ref={notarisModelsRef}>
+            <div ref={notarisModelsRef} id="print-lampiran-notaris">
               {[
                 { code: 'N-1', title: 'SALINAN DAFTAR NOTARIIL', filter: 'Akta', cols: ['No Urut', 'No Bulanan', 'Tanggal', 'Sifat Akta', 'Nama Penghadap'] },
                 { code: 'N-2', title: 'DAFTAR LEGALISASI', filter: 'Legalisasi', cols: ['No Urut', 'Tanggal', 'Sifat Surat', 'Nama Penandatangan'] },
@@ -731,27 +790,115 @@ export default function LapbulModulePage() {
                 { code: 'N-4', title: 'DAFTAR PROTES', filter: 'Protes', cols: ['No', 'Tgl', 'Pihak', 'Ket'] },
                 { code: 'N-5', title: 'DAFTAR WASIAT', filter: 'Wasiat', cols: ['No', 'Tgl', 'Pemberi Wasiat', 'Ket'] }
               ].map((m, idx) => (
-                <div key={m.code} className={idx > 0 ? "break-before-page" : ""}>
-                  <A4Container className="print-wrapper font-serif text-black">
-                    <div className="text-center font-bold mb-6"><h3 className="uppercase text-[12pt]">{m.title}</h3><p className="text-[11pt] font-normal">Bulan {MONTHS[selectedMonth - 1]} {selectedYear}</p></div>
+                <div key={m.code} className="print-item-wrapper">
+                  <A4Container className="print-wrapper print-clean font-serif text-black w-[297mm] min-h-[210mm]">
+                    <div className="text-center font-bold mb-2">
+                      <h3 className="uppercase text-[11pt]">{m.title}</h3>
+                      <p className="text-[11pt] font-normal">Bulan {MONTHS[selectedMonth - 1]} {selectedYear}</p>
+                    </div>
+
+                    {/* SUB-HEADER KHUSUS N-1 SESUAI GAMBAR */}
+                    {m.code === 'N-1' && (
+                      <p className="text-center text-[10pt] mb-4">Yang dimaksud dalam Pasal 61 ayat 1 dan 2 Undang-Undang Jabatan Notaris Nomor 30 Tahun 2004</p>
+                    )}
+
                     <table className="w-full border-collapse border border-black text-[10pt]">
-                      <thead><tr className="bg-gray-100 text-center font-bold">{m.cols.map(c => <th key={c} className="border border-black p-2">{c}</th>)}</tr></thead>
+                      <thead>
+                        {/* FIX: UBAH STRUKTUR HEADER MENJADI 2 BARIS (ROWSPAN & COLSPAN) AGAR BORDER RAPI */}
+                        {m.code === 'N-1' ? (
+                          <>
+                            <tr className="bg-white text-center font-bold">
+                              <th rowSpan={2} className="border border-black p-1 w-[5%] align-middle">Nomor Urut</th>
+                              <th colSpan={2} className="border border-black p-1 w-[20%] align-middle">Akta</th>
+                              <th rowSpan={2} className="border border-black p-1 w-[35%] align-middle">Sifat Akta</th>
+                              <th rowSpan={2} className="border border-black p-1 w-[40%] align-middle">Nama Penghadap dan Atau yang diwakili/Kuasa</th>
+                            </tr>
+                            <tr className="bg-white text-center">
+                              <th className="border border-black p-1 font-normal">Nomor Bulanan</th>
+                              <th className="border border-black p-1 font-normal">Tanggal</th>
+                            </tr>
+                          </>
+                        ) : (
+                          <tr className="bg-white text-center font-bold">
+                            {m.cols.map((c, i) => <th key={i} className="border border-black p-2">{c}</th>)}
+                          </tr>
+                        )}
+                      </thead>
                       <tbody>
                         {(() => {
                           const data = notarisRecords.filter(r => r.kategori === m.filter);
-                          if (data.length === 0) return <tr><td colSpan={m.cols.length} className="border border-black p-4 text-center font-bold text-lg">NIHIL</td></tr>;
-                          return data.map((d, i) => (
-                            <tr key={i} className="align-top">
-                              <td className="border border-black p-2 text-center">{i + 1}</td>
-                              {m.code === 'N-1' && <><td className="border border-black p-2 text-center">{d.nomorBulanan}</td><td className="border border-black p-2">{formatDateIndo(d.tanggalAkta)}</td><td className="border border-black p-2">{d.judulAkta}</td><td className="border border-black p-2">{d.pihak.map(p => p.name).join(', ')}</td></>}
-                              {(m.code === 'N-2' || m.code === 'N-3') && <><td className="border border-black p-2">{formatDateIndo(d.tanggalAkta)}</td><td className="border border-black p-2">{d.judulAkta}</td><td className="border border-black p-2">{d.pihak.map(p => p.name).join(', ')}</td></>}
-                            </tr>
-                          ));
+                          if (data.length === 0) return <tr><td colSpan={m.code === 'N-1' ? 5 : m.cols.length} className="border border-black p-4 text-center font-bold text-lg">NIHIL</td></tr>;
+
+                          return data.map((d, i) => {
+                            // Format Pihak menjadi list bernomor 1. ..., 2. ...
+                            const formattedParties = d.pihak.map((p, idx) => (
+                              <div key={idx} className="flex items-start">
+                                <span className="mr-1 shrink-0">{idx + 1}.</span>
+                                <span>{p.name}</span>
+                              </div>
+                            ));
+
+                            return (
+                              <tr key={i} className="align-top">
+                                {/* KOLOM 1: NO URUT (GLOBAL) */}
+                                <td className="border border-black p-2 text-center">{i + 1}</td>
+
+                                {/* FIX: UBAH BODY MENJADI 2 KOLOM TERPISAH (BUKAN DIV DI DALAM TD) */}
+                                {m.code === 'N-1' && (
+                                  <>
+                                    {/* KOLOM 2: NOMOR BULANAN */}
+                                    <td className="border border-black p-2 text-center align-top">
+                                      {d.nomorBulanan || '-'}
+                                    </td>
+
+                                    {/* KOLOM 3: TANGGAL */}
+                                    <td className="border border-black p-2 text-center align-top">
+                                      {formatDateIndo(d.tanggalAkta)}
+                                    </td>
+
+                                    {/* KOLOM 4: SIFAT AKTA */}
+                                    <td className="border border-black p-2 text-center align-top">{d.judulAkta}</td>
+
+                                    {/* KOLOM 5: PIHAK */}
+                                    <td className="border border-black p-2 text-left align-top">
+                                      {/* MODIFIKASI: Gunakan Grid 2 Kolom jika pihak > 1 */}
+                                      <div className={`text-sm ${d.pihak.length > 1 ? 'grid grid-cols-2 gap-x-1' : ''}`}>
+                                        {formattedParties}
+                                      </div>
+                                    </td>
+                                  </>
+                                )}
+
+                                {/* LOGIC MODEL LAIN (N2-N5) - TETAP SAMA */}
+                                {(m.code === 'N-2' || m.code === 'N-3' || m.code === 'N-4' || m.code === 'N-5') && (
+                                  <>
+                                    <td className="border border-black p-2">{formatDateIndo(d.tanggalAkta)}</td>
+                                    <td className="border border-black p-2">{d.judulAkta}</td>
+                                    <td className="border border-black p-2">
+                                      {d.pihak.map((p, idx) => (
+                                        <div key={idx} className="flex items-start">
+                                          <span className="mr-1 shrink-0">{idx + 1}.</span>
+                                          <span>{p.name}</span>
+                                        </div>
+                                      ))}
+                                    </td>
+                                  </>
+                                )}
+                              </tr>
+                            )
+                          });
                         })()}
                       </tbody>
                     </table>
-                    <div className="mt-8 text-[11pt]"><p>Salinan sesuai aslinya,</p><p>Garut, {formatDateLong(new Date().toISOString())}</p><div className="h-16"></div><p className="font-bold underline">(HAVIS AKBAR, S.H., M.Kn.)</p></div>
+                    <div className="mt-8 text-[11pt] text-right">
+                      <p>Salinan ini sesuai dengan aslinya,</p>
+                      <p>Garut, {formatDateLong(new Date().toISOString())}</p>
+                      <div className="h-16"></div>
+                      <p className="font-bold underline">(HAVIS AKBAR, S.H., M.Kn.)</p>
+                    </div>
                   </A4Container>
+                  {/* Spacer no-print */}
+                  <div className="h-8 bg-gray-200 no-print"></div>
                 </div>
               ))}
             </div>
