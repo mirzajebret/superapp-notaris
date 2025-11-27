@@ -957,7 +957,7 @@ export default function LapbulModulePage() {
                                               )}
                                               {/* Daftar Kuasa (a, b, c) - Nested Grid jika banyak */}
                                               {p.representedParties && p.representedParties.length > 0 && (
-                                                <div className={`${p.representedParties.length > 1 ? 'columns-2 gap-x-2' : ''}`}>
+                                                <div>
                                                   {p.representedParties.map((repName, rIdx) => (
                                                     <div key={rIdx} className="pl-2 flex items-start">
                                                       <span className="w-3">{String.fromCharCode(97 + rIdx)}.</span>
