@@ -24,7 +24,10 @@ import {
   Printer,
   Trash2,
 } from 'lucide-react';
-
+// --- FITUR PRINT (NATIVE) ---
+const handlePrint = () => {
+  window.print();
+};
 // --- CONSTANTS ---
 const MONTHS = [
   'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
@@ -169,6 +172,58 @@ export default function LapbulModulePage() {
       loadData();
     }
   };
+  // --- PRINT HANDLER KHUSUS LAMPIRAN ---
+  const handlePrintLampiran = useCallback(() => {
+    // 1. Buat Style Khusus Print secara dinamis
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @media print {
+        /* Sembunyikan semua elemen body */
+        body * {
+          visibility: hidden;
+        }
+        
+        /* Tampilkan HANYA area lampiran */
+        #print-lampiran-area, #print-lampiran-area * {
+          visibility: visible;
+        }
+
+        /* Atur posisi container agar mulai dari pojok kiri atas kertas */
+        #print-lampiran-area {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+        }
+
+        /* Paksa orientasi Landscape & Margin Kertas */
+        @page {
+          size: landscape;
+        }
+
+        /* Pastikan Page Break berfungsi */
+        .break-before-page {
+          page-break-before: always !important;
+          break-before: page !important;
+          display: block;
+        }
+        
+        /* Hilangkan background/shadow container saat print agar bersih */
+        .print-clean {
+          box-shadow: none !important;
+          border: none !important;
+          margin: 0 !important;
+          width: 100% !important;
+        }
+      }
+    `;
+
+    document.head.appendChild(style);
+    window.print();
+    document.head.removeChild(style);
+  }, []);
 
   const downloadPDF = async (element: HTMLElement | null, filename: string, orientation: 'portrait' | 'landscape') => {
     if (!element) return;
@@ -351,7 +406,15 @@ export default function LapbulModulePage() {
             <div className="bg-white p-4 rounded-xl shadow border border-gray-200">
               <h3 className="font-bold mb-4 text-gray-700">Cetak Laporan</h3>
               <button onClick={() => downloadPDF(ppatLetterRef.current, `Surat_Pengantar_PPAT`, 'portrait')} className="w-full bg-gray-800 text-white py-2 px-4 rounded mb-3 flex items-center justify-center gap-2 text-sm"><Download size={16} /> 1. Surat Pengantar</button>
-              <button onClick={() => downloadPDF(ppatLampiranRef.current, `Lampiran_PPAT`, 'landscape')} className="w-full border border-gray-300 text-gray-700 py-2 px-4 rounded flex items-center justify-center gap-2 text-sm"><Printer size={16} /> 2. Lampiran Tabel</button>
+              <button onClick={() => downloadPDF(ppatLampiranRef.current, `Lampiran_PPAT`, 'landscape')} className="w-full border border-gray-300 text-gray-700 py-2 mb-3 px-4 rounded flex items-center justify-center gap-2 text-sm"><Printer size={16} /> 2. Lampiran Tabel</button>
+              <button
+                onClick={handlePrintLampiran}
+                className="flex justify-center w-full bg-blue-600 text-white gap-2 px-4 py-2 rounded shadow-sm hover:bg-blue-700 transition font-medium"
+              >
+                <Printer size={18} />
+                Print Lampiran
+              </button>
+
             </div>
           </div>
 
@@ -439,13 +502,13 @@ export default function LapbulModulePage() {
                     </div>
                     <div className="mt-12"><p className="text-right pr-16">Hormat kami,</p><div className="h-20"></div><p className="font-bold text-right">(HAVIS AKBAR, S.H., M.Kn.)</p></div>
                   </A4Container>
-                  <div className="h-8 bg-gray-200 no-print"></div>
                 </div>
               ))}
             </div>
 
             {/* LAMPIRAN LANDSCAPE */}
-            <div ref={ppatLampiranRef}>
+            {/* LAMPIRAN LANDSCAPE */}
+            <div ref={ppatLampiranRef} id="print-lampiran-area">
               {[
                 { to: 'Kepala Kantor\nBadan Pertanahan Nasional Kabupaten Garut', address: 'Jl. Suherman, Desa Jati, Tarogong Kaler, Kabupaten Garut 44151' },
                 { to: 'Kepala Kantor Wilayah\nBadan Pertanahan Nasional Provinsi Jawa Barat', address: 'Jl. Soekarno Hatta No. 586 Sekejati, Kec. BuahBatu, Kota Bandung 40286' },
@@ -453,38 +516,21 @@ export default function LapbulModulePage() {
                 { to: 'Kepala Kantor\nPelayanan Pajak Pratama Garut', address: 'Jl. Pembangunan No.224, Sukagalih, Kec. Tarogong Kidul, Kabupaten Garut 44151' }
               ].map((r, idx) => (
                 <div key={idx} className={idx > 0 ? "break-before-page" : ""}>
-                  <div className="bg-white p-8 print-wrapper" style={{ width: '297mm', minHeight: '210mm' }}>
+                  <div className="bg-white p-8 print-wrapper print-clean" style={{ width: '297mm', minHeight: '210mm' }}>
 
-                    {/* --- HEADER MENGGUNAKAN FLEXBOX (Bukan Table Tunggal) --- */}
-                    <div className="flex justify-between items-start mb-5 font-serif text-[10pt] font-bold">
-
-                      {/* SISI KIRI: Tabel Identitas PPAT */}
+                    <div className="flex justify-between items-start mb-12 font-serif text-[10pt] font-bold">
                       <div className="w-[60%]">
                         <table className="w-full border-collapse">
                           <tbody>
-                            <tr>
-                              <td className="align-top w-[30%] pb-1">Nama PPAT</td>
-                              <td className="align-top w-[70%] pb-1">: HAVIS AKBAR, S.H., M.Kn</td>
-                            </tr>
-                            <tr>
-                              <td className="align-top pb-1">Daerah Kerja</td>
-                              <td className="align-top pb-1">: Seluruh Kecamatan Kabupaten Garut</td>
-                            </tr>
-                            <tr>
-                              <td className="align-top pb-1">Alamat</td>
-                              <td className="align-top font-thin pb-1 whitespace-pre-line leading-tight">: Jalan Jendral Sudirman - Ruko Mandala Residence No. 31, Kel. Sukamentri, Kec. Garut Kota, Kab. Garut, Jawa Barat 44116</td>
-                            </tr>
-                            <tr>
-                              <td className="align-top pb-1">NPWP/KTP</td>
-                              <td className="align-top font-thin pb-1">: 55.743.562.5-013.000 / 3217062010780024</td>
-                            </tr>
+                            <tr><td className="align-top w-[30%] pb-1">Nama PPAT</td><td className="align-top w-[70%] pb-1">: HAVIS AKBAR, S.H., M.Kn</td></tr>
+                            <tr><td className="align-top pb-1">Daerah Kerja</td><td className="align-top pb-1">: Seluruh Kecamatan Kabupaten Garut</td></tr>
+                            <tr><td className="align-top pb-1">Alamat</td><td className="align-top font-thin pb-1 whitespace-pre-line leading-tight">: Jalan Jendral Sudirman - Ruko Mandala Residence No. 31, Kel. Sukamentri, Kec. Garut Kota, Kab. Garut, Jawa Barat 44116</td></tr>
+                            <tr><td className="align-top pb-1">NPWP/KTP</td><td className="align-top font-thin pb-1">: 55.743.562.5-013.000 / 3217062010780024</td></tr>
                           </tbody>
                         </table>
                       </div>
-
-                      {/* SISI KANAN: Alamat Tujuan */}
                       <div className="w-[50%] pl-10">
-                        <p className="mb-1">KEPADA YTH.</p>
+                        <p className="mb-1">Kepada Yth.</p>
                         <div className="whitespace-pre-line leading-tight">
                           {r.to}
                         </div>
@@ -492,13 +538,11 @@ export default function LapbulModulePage() {
                           {r.address}
                         </div>
                       </div>
-
                     </div>
-                    {/* --- END HEADER --- */}
 
                     <div className="text-center font-bold mb-4 text-[11pt]">
                       <p>LAPORAN BULANAN PEMBUATAN AKTA OLEH PPAT</p>
-                      <p>BULAN {MONTHS[selectedMonth - 2].toUpperCase()} TAHUN {selectedYear}</p>
+                      <p>BULAN {MONTHS[selectedMonth - 1].toUpperCase()} TAHUN {selectedYear}</p>
                     </div>
 
                     <table className="w-full text-[6pt] border border-gray-300 border-collapse">
@@ -539,66 +583,32 @@ export default function LapbulModulePage() {
                       </thead>
                       <tbody>
                         {ppatRecords.length === 0 ? (
-                          <tr>
-                            <td
-                              colSpan={18}
-                              className="text-center py-6 text-gray-500 text-sm"
-                            >
-                              NIHIL
-                            </td>
-                          </tr>
+                          <tr><td colSpan={18} className="text-center py-6 text-gray-500 text-sm">NIHIL</td></tr>
                         ) : (
                           ppatRecords.map((record, index) => {
-                            const mengalihkan = record.pihak
-                              .filter(p => /penjual|pemberi|ahli waris|pemilik/i.test(p.role))
-                              .map(p => p.name)
-                              .join(', ');
-                            const menerima = record.pihak
-                              .filter(p => /pembeli|penerima/i.test(p.role))
-                              .map(p => p.name)
-                              .join(', ');
-
+                            const mengalihkan = record.pihak.filter(p => /penjual|pemberi|ahli waris|pemilik/i.test(p.role)).map(p => p.name).join(', ');
+                            const menerima = record.pihak.filter(p => /pembeli|penerima/i.test(p.role)).map(p => p.name).join(', ');
                             const displayMengalihkan = mengalihkan || (!menerima ? record.pihak.map(p => p.name).join(', ') : '-');
-                            const displayMenerima = menerima || (!mengalihkan ? record.pihak.map(p => p.name).join(', ') : '-');
 
                             return (
                               <tr key={record.id} className="align-top">
                                 <td className="border border-gray-300 px-1 py-1 text-center">{index + 1}</td>
                                 <td className="border border-gray-300 px-1 py-1">{record.nomorAkta}</td>
-                                <td className="border border-gray-300 px-1 py-1 text-center">
-                                  {formatDateIndo(record.tanggalAkta)}
-                                </td>
+                                <td className="border border-gray-300 px-1 py-1 text-center">{formatDateIndo(record.tanggalAkta)}</td>
                                 <td className="border border-gray-300 px-1 py-1">{record.judulAkta}</td>
                                 <td className="border border-gray-300 px-1 py-1">{displayMengalihkan}</td>
                                 <td className="border border-gray-300 px-1 py-1">{record.detailPPAT?.pihakPenerima}</td>
                                 <td className="border border-gray-300 px-1 py-1">{record.detailPPAT?.jenisHak || '-'}</td>
-                                <td className="border border-gray-300 px-1 py-1">
-                                  {record.detailPPAT?.lokasiObjek || '-'}
-                                </td>
-                                <td className="border border-gray-300 px-1 py-1 text-center">
-                                  {record.detailPPAT?.luasTanah || 0}
-                                </td>
-                                <td className="border border-gray-300 px-1 py-1 text-center">
-                                  {record.detailPPAT?.luasBangunan || 0}
-                                </td>
-                                <td className="border border-gray-300 px-1 py-1 text-right">
-                                  {currency(record.detailPPAT?.nilaiTransaksi || '-')}
-                                </td>
-                                <td className="border border-gray-300 px-1 py-1">
-                                  {record.detailPPAT?.nop || '-'}<br />
-                                  {selectedYear}
-                                </td>
-                                <td className="border border-gray-300 px-1 py-1 text-right">
-                                  {record.detailPPAT?.njop || '-'}
-                                </td>
+                                <td className="border border-gray-300 px-1 py-1">{record.detailPPAT?.lokasiObjek || '-'}</td>
+                                <td className="border border-gray-300 px-1 py-1 text-center">{record.detailPPAT?.luasTanah || 0}</td>
+                                <td className="border border-gray-300 px-1 py-1 text-center">{record.detailPPAT?.luasBangunan || 0}</td>
+                                <td className="border border-gray-300 px-1 py-1 text-right">{currency(record.detailPPAT?.nilaiTransaksi || '-')}</td>
+                                <td className="border border-gray-300 px-1 py-1">{record.detailPPAT?.nop || '-'}<br />{selectedYear}</td>
+                                <td className="border border-gray-300 px-1 py-1 text-right">{record.detailPPAT?.njop || '-'}</td>
                                 <td className="border border-gray-300 px-1 py-1 text-center">-</td>
-                                <td className="border border-gray-300 px-1 py-1 text-right">
-                                  {currency(record.detailPPAT?.ssp || '-')}
-                                </td>
+                                <td className="border border-gray-300 px-1 py-1 text-right">{currency(record.detailPPAT?.ssp || '-')}</td>
                                 <td className="border border-gray-300 px-1 py-1 text-center">-</td>
-                                <td className="border border-gray-300 px-1 py-1 text-right">
-                                  {currency(record.detailPPAT?.ssb || '-')}
-                                </td>
+                                <td className="border border-gray-300 px-1 py-1 text-right">{currency(record.detailPPAT?.ssb || '-')}</td>
                                 <td className="border border-gray-300 px-1 py-1 text-center">-</td>
                               </tr>
                             );
@@ -608,7 +618,7 @@ export default function LapbulModulePage() {
                     </table>
 
                     <div className="mt-8 flex justify-end text-[10pt] font-serif text-center">
-                      <div><p>Garut, {formatDateIndo(new Date().toISOString())}</p><div className="h-16"></div><p className="font-bold underline">HAVIS AKBAR, S.H., M.Kn.</p></div>
+                      <div><p>Garut, {formatDateIndo(new Date().toISOString())}</p><div className="h-20"></div><p className="font-bold underline">HAVIS AKBAR, S.H., M.Kn.</p></div>
                     </div>
                   </div>
                   {/* Spacer no-print */}
@@ -682,7 +692,6 @@ export default function LapbulModulePage() {
                     </table>
                     <div className="mt-8 text-[11pt]"><p>Salinan sesuai aslinya,</p><p>Garut, {formatDateLong(new Date().toISOString())}</p><div className="h-16"></div><p className="font-bold underline">(HAVIS AKBAR, S.H., M.Kn.)</p></div>
                   </A4Container>
-                  <div className="h-8 bg-gray-200 no-print"></div>
                 </div>
               ))}
             </div>
