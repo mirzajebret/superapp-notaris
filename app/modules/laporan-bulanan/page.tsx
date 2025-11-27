@@ -237,8 +237,6 @@ export default function LapbulModulePage() {
     };
     html2pdf().set(opt).from(element).save();
   };
-
-  // --- LOGIC REKAP PPAT ---
   // --- REVISI: LOGIC REKAP PPAT ---
   const ppatSummary = useMemo(() => {
     // Inisialisasi counter untuk semua kategori baku agar tetap muncul meski 0
@@ -369,6 +367,8 @@ export default function LapbulModulePage() {
                   <div className="grid grid-cols-2 gap-2"><input className="border p-2 rounded text-xs" placeholder="Harga Transaksi" value={formState.detailPPAT.nilaiTransaksi} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, nilaiTransaksi: e.target.value } })} /><input className="border p-2 rounded text-xs" placeholder="NJOP" value={formState.detailPPAT.njop} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, njop: e.target.value } })} /></div>
                   <input className="w-full border p-2 rounded text-xs" placeholder="NOP" value={formState.detailPPAT.nop} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, nop: e.target.value } })} />
                   <div className="grid grid-cols-2 gap-2"><input className="border p-2 rounded text-xs" placeholder="SSP (Rp)" value={formState.detailPPAT.ssp} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, ssp: e.target.value } })} /><input className="border p-2 rounded text-xs" placeholder="SSB (Rp)" value={formState.detailPPAT.ssb} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, ssb: e.target.value } })} /></div>
+                  {/* TANGGAL SSP & SSB */}
+                  <div className="grid grid-cols-2 gap-2"><input type="date" className="w-full border p-2 rounded" value={formState.detailPPAT.tglSsp} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, tglSsp: e.target.value } })} /><input type="date" className="w-full border p-2 rounded" value={formState.detailPPAT.tglSsb} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, tglSsb: e.target.value } })} /></div>
                 </div>
               )}
 
@@ -420,7 +420,7 @@ export default function LapbulModulePage() {
 
           <div className="lg:col-span-9 space-y-8 overflow-auto h-[calc(100vh-150px)] pr-2">
             {/* SURAT PENGANTAR (4 HALAMAN) */}
-            <div ref={ppatLetterRef}>
+            <div ref={ppatLetterRef} id="print-lampiran-area">
               {[
                 { to: 'Kepala Kantor\nBadan Pertanahan Nasional\n Kabupaten Garut', address: 'Jl. Suherman, Desa Jati,\nTarogong Kaler, Kabupaten Garut 44151' },
                 { to: 'Kepala Kantor Wilayah\nBadan Pertanahan Nasional \nProvinsi Jawa Barat', address: 'Jl. Soekarno Hatta No. 586\nSekejati, Kec. BuahBatu,\nKota Bandung 40286' },
@@ -440,7 +440,7 @@ export default function LapbulModulePage() {
                           {/* Kolom 2: Isi Kiri (40%) */}
                           <td className="w-[40%] align-top py-0.5">: 01/PPAT/HA/{getRomanMonth(selectedMonth)}/{selectedYear}</td>
                           {/* Kolom 3: Kanan (45%) - Ada padding kiri agar tidak mepet */}
-                          <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateIndo(new Date().toISOString())}</td>
+                          <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date().toISOString())}</td>
                         </tr>
 
                         {/* BARIS 2: Lampiran & Kepada Yth */}
@@ -507,7 +507,6 @@ export default function LapbulModulePage() {
             </div>
 
             {/* LAMPIRAN LANDSCAPE */}
-            {/* LAMPIRAN LANDSCAPE */}
             <div ref={ppatLampiranRef} id="print-lampiran-area">
               {[
                 { to: 'Kepala Kantor\nBadan Pertanahan Nasional Kabupaten Garut', address: 'Jl. Suherman, Desa Jati, Tarogong Kaler, Kabupaten Garut 44151' },
@@ -542,7 +541,7 @@ export default function LapbulModulePage() {
 
                     <div className="text-center font-bold mb-4 text-[11pt]">
                       <p>LAPORAN BULANAN PEMBUATAN AKTA OLEH PPAT</p>
-                      <p>BULAN {MONTHS[selectedMonth - 1].toUpperCase()} TAHUN {selectedYear}</p>
+                      <p>BULAN {MONTHS[selectedMonth - 2].toUpperCase()} TAHUN {selectedYear}</p>
                     </div>
 
                     <table className="w-full text-[6pt] border border-gray-300 border-collapse">
@@ -583,7 +582,7 @@ export default function LapbulModulePage() {
                       </thead>
                       <tbody>
                         {ppatRecords.length === 0 ? (
-                          <tr><td colSpan={18} className="text-center py-6 text-gray-500 text-sm">NIHIL</td></tr>
+                          <tr><td colSpan={18} className="text-center py-6 text-gray-500 text-sm">0 (nihil)</td></tr>
                         ) : (
                           ppatRecords.map((record, index) => {
                             const mengalihkan = record.pihak.filter(p => /penjual|pemberi|ahli waris|pemilik/i.test(p.role)).map(p => p.name).join(', ');
@@ -618,7 +617,7 @@ export default function LapbulModulePage() {
                     </table>
 
                     <div className="mt-8 flex justify-end text-[10pt] font-serif text-center">
-                      <div><p>Garut, {formatDateIndo(new Date().toISOString())}</p><div className="h-20"></div><p className="font-bold underline">HAVIS AKBAR, S.H., M.Kn.</p></div>
+                      <div><p>Garut, {formatDateLong(new Date().toISOString())}</p><div className="h-20"></div><p className="font-bold underline">HAVIS AKBAR, S.H., M.Kn.</p></div>
                     </div>
                   </div>
                   {/* Spacer no-print */}
@@ -646,18 +645,63 @@ export default function LapbulModulePage() {
             <div ref={notarisLetterRef}>
               <A4Container className="print-wrapper font-serif text-black">
                 <KopSurat />
-                <div className="text-[11pt] leading-relaxed mt-6">
-                  <table className="w-full mb-6"><tbody><tr><td className="w-24">Nomor</td><td>: 01/NOT/HA/X/{selectedYear}</td></tr><tr><td>Lampiran</td><td>: 5 (lima) Berkas</td></tr><tr><td>Perihal</td><td>: Laporan Bulanan {MONTHS[selectedMonth - 1]} {selectedYear}</td></tr></tbody></table>
-                  <div className="mb-6"><p>Garut, {formatDateLong(new Date().toISOString())}</p><p className="mt-4">Kepada Yth,</p><p className="font-bold">Ketua Majelis Pengawas Daerah</p><p className="font-bold">Notaris Kabupaten Garut</p><p>Kampus STH Garut, Jl. Hasan Arief No. 2</p><p>di - Garut</p></div>
-                  <p className="mb-4 text-justify">Dengan Hormat,<br />Bersama ini, saya Havis Akbar, S.H., M.Kn. selaku Notaris di Kabupaten Garut, menyampaikan kepada Majelis Pengawas Daerah Kabupaten Garut untuk dicatat dalam Register dan disimpan, yaitu masing-masing 1 (satu) Salinan :</p>
+                <div className="text-[11pt] leading-[1.3] mt-6">
+                  <table className="text-[11pt] font-serif mb-3 w-full border-collapse">
+                    <tbody>
+                      {/* BARIS 1: Nomor & Tanggal */}
+                      <tr>
+                        {/* Kolom 1: Label Kiri (15%) */}
+                        <td className="w-[15%] align-top py-0.5">Nomor</td>
+                        {/* Kolom 2: Isi Kiri (40%) */}
+                        <td className="w-[40%] align-top py-0.5">: 01/NOT/HA/{getRomanMonth(selectedMonth)}/{selectedYear}</td>
+                        {/* Kolom 3: Kanan (45%) - Ada padding kiri agar tidak mepet */}
+                        <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date().toISOString())}</td>
+                      </tr>
+
+                      {/* BARIS 2: Lampiran & Kepada Yth */}
+                      <tr>
+                        <td className="align-top py-0.5">Lampiran</td>
+                        <td className="align-top py-0.5">: 5 (lima) Berkas</td>
+                        <td className="align-top py-0.5 pl-8 block">Kepada Yth,</td>
+                      </tr>
+
+                      {/* BARIS 3: Perihal & Nama Penerima */}
+                      <tr>
+                        <td className="align-top py-0.5">Perihal</td>
+                        <td className="align-top py-0.5 pr-2 leading-tight">
+                          <div className="flex">
+                            <span className="mr-1">:</span>
+                            <span className="w-[60%]">Laporan Bulanan Notaris  {MONTHS[selectedMonth - 2]} {selectedYear}</span>
+                          </div>
+                        </td>
+                        {/* Nama Penerima (Bold) */}
+                        <td className="align-top py-0.5 pl-8 font-bold whitespace-pre-line leading-tight">
+                          Ketua Majelis Pengawas Daerah Notaris Kabupaten Garut
+                        </td>
+                      </tr>
+
+                      {/* BARIS 4: Kosong Kiri & 'di' Kanan */}
+                      <tr>
+                        <td className="align-top"></td>
+                        <td className="align-top"></td>
+                        <td className="align-top pl-8 py-0.5">Kampus STH Garut
+                          Jalan  Hasan Arief No. 2
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                  <p className="mb-4 text-justify">Dengan Hormat,<br />Bersama ini, saya Havis Akbar, S.H., M.Kn. selaku Notaris di Kabupaten Garut, dengan ini menyampaikan kepada Majelis Pengawas Daerah Kabupaten Garut untuk dicatat dalam Register dan disimpan di Majelis Pengawas Daerah Kabupaten Garut, yaitu masing-masing 1 (satu) Salinan :</p>
                   <ol className="list-decimal pl-5 space-y-2 mb-6">
-                    <li><strong>Daftar Akta,</strong> Laporan Bulan {MONTHS[selectedMonth - 1]}: {notarisRecords.filter(r => r.kategori === 'Akta').length} Akta.</li>
-                    <li><strong>Legalisasi,</strong> Laporan Bulan {MONTHS[selectedMonth - 1]}: {notarisRecords.filter(r => r.kategori === 'Legalisasi').length} Akta.</li>
-                    <li><strong>Waarmerking,</strong> Laporan Bulan {MONTHS[selectedMonth - 1]}: {notarisRecords.filter(r => r.kategori === 'Waarmerking').length} Akta.</li>
-                    <li><strong>Protes,</strong> Laporan Bulan {MONTHS[selectedMonth - 1]}: Nihil.</li>
-                    <li><strong>Wasiat,</strong> Laporan Bulan {MONTHS[selectedMonth - 1]}: Nihil.</li>
+                    <li>Daftar Akta, yang terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {notarisRecords.filter(r => r.kategori === 'Akta').length} Akta.</li>
+                    <li>Daftar Surat Dibawah Tangan yang disahkan terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {notarisRecords.filter(r => r.kategori === 'Legalisasi').length} Akta.
+                      <br />Daftar Surat Dibawah Tangan yang dibukukan terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {notarisRecords.filter(r => r.kategori === 'Waarmerking').length} Akta.
+                    </li>
+                    <li>Daftar Protes seperti yang dimaksud dalam Pasal 143 C dan Pasal 218 C Kitab Undang - Undang Hukum Perniagaan, yang terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {notarisRecords.filter(r => r.kategori === 'Protes').length} Akta.</li>
+                    <li>Daftar Wasiat, yang terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {notarisRecords.filter(r => r.kategori === 'Wasiat').length} Akta.</li>
                   </ol>
-                  <div className="mt-12"><p>Notaris Kabupaten Garut</p><div className="h-20"></div><p className="font-bold underline">Havis Akbar, S.H., M.Kn.</p></div>
+                  <p className="mb-4 text-justify">Untuk memenuhi ketentuan Pasal 61 ayat (1) undang – undang Nomor 30 Tahun 2004 tentang Jabatan Notaris. Atas perhatian dan kerjasamanya kami ucapkan terima kasih.</p>
+                  <div className="mt-12 text-right"><p className="pr-2">Notaris Kabupaten Garut</p><div className="h-20"></div><p className="font-bold">Havis Akbar, S.H., M.Kn.</p></div>
                 </div>
               </A4Container>
             </div>
