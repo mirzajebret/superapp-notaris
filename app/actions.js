@@ -431,3 +431,88 @@ export async function processGarisAkta(formData) {
     return { success: false, message: "Gagal memproses garis akta. Pastikan Python terinstall." };
   }
 }
+
+// ... existing code ...
+
+// --- FUNCTION UNTUK TIMELINE PEKERJAAN ---
+
+export async function getJobs() {
+  const filePath = await ensureFile('daftar-pekerjaan.json');
+  return readJson(filePath);
+}
+
+export async function saveJob(jobData) {
+  const filePath = await ensureFile('daftar-pekerjaan.json');
+  const jobs = await readJson(filePath);
+
+  const existingIndex = jobs.findIndex(j => j.id === jobData.id);
+  
+  if (existingIndex > -1) {
+    // Update existing
+    jobs[existingIndex] = { ...jobs[existingIndex], ...jobData };
+  } else {
+    // Create new
+    const newJob = {
+      id: `JOB-${Date.now()}`,
+      createdAt: new Date().toISOString(),
+      history: [], // Init empty history for new job
+      ...jobData
+    };
+    jobs.unshift(newJob); // Add to top
+  }
+
+  await writeJson(filePath, jobs);
+  return { success: true };
+}
+
+export async function deleteJob(id) {
+  const filePath = await ensureFile('daftar-pekerjaan.json');
+  let jobs = await readJson(filePath);
+  jobs = jobs.filter(j => j.id !== id);
+  await writeJson(filePath, jobs);
+  return { success: true };
+}
+
+// Helper khusus untuk menambah/edit history item tanpa mengirim seluruh objek job
+export async function saveTimelineItem(jobId, historyItem) {
+  const filePath = await ensureFile('daftar-pekerjaan.json');
+  const jobs = await readJson(filePath);
+  const jobIndex = jobs.findIndex(j => j.id === jobId);
+
+  if (jobIndex === -1) throw new Error('Job not found');
+
+  const job = jobs[jobIndex];
+  const historyIndex = job.history.findIndex(h => h.id === historyItem.id);
+
+  if (historyIndex > -1) {
+    // Update existing history item
+    job.history[historyIndex] = { ...job.history[historyIndex], ...historyItem };
+  } else {
+    // Add new history item
+    const newItem = {
+      id: `h${Date.now()}`,
+      ...historyItem
+    };
+    job.history.push(newItem);
+  }
+
+  // Sort history by date descending (newest first) or ascending depending on preference
+  // Here we keep it flexible, usually UI sorts it.
+  
+  jobs[jobIndex] = job;
+  await writeJson(filePath, jobs);
+  return { success: true };
+}
+
+export async function deleteTimelineItem(jobId, historyId) {
+  const filePath = await ensureFile('daftar-pekerjaan.json');
+  const jobs = await readJson(filePath);
+  const jobIndex = jobs.findIndex(j => j.id === jobId);
+
+  if (jobIndex === -1) throw new Error('Job not found');
+
+  jobs[jobIndex].history = jobs[jobIndex].history.filter(h => h.id !== historyId);
+  
+  await writeJson(filePath, jobs);
+  return { success: true };
+}

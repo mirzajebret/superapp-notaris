@@ -1,0 +1,184 @@
+[
+  {
+    "id": "JOB-1764317468623",
+    "createdAt": "2025-11-28T08:11:08.623Z",
+    "history": [
+      {
+        "id": "h1764320553067",
+        "date": "2025-11-11T06:30:00.000Z",
+        "title": "Berkas Masuk",
+        "description": " Berkas Masuk dari Klien",
+        "status": "Done"
+      },
+      {
+        "id": "h1764320615048",
+        "date": "2025-11-21T09:03:00.000Z",
+        "title": "Drafting Akta",
+        "description": "Membuat draft Akta Pendirian Perkumpulan ",
+        "status": "Done"
+      },
+      {
+        "id": "h1764320692007",
+        "date": "2025-11-24T04:30:00.000Z",
+        "title": "Input AHU",
+        "description": "Input Akta & Data Perkumpulan ke AHU",
+        "status": "Done"
+      },
+      {
+        "id": "h1764320792161",
+        "date": "2025-11-24T05:30:00.000Z",
+        "title": "Daftar SK Pendirian Perkumpulan",
+        "description": "Verifikasi Berkas oleh AHU",
+        "status": "On Progress"
+      }
+    ],
+    "clientName": "Perkumpulan P4KP",
+    "serviceName": "Pendirian Perkumpulan",
+    "status": "Baru",
+    "priority": "High",
+    "startDate": "2025-11-25",
+    "targetDate": "2025-12-24",
+    "pic": "Mirza"
+  },
+  {
+    "id": "JOB-001",
+    "clientName": "PT. WE TECH",
+    "serviceName": "Apostille Dokumen",
+    "status": "Menunggu Verifikasi",
+    "priority": "High",
+    "startDate": "2025-11-20",
+    "targetDate": "2025-11-30",
+    "pic": "Mirza",
+    "history": [
+      {
+        "id": "h1",
+        "date": "2025-10-17T06:40:00.000Z",
+        "title": "Berkas Masuk",
+        "description": "Berkas Masuk & Pembuatan Invoice ",
+        "status": "Done"
+      },
+      {
+        "id": "h2",
+        "date": "2025-11-26T14:00:00.000Z",
+        "title": "Mengirim Invoice Apostile Final",
+        "description": "Mengirim Invoice Apostile Final ke PT WE TECH dan Draft Surat Kuasa Apostile",
+        "status": "Done"
+      },
+      {
+        "id": "h3",
+        "date": "2025-11-27T02:51:00.000Z",
+        "title": "Surat Kuasa di Terima Dari Klien",
+        "description": "Surat Kuasa atas nama:\n- Saepul Khaerul Anam\n- Park Sung Min\nyang sudah di ttd & materai di terima dari klien",
+        "status": "Done"
+      },
+      {
+        "id": "h1764314728814",
+        "date": "2025-11-27T07:34:00.000Z",
+        "title": "Input Dokumen Apostille ",
+        "description": "Data & dokumen sudah diinput ke https://apostille.ahu.go.id/ tinggal menunggu proses verifikasi\n",
+        "status": "On Progress"
+      }
+    ]
+  },
+  {
+    "id": "JOB-002",
+    "clientName": "PT. MINI AIR MENGALIR",
+    "serviceName": "Perubahan Data Perseroan",
+    "status": "Terkendala",
+    "priority": "Medium",
+    "startDate": "2025-11-25",
+    "targetDate": "0001-01-01",
+    "pic": "Nepi",
+    "history": [
+      {
+        "id": "h1764321132059",
+        "date": "2025-11-28T09:10:19.419Z",
+        "title": "Email Permohonan cabut blokir PT",
+        "description": "Beremail ke AHU untuk cabut blokir PT Mini Air Mengalir\n- followup.bo@ahu.go.id\n- cs@ahu.go.id",
+        "status": "On Progress"
+      },
+      {
+        "id": "h1764319783561",
+        "date": "2025-11-27T07:49:00.000Z",
+        "title": "Pengkinian Data PT ",
+        "description": "Pembuatan surat kuasa & proses pengkinian data di bo.ahu.go.id",
+        "status": "Done"
+      },
+      {
+        "id": "h1764319735759",
+        "date": "2025-11-27T07:36:00.000Z",
+        "title": "Beli Voucher & Input AHU",
+        "description": "Beli Voucher Perubahan PT & Input AHU\n\n* Untuk sementara perseroan MINI AIR MENGALIR tidak dapat melakukan akses perubahan",
+        "status": "Issue"
+      },
+      {
+        "id": "h1764317312223",
+        "date": "2025-11-11T07:32:00.000Z",
+        "title": "Kirim Hard Copy Akta Perubahan ",
+        "description": "Kirim Minuta Akta Perubahan ke Kota Jakarta via JNE",
+        "status": "Done"
+      },
+      {
+        "id": "h2",
+        "date": "2025-11-04T09:54:00.000Z",
+        "title": "Drafting Akta ",
+        "description": "Membuat draft perubahan Saham dan Direksi dengan data terlampir.\n- Sirkuler PT Mini Air Mengalir\n- Jual Beli Saham PT Mini Air Mengalir (2)\n- PKR PT Mini Air Mengalir",
+        "status": "Done"
+      },
+      {
+        "id": "h1",
+        "date": "2025-10-04T06:40:00.000Z",
+        "title": "Berkas Masuk ",
+        "description": "Berkas Masuk dari Klien & Pembuatan Invoice",
+        "status": "Done"
+      }
+    ]
+  },
+  {
+    "id": "JOB-003",
+    "clientName": "Koperasi Produsen BLG",
+    "serviceName": "Daftar NIB (OSS)",
+    "status": "Proses",
+    "priority": "Normal",
+    "startDate": "2025-11-27",
+    "targetDate": "2025-11-29",
+    "pic": "Mirza",
+    "history": [
+      {
+        "id": "h1764320023750",
+        "date": "2025-11-28T08:53:09.163Z",
+        "title": "Daftar NIB Koperasi",
+        "description": "Input selesai, menunggu verifikasi persyaratan dasar",
+        "status": "On Progress"
+      },
+      {
+        "id": "h1764319986022",
+        "date": "2025-11-28T08:52:07.268Z",
+        "title": "Cetak SK & NPWP Koperasi",
+        "description": "Cetak SK & Daftar NPWP di Coretax",
+        "status": "Done"
+      },
+      {
+        "id": "h1764319889126",
+        "date": "2025-11-28T08:51:16.020Z",
+        "title": "Input AHU",
+        "description": "Upload Akta dan isi data Koperasi di AHU",
+        "status": "Done"
+      },
+      {
+        "id": "h1764319873550",
+        "date": "2025-11-28T08:50:52.643Z",
+        "title": "Akad",
+        "description": "Akad Akta & TTD Minuta",
+        "status": "Done"
+      },
+      {
+        "id": "h1764319849700",
+        "date": "2025-11-28T08:50:11.171Z",
+        "title": "Membuat Akta Pendirian Koperasi ",
+        "description": "Membuat Draft Akta Pendirian Koperasi Bumi Lestari Garut",
+        "status": "Done"
+      }
+    ]
+  }
+]

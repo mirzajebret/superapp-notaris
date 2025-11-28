@@ -18,6 +18,7 @@ import {
 
 const menuItems = [
   { name: 'Dashboard', icon: LayoutDashboard, href: '/' },
+  { name: 'Timeline Pekerjaan', icon: CalendarSync, href: '/modules/timeline-pekerjaan' },
   { name: 'Invoice', icon: FileText, href: '/modules/invoice' },
   { name: 'Serah Terima Dokumen', icon: FolderInput, href: '/modules/serah-terima' },
   { name: 'Daftar Hadir', icon: Users, href: '/modules/daftar-hadir' },
@@ -64,8 +65,7 @@ export default function Sidebar() {
 
       <div className="p-4 border-t border-gray-100">
         <button className="flex items-center gap-3 px-3 py-2 text-gray-600  rounded-lg w-full transition text-white">
-          <Settings size={18} />
-          <span className="text-sm font-medium">Pengaturan</span>
+          <span className="text-sm font-medium">© assidiqiemirza@gmail.com</span>
         </button>
       </div>
     </aside>
