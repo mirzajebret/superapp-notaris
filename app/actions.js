@@ -446,7 +446,7 @@ export async function saveJob(jobData) {
   const jobs = await readJson(filePath);
 
   const existingIndex = jobs.findIndex(j => j.id === jobData.id);
-  
+
   if (existingIndex > -1) {
     // Update existing
     jobs[existingIndex] = { ...jobs[existingIndex], ...jobData };
@@ -498,7 +498,7 @@ export async function saveTimelineItem(jobId, historyItem) {
 
   // Sort history by date descending (newest first) or ascending depending on preference
   // Here we keep it flexible, usually UI sorts it.
-  
+
   jobs[jobIndex] = job;
   await writeJson(filePath, jobs);
   return { success: true };
@@ -512,7 +512,49 @@ export async function deleteTimelineItem(jobId, historyId) {
   if (jobIndex === -1) throw new Error('Job not found');
 
   jobs[jobIndex].history = jobs[jobIndex].history.filter(h => h.id !== historyId);
-  
+
   await writeJson(filePath, jobs);
+  return { success: true };
+}
+
+// --- FUNCTION UNTUK WA FORMS ---
+
+export async function getWaForms() {
+  const filePath = await ensureFile('whatsapp-forms.json');
+  return readJson(filePath);
+}
+
+export async function saveWaForm(formData) {
+  const filePath = await ensureFile('whatsapp-forms.json');
+  const forms = await readJson(filePath);
+
+  const existingIndex = forms.findIndex(f => f.id === formData.id);
+
+  if (existingIndex > -1) {
+    // Update existing
+    forms[existingIndex] = {
+      ...forms[existingIndex],
+      ...formData,
+      lastUpdated: new Date().toISOString()
+    };
+  } else {
+    // Create new
+    const newForm = {
+      id: `WAF-${Date.now()}`,
+      lastUpdated: new Date().toISOString(),
+      ...formData
+    };
+    forms.unshift(newForm); // Add to top
+  }
+
+  await writeJson(filePath, forms);
+  return { success: true };
+}
+
+export async function deleteWaForm(id) {
+  const filePath = await ensureFile('whatsapp-forms.json');
+  let forms = await readJson(filePath);
+  forms = forms.filter(f => f.id !== id);
+  await writeJson(filePath, forms);
   return { success: true };
 }

@@ -4,10 +4,17 @@
     "createdAt": "2025-11-28T08:11:08.623Z",
     "history": [
       {
-        "id": "h1764320553067",
-        "date": "2025-11-11T06:30:00.000Z",
-        "title": "Berkas Masuk",
-        "description": " Berkas Masuk dari Klien",
+        "id": "h1764320792161",
+        "date": "2025-12-01T04:47:00.000Z",
+        "title": "Daftar SK Pendirian Perkumpulan",
+        "description": "Verifikasi Berkas oleh AHU",
+        "status": "On Progress"
+      },
+      {
+        "id": "h1764320692007",
+        "date": "2025-11-24T04:30:00.000Z",
+        "title": "Input AHU",
+        "description": "Input Akta & Data Perkumpulan ke AHU",
         "status": "Done"
       },
       {
@@ -18,24 +25,17 @@
         "status": "Done"
       },
       {
-        "id": "h1764320692007",
-        "date": "2025-11-24T04:30:00.000Z",
-        "title": "Input AHU",
-        "description": "Input Akta & Data Perkumpulan ke AHU",
+        "id": "h1764320553067",
+        "date": "2025-11-11T06:30:00.000Z",
+        "title": "Berkas Masuk",
+        "description": " Berkas Masuk dari Klien",
         "status": "Done"
-      },
-      {
-        "id": "h1764320792161",
-        "date": "2025-11-24T05:30:00.000Z",
-        "title": "Daftar SK Pendirian Perkumpulan",
-        "description": "Verifikasi Berkas oleh AHU",
-        "status": "On Progress"
       }
     ],
     "clientName": "Perkumpulan P4KP",
     "serviceName": "Pendirian Perkumpulan",
     "status": "Baru",
-    "priority": "High",
+    "priority": "Normal",
     "startDate": "2025-11-25",
     "targetDate": "2025-12-24",
     "pic": "Mirza"
@@ -45,16 +45,23 @@
     "clientName": "PT. WE TECH",
     "serviceName": "Apostille Dokumen",
     "status": "Menunggu Verifikasi",
-    "priority": "High",
+    "priority": "Medium",
     "startDate": "2025-11-20",
     "targetDate": "2025-11-30",
     "pic": "Mirza",
     "history": [
       {
-        "id": "h1",
-        "date": "2025-10-17T06:40:00.000Z",
-        "title": "Berkas Masuk",
-        "description": "Berkas Masuk & Pembuatan Invoice ",
+        "id": "h1764314728814",
+        "date": "2025-11-27T04:47:00.000Z",
+        "title": "Input Dokumen Apostille ",
+        "description": "Data & dokumen sudah diinput ke https://apostille.ahu.go.id/ tinggal menunggu proses verifikasi\n",
+        "status": "On Progress"
+      },
+      {
+        "id": "h3",
+        "date": "2025-11-27T02:51:00.000Z",
+        "title": "Surat Kuasa di Terima Dari Klien",
+        "description": "Surat Kuasa atas nama:\n- Saepul Khaerul Anam\n- Park Sung Min\nyang sudah di ttd & materai di terima dari klien",
         "status": "Done"
       },
       {
@@ -65,18 +72,11 @@
         "status": "Done"
       },
       {
-        "id": "h3",
-        "date": "2025-11-27T02:51:00.000Z",
-        "title": "Surat Kuasa di Terima Dari Klien",
-        "description": "Surat Kuasa atas nama:\n- Saepul Khaerul Anam\n- Park Sung Min\nyang sudah di ttd & materai di terima dari klien",
+        "id": "h1",
+        "date": "2025-10-17T06:40:00.000Z",
+        "title": "Berkas Masuk",
+        "description": "Berkas Masuk & Pembuatan Invoice ",
         "status": "Done"
-      },
-      {
-        "id": "h1764314728814",
-        "date": "2025-11-27T07:34:00.000Z",
-        "title": "Input Dokumen Apostille ",
-        "description": "Data & dokumen sudah diinput ke https://apostille.ahu.go.id/ tinggal menunggu proses verifikasi\n",
-        "status": "On Progress"
       }
     ]
   },
@@ -85,11 +85,18 @@
     "clientName": "PT. MINI AIR MENGALIR",
     "serviceName": "Perubahan Data Perseroan",
     "status": "Terkendala",
-    "priority": "Medium",
+    "priority": "Normal",
     "startDate": "2025-11-25",
     "targetDate": "0001-01-01",
-    "pic": "Nepi",
+    "pic": "Mirza, Teh Nepi",
     "history": [
+      {
+        "id": "h1764564773805",
+        "date": "2025-12-01T04:52:44.959Z",
+        "title": "Menunggu Update Dari AHU",
+        "description": "",
+        "status": "On Progress"
+      },
       {
         "id": "h1764321132059",
         "date": "2025-11-28T09:10:19.419Z",
@@ -139,16 +146,16 @@
     "clientName": "Koperasi Produsen BLG",
     "serviceName": "Daftar NIB (OSS)",
     "status": "Proses",
-    "priority": "Normal",
+    "priority": "High",
     "startDate": "2025-11-27",
     "targetDate": "2025-11-29",
     "pic": "Mirza",
     "history": [
       {
         "id": "h1764320023750",
-        "date": "2025-11-28T08:53:09.163Z",
+        "date": "2025-12-01T06:28:00.000Z",
         "title": "Daftar NIB Koperasi",
-        "description": "Input selesai, menunggu verifikasi persyaratan dasar",
+        "description": "> Membuat file polygon\n> Input profil badan usaha\n> Menunggu verifikasi persyaratan dasar\n> Status Pengiriman Data \"Terkirim\"\n> Menghubungi Kementerian ATR/BPN untuk progres PKKPR lebih lanjut ke email: surat@atrbpn.go.id & pelayananpublik.djtr@gmail.com ",
         "status": "On Progress"
       },
       {

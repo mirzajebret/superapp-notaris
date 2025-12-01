@@ -27,6 +27,7 @@ const menuItems = [
   { name: 'Draft Akta', icon: FileStack, href: '/modules/bank-draft' },
   { name: 'Penggaris Akta', icon: DraftingCompass, href: '/modules/penggaris-akta' },
   { name: 'Kalkulator Pajak', icon: Calculator, href: '/modules/kalkulator-pajak' },
+  { name: 'WhatsApp Forms', icon: FileStack, href: '/modules/whatsapp-forms' },
 ];
 
 export default function Sidebar() {
@@ -63,7 +64,7 @@ export default function Sidebar() {
         })}
       </nav>
 
-      <div className="p-4 border-t border-gray-100">
+      <div className="border-t border-gray-100">
         <button className="flex items-center gap-3 px-3 py-2 text-gray-600  rounded-lg w-full transition text-white">
           <span className="text-sm font-medium">© assidiqiemirza@gmail.com</span>
         </button>
