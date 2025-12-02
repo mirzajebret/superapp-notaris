@@ -233,57 +233,5 @@
     "bulanPelaporan": 11,
     "tahunPelaporan": 2025,
     "nomorBulanan": "44"
-  },
-  {
-    "id": "1764171564057",
-    "createdAt": "2025-11-26T15:39:24.057Z",
-    "jenis": "PPAT",
-    "nomorAkta": "03/2025",
-    "tanggalAkta": "2025-09-25",
-    "judulAkta": "Akta Jual Beli",
-    "kategori": "Akta",
-    "pihak": [
-      {
-        "name": "YUYUS HERDIYANTO, Kampung Babakan Koropeak, RT 003/RW 012, Kelurahan Suci Kaler, Kecamatan Karangpawitan, Kabupaten Garut",
-        "role": "Pihak Pengalih / Penghadap"
-      }
-    ],
-    "detailPPAT": {
-      "nop": "32.07.161.00 2.006- 0249.0/2025",
-      "njop": "15147",
-      "luasTanah": "561 m2 ",
-      "luasBangunan": "- ",
-      "lokasiObjek": "Blok Kuyambut, Desa Tanjungkamuning, Kecamatan Tarogong Kaler, Kabupaten Garut",
-      "nilaiTransaksi": "90000000",
-      "ssp": "2250000",
-      "tglSsp": "2025-11-25",
-      "ssb": "500000",
-      "tglSsb": "2025-11-24",
-      "jenisHak": "MILIK ADAT KOHIR C NOMOR 947, PERSIL 7C, KELAS VII",
-      "pihakPenerima": "ASEP RUSMAWAN, Kampung Patrol, RT 003/ RW 003, Desa Sindangpalay, Kecamatan Karangpawitan, Kabupaten Garut"
-    },
-    "bulanPelaporan": 11,
-    "tahunPelaporan": 2025,
-    "nomorBulanan": ""
-  },
-  {
-    "id": "1764644513423",
-    "createdAt": "2025-12-02T03:01:53.423Z",
-    "jenis": "Notaris",
-    "nomorAkta": "1",
-    "tanggalAkta": "2025-11-30",
-    "judulAkta": "testdb",
-    "kategori": "Akta",
-    "pihak": [
-      {
-        "name": "testdb",
-        "role": "Pihak Pengalih / Penghadap",
-        "actingCapacity": "self",
-        "representedParties": []
-      }
-    ],
-    "bulanPelaporan": 12,
-    "tahunPelaporan": 2025,
-    "nomorBulanan": "1"
   }
 ]

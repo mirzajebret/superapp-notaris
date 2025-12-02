@@ -634,9 +634,9 @@ export default function LapbulModulePage() {
                           {/* Kolom 1: Label Kiri (15%) */}
                           <td className="w-[15%] align-top py-0.5">Nomor</td>
                           {/* Kolom 2: Isi Kiri (40%) */}
-                          <td className="w-[40%] align-top py-0.5">: {(idx + 1).toString().padStart(2, '0')}/PPAT/HA/{getRomanMonth(selectedMonth)}/{selectedYear}</td>
+                          <td className="w-[40%] align-top py-0.5">: {(idx + 1).toString().padStart(2, '0')}/PPAT/HA/{getRomanMonth(selectedMonth + 1)}/{selectedYear}</td>
                           {/* Kolom 3: Kanan (45%) - Ada padding kiri agar tidak mepet */}
-                          <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date().toISOString())}</td>
+                          <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 4).toISOString())}</td>
                         </tr>
 
                         {/* BARIS 2: Lampiran & Kepada Yth */}
@@ -681,7 +681,7 @@ export default function LapbulModulePage() {
                     </table>
 
                     <div className="text-[12pt] text-justify">
-                      <p className="mb-4">Dengan hormat,<br />Bersama dengan ini kami menyampaikan Laporan Bulanan Pembuatan Akta PPAT untuk Bulan <strong>{MONTHS[selectedMonth - 2].toUpperCase()} {selectedYear}</strong>, sesuai daftar terlampir dengan perincian sebagai berikut:</p>
+                      <p className="mb-4">Dengan hormat,<br />Bersama dengan ini kami menyampaikan Laporan Bulanan Pembuatan Akta PPAT untuk Bulan <strong>{MONTHS[selectedMonth - 1].toUpperCase()} {selectedYear}</strong>, sesuai daftar terlampir dengan perincian sebagai berikut:</p>
                       <div className="pl-12 mb-4">
                         <table className="w-full">
                           <tbody>
@@ -737,7 +737,7 @@ export default function LapbulModulePage() {
 
                     <div className="text-center font-bold mb-4 text-[11pt]">
                       <p>LAPORAN BULANAN PEMBUATAN AKTA OLEH PPAT</p>
-                      <p>BULAN {MONTHS[selectedMonth - 2].toUpperCase()} TAHUN {selectedYear}</p>
+                      <p>BULAN {MONTHS[selectedMonth - 1].toUpperCase()} TAHUN {selectedYear}</p>
                     </div>
 
                     <table className="w-full text-[6pt] border border-gray-300 border-collapse">
@@ -813,7 +813,7 @@ export default function LapbulModulePage() {
                     </table>
 
                     <div className="mt-8 flex justify-end text-[10pt] font-serif text-center">
-                      <div><p>Garut, {formatDateLong(new Date().toISOString())}</p><div className="h-20"></div><p className="font-bold underline">HAVIS AKBAR, S.H., M.Kn.</p></div>
+                      <div><p>Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 4).toISOString())}</p><div className="h-20"></div><p className="font-bold underline">HAVIS AKBAR, S.H., M.Kn.</p></div>
                     </div>
                   </div>
                   {/* Spacer no-print */}
@@ -850,9 +850,9 @@ export default function LapbulModulePage() {
                         {/* Kolom 1: Label Kiri (15%) */}
                         <td className="w-[15%] align-top py-0.5">Nomor</td>
                         {/* Kolom 2: Isi Kiri (40%) */}
-                        <td className="w-[40%] align-top py-0.5">: 01/NOT/HA/{getRomanMonth(selectedMonth)}/{selectedYear}</td>
+                        <td className="w-[40%] align-top py-0.5">: 01/NOT/HA/{getRomanMonth(selectedMonth + 1)}/{selectedYear}</td>
                         {/* Kolom 3: Kanan (45%) - Ada padding kiri agar tidak mepet */}
-                        <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date().toISOString())}</td>
+                        <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 4).toISOString())}</td>
                       </tr>
 
                       {/* BARIS 2: Lampiran & Kepada Yth */}
@@ -868,7 +868,7 @@ export default function LapbulModulePage() {
                         <td className="align-top py-0.5 pr-2 leading-tight">
                           <div className="flex">
                             <span className="mr-1">:</span>
-                            <span className="w-[60%]">Laporan Bulanan Notaris  {MONTHS[selectedMonth - 2]} {selectedYear}</span>
+                            <span className="w-[60%]">Laporan Bulanan Notaris  {MONTHS[selectedMonth - 1]} {selectedYear}</span>
                           </div>
                         </td>
                         {/* Nama Penerima (Bold) */}
@@ -890,12 +890,12 @@ export default function LapbulModulePage() {
                   </table>
                   <p className="mb-4 text-justify">Dengan Hormat,<br />Bersama ini, saya Havis Akbar, S.H., M.Kn. selaku Notaris di Kabupaten Garut, dengan ini menyampaikan kepada Majelis Pengawas Daerah Kabupaten Garut untuk dicatat dalam Register dan disimpan di Majelis Pengawas Daerah Kabupaten Garut, yaitu masing-masing 1 (satu) Salinan :</p>
                   <ol className="list-decimal pl-5 space-y-2 mb-6">
-                    <li>Daftar Akta, yang terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {formatDeedCount(notarisRecords.filter(r => r.kategori === 'Akta').length)} Akta.</li>
-                    <li>Daftar Surat Dibawah Tangan yang disahkan terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {formatDeedCount(notarisRecords.filter(r => r.kategori === 'Legalisasi').length)} Akta.
-                      <br />Daftar Surat Dibawah Tangan yang dibukukan terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {formatDeedCount(notarisRecords.filter(r => r.kategori === 'Waarmerking').length)} Akta.
+                    <li>Daftar Akta, yang terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 1]} {selectedYear}: {formatDeedCount(notarisRecords.filter(r => r.kategori === 'Akta').length)} Akta.</li>
+                    <li>Daftar Surat Dibawah Tangan yang disahkan terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 1]} {selectedYear}: {formatDeedCount(notarisRecords.filter(r => r.kategori === 'Legalisasi').length)} Akta.
+                      <br />Daftar Surat Dibawah Tangan yang dibukukan terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 1]} {selectedYear}: {formatDeedCount(notarisRecords.filter(r => r.kategori === 'Waarmerking').length)} Akta.
                     </li>
-                    <li>Daftar Protes seperti yang dimaksud dalam Pasal 143 C dan Pasal 218 C Kitab Undang - Undang Hukum Perniagaan, yang terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {formatDeedCount(notarisRecords.filter(r => r.kategori === 'Protes').length)} Akta.</li>
-                    <li>Daftar Wasiat, yang terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 2]} {selectedYear}: {formatDeedCount(notarisRecords.filter(r => r.kategori === 'Wasiat').length)} Akta.</li>
+                    <li>Daftar Protes seperti yang dimaksud dalam Pasal 143 C dan Pasal 218 C Kitab Undang - Undang Hukum Perniagaan, yang terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 1]} {selectedYear}: {formatDeedCount(notarisRecords.filter(r => r.kategori === 'Protes').length)} Akta.</li>
+                    <li>Daftar Wasiat, yang terdiri dari : <br />Laporan Bulan {MONTHS[selectedMonth - 1]} {selectedYear}: {formatDeedCount(notarisRecords.filter(r => r.kategori === 'Wasiat').length)} Akta.</li>
                   </ol>
                   <p className="mb-4 text-justify">Untuk memenuhi ketentuan Pasal 61 ayat (1) undang – undang Nomor 30 Tahun 2004 tentang Jabatan Notaris. Atas perhatian dan kerjasamanya kami ucapkan terima kasih.</p>
                   <div className="mt-12 text-right"><p className="pr-2">Notaris Kabupaten Garut</p><div className="h-20"></div><p className="font-bold">Havis Akbar, S.H., M.Kn.</p></div>
@@ -1071,7 +1071,7 @@ export default function LapbulModulePage() {
                     </table>
                     <div className="mt-5 text-[11pt] text-right">
                       <p>Salinan ini sesuai dengan aslinya,</p>
-                      <p>Garut, {formatDateLong(new Date().toISOString())}</p>
+                      <p>Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 4).toISOString())}</p>
                       <div className="h-16"></div>
                       <p className="font-bold">(HAVIS AKBAR, S.H., M.Kn.)</p>
                     </div>
