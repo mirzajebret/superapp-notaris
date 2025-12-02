@@ -31,7 +31,7 @@
     "kategori": "Akta",
     "bulanPelaporan": 11,
     "tahunPelaporan": 2025,
-    "nomorBulanan": "38"
+    "nomorBulanan": "52"
   },
   {
     "id": "1763970638488",
@@ -65,7 +65,7 @@
     "kategori": "Akta",
     "bulanPelaporan": 11,
     "tahunPelaporan": 2025,
-    "nomorBulanan": "39"
+    "nomorBulanan": "53"
   },
   {
     "id": "1763970738376",
@@ -90,7 +90,7 @@
     "kategori": "Akta",
     "bulanPelaporan": 11,
     "tahunPelaporan": 2025,
-    "nomorBulanan": "40"
+    "nomorBulanan": "54"
   },
   {
     "id": "1763970898786",
@@ -121,10 +121,17 @@
       },
       {
         "name": "Tn. Muslimin",
-        "role": "Pihak 4",
+        "role": "",
+        "actingCapacity": "self",
+        "representedParties": []
+      },
+      {
+        "name": "",
+        "role": "",
         "actingCapacity": "both",
         "representedParties": [
           "Tn. Yudi Abdulloh",
+          "Tn. Asep Mahmud",
           "Tn. Asep Maosul",
           "Tn. Setiawan"
         ]
@@ -134,7 +141,7 @@
     "kategori": "Akta",
     "bulanPelaporan": 11,
     "tahunPelaporan": 2025,
-    "nomorBulanan": "41"
+    "nomorBulanan": "55"
   },
   {
     "id": "1763970949545",
@@ -156,82 +163,100 @@
     "kategori": "Akta",
     "bulanPelaporan": 11,
     "tahunPelaporan": 2025,
-    "nomorBulanan": "42"
+    "nomorBulanan": "56"
   },
   {
-    "id": "1763971161130",
-    "createdAt": "2025-11-24T07:59:21.130Z",
-    "updatedAt": "2025-11-24T07:59:36.224Z",
+    "id": "1764666462397",
+    "createdAt": "2025-12-02T09:07:42.397Z",
+    "jenis": "Notaris",
+    "nomorAkta": "6",
+    "tanggalAkta": "2025-11-24",
+    "judulAkta": "Akta Consent Roya atas Hak Tanggungan",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "Tn. Haji Ade Tatang",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "bulanPelaporan": 11,
+    "tahunPelaporan": 2025,
+    "nomorBulanan": "57"
+  },
+  {
+    "id": "1764666698731",
+    "createdAt": "2025-12-02T09:11:38.731Z",
     "jenis": "Notaris",
     "nomorAkta": "7",
     "tanggalAkta": "2025-11-24",
     "judulAkta": "Akta Pendirian Perkumpulan Paguyuban Pengelola Pariwisata Pantai Karang Papak",
+    "kategori": "Akta",
     "pihak": [
       {
         "name": "Tn. Muhrom Suhandi",
-        "role": "Pihak I",
+        "role": "Pihak Pengalih / Penghadap",
         "actingCapacity": "self",
         "representedParties": []
       },
       {
         "name": "Tn. Ayi Priatna",
-        "role": "Pihak II",
+        "role": "",
         "actingCapacity": "self",
         "representedParties": []
       },
       {
-        "name": "Tn. Ahmad Rosadi, S. Pd. I",
-        "role": "Pihak 3",
+        "name": "Tn. Ahmad Rosadi, SPd. I",
+        "role": "",
         "actingCapacity": "self",
         "representedParties": []
       },
       {
         "name": "Tn. Drs. Rudy Harianto, M.Si",
-        "role": "Pihak 4",
+        "role": "",
         "actingCapacity": "self",
         "representedParties": []
       },
       {
         "name": "Tn. Ilan Ruslani",
-        "role": "Pihak 5",
+        "role": "",
         "actingCapacity": "self",
         "representedParties": []
       },
       {
         "name": "Ny. Heni Ernawati",
-        "role": "Pihak 6",
+        "role": "",
         "actingCapacity": "self",
         "representedParties": []
       },
       {
-        "name": "Tn. Ridwan, S. Pd",
-        "role": "Pihak 7",
+        "name": "Tn. Ridwan S.Pd",
+        "role": "",
         "actingCapacity": "self",
         "representedParties": []
       },
       {
         "name": "Ny. Navisha Aulia Avrina",
-        "role": "Pihak 8",
+        "role": "",
         "actingCapacity": "self",
         "representedParties": []
       },
       {
         "name": "Tn. Dimas Cakra Andita",
-        "role": "Pihak 9",
+        "role": "",
         "actingCapacity": "self",
         "representedParties": []
       },
       {
-        "name": "Ny. Cucu Pritniawati, S. Pd",
-        "role": "Pihak 10",
+        "name": "Ny. Cucu Pritniawati, S.Pd",
+        "role": "",
         "actingCapacity": "self",
         "representedParties": []
       }
     ],
-    "detailPPAT": null,
-    "kategori": "Akta",
     "bulanPelaporan": 11,
     "tahunPelaporan": 2025,
-    "nomorBulanan": "44"
+    "nomorBulanan": "58"
   }
 ]

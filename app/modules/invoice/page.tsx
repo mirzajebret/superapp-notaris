@@ -368,7 +368,7 @@ export default function NewInvoicePage() {
               {formData.recipient.company && <p className="font-bold">{formData.recipient.company}</p>}
               {formData.recipient.address && <p className="w-2/4">{formData.recipient.address}</p>}
               <p className="mt-2">Dengan hormat,</p>
-              <p className="mt-2 text-justify">Dengan ini kami sampaikan biaya penggunaan Jasa Notaris Havis Akbar, S.H., M.Kn, dengan rincian pekerjaan sebagai berikut :</p>
+              <p className="mt-2 text-justify">Dengan ini kami sampaikan biaya penggunaan Jasa Notaris & PPAT Havis Akbar, S.H., M.Kn, dengan rincian pekerjaan sebagai berikut :</p>
             </div>
 
             {/* TABEL RINCIAN - Gunakan Hex color #f3f4f6 pengganti bg-gray-200 agar aman */}
