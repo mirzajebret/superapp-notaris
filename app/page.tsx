@@ -31,7 +31,7 @@ type Deed = {
 type Draft = {
     id: string;
     title: string;
-    updatedAt: string;
+    uploadDate: string;
     status?: string;
 };
 
@@ -126,7 +126,7 @@ export default async function Dashboard() {
     // 3. Drafts (Active work)
     // Assuming drafts don't have a strict "month" but are "active" if recent
     const recentDrafts = (drafts as Draft[])
-        .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
+        .sort((a, b) => new Date(b.uploadDate).getTime() - new Date(a.uploadDate).getTime())
         .slice(0, 5);
 
     return (
@@ -231,7 +231,7 @@ export default async function Dashboard() {
                                         </div>
                                         <div>
                                             <p className="font-semibold text-gray-800 text-sm">{draft.title || 'Draft Tanpa Judul'}</p>
-                                            <p className="text-xs text-gray-500">Diupdate: {new Date(draft.updatedAt).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</p>
+                                            <p className="text-xs text-gray-500">Diupdate: {new Date(draft.uploadDate).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</p>
                                         </div>
                                     </div>
                                     <span className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-medium">

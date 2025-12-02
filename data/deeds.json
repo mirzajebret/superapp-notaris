@@ -265,5 +265,25 @@
     "bulanPelaporan": 11,
     "tahunPelaporan": 2025,
     "nomorBulanan": ""
+  },
+  {
+    "id": "1764644513423",
+    "createdAt": "2025-12-02T03:01:53.423Z",
+    "jenis": "Notaris",
+    "nomorAkta": "1",
+    "tanggalAkta": "2025-11-30",
+    "judulAkta": "testdb",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "testdb",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "bulanPelaporan": 12,
+    "tahunPelaporan": 2025,
+    "nomorBulanan": "1"
   }
 ]

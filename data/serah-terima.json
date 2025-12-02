@@ -79,5 +79,48 @@
         "noteType": "Asli"
       }
     ]
+  },
+  {
+    "id": "1764657580063",
+    "createdAt": "2025-12-02T06:39:40.063Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": false,
+      "barang": false
+    },
+    "receiver": {
+      "name": "...................................",
+      "position": "",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "Nepi Meinti",
+      "position": "",
+      "signature": ""
+    },
+    "location": "Garut",
+    "handoverDate": "2025-12-02",
+    "items": [
+      {
+        "description": "Berita Acara Pendirian PT. Multijasa Trividya Indonesia",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "Surat Kuasa TTD Akta",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "Surat Pernyataan Bukti Setoran Modal",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "Surat Kuasa Pemilik Manfaat",
+        "note": "",
+        "noteType": "Asli"
+      }
+    ]
   }
 ]

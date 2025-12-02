@@ -55,7 +55,7 @@
         "date": "2025-11-27T04:47:00.000Z",
         "title": "Input Dokumen Apostille ",
         "description": "Data & dokumen sudah diinput ke https://apostille.ahu.go.id/ tinggal menunggu proses verifikasi\n",
-        "status": "On Progress"
+        "status": "Done"
       },
       {
         "id": "h3",
@@ -76,6 +76,13 @@
         "date": "2025-10-17T06:40:00.000Z",
         "title": "Berkas Masuk",
         "description": "Berkas Masuk & Pembuatan Invoice ",
+        "status": "Done"
+      },
+      {
+        "id": "h1764640431367",
+        "date": "2025-12-02T01:48:48.882Z",
+        "title": "Dokumen Terverifikasi (7/7)",
+        "description": "Sudah Terverifikasi 7/7 & Bayar PNBP @Rp.150.000 Qty. Rp 1.050.000",
         "status": "Done"
       }
     ]

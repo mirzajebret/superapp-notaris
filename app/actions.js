@@ -217,7 +217,7 @@ function normalizeDeedPayload(payload = {}) {
 }
 
 export async function getDeeds() {
-  const filePath = await ensureFile('deeds.json');
+  const filePath = await ensureFile(DEEDS_FILENAME);
   const fileContent = await fs.readFile(filePath, 'utf-8');
   try {
     return JSON.parse(fileContent);
@@ -227,7 +227,7 @@ export async function getDeeds() {
 }
 
 export async function createDeed(data) {
-  const filePath = await ensureFile('deeds.json');
+  const filePath = await ensureFile(DEEDS_FILENAME);
   const fileContent = await fs.readFile(filePath, 'utf-8');
   const deeds = JSON.parse(fileContent);
 
@@ -243,7 +243,7 @@ export async function createDeed(data) {
 }
 
 export async function updateDeed(id, data) {
-  const filePath = await ensureFile('deeds.json');
+  const filePath = await ensureFile(DEEDS_FILENAME);
   const fileContent = await fs.readFile(filePath, 'utf-8');
   let deeds = JSON.parse(fileContent);
 
@@ -257,7 +257,7 @@ export async function updateDeed(id, data) {
 }
 
 export async function deleteDeed(id) {
-  const filePath = await ensureFile('deeds.json');
+  const filePath = await ensureFile(DEEDS_FILENAME);
   const fileContent = await fs.readFile(filePath, 'utf-8');
   let deeds = JSON.parse(fileContent);
 

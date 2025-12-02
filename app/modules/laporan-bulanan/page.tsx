@@ -634,7 +634,7 @@ export default function LapbulModulePage() {
                           {/* Kolom 1: Label Kiri (15%) */}
                           <td className="w-[15%] align-top py-0.5">Nomor</td>
                           {/* Kolom 2: Isi Kiri (40%) */}
-                          <td className="w-[40%] align-top py-0.5">: 01/PPAT/HA/{getRomanMonth(selectedMonth)}/{selectedYear}</td>
+                          <td className="w-[40%] align-top py-0.5">: {(idx + 1).toString().padStart(2, '0')}/PPAT/HA/{getRomanMonth(selectedMonth)}/{selectedYear}</td>
                           {/* Kolom 3: Kanan (45%) - Ada padding kiri agar tidak mepet */}
                           <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date().toISOString())}</td>
                         </tr>
