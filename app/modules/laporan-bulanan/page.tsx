@@ -458,7 +458,7 @@ export default function LapbulModulePage() {
             </div>
 
             <div className="space-y-3 text-sm">
-              <div><label className="block text-xs font-bold text-gray-500 mb-1">NO URUT BULANAN</label><input className="w-full border p-2 rounded" value={formState.nomorAkta} onChange={e => setFormState({ ...formState, nomorAkta: e.target.value })} /></div>
+              <div><label className="block text-xs font-bold text-gray-500 mb-1">NO URUT BULANAN</label><input className="w-full border p-2 rounded" value={formState.nomorAkta} onChange={e => setFormState({ ...formState, nomorAkta: e.target.value })} placeholder="1 atau 01/2025" /></div>
 
               {formState.jenis === 'Notaris' && (
                 <div><label className="block text-xs font-bold text-gray-500 mb-1">NOMOR AKTA</label><input className="w-full border p-2 rounded" value={formState.nomorBulanan} onChange={e => setFormState({ ...formState, nomorBulanan: e.target.value })} placeholder="1" /></div>
@@ -508,7 +508,7 @@ export default function LapbulModulePage() {
 
                       <div className="mb-2">
                         <label className="text-[10px] uppercase text-gray-400 font-bold">Nama Penghadap</label>
-                        <input className="w-full border p-1.5 rounded bg-white text-sm" placeholder="Nama Lengkap" value={p.name} onChange={e => { const newPihak = [...formState.pihak]; newPihak[idx].name = e.target.value; setFormState({ ...formState, pihak: newPihak }); }} />
+                        <input className="w-full border p-1.5 rounded bg-white text-sm" placeholder="Tn. Ny. Nn. atau nama huruf besar, alamat" value={p.name} onChange={e => { const newPihak = [...formState.pihak]; newPihak[idx].name = e.target.value; setFormState({ ...formState, pihak: newPihak }); }} />
                       </div>
 
                       {/* Opsi Bertindak Hanya Muncul untuk Notaris */}
@@ -553,14 +553,14 @@ export default function LapbulModulePage() {
               {formState.jenis === 'PPAT' && (
                 <div className="bg-blue-50 p-3 rounded-lg space-y-2 mt-4">
                   <p className="text-xs font-bold text-blue-700 uppercase">Detail PPAT</p>
-                  <input className="w-full border p-2 rounded text-xs" placeholder="Pihak Penerima" value={formState.detailPPAT.pihakPenerima} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, pihakPenerima: e.target.value } })} />
-                  <input className="w-full border p-2 rounded text-xs" placeholder="Jenis & No Hak (HM 123)" value={formState.detailPPAT.jenisHak} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, jenisHak: e.target.value } })} />
-                  <textarea className="w-full border p-2 rounded text-xs" placeholder="Lokasi Tanah" value={formState.detailPPAT.lokasiObjek} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, lokasiObjek: e.target.value } })} />
-                  <div className="grid grid-cols-2 gap-2"><input className="border p-2 rounded text-xs" placeholder="Luas Tanah" value={formState.detailPPAT.luasTanah} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, luasTanah: e.target.value } })} /><input className="border p-2 rounded text-xs" placeholder="Luas Bangunan" value={formState.detailPPAT.luasBangunan} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, luasBangunan: e.target.value } })} /></div>
-                  <div className="grid grid-cols-2 gap-2"><input className="border p-2 rounded text-xs" placeholder="Harga Transaksi" value={formState.detailPPAT.nilaiTransaksi} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, nilaiTransaksi: e.target.value } })} /><input className="border p-2 rounded text-xs" placeholder="NJOP" value={formState.detailPPAT.njop} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, njop: e.target.value } })} /></div>
-                  <input className="w-full border p-2 rounded text-xs" placeholder="NOP" value={formState.detailPPAT.nop} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, nop: e.target.value } })} />
+                  <input className="w-full border p-2 rounded text-xs" placeholder="Pihak yang Menerima" value={formState.detailPPAT.pihakPenerima} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, pihakPenerima: e.target.value } })} />
+                  <input className="w-full border p-2 rounded text-xs" placeholder="Jenis & No Hak (SERTIFIKAT HAK MILIK NOMOR .../KELURAHAN ..)" value={formState.detailPPAT.jenisHak} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, jenisHak: e.target.value } })} />
+                  <textarea className="w-full border p-2 rounded text-xs" placeholder="Lokasi Tanah (Jalan ..., Kelurahan ..., Kecamatan ..., Kabupaten ...)" value={formState.detailPPAT.lokasiObjek} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, lokasiObjek: e.target.value } })} />
+                  <div className="grid grid-cols-2 gap-2"><input className="border p-2 rounded text-xs" placeholder="Luas Tanah (m2)" value={formState.detailPPAT.luasTanah} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, luasTanah: e.target.value } })} /><input className="border p-2 rounded text-xs" placeholder="Luas Bangunan (m2)" value={formState.detailPPAT.luasBangunan} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, luasBangunan: e.target.value } })} /></div>
+                  <div className="grid grid-cols-2 gap-2"><input className="border p-2 rounded text-xs" placeholder="Harga Transaksi (Rp)" value={formState.detailPPAT.nilaiTransaksi} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, nilaiTransaksi: e.target.value } })} /><input className="border p-2 rounded text-xs" placeholder="NJOP (Rp)" value={formState.detailPPAT.njop} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, njop: e.target.value } })} /></div>
+                  <input className="w-full border p-2 rounded text-xs" placeholder="NOP (32.07.170.005.007-0255.0 2025)" value={formState.detailPPAT.nop} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, nop: e.target.value } })} />
                   <div className="grid grid-cols-2 gap-2"><input className="border p-2 rounded text-xs" placeholder="SSP (Rp)" value={formState.detailPPAT.ssp} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, ssp: e.target.value } })} /><input className="border p-2 rounded text-xs" placeholder="SSB (Rp)" value={formState.detailPPAT.ssb} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, ssb: e.target.value } })} /></div>
-                  <div className="grid grid-cols-2 gap-2"><input className="border p-2 rounded text-xs" placeholder="Tanggal SSP" value={formState.detailPPAT.tglSsp} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, tglSsp: e.target.value } })} /><input className="border p-2 rounded text-xs" placeholder="Tanggal SSB" value={formState.detailPPAT.tglSsb} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, tglSsb: e.target.value } })} /></div>
+                  <div className="grid grid-cols-2 gap-2"><input type="date" className="border p-2 rounded text-xs" placeholder="Tanggal SSP" value={formState.detailPPAT.tglSsp} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, tglSsp: e.target.value } })} /><input type="date" className="border p-2 rounded text-xs" placeholder="Tanggal SSB" value={formState.detailPPAT.tglSsb} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, tglSsb: e.target.value } })} /></div>
                 </div>
               )}
 
@@ -800,7 +800,7 @@ export default function LapbulModulePage() {
                                 <td className="border border-gray-300 px-1 py-1 text-center">{record.detailPPAT?.luasBangunan || 0}</td>
                                 <td className="border border-gray-300 px-1 py-1 text-center">{currency(record.detailPPAT?.nilaiTransaksi || '-')}</td>
                                 <td className="border border-gray-300 px-1 py-1">{record.detailPPAT?.nop || '-'}<br />{selectedYear}</td>
-                                <td className="border border-gray-300 px-1 py-1 text-center">{record.detailPPAT?.njop || '-'}</td>
+                                <td className="border border-gray-300 px-1 py-1 text-center">{currency(record.detailPPAT?.njop || '-')}</td>
                                 <td className="border border-gray-300 px-1 py-1 text-center">{formatDateIndo(record.detailPPAT?.tglSsp || '-')}</td>
                                 <td className="border border-gray-300 px-1 py-1 text-center">{currency(record.detailPPAT?.ssp || '-')}</td>
                                 <td className="border border-gray-300 px-1 py-1 text-center">{formatDateIndo(record.detailPPAT?.tglSsb || '-')}</td>
