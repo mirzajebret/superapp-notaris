@@ -258,5 +258,73 @@
     "bulanPelaporan": 11,
     "tahunPelaporan": 2025,
     "nomorBulanan": "58"
+  },
+  {
+    "id": "1764724704132",
+    "createdAt": "2025-12-03T01:18:24.133Z",
+    "jenis": "PPAT",
+    "nomorAkta": "12",
+    "tanggalAkta": "2025-11-30",
+    "judulAkta": "Akta Jual Beli",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "test",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "detailPPAT": {
+      "nop": "xaw",
+      "njop": "xaw",
+      "luasTanah": "axw",
+      "luasBangunan": "xaw",
+      "lokasiObjek": "ax",
+      "nilaiTransaksi": "xaw",
+      "ssp": "xaw",
+      "tglSsp": "",
+      "ssb": "xaw",
+      "tglSsb": "",
+      "jenisHak": "1",
+      "pihakPenerima": "test"
+    },
+    "bulanPelaporan": 12,
+    "tahunPelaporan": 2025,
+    "nomorBulanan": ""
+  },
+  {
+    "id": "1764725845353",
+    "createdAt": "2025-12-03T01:37:25.353Z",
+    "jenis": "PPAT",
+    "nomorAkta": "04/2025",
+    "tanggalAkta": "2025-11-27",
+    "judulAkta": "Akta Jual Beli",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "RONNY SETIAWAN, Jalan Nusa Indah II Nomor 3, RT003/RW014, Kelurahan Jayaraga, Kecamatan Tarogong Kidul, Kabupaten Garut",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "detailPPAT": {
+      "nop": "32.07.170.005.007-0255.0",
+      "njop": "Rp 28.832.000",
+      "luasTanah": "38 m2",
+      "luasBangunan": "16 m2",
+      "lokasiObjek": "Jalan Karacak Nomor 18, Kelurahan Kota Kulon, Kecamatan Garut Kota, Kabupaten Garut",
+      "nilaiTransaksi": "90000000",
+      "ssp": "2250000",
+      "tglSsp": "20250-11-21",
+      "ssb": "500000",
+      "tglSsb": "2025-11-28",
+      "jenisHak": "SERTIFIKAT HAK MILIK NOMOR 03874/KELURAHAN KOTA KULON",
+      "pihakPenerima": "IIS SUGIWANTI SARI, Jalan Gang Satria VII Nomor 823, RT 004/RW 010, Kelurahan Kota Kulon, Kecamatan Garut Kota, Kabupaten Garut"
+    },
+    "bulanPelaporan": 11,
+    "tahunPelaporan": 2025,
+    "nomorBulanan": ""
   }
 ]

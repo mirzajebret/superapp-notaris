@@ -264,5 +264,38 @@
     "total": 150000000,
     "nomorInvoice": "INV/2025/507",
     "tanggalInvoice": "2025-11-25"
+  },
+  {
+    "id": "1764667536742",
+    "createdAt": "2025-12-02T09:25:36.742Z",
+    "recipient": {
+      "name": " Nyonya Sonia Rakhma Maulani, S.T",
+      "position": "",
+      "company": "",
+      "address": " di Tempat."
+    },
+    "items": [
+      {
+        "deskripsi": "Pembuatan Akta Kuasa Untuk Menjual SHM NIB\n 09.02.000011583.0",
+        "biaya": 2000000,
+        "keterangan": ""
+      },
+      {
+        "deskripsi": " Pembuatan Akta Kuasa Untuk Menjual SHM NIB\n 09.02.000012856.0",
+        "biaya": 2000000,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar, S.H., M.Kn"
+    },
+    "invoiceDate": "2025-12-02",
+    "showStamp": true,
+    "total": 4000000,
+    "nomorInvoice": "INV/2025/835",
+    "tanggalInvoice": "2025-12-02"
   }
 ]
