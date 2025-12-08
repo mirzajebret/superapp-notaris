@@ -297,5 +297,38 @@
     "total": 4000000,
     "nomorInvoice": "INV/2025/835",
     "tanggalInvoice": "2025-12-02"
+  },
+  {
+    "id": "1765177312459",
+    "createdAt": "2025-12-08T07:01:52.459Z",
+    "recipient": {
+      "name": "a",
+      "position": "",
+      "company": "",
+      "address": ""
+    },
+    "items": [
+      {
+        "deskripsi": "",
+        "biaya": 8000000,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [
+      {
+        "description": "Pembayaran pertama sebesar 70% setelah penawaran disetujui",
+        "amount": 5600000
+      }
+    ],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar, S.H., M.Kn"
+    },
+    "invoiceDate": "2025-12-08",
+    "showStamp": true,
+    "total": 8000000,
+    "nomorInvoice": "INV/2025/860",
+    "tanggalInvoice": "2025-12-08"
   }
 ]

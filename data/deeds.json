@@ -260,40 +260,6 @@
     "nomorBulanan": "58"
   },
   {
-    "id": "1764724704132",
-    "createdAt": "2025-12-03T01:18:24.133Z",
-    "jenis": "PPAT",
-    "nomorAkta": "12",
-    "tanggalAkta": "2025-11-30",
-    "judulAkta": "Akta Jual Beli",
-    "kategori": "Akta",
-    "pihak": [
-      {
-        "name": "test",
-        "role": "Pihak Pengalih / Penghadap",
-        "actingCapacity": "self",
-        "representedParties": []
-      }
-    ],
-    "detailPPAT": {
-      "nop": "xaw",
-      "njop": "xaw",
-      "luasTanah": "axw",
-      "luasBangunan": "xaw",
-      "lokasiObjek": "ax",
-      "nilaiTransaksi": "xaw",
-      "ssp": "xaw",
-      "tglSsp": "",
-      "ssb": "xaw",
-      "tglSsb": "",
-      "jenisHak": "1",
-      "pihakPenerima": "test"
-    },
-    "bulanPelaporan": 12,
-    "tahunPelaporan": 2025,
-    "nomorBulanan": ""
-  },
-  {
     "id": "1764725845353",
     "createdAt": "2025-12-03T01:37:25.353Z",
     "jenis": "PPAT",
@@ -326,5 +292,77 @@
     "bulanPelaporan": 11,
     "tahunPelaporan": 2025,
     "nomorBulanan": ""
+  },
+  {
+    "id": "1764754965343",
+    "createdAt": "2025-12-03T09:42:45.343Z",
+    "jenis": "Notaris",
+    "nomorAkta": "8",
+    "tanggalAkta": "2025-11-25",
+    "judulAkta": "",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "a",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "bulanPelaporan": 11,
+    "tahunPelaporan": 2025,
+    "nomorBulanan": "8"
+  },
+  {
+    "id": "1764754987006",
+    "createdAt": "2025-12-03T09:43:07.006Z",
+    "jenis": "Notaris",
+    "nomorAkta": "9",
+    "tanggalAkta": "2025-11-26",
+    "judulAkta": "",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "a",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "bulanPelaporan": 11,
+    "tahunPelaporan": 2025,
+    "nomorBulanan": "9"
+  },
+  {
+    "id": "1765165142298",
+    "createdAt": "2025-12-08T03:39:02.298Z",
+    "jenis": "Notaris",
+    "nomorAkta": "1",
+    "tanggalAkta": "2025-12-05",
+    "judulAkta": "AKTA PENDIRIAN PERSEROAN TERBATAS PT ECKERGY REKAYASA OPTIMA",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "Tn. MUHAMMAD HAIKAL AL MAROGHI",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      },
+      {
+        "name": "Tn. MUHAMMAD ARIEF IKHWANI K.",
+        "role": "",
+        "actingCapacity": "self",
+        "representedParties": []
+      },
+      {
+        "name": "Tn. HASAN BASRI",
+        "role": "",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "bulanPelaporan": 12,
+    "tahunPelaporan": 2025,
+    "nomorBulanan": "59"
   }
 ]
