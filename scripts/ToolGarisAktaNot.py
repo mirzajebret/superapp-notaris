@@ -103,7 +103,6 @@ class NotarialDeedFormatter:
                     
                     for i, block in enumerate(content_blocks):
                         text = block[4].lower()
-                        # Cek jika salah satu stop phrase ada di dalam blok teks
                         if any(phrase in text for phrase in stop_phrases):
                             cutoff_index = i
                             break # Ketemu baris penutup
