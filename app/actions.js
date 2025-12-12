@@ -530,11 +530,17 @@ export async function saveWaForm(formData) {
 
   const existingIndex = forms.findIndex(f => f.id === formData.id);
 
+  // Pastikan ada folderId, jika tidak set ke 'uncategorized'
+  const dataToSave = {
+    ...formData,
+    folderId: formData.folderId || 'uncategorized'
+  };
+
   if (existingIndex > -1) {
     // Update existing
     forms[existingIndex] = {
       ...forms[existingIndex],
-      ...formData,
+      ...dataToSave,
       lastUpdated: new Date().toISOString()
     };
   } else {
@@ -542,7 +548,7 @@ export async function saveWaForm(formData) {
     const newForm = {
       id: `WAF-${Date.now()}`,
       lastUpdated: new Date().toISOString(),
-      ...formData
+      ...dataToSave
     };
     forms.unshift(newForm); // Add to top
   }
@@ -556,5 +562,68 @@ export async function deleteWaForm(id) {
   let forms = await readJson(filePath);
   forms = forms.filter(f => f.id !== id);
   await writeJson(filePath, forms);
+  return { success: true };
+}
+
+export async function getWaFolders() {
+  // Folder default jika file belum ada
+  const defaultFolders = [
+    { id: 'uncategorized', name: 'Tanpa Kategori', isSystem: true }
+  ];
+  const filePath = await ensureFile('whatsapp-folders.json', defaultFolders);
+  return readJson(filePath);
+}
+
+export async function saveWaFolder(folderData) {
+  const filePath = await ensureFile('whatsapp-folders.json');
+  const folders = await readJson(filePath);
+
+  if (folderData.id) {
+    // Update Folder
+    const index = folders.findIndex(f => f.id === folderData.id);
+    if (index !== -1) {
+      folders[index] = { ...folders[index], ...folderData };
+    }
+  } else {
+    // Create New Folder
+    const newFolder = {
+      id: `FLD-${Date.now()}`,
+      createdAt: new Date().toISOString(),
+      ...folderData
+    };
+    folders.push(newFolder);
+  }
+
+  await writeJson(filePath, folders);
+  return { success: true };
+}
+
+export async function deleteWaFolder(id) {
+  const filePath = await ensureFile('whatsapp-folders.json');
+  let folders = await readJson(filePath);
+
+  // Jangan biarkan menghapus folder default
+  if (id === 'uncategorized') return { success: false, message: "Folder default tidak bisa dihapus." };
+
+  folders = folders.filter(f => f.id !== id);
+  await writeJson(filePath, folders);
+
+  // Pindahkan semua form di folder ini ke 'uncategorized'
+  const formsPath = await ensureFile('whatsapp-forms.json');
+  let forms = await readJson(formsPath);
+  let hasChanges = false;
+
+  forms = forms.map(f => {
+    if (f.folderId === id) {
+      hasChanges = true;
+      return { ...f, folderId: 'uncategorized' };
+    }
+    return f;
+  });
+
+  if (hasChanges) {
+    await writeJson(formsPath, forms);
+  }
+
   return { success: true };
 }
