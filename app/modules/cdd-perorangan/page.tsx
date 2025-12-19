@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef, useLayoutEffect } from 'react';
-import Link from 'next/link';
 import A4Container from '@/components/documents/A4Container';
 import KopSurat from '@/components/documents/KopSurat';
 import { getCDDList, saveCDD, deleteCDD } from '@/app/actions';
@@ -61,8 +60,6 @@ const emptyForm: CDDData = {
     bidangUsaha: '',
     rangePendapatan: '',
     tujuanTransaksi: '',
-    hasBeneficialOwner: false,
-    beneficialOwnerDetails: '',
     tempatTandaTangan: 'Garut',
     tanggalTandaTangan: new Date().toISOString().split('T')[0],
 };
@@ -165,7 +162,6 @@ export default function CDDPage() {
         setFormData({
             ...emptyForm,
             ...item,
-            // Mapping backward compatibility
             telp: item.telp || (item as any).telpHp || ''
         });
         setMode('editor');
@@ -334,7 +330,7 @@ export default function CDDPage() {
                                 onClick={() => window.print()}
                                 className="bg-slate-800 hover:bg-slate-900 text-white px-3 py-1.5 rounded text-sm font-medium transition-colors flex items-center gap-2"
                             >
-                                🖨️ Print
+                                Print
                             </button>
                             <button
                                 onClick={handleSave}
@@ -712,7 +708,7 @@ export default function CDDPage() {
                                 <div className="text-center w-64">
                                     <p className="mb-1">{formData.tempatTandaTangan}, {new Date(formData.tanggalTandaTangan).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                                     <p className="mb-20">Pengguna Jasa,</p>
-                                    <p className="font-bold border-b border-black inline-block min-w-[200px] uppercase">{formData.namaLengkap}</p>
+                                    <p className="font-bold border-t border-black inline-block min-w-[200px] uppercase">{formData.namaLengkap}</p>
                                 </div>
                             </div>
                         </div>
