@@ -28,6 +28,7 @@ const menuItems = [
   { name: 'Penggaris Akta', icon: DraftingCompass, href: '/modules/penggaris-akta' },
   { name: 'Kalkulator Pajak', icon: Calculator, href: '/modules/kalkulator-pajak' },
   { name: 'WhatsApp Forms', icon: FileStack, href: '/modules/whatsapp-forms' },
+  { name: 'CDD Perorangan', icon: FileStack, href: '/modules/cdd-perorangan' },
 ];
 
 export default function Sidebar() {

@@ -1,4 +1,3 @@
-// src/app/actions.js
 'use server'
 
 import fs from 'fs/promises';
@@ -626,4 +625,48 @@ export async function deleteWaFolder(id) {
   }
 
   return { success: true };
+}
+
+// --- CDD PERORANGAN ACTIONS ---
+const cddFile = path.join(process.cwd(), 'data', 'cdd-perorangan.json')
+
+export async function getCDDList() {
+  try {
+    const data = await fs.readFile(cddFile, 'utf8')
+    return JSON.parse(data)
+  } catch (error) {
+    // If file doesn't exist, return empty array
+    return []
+  }
+}
+
+export async function saveCDD(data) {
+  try {
+    const currentData = await getCDDList()
+    const index = currentData.findIndex((item) => item.id === data.id)
+
+    if (index !== -1) {
+      currentData[index] = data
+    } else {
+      currentData.push(data)
+    }
+
+    await fs.writeFile(cddFile, JSON.stringify(currentData, null, 2))
+    return { success: true }
+  } catch (error) {
+    console.error('Error saving CDD:', error)
+    return { success: false, error: error.message }
+  }
+}
+
+export async function deleteCDD(id) {
+  try {
+    const currentData = await getCDDList()
+    const newData = currentData.filter((item) => item.id !== id)
+    await fs.writeFile(cddFile, JSON.stringify(newData, null, 2))
+    return { success: true }
+  } catch (error) {
+    console.error('Error deleting CDD:', error)
+    return { success: false, error: error.message }
+  }
 }
