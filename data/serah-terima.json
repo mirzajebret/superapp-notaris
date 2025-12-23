@@ -122,5 +122,104 @@
         "noteType": "Asli"
       }
     ]
+  },
+  {
+    "id": "1766396664873",
+    "createdAt": "2025-12-22T09:44:24.873Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": false,
+      "barang": false
+    },
+    "receiver": {
+      "name": "",
+      "position": "",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "Nepi Meinti",
+      "position": "Staff Administrasi",
+      "signature": ""
+    },
+    "location": " Garut",
+    "handoverDate": "2025-12-23",
+    "items": [
+      {
+        "description": "Salinan Akta Pendirian PT PATRIOT SEMBILAN SEMBILAN Nomor -3.- Tanggal 22 Desember 2025",
+        "note": "Salinan",
+        "noteType": "Custom"
+      },
+      {
+        "description": "SK Pendirian Menteri Hukum",
+        "note": "",
+        "noteType": "Asli"
+      }
+    ]
+  },
+  {
+    "id": "1766396815677",
+    "createdAt": "2025-12-22T09:46:55.677Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": false,
+      "barang": false
+    },
+    "receiver": {
+      "name": "_______________",
+      "position": "",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "Nepi Meinti",
+      "position": "Staff Administrasi",
+      "signature": ""
+    },
+    "location": " Garut",
+    "handoverDate": "2025-12-23",
+    "items": [
+      {
+        "description": "Salinan Akta Pendirian PT PATRIOT SEMBILAN SEMBILAN Nomor -3.- Tanggal 22 Desember 2025",
+        "note": "Asli",
+        "noteType": "Custom"
+      },
+      {
+        "description": "SK Pendirian Menteri Hukum Nomor AHU-0110103.AH.01.01.TAHUN 2025",
+        "note": "",
+        "noteType": "Asli"
+      }
+    ]
+  },
+  {
+    "id": "1766396826431",
+    "createdAt": "2025-12-22T09:47:06.431Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": false,
+      "barang": false
+    },
+    "receiver": {
+      "name": "_______________",
+      "position": "",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "Nepi Meinti",
+      "position": "Staff Administrasi",
+      "signature": ""
+    },
+    "location": " Garut",
+    "handoverDate": "2025-12-23",
+    "items": [
+      {
+        "description": "Salinan Akta Pendirian PT PATRIOT SEMBILAN SEMBILAN Nomor -3.- Tanggal 22 Desember 2025",
+        "note": "Asli",
+        "noteType": "Custom"
+      },
+      {
+        "description": "SK Pendirian Menteri Hukum Nomor AHU-0110103.AH.01.01.TAHUN 2025",
+        "note": "",
+        "noteType": "Asli"
+      }
+    ]
   }
 ]

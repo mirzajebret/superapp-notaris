@@ -364,5 +364,65 @@
     "bulanPelaporan": 12,
     "tahunPelaporan": 2025,
     "nomorBulanan": "59"
+  },
+  {
+    "id": "1766469724160",
+    "createdAt": "2025-12-23T06:02:04.160Z",
+    "jenis": "Notaris",
+    "nomorAkta": "2",
+    "tanggalAkta": "2025-12-09",
+    "judulAkta": "AKTA PENDIRIAN PERSEROAN TERBATAS PT JASAKA BEAUTY INDONESIA",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "bulanPelaporan": 12,
+    "tahunPelaporan": 2025,
+    "nomorBulanan": "60"
+  },
+  {
+    "id": "1766469771343",
+    "createdAt": "2025-12-23T06:02:51.343Z",
+    "jenis": "Notaris",
+    "nomorAkta": "3",
+    "tanggalAkta": "2025-12-22",
+    "judulAkta": "AKTA PENDIRIAN PERSEROAN TERBATAS PT PATRIOT SEMBILAN SEMBILAN",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "bulanPelaporan": 12,
+    "tahunPelaporan": 2025,
+    "nomorBulanan": "61"
+  },
+  {
+    "id": "1766469802893",
+    "createdAt": "2025-12-23T06:03:22.893Z",
+    "jenis": "Notaris",
+    "nomorAkta": "4",
+    "tanggalAkta": "2025-12-22",
+    "judulAkta": "AKTA PENDIRIAN PERSEROAN TERBATAS PT AMMA GROUP INTERNATIONAL",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "bulanPelaporan": 12,
+    "tahunPelaporan": 2025,
+    "nomorBulanan": "62"
   }
 ]

@@ -690,8 +690,6 @@ export default function CDDPage() {
                                 </tbody>
                             </table>
 
-
-
                             {/* D. PERNYATAAN */}
                             <div className="mb-4">
                                 <h2 className="font-bold mb-1">D. Pernyataan</h2>
