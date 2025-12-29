@@ -126,13 +126,10 @@ export default function CDDPage() {
     useLayoutEffect(() => {
         if (isAutoFit && contentRef.current && mode === 'editor') {
             const contentHeight = contentRef.current.scrollHeight;
-            // Target height diturunkan ke 1000px (dari 1050px) agar lebih sensitif 
-            // dan mengecilkan dokumen lebih awal sebelum menyentuh batas halaman printer
             const targetHeight = 1000;
 
             if (contentHeight > targetHeight) {
                 const newScale = targetHeight / contentHeight;
-                // Limit minimum scale agar tidak terlalu kecil (misal 55%)
                 setScale(Math.max(newScale, 0.55));
             } else {
                 setScale(1);

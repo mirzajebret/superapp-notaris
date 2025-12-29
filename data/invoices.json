@@ -330,5 +330,42 @@
     "total": 8000000,
     "nomorInvoice": "INV/2025/860",
     "tanggalInvoice": "2025-12-08"
+  },
+  {
+    "id": "1766554033515",
+    "createdAt": "2025-12-24T05:27:13.515Z",
+    "recipient": {
+      "name": "Ir. Bahgya Siregar",
+      "position": "",
+      "company": "",
+      "address": ""
+    },
+    "items": [
+      {
+        "deskripsi": "Pengukuran, Pembuatan Warkah Desa & Pengurusan Sertifikat Tanah Blok Kaum Lebak, Kelurahan Paminggir, Seluas 1523 m2 ",
+        "biaya": 10500000,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [
+      {
+        "description": "Pembayaran Pertama",
+        "amount": 7500000
+      },
+      {
+        "description": "Pembayaran Kedua Apabila Resi Pendaftaran Dokumen Telah Terbit",
+        "amount": 3000000
+      }
+    ],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar, S.H., M.Kn"
+    },
+    "invoiceDate": "2025-12-24",
+    "showStamp": false,
+    "total": 10500000,
+    "nomorInvoice": "INV/2025/28",
+    "tanggalInvoice": "2025-12-24"
   }
 ]

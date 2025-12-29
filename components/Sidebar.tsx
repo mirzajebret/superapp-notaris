@@ -29,6 +29,8 @@ const menuItems = [
   { name: 'Kalkulator Pajak', icon: Calculator, href: '/modules/kalkulator-pajak' },
   { name: 'WhatsApp Forms', icon: FileStack, href: '/modules/whatsapp-forms' },
   { name: 'CDD Perorangan', icon: FileStack, href: '/modules/cdd-perorangan' },
+  { name: 'CDD Korporasi', icon: FileStack, href: '/modules/cdd-korporasi' },
+  { name: 'Akun Client', icon: Users, href: '/modules/akun-client' },
 ];
 
 export default function Sidebar() {

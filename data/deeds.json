@@ -375,10 +375,16 @@
     "kategori": "Akta",
     "pihak": [
       {
-        "name": "",
+        "name": "Nn. SUTINA",
         "role": "Pihak Pengalih / Penghadap",
-        "actingCapacity": "self",
-        "representedParties": []
+        "actingCapacity": "both",
+        "representedParties": [
+          "MINISO INVESTMENT HONGKONG LIMITED",
+          "YANG SONGNAN",
+          "YANG KE",
+          "JIN JIAWEN",
+          "TU BAOYAN"
+        ]
       }
     ],
     "bulanPelaporan": 12,
@@ -395,8 +401,14 @@
     "kategori": "Akta",
     "pihak": [
       {
-        "name": "",
+        "name": "Tn. RENDRA ARY WIBOWO",
         "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      },
+      {
+        "name": "Tn. YADI SURYADI",
+        "role": "",
         "actingCapacity": "self",
         "representedParties": []
       }
@@ -406,8 +418,8 @@
     "nomorBulanan": "61"
   },
   {
-    "id": "1766469802893",
-    "createdAt": "2025-12-23T06:03:22.893Z",
+    "id": "1766737700330",
+    "createdAt": "2025-12-26T08:28:20.330Z",
     "jenis": "Notaris",
     "nomorAkta": "4",
     "tanggalAkta": "2025-12-22",
@@ -415,10 +427,12 @@
     "kategori": "Akta",
     "pihak": [
       {
-        "name": "",
+        "name": "Tn. MOAZZAM NOOR",
         "role": "Pihak Pengalih / Penghadap",
-        "actingCapacity": "self",
-        "representedParties": []
+        "actingCapacity": "both",
+        "representedParties": [
+          "Tn. MUHAMMAD YOUSAF"
+        ]
       }
     ],
     "bulanPelaporan": 12,

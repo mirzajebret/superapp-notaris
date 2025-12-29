@@ -221,5 +221,169 @@
         "noteType": "Asli"
       }
     ]
+  },
+  {
+    "id": "1766545566307",
+    "createdAt": "2025-12-24T03:06:06.307Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": false,
+      "barang": false
+    },
+    "receiver": {
+      "name": "Nepi Meinti",
+      "position": "Staff Administrasi",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "Ir. Bahgya Siregar",
+      "position": "Client",
+      "signature": ""
+    },
+    "location": "Garut",
+    "handoverDate": "2025-12-24",
+    "items": [
+      {
+        "description": "Surat Pernyataan Waris ",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "KK, KTP, a.n. Ir. Bahgya Siregar",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "PBB & STTS 2025 ",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "Letter C Desa No. 2328",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "Gambar Ukur Luas 1523 m2",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "Sketsa Foto Lokasi",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "Segel Hak Milik Sawah",
+        "note": "",
+        "noteType": "Fotokopi"
+      }
+    ]
+  },
+  {
+    "id": "1766738657685",
+    "createdAt": "2025-12-26T08:44:17.685Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": true,
+      "barang": false
+    },
+    "receiver": {
+      "name": "__________________",
+      "position": "",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "Nepi Meinti",
+      "position": "Staff Administrasi",
+      "signature": ""
+    },
+    "location": "Garut",
+    "handoverDate": "2025-12-27",
+    "items": [
+      {
+        "description": "Salinan Akta Pendirian Perkumpulan Paguyuban Pengelola Pariwisata Pantai Karang Papak (P4KP) Nomor -7.-",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "SK Kemenkum Pengesahan Pendirian Perkumpulan Nomor AHU-0009129.AH.01.07.TAHUN 2025",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "E-NPWP Coretax Perkumpulan ",
+        "note": "Print Out ",
+        "noteType": "Custom"
+      },
+      {
+        "description": "Surat Penerbitan Akun Wajib Pajak Perkumpulan",
+        "note": "Print Out ",
+        "noteType": "Custom"
+      },
+      {
+        "description": "Company Profile Perkumpulan",
+        "note": "Print Out ",
+        "noteType": "Custom"
+      }
+    ]
+  },
+  {
+    "id": "1766739390642",
+    "createdAt": "2025-12-26T08:56:30.642Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": true,
+      "barang": true
+    },
+    "receiver": {
+      "name": "_________________",
+      "position": "",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "Nepi Meinti",
+      "position": "Staff Administrasi",
+      "signature": ""
+    },
+    "location": "Garut",
+    "handoverDate": "2025-12-27",
+    "items": [
+      {
+        "description": "Salinan Akta Pendirian Perkumpulan Paguyuban Pengelola Pariwisata Pantai Karang Papak (P4KP) Nomor -7.-",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "SK Kemenkum Pengesahan Pendirian Perkumpulan Nomor AHU-0009129.AH.01.07.TAHUN 2025",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "E-NPWP & Akun Coretax Perkumpulan",
+        "note": "Print Out",
+        "noteType": "Custom"
+      },
+      {
+        "description": "Company Profile Perkumpulan",
+        "note": "Sample",
+        "noteType": "Custom"
+      },
+      {
+        "description": "Stempel/Cap Perkumpulan",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "Akun Email & Akun OSS Perkumpulan",
+        "note": "Print Out",
+        "noteType": "Custom"
+      },
+      {
+        "description": "Kop Surat Perkumpulan",
+        "note": "Sample",
+        "noteType": "Custom"
+      }
+    ]
   }
 ]

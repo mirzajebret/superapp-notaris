@@ -627,6 +627,50 @@ export async function deleteWaFolder(id) {
   return { success: true };
 }
 
+// --- CDD KORPORASI ACTIONS ---
+
+const cddKorporasiFile = path.join(process.cwd(), 'data', 'cdd-korporasi.json')
+
+export async function getCDDKorporasiList() {
+  try {
+    const data = await fs.readFile(cddKorporasiFile, 'utf8')
+    return JSON.parse(data)
+  } catch (error) {
+    return []
+  }
+}
+
+export async function saveCDDKorporasi(data) {
+  try {
+    const currentData = await getCDDKorporasiList()
+    const index = currentData.findIndex((item) => item.id === data.id)
+
+    if (index !== -1) {
+      currentData[index] = data
+    } else {
+      currentData.push(data)
+    }
+
+    await fs.writeFile(cddKorporasiFile, JSON.stringify(currentData, null, 2))
+    return { success: true }
+  } catch (error) {
+    console.error('Error saving CDD Korporasi:', error)
+    return { success: false, error: error.message }
+  }
+}
+
+export async function deleteCDDKorporasi(id) {
+  try {
+    const currentData = await getCDDKorporasiList()
+    const newData = currentData.filter((item) => item.id !== id)
+    await fs.writeFile(cddKorporasiFile, JSON.stringify(newData, null, 2))
+    return { success: true }
+  } catch (error) {
+    console.error('Error deleting CDD Korporasi:', error)
+    return { success: false, error: error.message }
+  }
+}
+
 // --- CDD PERORANGAN ACTIONS ---
 const cddFile = path.join(process.cwd(), 'data', 'cdd-perorangan.json')
 
@@ -667,6 +711,50 @@ export async function deleteCDD(id) {
     return { success: true }
   } catch (error) {
     console.error('Error deleting CDD:', error)
+    return { success: false, error: error.message }
+  }
+}
+
+// --- CLIENT ACCOUNTS STORAGE ACTIONS ---
+
+const clientAccountsFile = path.join(process.cwd(), 'data', 'client-accounts.json')
+
+export async function getClientAccounts() {
+  try {
+    const data = await fs.readFile(clientAccountsFile, 'utf8')
+    return JSON.parse(data)
+  } catch (error) {
+    return []
+  }
+}
+
+export async function saveClientAccount(data) {
+  try {
+    const currentData = await getClientAccounts()
+    const index = currentData.findIndex((item) => item.id === data.id)
+
+    if (index !== -1) {
+      currentData[index] = data
+    } else {
+      currentData.push(data)
+    }
+
+    await fs.writeFile(clientAccountsFile, JSON.stringify(currentData, null, 2))
+    return { success: true }
+  } catch (error) {
+    console.error('Error saving client account:', error)
+    return { success: false, error: error.message }
+  }
+}
+
+export async function deleteClientAccount(id) {
+  try {
+    const currentData = await getClientAccounts()
+    const newData = currentData.filter((item) => item.id !== id)
+    await fs.writeFile(clientAccountsFile, JSON.stringify(newData, null, 2))
+    return { success: true }
+  } catch (error) {
+    console.error('Error deleting client account:', error)
     return { success: false, error: error.message }
   }
 }
