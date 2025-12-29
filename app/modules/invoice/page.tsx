@@ -147,53 +147,6 @@ export default function NewInvoicePage() {
     window.print();
   };
 
-  // --- FITUR DOWNLOAD PDF (HTML2PDF - SIMPLIFIED & FIXED) ---
-  const handleDownloadPDF = async () => {
-    // Cek apakah element ada
-    if (!invoiceRef.current) {
-      alert("Area invoice tidak ditemukan.");
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      // Import library secara dynamic (Client Side Only)
-      const html2pdf = (await import('html2pdf.js')).default;
-      const element = invoiceRef.current;
-
-      // Opsi PDF yang Stabil
-      const opt = {
-        margin: 0,
-        filename: `Invoice-${formData.recipient.name.replace(/[^a-zA-Z0-9]/g, '-') || 'Draft'}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-          // Paksa lebar canvas agar pas dengan lebar CSS A4 (210mm)
-          // Ini mencegah library "mengecilkan" konten
-          width: 750, // 794px adalah est. lebar A4 di layar (96 DPI)
-          windowWidth: 750,
-        },
-        jsPDF: {
-          unit: 'mm',
-          format: 'a4',
-          orientation: 'portrait'
-        }
-      };
-
-      // Generate PDF
-      await html2pdf().set(opt).from(element).save();
-
-    } catch (error) {
-      console.error("PDF Generation Error:", error);
-      alert("Gagal download PDF. Coba refresh halaman.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-
   const getDisplayDate = (): string => {
     if (!formData.invoiceDate) return '';
     const date = new Date(formData.invoiceDate);
@@ -338,16 +291,6 @@ export default function NewInvoicePage() {
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
               Print
-            </button>
-
-            {/* Tombol Download PDF Asli */}
-            <button
-              onClick={handleDownloadPDF}
-              disabled={loading}
-              className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-
-              {loading ? 'Mengunduh PDF...' : 'Download PDF'}
             </button>
           </div>
         </div>

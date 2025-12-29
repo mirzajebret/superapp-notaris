@@ -1,1 +1,0 @@
-<div><label className="block text-xs font-bold text-gray-500 mb-1">TANGGAL AKTA</label><input type="date" className="w-full border p-2 rounded" value={formState.tanggalAkta} onChange={e => setFormState({ ...formState, tanggalAkta: e.target.value })} /></div>

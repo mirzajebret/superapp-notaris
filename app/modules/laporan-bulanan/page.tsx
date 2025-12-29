@@ -140,13 +140,13 @@ const formatDateLong = (isoDate: string) => {
   return new Date(isoDate).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' });
 };
 const getRomanMonth = (month: number) => {
-  const romans = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
-  return romans[month - 1] || "";
+  const romans = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "I"];
+  return romans[month] || "";
 };
 
 export default function LapbulModulePage() {
   const today = new Date();
-  const [selectedMonth, setSelectedMonth] = useState(today.getMonth() + 1);
+  const [selectedMonth, setSelectedMonth] = useState(today.getMonth());
   const [selectedYear, setSelectedYear] = useState(today.getFullYear());
   const [activeTab, setActiveTab] = useState<'data' | 'notaris' | 'ppat'>('data');
 
@@ -635,9 +635,9 @@ export default function LapbulModulePage() {
                           {/* Kolom 1: Label Kiri (15%) */}
                           <td className="w-[15%] align-top py-0.5">Nomor</td>
                           {/* Kolom 2: Isi Kiri (40%) */}
-                          <td className="w-[40%] align-top py-0.5">: {(idx + 1).toString().padStart(2, '0')}/PPAT/HA/{getRomanMonth(selectedMonth + 1)}/{selectedYear}</td>
+                          <td className="w-[40%] align-top py-0.5">: {(idx + 1).toString().padStart(2, '0')}/PPAT/HA/{getRomanMonth(selectedMonth)}/{selectedYear + 1}</td>
                           {/* Kolom 3: Kanan (45%) - Ada padding kiri agar tidak mepet */}
-                          <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 4).toISOString())}</td>
+                          <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 5).toISOString())}</td>
                         </tr>
 
                         {/* BARIS 2: Lampiran & Kepada Yth */}
@@ -851,9 +851,9 @@ export default function LapbulModulePage() {
                         {/* Kolom 1: Label Kiri (15%) */}
                         <td className="w-[15%] align-top py-0.5">Nomor</td>
                         {/* Kolom 2: Isi Kiri (40%) */}
-                        <td className="w-[40%] align-top py-0.5">: 01/NOT/HA/{getRomanMonth(selectedMonth + 1)}/{selectedYear}</td>
+                        <td className="w-[40%] align-top py-0.5">: 01/NOT/HA/{getRomanMonth(selectedMonth)}/{selectedYear + 1}</td>
                         {/* Kolom 3: Kanan (45%) - Ada padding kiri agar tidak mepet */}
-                        <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 4).toISOString())}</td>
+                        <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 5).toISOString())}</td>
                       </tr>
 
                       {/* BARIS 2: Lampiran & Kepada Yth */}
