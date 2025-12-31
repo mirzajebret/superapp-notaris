@@ -142,42 +142,8 @@ export default function SerahTerimaModulePage() {
   };
 
   const handlePrint = () => {
+    document.title = `SERAH-TERIMA-${formData.receiver.name} (${formData.receiver.position}) ${formData.deliverer.name} (${formData.deliverer.position}) ${formData.handoverDate}`;
     window.print();
-  };
-
-  const handleDownloadPDF = async () => {
-    if (!documentRef.current) {
-      alert('Area dokumen tidak ditemukan.');
-      return;
-    }
-
-    setDownloading(true);
-    try {
-      const html2pdf = (await import('html2pdf.js')).default;
-      const opt = {
-        margin: 0,
-        filename: `Serah-Terima-${formData.receiver.name.replace(/[^a-zA-Z0-9]/g, '-') || 'Draft'}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-          width: 750,
-          windowWidth: 750,
-        },
-        jsPDF: {
-          unit: 'mm',
-          format: 'a4',
-          orientation: 'portrait',
-        },
-      } as const;
-
-      await html2pdf().set(opt).from(documentRef.current).save();
-    } catch (error) {
-      console.error('PDF Generation Error:', error);
-      alert('Gagal mengunduh PDF.');
-    } finally {
-      setDownloading(false);
-    }
   };
 
   const getFormattedDate = () => {
@@ -383,13 +349,6 @@ export default function SerahTerimaModulePage() {
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
               Print
-            </button>
-            <button
-              onClick={handleDownloadPDF}
-              disabled={downloading}
-              className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition font-medium disabled:opacity-50"
-            >
-              {downloading ? 'Mengunduh...' : 'Download PDF'}
             </button>
           </div>
         </div>

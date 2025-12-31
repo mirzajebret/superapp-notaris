@@ -42,42 +42,8 @@ export default function CoverAktaModulePage() {
   };
 
   const handlePrint = () => {
+    document.title = `COVER AKTA ${formData.judulAkta}  ${formData.tanggal}`;
     window.print();
-  };
-
-  const handleDownloadPDF = async () => {
-    if (!documentRef.current) {
-      alert('Area dokumen tidak ditemukan.');
-      return;
-    }
-
-    setDownloading(true);
-    try {
-      const html2pdf = (await import('html2pdf.js')).default;
-      const opt = {
-        margin: 0,
-        filename: `Cover-Akta-${formData.nomorAkta.replace(/[^a-zA-Z0-9]/g, '-') || 'Draft'}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-          width: 750,
-          windowWidth: 750,
-        },
-        jsPDF: {
-          unit: 'mm',
-          format: 'a4',
-          orientation: 'portrait',
-        },
-      } as const;
-
-      await html2pdf().set(opt).from(documentRef.current).save();
-    } catch (error) {
-      console.error('PDF Generation Error:', error);
-      alert('Gagal mengunduh PDF.');
-    } finally {
-      setDownloading(false);
-    }
   };
 
   const getFormattedDate = (): string => {
@@ -217,112 +183,105 @@ export default function CoverAktaModulePage() {
               </svg>
               Print
             </button>
-            <button
-              onClick={handleDownloadPDF}
-              disabled={downloading}
-              className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition font-medium disabled:opacity-50"
-            >
-              {downloading ? 'Mengunduh...' : 'Download PDF'}
-            </button>
           </div>
         </div>
 
         {/* AREA KERTAS (PREVIEW) */}
-<div className="flex-1 w-full overflow-auto flex justify-center print:overflow-visible print:block print:w-full">
-  {/* Tambahkan 'font-serif' di wrapper utama agar Times New Roman tembus ke semua anak elemen */}
-  <A4Container ref={documentRef} className="print-wrapper flex flex-col justify-between font-serif text-black" id="print-target">
-    
-    {/* 1. HEADER SK NOTARIS */}
-    <div className="mt-4">
-       <CoverHeader />
-    </div>
-    
-    {/* 2. KONTEN UTAMA (CENTERED) */}
-    {/* Gunakan mb-auto agar konten terdorong ke tengah vertikal relatif terhadap footer */}
-    <div className="flex-1 flex flex-col justify-center -mt-20"> 
-      
-      {/* TEKS GROSSE/TURUNAN/SALINAN */}
-      <div className="text-center font-serif text-[12pt] mb-10 tracking-wide text-black">
-        {/* LOGIC: Jika dipilih = Bold, Jika tidak = Coret (line-through) */}
-        
-        {/* 1. Grosse */}
-        <span className={formData.jenisSalinan === 'grosse' ? 'font-bold no-underline' : 'line-through font-bold decoration-2 decoration-black'}>
-          Grosse
-        </span>
-        
-        <span className="mx-1">/</span>
+        <div className="flex-1 w-full overflow-auto flex justify-center print:overflow-visible print:block print:w-full">
+          {/* Tambahkan 'font-serif' di wrapper utama agar Times New Roman tembus ke semua anak elemen */}
+          <A4Container ref={documentRef} className="print-wrapper flex flex-col justify-between font-serif text-black" id="print-target">
 
-        {/* 2. Turunan */}
-        <span className={formData.jenisSalinan === 'turunan' ? 'font-bold no-underline' : 'line-through font-bold decoration-2 decoration-black'}>
-           Turunan
-        </span>
+            {/* 1. HEADER SK NOTARIS */}
+            <div className="mt-4">
+              <CoverHeader />
+            </div>
 
-        <span className="mx-1">/</span>
+            {/* 2. KONTEN UTAMA (CENTERED) */}
+            {/* Gunakan mb-auto agar konten terdorong ke tengah vertikal relatif terhadap footer */}
+            <div className="flex-1 flex flex-col justify-center -mt-20">
 
-        {/* 3. Salinan */}
-        <span className={formData.jenisSalinan === 'salinan' ? 'font-bold no-underline' : 'line-through font-bold decoration-2 decoration-black'}>
-           Salinan
-        </span>
-      </div>
+              {/* TEKS GROSSE/TURUNAN/SALINAN */}
+              <div className="text-center font-serif text-[12pt] mb-10 tracking-wide text-black">
+                {/* LOGIC: Jika dipilih = Bold, Jika tidak = Coret (line-through) */}
 
-      {/* INFORMASI AKTA - Menggunakan Grid Layout Manual untuk Presisi */}
-      <div className="w-[80%] mx-auto px-8 text-[12pt] leading-relaxed font-serif text-black">
-        
-        {/* BAGIAN AKTA */}
-        <div className="flex items-start mb-4">
-          <div className="w-[100px] pt-2 font-medium shrink-0">AKTA</div>
-          <div className="w-[20px] text-center pt-2 shrink-0">:</div>
-          <div className="flex-1 flex flex-col gap-1">
-             
-             {/* JUDUL AKTA (Multi-line Support dengan Garis Per Baris) */}
-             {/* Note: backgroundSize tingginya harus sama dengan line-height (leading) */}
-             <div 
-               className="uppercase font-bold min-h-[1em] leading-[2em] break-words whitespace-pre-wrap"
-               style={{
-                 backgroundImage: 'linear-gradient(to bottom, transparent 97%, black 97%)',
-                 backgroundSize: '100% 2em', 
-                 backgroundPosition: '0 1.7em' // Mengatur posisi garis agar pas di bawah teks
-               }}
-             >
-                {formData.judulAkta || ''}
-             </div>
-          </div>
+                {/* 1. Grosse */}
+                <span className={formData.jenisSalinan === 'grosse' ? 'font-bold no-underline' : 'line-through font-bold decoration-2 decoration-black'}>
+                  Grosse
+                </span>
+
+                <span className="mx-1">/</span>
+
+                {/* 2. Turunan */}
+                <span className={formData.jenisSalinan === 'turunan' ? 'font-bold no-underline' : 'line-through font-bold decoration-2 decoration-black'}>
+                  Turunan
+                </span>
+
+                <span className="mx-1">/</span>
+
+                {/* 3. Salinan */}
+                <span className={formData.jenisSalinan === 'salinan' ? 'font-bold no-underline' : 'line-through font-bold decoration-2 decoration-black'}>
+                  Salinan
+                </span>
+              </div>
+
+              {/* INFORMASI AKTA - Menggunakan Grid Layout Manual untuk Presisi */}
+              <div className="w-[80%] mx-auto px-8 text-[12pt] leading-relaxed font-serif text-black">
+
+                {/* BAGIAN AKTA */}
+                <div className="flex items-start mb-4">
+                  <div className="w-[100px] pt-2 font-medium shrink-0">AKTA</div>
+                  <div className="w-[20px] text-center pt-2 shrink-0">:</div>
+                  <div className="flex-1 flex flex-col gap-1">
+
+                    {/* JUDUL AKTA (Multi-line Support dengan Garis Per Baris) */}
+                    {/* Note: backgroundSize tingginya harus sama dengan line-height (leading) */}
+                    <div
+                      className="uppercase font-bold min-h-[1em] leading-[2em] break-words whitespace-pre-wrap"
+                      style={{
+                        backgroundImage: 'linear-gradient(to bottom, transparent 97%, black 97%)',
+                        backgroundSize: '100% 2em',
+                        backgroundPosition: '0 1.7em' // Mengatur posisi garis agar pas di bawah teks
+                      }}
+                    >
+                      {formData.judulAkta || ''}
+                    </div>
+                  </div>
+                </div>
+
+                {/* BAGIAN NOMOR */}
+                <div className="flex items-start mb-4">
+                  <div className="w-[100px] pt-1 font-medium">NOMOR</div>
+                  <div className="w-[20px] text-center pt-1">:</div>
+                  <div className="flex-1">
+                    <div className="border-b-[2px] border-black font-bold h-[1.5em]">
+                      {/* Format: - 2 - */}
+                      {formData.nomorAkta ? `-${formData.nomorAkta}.-` : ''}
+                    </div>
+                  </div>
+                </div>
+
+                {/* BAGIAN TANGGAL */}
+                <div className="flex items-start">
+                  <div className="w-[100px]  font-medium">TANGGAL</div>
+                  <div className="w-[20px] text-center pt-1">:</div>
+                  <div className="flex-1">
+                    <div className="border-b-[2px] border-black  uppercase h-[1.5em]">
+                      {getFormattedDate().toUpperCase()}
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            {/* 3. FOOTER (Alamat Kantor - Bold & Small) */}
+            <div className="text-[10pt] text-center font-bold leading-snug pb-8">
+              <p>Jl. Jenderal Sudirman, 31 B, Sukamentri, Kecamatan. Garut Kota, Kabupaten Garut-44116</p>
+              <p>Call/WhatsApp : 081373337888 Email : hakbar.notpat@gmail.com</p>
+            </div>
+
+          </A4Container>
         </div>
-
-        {/* BAGIAN NOMOR */}
-        <div className="flex items-start mb-4">
-          <div className="w-[100px] pt-1 font-medium">NOMOR</div>
-          <div className="w-[20px] text-center pt-1">:</div>
-          <div className="flex-1">
-             <div className="border-b-[2px] border-black font-bold h-[1.5em]">
-                {/* Format: - 2 - */}
-                {formData.nomorAkta ? `-${formData.nomorAkta}.-` : ''}
-             </div>
-          </div>
-        </div>
-
-        {/* BAGIAN TANGGAL */}
-        <div className="flex items-start">
-          <div className="w-[100px]  font-medium">TANGGAL</div>
-          <div className="w-[20px] text-center pt-1">:</div>
-          <div className="flex-1">
-             <div className="border-b-[2px] border-black  uppercase h-[1.5em]">
-                {getFormattedDate().toUpperCase()}
-             </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    {/* 3. FOOTER (Alamat Kantor - Bold & Small) */}
-    <div className="text-[10pt] text-center font-bold leading-snug pb-8">
-      <p>Jl. Jenderal Sudirman, 31 B, Sukamentri, Kecamatan. Garut Kota, Kabupaten Garut-44116</p>
-      <p>Call/WhatsApp : 081373337888 Email : hakbar.notpat@gmail.com</p>
-    </div>
-
-  </A4Container>
-</div>
       </div>
     </div>
   );

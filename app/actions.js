@@ -758,3 +758,79 @@ export async function deleteClientAccount(id) {
     return { success: false, error: error.message }
   }
 }
+
+
+const serahTerimaFile = path.join(process.cwd(), 'data', 'serah-terima.json')
+
+export async function getSerahTerimaList() {
+  try {
+    const data = await fs.readFile(serahTerimaFile, 'utf8')
+    const parsed = JSON.parse(data)
+    return parsed.sort((a, b) => new Date(b.handoverDate || b.createdAt) - new Date(a.handoverDate || a.createdAt))
+  } catch (error) {
+    return []
+  }
+}
+
+
+
+export async function deleteSerahTerima(id) {
+  try {
+    const currentData = await getSerahTerimaList()
+    const newData = currentData.filter((item) => item.id !== id)
+    await fs.writeFile(serahTerimaFile, JSON.stringify(newData, null, 2))
+    return { success: true }
+  } catch (error) {
+    return { success: false, error: error.message }
+  }
+}
+
+// --- GLOBAL HISTORY ACTIONS (Fitur Baru) ---
+export async function getGlobalHistory() {
+  const files = [
+    { name: 'invoices.json', type: 'invoice', label: 'Invoice' },
+    { name: 'serah-terima.json', type: 'serah-terima', label: 'Tanda Terima' },
+    { name: 'daftar-hadir.json', type: 'daftar-hadir', label: 'Daftar Hadir' },
+    { name: 'cover-akta.json', type: 'cover-akta', label: 'Cover Akta' },
+    { name: 'cdd-perorangan.json', type: 'cdd-perorangan', label: 'CDD Perorangan' },
+    { name: 'cdd-korporasi.json', type: 'cdd-korporasi', label: 'CDD Korporasi' },
+  ];
+
+  let allDocs = [];
+
+  for (const file of files) {
+    try {
+      const filePath = path.join(process.cwd(), 'data', file.name);
+      // Cek apakah file ada sebelum baca
+      try {
+        await fs.access(filePath);
+      } catch {
+        continue; // Skip jika file belum dibuat
+      }
+
+      const fileContent = await fs.readFile(filePath, 'utf8');
+      const data = JSON.parse(fileContent);
+
+      const normalized = data.map(item => ({
+        id: item.id,
+        originalId: item.id,
+        type: file.type,
+        typeLabel: file.label,
+        // Normalisasi tanggal dari berbagai format field
+        date: item.date || item.createdAt || item.handoverDate || item.tanggal || item.tglTandaTangan || new Date().toISOString(),
+        // Normalisasi judul dari berbagai format field
+        title: item.clientName || item.namaLengkap || item.namaKorporasi || item.receiver?.name || item.nomorAkta || item.judul || 'Dokumen Tanpa Judul',
+        // Simpan raw data untuk dirender ulang
+        data: item
+      }));
+
+      allDocs = [...allDocs, ...normalized];
+    } catch (error) {
+      console.error(`Error reading ${file.name}:`, error);
+      continue;
+    }
+  }
+
+  // Sort dari yang paling baru
+  return allDocs.sort((a, b) => new Date(b.date) - new Date(a.date));
+}

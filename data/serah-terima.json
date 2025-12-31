@@ -385,5 +385,33 @@
         "noteType": "Custom"
       }
     ]
+  },
+  {
+    "id": "1767154383240",
+    "createdAt": "2025-12-31T04:13:03.240Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": false,
+      "barang": false
+    },
+    "receiver": {
+      "name": "",
+      "position": "_________________",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "Nepi Meinti",
+      "position": "Staff Administrasi",
+      "signature": ""
+    },
+    "location": "Garut",
+    "handoverDate": "2025-12-31",
+    "items": [
+      {
+        "description": "Salinan Akta Perjanjian Pernikahan Tanggal 31 Desember 2025,  No -5.-",
+        "note": "",
+        "noteType": "Asli"
+      }
+    ]
   }
 ]

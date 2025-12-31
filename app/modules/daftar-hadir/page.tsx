@@ -72,44 +72,11 @@ export default function DaftarHadirModulePage() {
   };
 
   const handlePrint = () => {
+    document.title = `DAFTAR HADIR ${formData.judul} ${formData.tanggal}`;
     window.print();
   };
 
-  const handleDownloadPDF = async () => {
-    if (!documentRef.current) {
-      alert('Area dokumen tidak ditemukan.');
-      return;
-    }
 
-    setDownloading(true);
-    try {
-      const html2pdf = (await import('html2pdf.js')).default;
-      const opt = {
-        // Margin di set 0 di sini karena kita mengaturnya via CSS @page
-        margin: 0, 
-        filename: `Daftar-Hadir-${formData.nomorAkta.replace(/[^a-zA-Z0-9]/g, '-') || 'Draft'}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-          // Hapus width/windowWidth fix agar responsif terhadap margin CSS
-        },
-        jsPDF: {
-          unit: 'mm',
-          format: 'a4',
-          orientation: 'portrait',
-        },
-      } as const;
-
-      // Gunakan element parent dari documentRef agar style global @page terbaca
-      await html2pdf().set(opt).from(documentRef.current).save();
-    } catch (error) {
-      console.error('PDF Generation Error:', error);
-      alert('Gagal mengunduh PDF.');
-    } finally {
-      setDownloading(false);
-    }
-  };
 
   const getFormattedDate = (): string => {
     if (!formData.tanggal) return '';
@@ -126,7 +93,7 @@ export default function DaftarHadirModulePage() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-8 flex gap-8 font-sans text-gray-800 print:p-0 print:bg-white">
-      
+
       {/* --- CSS GLOBAL UNTUK PRINTING --- */}
       <style jsx global>{`
         @media print {
@@ -231,7 +198,7 @@ export default function DaftarHadirModulePage() {
                 className="absolute top-2 right-2 text-gray-400 hover:text-red-600"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                  <path d="M3 6h18" /><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" /><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
                 </svg>
               </button>
               <div className="pr-6">
@@ -274,13 +241,6 @@ export default function DaftarHadirModulePage() {
               </svg>
               Print
             </button>
-            <button
-              onClick={handleDownloadPDF}
-              disabled={downloading}
-              className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition font-medium disabled:opacity-50"
-            >
-              {downloading ? 'Mengunduh...' : 'Download PDF'}
-            </button>
           </div>
         </div>
 
@@ -288,18 +248,18 @@ export default function DaftarHadirModulePage() {
         <div className="flex-1 w-full overflow-auto flex justify-center print:overflow-visible print:block print:w-full">
           {/* Note: A4Container akan memiliki padding di layar, tapi paddingnya di-reset saat print via CSS global di atas */}
           <A4Container ref={documentRef} className="print-wrapper flex flex-col" id="print-target">
-            
+
             {/* 1. KOP SURAT */}
             <KopSurat />
-            
+
             {/* 2. TEKS LEGAL */}
             <div className="text-[12pt] text-justify leading-[1.5] font-serif text-black">
               <p className="mb-1">
-                Demikian berdasarkan dan untuk memenuhi ketentuan Pasal 16 ayat (1) huruf c, Undang-undang Nomor 
+                Demikian berdasarkan dan untuk memenuhi ketentuan Pasal 16 ayat (1) huruf c, Undang-undang Nomor
                 2 Tahun 2014 tentang perubahan atas Undang-undang Nomor 30 Tahun 2014 tentang Jabatan Notaris.
               </p>
               <p className="mb-3">
-                Telah dilekatkan <span className="font-bold underline">Daftar Hadir dan Dokumen</span> serta <span className="font-bold underline">Sidik Jari</span>, 
+                Telah dilekatkan <span className="font-bold underline">Daftar Hadir dan Dokumen</span> serta <span className="font-bold underline">Sidik Jari</span>,
                 pada lembaran tersendiri yang disediakan untuk keperluan tersebut dan merupakan satu kesatuan yang tidak terpisahkan dari minuta akta ini.
               </p>
             </div>
@@ -331,7 +291,7 @@ export default function DaftarHadirModulePage() {
                   <th className="border border-black p-2 w-10 align-middle">No.</th>
                   <th className="border border-black p-2 w-[170px] align-middle">Nama</th>
                   <th className="border border-black p-2 w-[140px] align-middle">Tanda Tangan</th>
-                  <th className="border border-black w-32 align-middle">Sidik Jari<br/><span className="text-[8pt]">(IBU JARI KANAN)</span></th>
+                  <th className="border border-black w-32 align-middle">Sidik Jari<br /><span className="text-[8pt]">(IBU JARI KANAN)</span></th>
                   <th className="border border-black p-2 w-[160px] align-middle">Alamat & Telp.</th>
                 </tr>
               </thead>
@@ -339,7 +299,7 @@ export default function DaftarHadirModulePage() {
                 {formData.participants.length > 0 ? (
                   formData.participants.map((participant, index) => (
                     // Class h-32 tetap ada untuk tinggi visual, CSS 'page-break-inside: avoid' menjaga agar tidak terpotong
-                    <tr key={index} className="h-[110px]"> 
+                    <tr key={index} className="h-[110px]">
                       <td className="border border-black p-2 text-center align-middle font-bold">{index + 1}</td>
                       <td className="border border-black p-4 align-middle font-bold">
                         {participant.nama}

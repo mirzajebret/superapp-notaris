@@ -814,7 +814,7 @@ export default function LapbulModulePage() {
                     </table>
 
                     <div className="mt-8 flex justify-end text-[10pt] font-serif text-center">
-                      <div><p>Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 4).toISOString())}</p><div className="h-20"></div><p className="font-bold underline">HAVIS AKBAR, S.H., M.Kn.</p></div>
+                      <div><p>Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 5).toISOString())}</p><div className="h-20"></div><p className="font-bold underline">HAVIS AKBAR, S.H., M.Kn.</p></div>
                     </div>
                   </div>
                   {/* Spacer no-print */}
@@ -1072,7 +1072,7 @@ export default function LapbulModulePage() {
                     </table>
                     <div className="mt-5 text-[11pt] text-right">
                       <p>Salinan ini sesuai dengan aslinya,</p>
-                      <p>Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 4).toISOString())}</p>
+                      <p>Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 5).toISOString())}</p>
                       <div className="h-16"></div>
                       <p className="font-bold">(HAVIS AKBAR, S.H., M.Kn.)</p>
                     </div>

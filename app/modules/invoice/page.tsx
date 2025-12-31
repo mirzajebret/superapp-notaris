@@ -144,6 +144,7 @@ export default function NewInvoicePage() {
 
   // --- FITUR PRINT (NATIVE) ---
   const handlePrint = () => {
+    document.title = `INVOICE ${formData.recipient.name} ${formData.invoiceDate}`;
     window.print();
   };
 
