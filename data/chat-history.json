@@ -1,0 +1,84 @@
+[
+  {
+    "id": "1767164577154",
+    "ip": "::ffff:192.168.100.112",
+    "message": "test",
+    "timestamp": "2025-12-31T07:02:57.154Z",
+    "senderName": "User .112"
+  },
+  {
+    "id": "1767164614734",
+    "ip": "::ffff:192.168.100.169",
+    "message": "test",
+    "timestamp": "2025-12-31T07:03:34.734Z",
+    "senderName": "User .169"
+  },
+  {
+    "id": "1767164851943",
+    "ip": "::ffff:192.168.100.169",
+    "message": "cek cek",
+    "timestamp": "2025-12-31T07:07:31.943Z",
+    "senderName": "User .169"
+  },
+  {
+    "id": "1767164857577",
+    "ip": "::ffff:192.168.100.112",
+    "message": "anjay",
+    "timestamp": "2025-12-31T07:07:37.577Z",
+    "senderName": "User .112"
+  },
+  {
+    "id": "1767164947275",
+    "ip": "::ffff:192.168.100.170",
+    "message": "TEST",
+    "timestamp": "2025-12-31T07:09:07.275Z",
+    "senderName": "User .170"
+  },
+  {
+    "id": "1767166004815",
+    "ip": "::ffff:192.168.100.112",
+    "message": "",
+    "timestamp": "2025-12-31T07:26:44.815Z",
+    "senderName": "User .112",
+    "attachment": {
+      "fileName": "PERJANJIAN KAWIN.pdf",
+      "fileType": "application/pdf",
+      "fileUrl": "/uploads/chat/1767166004813-PERJANJIAN_KAWIN.pdf",
+      "fileSize": 279497
+    }
+  },
+  {
+    "id": "1767166039945",
+    "ip": "::ffff:192.168.100.112",
+    "message": "",
+    "timestamp": "2025-12-31T07:27:19.945Z",
+    "senderName": "User .112",
+    "attachment": {
+      "fileName": "SERAH-TERIMA- (___________________) (______________________) 2025-12-30.pdf",
+      "fileType": "application/pdf",
+      "fileUrl": "/uploads/chat/1767166039943-SERAH-TERIMA-________________________________________________2025-12-30.pdf",
+      "fileSize": 125697
+    }
+  },
+  {
+    "id": "1767166743286",
+    "ip": "::ffff:192.168.100.169",
+    "message": "bisa a kebuka mantappp",
+    "timestamp": "2025-12-31T07:39:03.286Z",
+    "senderName": "User .169",
+    "attachment": null
+  },
+  {
+    "id": "1767167750474",
+    "ip": "::ffff:192.168.100.170",
+    "message": "",
+    "timestamp": "2025-12-31T07:55:50.475Z",
+    "senderName": "User .170",
+    "attachment": {
+      "fileName": "PERJANJIAN KAWIN NUR FAUZIAH-JOHARI BIN RAJA AFFENDI.doc",
+      "fileType": "application/msword",
+      "fileUrl": "/uploads/chat/1767167749417-PERJANJIAN_KAWIN_NUR_FAUZIAH-JOHARI_BIN_RAJA_AFFENDI.doc",
+      "fileSize": 87040
+    }
+  }
+]

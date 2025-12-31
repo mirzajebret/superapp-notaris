@@ -32,6 +32,7 @@ const menuItems = [
   { name: 'CDD Korporasi', icon: FileStack, href: '/modules/cdd-korporasi' },
   { name: 'Akun Client', icon: Users, href: '/modules/akun-client' },
   { name: 'Riwayat', icon: FileStack, href: '/modules/riwayat' },
+  { name: 'Chat Kantor', icon: FileStack, href: '/modules/chat-kantor' },
 ];
 
 export default function Sidebar() {

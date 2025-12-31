@@ -379,14 +379,11 @@ export async function processGarisAkta(formData) {
 
   if (!file) return { success: false, message: "File tidak ditemukan" };
 
-  // 1. Simpan File Input Sementara
   const buffer = Buffer.from(await file.arrayBuffer());
   const timestamp = Date.now();
-  // Sanitasi nama file agar aman di command line
   const cleanName = file.name.replace(/[^a-zA-Z0-9]/g, '_');
   const inputFileName = `input_${timestamp}_${cleanName}.pdf`;
 
-  // Path lengkap (Gunakan process.cwd() agar path absolut)
   const uploadDir = path.join(process.cwd(), 'public', 'uploads');
   const inputPath = path.join(uploadDir, inputFileName);
 
@@ -399,15 +396,10 @@ export async function processGarisAkta(formData) {
     return { success: false, message: "Gagal menyimpan file upload" };
   }
 
-  // 2. Tentukan Path Script & Output
   const scriptPath = path.join(process.cwd(), 'scripts', 'ToolGarisAktaNot.py');
-  // Output path ditentukan oleh logic Python script Anda (suffix _SALINAN atau _MINUTA)
-  // Kita perlu path output eksplisit agar Node.js tahu di mana mencarinya
   const outputFileName = `${type.toUpperCase()}_${cleanName.replace('_pdf', '')}.pdf`;
   const outputPath = path.join(uploadDir, outputFileName);
 
-  // 3. Jalankan Python Script
-  // Command: python script.py input output --type salinan
   const command = `python "${scriptPath}" "${inputPath}" "${outputPath}" --type ${type}`;
 
   try {
@@ -417,8 +409,6 @@ export async function processGarisAkta(formData) {
     console.log("Python Output:", stdout);
     if (stderr) console.error("Python Error:", stderr);
 
-    // 4. Return URL File Hasil
-    // Karena disimpan di public/uploads, bisa diakses via browser
     return {
       success: true,
       fileUrl: `/uploads/${outputFileName}`,
