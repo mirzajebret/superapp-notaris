@@ -225,22 +225,19 @@ export default function CoverAktaModulePage() {
               </div>
 
               {/* INFORMASI AKTA - Menggunakan Grid Layout Manual untuk Presisi */}
-              <div className="w-[80%] mx-auto px-8 text-[12pt] leading-relaxed font-serif text-black">
+              <div className="w-[90%] mx-auto px-4 text-[12pt] leading-relaxed font-serif text-black">
 
                 {/* BAGIAN AKTA */}
-                <div className="flex items-start mb-4">
-                  <div className="w-[100px] pt-2 font-medium shrink-0">AKTA</div>
+                <div className="flex items-start mb-6">
+                  <div className="w-[100px] pt-2 font-bold shrink-0">AKTA</div>
                   <div className="w-[20px] text-center pt-2 shrink-0">:</div>
                   <div className="flex-1 flex flex-col gap-1">
-
-                    {/* JUDUL AKTA (Multi-line Support dengan Garis Per Baris) */}
-                    {/* Note: backgroundSize tingginya harus sama dengan line-height (leading) */}
                     <div
                       className="uppercase font-bold min-h-[1em] leading-[2em] break-words whitespace-pre-wrap"
                       style={{
                         backgroundImage: 'linear-gradient(to bottom, transparent 97%, black 97%)',
                         backgroundSize: '100% 2em',
-                        backgroundPosition: '0 1.7em' // Mengatur posisi garis agar pas di bawah teks
+                        backgroundPosition: '0 1.7em'
                       }}
                     >
                       {formData.judulAkta || ''}
@@ -250,7 +247,7 @@ export default function CoverAktaModulePage() {
 
                 {/* BAGIAN NOMOR */}
                 <div className="flex items-start mb-4">
-                  <div className="w-[100px] pt-1 font-medium">NOMOR</div>
+                  <div className="w-[100px] pt-1 font-bold">NOMOR</div>
                   <div className="w-[20px] text-center pt-1">:</div>
                   <div className="flex-1">
                     <div className="border-b-[2px] border-black font-bold h-[1.5em]">
@@ -262,7 +259,7 @@ export default function CoverAktaModulePage() {
 
                 {/* BAGIAN TANGGAL */}
                 <div className="flex items-start">
-                  <div className="w-[100px]  font-medium">TANGGAL</div>
+                  <div className="w-[100px]  font-bold">TANGGAL</div>
                   <div className="w-[20px] text-center pt-1">:</div>
                   <div className="flex-1">
                     <div className="border-b-[2px] border-black  uppercase h-[1.5em]">
