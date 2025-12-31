@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { getChatData, sendMessage, ChatMessage } from './actions';
-import { Send, Monitor, Paperclip, X, FileText, Image as ImageIcon, Download } from 'lucide-react';
+import { Send, MessageCircleMoreIcon, Paperclip, X, FileText, Image as ImageIcon, Download } from 'lucide-react';
 import Image from 'next/image';
 
 export default function ChatKantorPage() {
@@ -88,7 +88,7 @@ export default function ChatKantorPage() {
             <div className="bg-white p-4 shadow-sm border-b flex items-center justify-between sticky top-0 z-10">
                 <div className="flex items-center gap-3">
                     <div className="bg-blue-600 p-2 rounded-full text-white">
-                        <Monitor size={20} />
+                        <MessageCircleMoreIcon size={20} />
                     </div>
                     <div>
                         <h1 className="font-bold text-gray-800 text-lg">Chat Kantor</h1>

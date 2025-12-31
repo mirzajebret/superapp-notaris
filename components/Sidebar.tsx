@@ -12,12 +12,13 @@ import {
   Calculator,
   DraftingCompass,
   FileStack,
-  Settings,
+  MessageCircleMoreIcon,
   Scale
 } from 'lucide-react';
 
 const menuItems = [
   { name: 'Dashboard', icon: LayoutDashboard, href: '/' },
+  { name: 'Chat Kantor', icon: MessageCircleMoreIcon, href: '/modules/chat-kantor' },
   { name: 'Timeline Pekerjaan', icon: CalendarSync, href: '/modules/timeline-pekerjaan' },
   { name: 'Invoice', icon: FileText, href: '/modules/invoice' },
   { name: 'Serah Terima Dokumen', icon: FolderInput, href: '/modules/serah-terima' },
@@ -28,11 +29,11 @@ const menuItems = [
   { name: 'Penggaris Akta', icon: DraftingCompass, href: '/modules/penggaris-akta' },
   { name: 'Kalkulator Pajak', icon: Calculator, href: '/modules/kalkulator-pajak' },
   { name: 'WhatsApp Forms', icon: FileStack, href: '/modules/whatsapp-forms' },
-  { name: 'CDD Perorangan', icon: FileStack, href: '/modules/cdd-perorangan' },
-  { name: 'CDD Korporasi', icon: FileStack, href: '/modules/cdd-korporasi' },
+  { name: 'CDD Perorangan', icon: FileText, href: '/modules/cdd-perorangan' },
+  { name: 'CDD Korporasi', icon: FileText, href: '/modules/cdd-korporasi' },
   { name: 'Akun Client', icon: Users, href: '/modules/akun-client' },
-  { name: 'Riwayat', icon: FileStack, href: '/modules/riwayat' },
-  { name: 'Chat Kantor', icon: FileStack, href: '/modules/chat-kantor' },
+  { name: 'Riwayat Dokumen', icon: FileStack, href: '/modules/riwayat' },
+
 ];
 
 export default function Sidebar() {
