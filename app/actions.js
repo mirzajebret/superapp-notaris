@@ -403,7 +403,7 @@ export async function processGarisAkta(formData) {
   const scriptPath = path.join(process.cwd(), 'scripts', 'ToolGarisAktaNot.py');
   // Output path ditentukan oleh logic Python script Anda (suffix _SALINAN atau _MINUTA)
   // Kita perlu path output eksplisit agar Node.js tahu di mana mencarinya
-  const outputFileName = `output_${timestamp}_${cleanName}.pdf`;
+  const outputFileName = `${type.toUpperCase()}_${cleanName.replace('_pdf', '')}.pdf`;
   const outputPath = path.join(uploadDir, outputFileName);
 
   // 3. Jalankan Python Script

@@ -16,7 +16,7 @@ class NotarialDeedFormatter:
     def __init__(self, input_pdf, output_pdf, deed_type="salinan"):
         self.input_pdf = input_pdf
         self.output_pdf = output_pdf
-        self.deed_type = deed_type.lower() # "salinan" atau "minuta"
+        self.deed_type = deed_type.lower() 
         
         # --- Customization Parameters ---
         self.line_offset = 8
@@ -24,11 +24,8 @@ class NotarialDeedFormatter:
         self.line_gap_tolerance = 25
         
         # --- Visual Adjustments ---
-        # Mengatur agar garis tidak terlalu nempel ke atas huruf (visual breathing room)
         self.visual_top_adjustment = 2 
-        # Mengabaikan teks yang posisinya di atas y=50 (misal header halaman/nomor halaman)
         self.header_threshold = 50 
-        # Batas bawah halaman (footer)
         self.footer_zone_start = 0.95 
 
         # --- Decorative Line Parameters ---
@@ -46,19 +43,16 @@ class NotarialDeedFormatter:
             print(f"Total pages: {len(doc)}")
             
             for page_num, page in enumerate(doc):
-                # print(f"Processing page {page_num + 1}...") # Uncomment for debug
                 
                 page_rect = page.rect
                 blocks = page.get_text("blocks")
                 content_blocks = []
 
-                # --- Filtering Blocks (Initial) ---
                 for b in blocks:
-                    # Hapus block yang terlalu bawah (Footer area)
                     if b[1] > page_rect.height * self.footer_zone_start:
                         continue
                     
-                    # Halaman tengah (bukan 1): Hapus block yang terlalu atas (Header area)
+                    if page_num > 0 and b[1] < self.header_threshold:
                     if page_num > 0 and b[1] < self.header_threshold:
                         continue
                         
@@ -83,7 +77,6 @@ class NotarialDeedFormatter:
                             break
                     
                     if start_index != -1:
-                        # Buang semua block sebelum "Pada hari ini" (Judul & Nomor)
                         content_blocks = content_blocks[start_index:]
                         print(f"  [Page 1] Starting lines from: 'Pada hari ini...'")
                     else:
@@ -91,8 +84,6 @@ class NotarialDeedFormatter:
 
                 # --- LOGIC HALAMAN TERAKHIR (Stop Trigger) ---
                 if page_num == len(doc) - 1:
-                    # Keyword penutup berdasarkan tipe atau umum
-                    # Kita cari keyword yang menandakan akhir isi akta sebelum tanda tangan
                     stop_phrases = [
                         "minuta akta ini telah ditandatangani",
                         "diberikan sebagai salinan",
@@ -108,12 +99,9 @@ class NotarialDeedFormatter:
                             break # Ketemu baris penutup
                     
                     if cutoff_index != -1:
-                        # Ambil sampai block penutup itu saja
                         content_blocks = content_blocks[:cutoff_index + 3]
                         print(f"  [Last Page] Stopping lines at closing phrase.")
                     else:
-                        # Fallback jika tidak ketemu persis, coba hindari area bawah 
-                        # dengan memotong 2-3 blok terakhir jika terlihat seperti list nama (heuristic kasar)
                         pass 
 
                 # --- Drawing Logic ---
@@ -136,28 +124,21 @@ class NotarialDeedFormatter:
                     current_y0 = current_block[1] + self.visual_top_adjustment
                     current_y1 = current_block[3]
 
-                    # Cek indentasi (apakah satu garis lurus)
                     is_same_indent = abs(current_x - current_segment["x"]) < self.indent_tolerance
                     
-                    # Cek jarak vertikal (apakah masih satu paragraf/kesatuan)
                     is_vertically_close = (current_y0 - prev_block[3]) < self.line_gap_tolerance
 
                     if is_same_indent and is_vertically_close:
-                        # Perpanjang segmen ke bawah
                         current_segment["y1"] = current_y1
                     else:
-                        # Simpan segmen lama, mulai segmen baru
                         line_segments.append(current_segment)
                         current_segment = {"x": current_x, "y0": current_y0, "y1": current_y1}
                 
-                # Append segmen terakhir
                 line_segments.append(current_segment)
 
-                # --- Render Lines to Overlay ---
                 overlay_buffer = BytesIO()
                 c = canvas.Canvas(overlay_buffer, pagesize=(page_rect.width, page_rect.height))
                 
-                # Warna garis
                 if self.deed_type == "minuta":
                     c.setStrokeColorRGB(0, 0, 0) # Hitam
                 else:
