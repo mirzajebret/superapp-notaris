@@ -413,5 +413,136 @@
         "noteType": "Asli"
       }
     ]
+  },
+  {
+    "id": "1767583082057",
+    "createdAt": "2026-01-05T03:18:02.057Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": false,
+      "barang": false
+    },
+    "receiver": {
+      "name": "Nepi Meinti",
+      "position": "Staff Administrasi",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "______________",
+      "position": "",
+      "signature": ""
+    },
+    "location": "Garut",
+    "handoverDate": "2026-01-05",
+    "items": [
+      {
+        "description": "SHM NOMOR 03027 A.N ANANG IUS",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "KTP A.N ANANG IUS",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "KK NOMOR 3204062804052527",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "SPT PBB TAHUN 2025 A.N ANANG IUS",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "SHM NOMOR 03534 A.N UJANG SUTISNA",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "KTP A.N UJANG SUTISNA",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "KTP A.N SANTI SRINARTI",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "KK NOMOR 3205101212070174",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "KTP A.N DEVI NURHAYATI",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "KK NOMOR 3205100207240003",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "KTP A.N NANDANG",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "KK NOMOR 3205101402130003",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "SPT PBB TAHUN 2025 A.N INGI",
+        "note": "",
+        "noteType": "Fotokopi"
+      }
+    ]
+  },
+  {
+    "id": "1767599983868",
+    "createdAt": "2026-01-05T07:59:43.868Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": false,
+      "barang": false
+    },
+    "receiver": {
+      "name": "Nepi Meinti",
+      "position": "Staff Administrasi",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "............................................",
+      "position": "Client",
+      "signature": ""
+    },
+    "location": "Garut",
+    "handoverDate": "2026-01-05",
+    "items": [
+      {
+        "description": "Seripikat Hak Guna Bangunan No. 00039/Ds. Majasari, Kec. Cibiuk",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "Sertipikat Hak Tanggungan No. 74/2009",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "Surat Roya No. B.08/KC.VI/ADK/02/2015",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "Ktp an Drs. H. Amar & Nana Rostiana",
+        "note": "",
+        "noteType": "Fotokopi"
+      }
+    ]
   }
 ]

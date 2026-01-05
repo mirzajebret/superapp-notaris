@@ -367,5 +367,47 @@
     "total": 10500000,
     "nomorInvoice": "INV/2025/28",
     "tanggalInvoice": "2025-12-24"
+  },
+  {
+    "id": "1767582233575",
+    "createdAt": "2026-01-05T03:03:53.575Z",
+    "recipient": {
+      "name": "Bp. Nandang",
+      "position": "",
+      "company": "",
+      "address": "Kp. Pataruman, Kadungora, Garut"
+    },
+    "items": [
+      {
+        "deskripsi": "Pembuatan Akta Jual Beli & Proses Balik Nama SHM 3543 an ujang sutisna (yg akan di Balik Nama ke an Devi)",
+        "biaya": 6000000,
+        "keterangan": ""
+      },
+      {
+        "deskripsi": "Pembuatan Akta Jual Beli & Proses Balik Nama SHM 3207 an Anang Ius (yg akan di Balik Nama ke an M. Fanzi)",
+        "biaya": 6000000,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [
+      {
+        "description": "Pembayaran pertama (sudah dibayar pada hari ini)",
+        "amount": 10000000
+      },
+      {
+        "description": "Pembayaran Kedua (dibayar apabila pekerjaan telah selesai)",
+        "amount": 2000000
+      }
+    ],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar, S.H., M.Kn"
+    },
+    "invoiceDate": "2026-01-05",
+    "showStamp": true,
+    "total": 12000000,
+    "nomorInvoice": "INV/2026/268",
+    "tanggalInvoice": "2026-01-05"
   }
 ]

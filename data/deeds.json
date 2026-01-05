@@ -398,5 +398,31 @@
     "bulanPelaporan": 12,
     "tahunPelaporan": 2025,
     "nomorBulanan": "62"
+  },
+  {
+    "id": "1767597286932",
+    "createdAt": "2025-12-06T07:14:46.932Z",
+    "jenis": "Notaris",
+    "nomorAkta": "5",
+    "tanggalAkta": "2025-12-31",
+    "judulAkta": "PERJANJIAN KAWIN",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "Tn. JOHARI BIN RAJA DIAFFEN",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      },
+      {
+        "name": "Ny. NUR FAUZIAH",
+        "role": "",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "bulanPelaporan": 12,
+    "tahunPelaporan": 2025,
+    "nomorBulanan": "63"
   }
 ]

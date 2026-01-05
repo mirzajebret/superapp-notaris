@@ -146,7 +146,7 @@ const getRomanMonth = (month: number) => {
 
 export default function LapbulModulePage() {
   const today = new Date();
-  const [selectedMonth, setSelectedMonth] = useState(today.getMonth());
+  const [selectedMonth, setSelectedMonth] = useState(today.getMonth() + 1);
   const [selectedYear, setSelectedYear] = useState(today.getFullYear());
   const [activeTab, setActiveTab] = useState<'data' | 'notaris' | 'ppat'>('data');
 
@@ -637,7 +637,7 @@ export default function LapbulModulePage() {
                           {/* Kolom 2: Isi Kiri (40%) */}
                           <td className="w-[40%] align-top py-0.5">: {(idx + 1).toString().padStart(2, '0')}/PPAT/HA/{getRomanMonth(selectedMonth)}/{selectedYear + 1}</td>
                           {/* Kolom 3: Kanan (45%) - Ada padding kiri agar tidak mepet */}
-                          <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 5).toISOString())}</td>
+                          <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 6).toISOString())}</td>
                         </tr>
 
                         {/* BARIS 2: Lampiran & Kepada Yth */}
@@ -814,7 +814,7 @@ export default function LapbulModulePage() {
                     </table>
 
                     <div className="mt-8 flex justify-end text-[10pt] font-serif text-center">
-                      <div><p>Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 5).toISOString())}</p><div className="h-20"></div><p className="font-bold underline">HAVIS AKBAR, S.H., M.Kn.</p></div>
+                      <div><p>Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 6).toISOString())}</p><div className="h-20"></div><p className="font-bold underline">HAVIS AKBAR, S.H., M.Kn.</p></div>
                     </div>
                   </div>
                   {/* Spacer no-print */}
@@ -853,7 +853,7 @@ export default function LapbulModulePage() {
                         {/* Kolom 2: Isi Kiri (40%) */}
                         <td className="w-[40%] align-top py-0.5">: 01/NOT/HA/{getRomanMonth(selectedMonth)}/{selectedYear + 1}</td>
                         {/* Kolom 3: Kanan (45%) - Ada padding kiri agar tidak mepet */}
-                        <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 5).toISOString())}</td>
+                        <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 6).toISOString())}</td>
                       </tr>
 
                       {/* BARIS 2: Lampiran & Kepada Yth */}
@@ -1072,7 +1072,7 @@ export default function LapbulModulePage() {
                     </table>
                     <div className="mt-5 text-[11pt] text-right">
                       <p>Salinan ini sesuai dengan aslinya,</p>
-                      <p>Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 5).toISOString())}</p>
+                      <p>Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 6).toISOString())}</p>
                       <div className="h-16"></div>
                       <p className="font-bold">(HAVIS AKBAR, S.H., M.Kn.)</p>
                     </div>

@@ -53,7 +53,6 @@ class NotarialDeedFormatter:
                         continue
                     
                     if page_num > 0 and b[1] < self.header_threshold:
-                    if page_num > 0 and b[1] < self.header_threshold:
                         continue
                         
                     content_blocks.append(b)
