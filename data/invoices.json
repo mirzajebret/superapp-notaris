@@ -409,5 +409,42 @@
     "total": 12000000,
     "nomorInvoice": "INV/2026/268",
     "tanggalInvoice": "2026-01-05"
+  },
+  {
+    "id": "1767679238787",
+    "createdAt": "2026-01-06T06:00:38.787Z",
+    "recipient": {
+      "name": "Bapak Dody Noviawan Yudatmoko, SP.",
+      "position": "",
+      "company": "di-Tempat",
+      "address": ""
+    },
+    "items": [
+      {
+        "deskripsi": "Pembuatan Akta Jual Beli & Proses Balik Nama",
+        "biaya": 12292000,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [
+      {
+        "description": "Pembayaran pertama (sudah dibayar pada hari ini)",
+        "amount": 10000000
+      },
+      {
+        "description": "Pembayaran Kedua (dibayar apabila pekerjaan telah selesai)",
+        "amount": 2292000
+      }
+    ],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar, S.H., M.Kn"
+    },
+    "invoiceDate": "2026-01-06",
+    "showStamp": false,
+    "total": 12292000,
+    "nomorInvoice": "INV/2026/428",
+    "tanggalInvoice": "2026-01-06"
   }
 ]

@@ -106,5 +106,93 @@
       "fileUrl": "/uploads/chat/1767582760543-SERAHTERIMA-1.docx",
       "fileSize": 132752
     }
+  },
+  {
+    "id": "1767601940834",
+    "ip": "::ffff:192.168.100.170",
+    "message": "",
+    "timestamp": "2026-01-05T08:32:20.834Z",
+    "senderName": "User .170",
+    "attachment": {
+      "fileName": "AJB widaningsih-kiki.doc",
+      "fileType": "application/msword",
+      "fileUrl": "/uploads/chat/1767601940832-AJB_widaningsih-kiki.doc",
+      "fileSize": 89088
+    }
+  },
+  {
+    "id": "1767602735439",
+    "ip": "::ffff:192.168.100.170",
+    "message": "",
+    "timestamp": "2026-01-05T08:45:35.439Z",
+    "senderName": "User .170",
+    "attachment": {
+      "fileName": "PASAL 99 & SURAT KUASA.doc",
+      "fileType": "application/msword",
+      "fileUrl": "/uploads/chat/1767602735437-PASAL_99___SURAT_KUASA.doc",
+      "fileSize": 110080
+    }
+  },
+  {
+    "id": "1767602754439",
+    "ip": "::ffff:192.168.100.169",
+    "message": "oke teh",
+    "timestamp": "2026-01-05T08:45:54.439Z",
+    "senderName": "User .169",
+    "attachment": null
+  },
+  {
+    "id": "1767606102374",
+    "ip": "::ffff:192.168.100.169",
+    "message": "",
+    "timestamp": "2026-01-05T09:41:42.375Z",
+    "senderName": "User .169",
+    "attachment": {
+      "fileName": "1767602735437-PASAL 99-05012026.doc",
+      "fileType": "application/msword",
+      "fileUrl": "/uploads/chat/1767606102373-1767602735437-PASAL_99-05012026.doc",
+      "fileSize": 143872
+    }
+  },
+  {
+    "id": "1767686055942",
+    "ip": "::ffff:192.168.100.112",
+    "message": "",
+    "timestamp": "2026-01-06T07:54:15.943Z",
+    "senderName": "User .112",
+    "type": "text",
+    "attachment": {
+      "fileName": "banner-tahunbaru.jpg",
+      "fileType": "image/jpeg",
+      "fileUrl": "/uploads/chat/1767686055939-banner-tahunbaru.jpg",
+      "fileSize": 932204
+    }
+  },
+  {
+    "id": "1767686064382",
+    "ip": "::ffff:192.168.100.112",
+    "message": "Siap laksanakan 👍",
+    "timestamp": "2026-01-06T07:54:24.382Z",
+    "senderName": "User .112",
+    "type": "text",
+    "attachment": null
+  },
+  {
+    "id": "1767686215977",
+    "ip": "::1",
+    "message": "Siap laksanakan 👍",
+    "timestamp": "2026-01-06T07:56:55.977Z",
+    "senderName": "User Local",
+    "type": "text",
+    "attachment": null
+  },
+  {
+    "id": "1767686416737",
+    "ip": "::1",
+    "message": "Siap laksanakan 👍",
+    "timestamp": "2026-01-06T08:00:16.737Z",
+    "senderName": "User Local",
+    "type": "text",
+    "attachment": null
   }
 ]

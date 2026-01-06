@@ -5,7 +5,7 @@ import path from 'path';
 import { headers } from 'next/headers';
 
 const DATA_FILE_PATH = path.join(process.cwd(), 'data', 'chat-history.json');
-// Folder tujuan upload: public/uploads/chat
+const NOTES_FILE_PATH = path.join(process.cwd(), 'data', 'sticky-notes.json');
 const UPLOAD_DIR = path.join(process.cwd(), 'public', 'uploads', 'chat');
 
 export interface ChatAttachment {
@@ -21,7 +21,8 @@ export interface ChatMessage {
     message: string;
     timestamp: string;
     senderName: string;
-    attachment?: ChatAttachment | null; // Tambahan field attachment
+    type: 'text' | 'buzz'; // Tambah tipe pesan
+    attachment?: ChatAttachment | null;
 }
 
 async function getIPAddress() {
@@ -31,6 +32,30 @@ async function getIPAddress() {
     return '127.0.0.1';
 }
 
+// --- FUNGSI STICKY NOTES ---
+export async function getStickyNote() {
+    try {
+        try { await fs.access(NOTES_FILE_PATH); } catch {
+            await fs.writeFile(NOTES_FILE_PATH, JSON.stringify({ content: "Catatan Kantor...", lastUpdated: new Date().toISOString() }), 'utf-8');
+        }
+        const fileContent = await fs.readFile(NOTES_FILE_PATH, 'utf-8');
+        return JSON.parse(fileContent);
+    } catch (error) {
+        return { content: "", lastUpdated: "" };
+    }
+}
+
+export async function saveStickyNote(content: string) {
+    try {
+        const data = { content, lastUpdated: new Date().toISOString() };
+        await fs.writeFile(NOTES_FILE_PATH, JSON.stringify(data, null, 2), 'utf-8');
+        return { success: true };
+    } catch (error) {
+        return { success: false };
+    }
+}
+// ---------------------------
+
 export async function getChatData() {
     try {
         try { await fs.access(DATA_FILE_PATH); } catch { await fs.writeFile(DATA_FILE_PATH, '[]', 'utf-8'); }
@@ -39,18 +64,21 @@ export async function getChatData() {
         const messages: ChatMessage[] = JSON.parse(fileContent);
         const userIp = await getIPAddress();
 
-        return { success: true, messages, userIp };
+        // Ambil juga sticky note saat polling chat agar efisien
+        const noteData = await getStickyNote();
+
+        return { success: true, messages, userIp, noteData };
     } catch (error) {
-        return { success: false, messages: [], userIp: '' };
+        return { success: false, messages: [], userIp: '', noteData: null };
     }
 }
 
 export async function sendMessage(formData: FormData) {
     const messageText = formData.get('message') as string;
-    const file = formData.get('file') as File | null; // Ambil file dari form data
+    const file = formData.get('file') as File | null;
+    const type = formData.get('type') as 'text' | 'buzz' || 'text'; // Ambil tipe
 
-    // Validasi: Harus ada pesan ATAU file
-    if ((!messageText || messageText.trim() === '') && !file) return { success: false };
+    if ((!messageText || messageText.trim() === '') && !file && type !== 'buzz') return { success: false };
 
     const ip = await getIPAddress();
     const ipSegments = ip.split('.');
@@ -58,14 +86,11 @@ export async function sendMessage(formData: FormData) {
 
     let attachmentData: ChatAttachment | null = null;
 
-    // Proses Upload File jika ada
     if (file && file.size > 0) {
         try {
-            // Pastikan folder upload ada
             try { await fs.access(UPLOAD_DIR); } catch { await fs.mkdir(UPLOAD_DIR, { recursive: true }); }
 
             const timestamp = Date.now();
-            // Bersihkan nama file dari karakter aneh
             const safeFileName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
             const uniqueFileName = `${timestamp}-${safeFileName}`;
             const filePath = path.join(UPLOAD_DIR, uniqueFileName);
@@ -78,7 +103,7 @@ export async function sendMessage(formData: FormData) {
             attachmentData = {
                 fileName: file.name,
                 fileType: file.type,
-                fileUrl: `/uploads/chat/${uniqueFileName}`, // URL yang bisa diakses dari browser
+                fileUrl: `/uploads/chat/${uniqueFileName}`,
                 fileSize: file.size
             };
         } catch (err) {
@@ -89,9 +114,10 @@ export async function sendMessage(formData: FormData) {
     const newMessage: ChatMessage = {
         id: Date.now().toString(),
         ip: ip,
-        message: messageText || '', // Bisa kosong jika hanya kirim file
+        message: type === 'buzz' ? 'DING DONG! 🔔' : (messageText || ''),
         timestamp: new Date().toISOString(),
         senderName: shortName,
+        type: type,
         attachment: attachmentData
     };
 
@@ -102,7 +128,6 @@ export async function sendMessage(formData: FormData) {
         await fs.writeFile(DATA_FILE_PATH, JSON.stringify(limitedMessages, null, 2), 'utf-8');
         return { success: true };
     } catch (error) {
-        console.error("Error sending message:", error);
         return { success: false };
     }
 }
