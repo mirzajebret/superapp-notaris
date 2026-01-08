@@ -8,6 +8,7 @@ const DATA_FILE_PATH = path.join(process.cwd(), 'data', 'chat-history.json');
 const NOTES_FILE_PATH = path.join(process.cwd(), 'data', 'sticky-notes.json');
 const UPLOAD_DIR = path.join(process.cwd(), 'public', 'uploads', 'chat');
 
+// Interface Attachment
 export interface ChatAttachment {
     fileName: string;
     fileType: string;
@@ -15,13 +16,16 @@ export interface ChatAttachment {
     fileSize: number;
 }
 
+// Interface Message (Update: support 'attachments' array)
 export interface ChatMessage {
     id: string;
     ip: string;
     message: string;
     timestamp: string;
     senderName: string;
-    type: 'text' | 'buzz'; // Tambah tipe pesan
+    type: 'text';
+    attachments?: ChatAttachment[]; // Array of attachments
+    // Legacy support untuk data lama
     attachment?: ChatAttachment | null;
 }
 
@@ -58,13 +62,12 @@ export async function saveStickyNote(content: string) {
 
 export async function getChatData() {
     try {
+        // Pastikan file data ada
         try { await fs.access(DATA_FILE_PATH); } catch { await fs.writeFile(DATA_FILE_PATH, '[]', 'utf-8'); }
 
         const fileContent = await fs.readFile(DATA_FILE_PATH, 'utf-8');
         const messages: ChatMessage[] = JSON.parse(fileContent);
         const userIp = await getIPAddress();
-
-        // Ambil juga sticky note saat polling chat agar efisien
         const noteData = await getStickyNote();
 
         return { success: true, messages, userIp, noteData };
@@ -75,37 +78,45 @@ export async function getChatData() {
 
 export async function sendMessage(formData: FormData) {
     const messageText = formData.get('message') as string;
-    const file = formData.get('file') as File | null;
-    const type = formData.get('type') as 'text' | 'buzz' || 'text'; // Ambil tipe
+    const files = formData.getAll('files') as File[]; // Ambil semua file
 
-    if ((!messageText || messageText.trim() === '') && !file && type !== 'buzz') return { success: false };
+    // Validasi: Harus ada pesan ATAU file
+    if ((!messageText || messageText.trim() === '') && (!files || files.length === 0)) {
+        return { success: false };
+    }
 
     const ip = await getIPAddress();
     const ipSegments = ip.split('.');
     const shortName = ipSegments.length > 1 ? `User .${ipSegments[ipSegments.length - 1]}` : 'User Local';
 
-    let attachmentData: ChatAttachment | null = null;
+    const newAttachments: ChatAttachment[] = [];
 
-    if (file && file.size > 0) {
+    // Proses Multiple Upload
+    if (files && files.length > 0) {
         try {
             try { await fs.access(UPLOAD_DIR); } catch { await fs.mkdir(UPLOAD_DIR, { recursive: true }); }
 
-            const timestamp = Date.now();
-            const safeFileName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
-            const uniqueFileName = `${timestamp}-${safeFileName}`;
-            const filePath = path.join(UPLOAD_DIR, uniqueFileName);
+            for (const file of files) {
+                if (file.size === 0) continue;
 
-            const arrayBuffer = await file.arrayBuffer();
-            const buffer = Buffer.from(arrayBuffer);
+                const timestamp = Date.now();
+                const safeFileName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+                // Tambahkan random string pendek agar unik jika upload file sama barengan
+                const uniqueFileName = `${timestamp}-${Math.floor(Math.random() * 1000)}-${safeFileName}`;
+                const filePath = path.join(UPLOAD_DIR, uniqueFileName);
 
-            await fs.writeFile(filePath, buffer);
+                const arrayBuffer = await file.arrayBuffer();
+                const buffer = Buffer.from(arrayBuffer);
 
-            attachmentData = {
-                fileName: file.name,
-                fileType: file.type,
-                fileUrl: `/uploads/chat/${uniqueFileName}`,
-                fileSize: file.size
-            };
+                await fs.writeFile(filePath, buffer);
+
+                newAttachments.push({
+                    fileName: file.name,
+                    fileType: file.type,
+                    fileUrl: `/uploads/chat/${uniqueFileName}`,
+                    fileSize: file.size
+                });
+            }
         } catch (err) {
             console.error("Gagal upload file:", err);
         }
@@ -114,16 +125,17 @@ export async function sendMessage(formData: FormData) {
     const newMessage: ChatMessage = {
         id: Date.now().toString(),
         ip: ip,
-        message: type === 'buzz' ? 'DING DONG! 🔔' : (messageText || ''),
+        message: messageText || '',
         timestamp: new Date().toISOString(),
         senderName: shortName,
-        type: type,
-        attachment: attachmentData
+        type: 'text',
+        attachments: newAttachments // Simpan array attachment
     };
 
     try {
         const { messages } = await getChatData();
         messages.push(newMessage);
+        // Simpan 500 pesan terakhir
         const limitedMessages = messages.slice(-500);
         await fs.writeFile(DATA_FILE_PATH, JSON.stringify(limitedMessages, null, 2), 'utf-8');
         return { success: true };

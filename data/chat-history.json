@@ -194,5 +194,111 @@
     "senderName": "User Local",
     "type": "text",
     "attachment": null
+  },
+  {
+    "id": "1767769232967",
+    "ip": "::ffff:192.168.100.169",
+    "message": "Siap laksanakan 👍",
+    "timestamp": "2026-01-07T07:00:32.967Z",
+    "senderName": "User .169",
+    "type": "text",
+    "attachment": null
+  },
+  {
+    "id": "1767769237404",
+    "ip": "::ffff:192.168.100.169",
+    "message": "Klien sudah datang",
+    "timestamp": "2026-01-07T07:00:37.404Z",
+    "senderName": "User .169",
+    "type": "text",
+    "attachment": null
+  },
+  {
+    "id": "1767772003920",
+    "ip": "::ffff:192.168.100.112",
+    "message": "",
+    "timestamp": "2026-01-07T07:46:43.920Z",
+    "senderName": "User .112",
+    "type": "text",
+    "attachment": {
+      "fileName": "AJB_nandang-ius.doc",
+      "fileType": "application/msword",
+      "fileUrl": "/uploads/chat/1767772003908-AJB_nandang-ius.doc",
+      "fileSize": 97280
+    }
+  },
+  {
+    "id": "1767772007373",
+    "ip": "::ffff:192.168.100.112",
+    "message": "",
+    "timestamp": "2026-01-07T07:46:47.373Z",
+    "senderName": "User .112",
+    "type": "text",
+    "attachment": {
+      "fileName": "AJB_UJANG-DEVI.doc",
+      "fileType": "application/msword",
+      "fileUrl": "/uploads/chat/1767772007372-AJB_UJANG-DEVI.doc",
+      "fileSize": 93184
+    }
+  },
+  {
+    "id": "1767774271314",
+    "ip": "::ffff:192.168.100.169",
+    "message": "a punten cek dulu kalau ada yang salah kabarin nanti aku revisi lg",
+    "timestamp": "2026-01-07T08:24:31.314Z",
+    "senderName": "User .169",
+    "type": "text",
+    "attachment": {
+      "fileName": "PASAL+AJB+DEVI DAN UJANG+07012026.doc",
+      "fileType": "application/msword",
+      "fileUrl": "/uploads/chat/1767774271308-PASAL_AJB_DEVI_DAN_UJANG_07012026.doc",
+      "fileSize": 135680
+    }
+  },
+  {
+    "id": "1767774311278",
+    "ip": "::1",
+    "message": "olrait",
+    "timestamp": "2026-01-07T08:25:11.278Z",
+    "senderName": "User Local",
+    "type": "text",
+    "attachment": null
+  },
+  {
+    "id": "1767774440092",
+    "ip": "::1",
+    "message": "Klien sudah datang",
+    "timestamp": "2026-01-07T08:27:20.092Z",
+    "senderName": "User Local",
+    "type": "text",
+    "attachment": null
+  },
+  {
+    "id": "1767775204546",
+    "ip": "::ffff:192.168.100.169",
+    "message": "",
+    "timestamp": "2026-01-07T08:40:04.546Z",
+    "senderName": "User .169",
+    "type": "text",
+    "attachment": {
+      "fileName": "PASAL+AJB+ANANG IUS DAN NANDANG+07012026.doc",
+      "fileType": "application/msword",
+      "fileUrl": "/uploads/chat/1767775204543-PASAL_AJB_ANANG_IUS_DAN_NANDANG_07012026.doc",
+      "fileSize": 136704
+    }
+  },
+  {
+    "id": "1767776702780",
+    "ip": "::ffff:192.168.100.169",
+    "message": "- versi 1 ga nyantumin anak nandang\r\n- versi 2 yang nyantumin anaknya nandang ",
+    "timestamp": "2026-01-07T09:05:02.780Z",
+    "senderName": "User .169",
+    "type": "text",
+    "attachment": {
+      "fileName": "VERSI 2+PASAL+AJB+ANANG IUS DAN NANDANG+07012026.doc",
+      "fileType": "application/msword",
+      "fileUrl": "/uploads/chat/1767776702778-VERSI_2_PASAL_AJB_ANANG_IUS_DAN_NANDANG_07012026.doc",
+      "fileSize": 135680
+    }
   }
 ]
