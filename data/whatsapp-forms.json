@@ -1,5 +1,12 @@
 [
   {
+    "id": "WAF-1767943701787",
+    "lastUpdated": "2026-01-09T07:28:21.787Z",
+    "title": "PAKET ADDONS",
+    "message": "*Pengurusan NIB (RDTR) UMK (Usaha Mikro & Kecil)*\n* Akun OSS\n* Pembuatan Peta Polygon\n* Penapisan Amdalnet\n* Penerbitan NIB (Nomor Induk Berusaha)\n* Sertifikat Standar\n*Rp. 1.000.000*\n\n*Pengurusan NIB (non-RDTR) UMK (Usaha Mikro & Kecil)*\n* Akun OSS\n* Pembuatan Peta Polygon\n* Penapisan Amdalnet\n* Penerbitan NIB (Nomor Induk Berusaha)\n* Sertifikat Standar\n*Rp. 2.500.000*\n\n*Pengurusan NIB (RDTR) NON-UMK (Usaha Menengah & Besar)*\n_Kriteria: Modal usaha di atas Rp 5 Miliar / PMA (Rp 10 Miliar) di luar tanah & bangunan_\n* Akun OSS\n* Pembuatan Peta Polygon\n* Penapisan Amdalnet\n* Penerbitan NIB (Nomor Induk Berusaha)\n* Sertifikat Standar\n*Rp. 2.500.000*\n\n*Pengurusan NIB (non-RDTR) NON-UMK (Usaha Menengah & Besar)*\n_Kriteria: Modal usaha di atas Rp 5 Miliar / PMA (Rp 10 Miliar) di luar tanah & bangunan_\n* Akun OSS\n* Pembuatan Peta Polygon\n* Penapisan Amdalnet\n* Penerbitan NIB (Nomor Induk Berusaha)\n* Sertifikat Standar\n*> Rp. 4.500.000*\n\n*Pengurusan NPWP Badan Usaha/Hukum*\n* Akun CORETAX\n* e-NPWP\n* SKT KPP\n*Rp. 500.000*\n\n*Pengurusan NPWP Perorangan*\n* Akun CORETAX\n* e-NPWP\n* SKT KPP\n*Rp. 350.000*",
+    "folderId": "Paket Pendirian"
+  },
+  {
     "id": "WAF-1767599326664",
     "lastUpdated": "2026-01-05T07:48:46.664Z",
     "title": "PAKET NIB & NPWP",

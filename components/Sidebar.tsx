@@ -33,6 +33,7 @@ const menuItems = [
   { name: 'CDD Korporasi', icon: FileText, href: '/modules/cdd-korporasi' },
   { name: 'Akun Client', icon: Users, href: '/modules/akun-client' },
   { name: 'Riwayat Dokumen', icon: FileStack, href: '/modules/riwayat' },
+  { name: 'Manajemen Dokumen', icon: BookOpen, href: '/modules/dokumen-legalitas-badan' },
 
 ];
 

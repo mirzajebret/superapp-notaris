@@ -1,0 +1,592 @@
+[
+  {
+    "id": "1767943283638",
+    "category": "CLIENT",
+    "docType": "PPAT",
+    "nama": "AJB + BN WIDANINGSIH -KIKI",
+    "nomor": "",
+    "tanggal": "",
+    "col2": [
+      {
+        "id": "1767943323046186",
+        "type": "file",
+        "content": "/uploads/legalitas/1767943283638/1767943323046-kk_bu_wida.pdf",
+        "fileName": "kk bu wida.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T07:22:03.061Z"
+      },
+      {
+        "id": "1767943324672377",
+        "type": "file",
+        "content": "/uploads/legalitas/1767943283638/1767943324672-kk_kiki.pdf",
+        "fileName": "kk kiki.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T07:22:04.682Z"
+      }
+    ],
+    "col3": [],
+    "col4": [],
+    "col5": [],
+    "updatedAt": "2026-01-09T07:22:04.746Z"
+  },
+  {
+    "id": "1767942863122",
+    "category": "PPAT",
+    "nama": "A",
+    "nomor": "",
+    "tanggal": "",
+    "col2": [],
+    "col3": [],
+    "col4": [],
+    "col5": [],
+    "updatedAt": "2026-01-09T07:14:23.144Z"
+  },
+  {
+    "id": "1767942663786",
+    "category": "NOTARIS",
+    "nama": "a",
+    "nomor": "",
+    "tanggal": "",
+    "col2": [],
+    "col3": [],
+    "col4": [],
+    "col5": [],
+    "updatedAt": "2026-01-09T07:11:03.816Z"
+  },
+  {
+    "id": "1767931676232",
+    "nama": "PT PATRIOT 99",
+    "nomor": "-3.-",
+    "tanggal": "2025-12-22",
+    "col2": [
+      {
+        "id": "1767931682780243",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931676232/1767931682780-cetak_sk_4025122232107346.pdf",
+        "fileName": "cetak_sk_4025122232107346.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:08:02.781Z"
+      },
+      {
+        "id": "1767931682802946",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931676232/1767931682802-UPLOAD_SALINAN_PT._PATRIOT_99.pdf",
+        "fileName": "UPLOAD SALINAN PT. PATRIOT 99.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:08:02.808Z"
+      }
+    ],
+    "col3": [],
+    "col4": [],
+    "col5": [
+      {
+        "id": "1767931688948919",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931676232/1767931688948-Bukti_pemesanan_voucher_9925122225008072.pdf",
+        "fileName": "Bukti_pemesanan_voucher_9925122225008072.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:08:08.950Z"
+      },
+      {
+        "id": "1767931771936671",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931676232/1767931771936-KBLI-19122025__Rv_.docx",
+        "fileName": "KBLI-19122025 (Rv).docx",
+        "fileType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "createdAt": "2026-01-09T04:09:31.938Z"
+      },
+      {
+        "id": "1767931771956842",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931676232/1767931771956-DRAFT_BERITA_ACARA_PENDIRIAN_PT_PATRIOT_RV2.docx",
+        "fileName": "DRAFT BERITA ACARA PENDIRIAN PT PATRIOT RV2.docx",
+        "fileType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "createdAt": "2026-01-09T04:09:31.958Z"
+      }
+    ],
+    "updatedAt": "2026-01-09T04:09:32.045Z"
+  },
+  {
+    "id": "1767931458625",
+    "nama": "PEKUMPULAN PAGUYUBAN PENGELOLA PARIWISATA PANTAI KARANG PAPAK",
+    "nomor": "-7.1",
+    "tanggal": "2025-11-24",
+    "col2": [
+      {
+        "id": "1767931461457804",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931458625/1767931461457-SCAN_SALINAN_AKTA_PENDIRIAN_PERKUMPULAN_P4KP.pdf",
+        "fileName": "SCAN SALINAN AKTA PENDIRIAN PERKUMPULAN P4KP.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:04:21.465Z"
+      },
+      {
+        "id": "1767931465582468",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931458625/1767931465582-cetak_sk_6025112432101334.pdf",
+        "fileName": "cetak_sk_6025112432101334.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:04:25.584Z"
+      }
+    ],
+    "col3": [
+      {
+        "id": "1767931585900563",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931458625/1767931585900-A_01-DOC001-TIN_Card_in_V1-fo-xsl_DN2025639015569290079393000.pdf",
+        "fileName": "A_01-DOC001-TIN_Card_in_V1-fo-xsl_DN2025639015569290079393000.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:06:25.906Z"
+      }
+    ],
+    "col4": [
+      {
+        "id": "1767931496626840",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931458625/1767931496626-NIB_PAGUYUBAN_PENGELOLA_PARIWISATA.pdf",
+        "fileName": "NIB PAGUYUBAN PENGELOLA PARIWISATA.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:04:56.629Z"
+      },
+      {
+        "id": "1767931496641076",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931458625/1767931496641-SPPL_PAGUYUBAN_PENGELOLA_PARIWISATA_.pdf",
+        "fileName": "SPPL PAGUYUBAN PENGELOLA PARIWISATA_.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:04:56.642Z"
+      },
+      {
+        "id": "1767931496654796",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931458625/1767931496654-KKPR_PAGUYUBAN_PENGELOLA_PARIWISATA_.pdf",
+        "fileName": "KKPR PAGUYUBAN PENGELOLA PARIWISATA_.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:04:56.656Z"
+      },
+      {
+        "id": "1767931496681712",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931458625/1767931496681-NIB_PAGUYUBAN_PENGELOLA_PARIWISATA_.pdf",
+        "fileName": "NIB PAGUYUBAN PENGELOLA PARIWISATA_.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:04:56.683Z"
+      },
+      {
+        "id": "1767931496696479",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931458625/1767931496696-KKPR_PAGUYUBAN_PENGELOLA_PARIWISATA.pdf",
+        "fileName": "KKPR PAGUYUBAN PENGELOLA PARIWISATA.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:04:56.697Z"
+      },
+      {
+        "id": "1767931496710763",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931458625/1767931496710-SPPL_PAGUYUBAN_PENGELOLA_PARIWISATA.pdf",
+        "fileName": "SPPL PAGUYUBAN PENGELOLA PARIWISATA.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:04:56.711Z"
+      }
+    ],
+    "col5": [
+      {
+        "id": "1767931477997358",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931458625/1767931477997-bukti_pesan_820251111218470.pdf",
+        "fileName": "bukti_pesan_820251111218470.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:04:37.999Z"
+      },
+      {
+        "id": "1767931529971224",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931458625/1767931529971-COMPRO-LATEST.pdf",
+        "fileName": "COMPRO-LATEST.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:05:29.973Z"
+      },
+      {
+        "id": "1767931545633869",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931458625/1767931545633-edit_2_AD_ART_P4KP.pdf",
+        "fileName": "edit 2 AD ART P4KP.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:05:45.635Z"
+      }
+    ],
+    "updatedAt": "2026-01-09T04:06:25.997Z"
+  },
+  {
+    "id": "1767931246120",
+    "nama": "PT JASAKA BEAUTY INDONESIA",
+    "nomor": "-2.-",
+    "tanggal": "2025-12-09",
+    "col2": [
+      {
+        "id": "1767931258484553",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931246120/1767931258484-SCAN_SALINAN_PT._JASAKA_BEAUTY_INDONESIA_compressed.pdf",
+        "fileName": "SCAN SALINAN PT. JASAKA BEAUTY INDONESIA_compressed.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:00:58.491Z"
+      },
+      {
+        "id": "1767931261444359",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931246120/1767931261444-SK-PT-JASAKA-BEAUTY-INDONESIA.pdf",
+        "fileName": "SK-PT-JASAKA-BEAUTY-INDONESIA.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:01:01.446Z"
+      }
+    ],
+    "col3": [
+      {
+        "id": "1767931269330006",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931246120/1767931269330-20251216_NPWP_PT_Jasaka_Beauty_Indonesia.pdf",
+        "fileName": "20251216 NPWP PT Jasaka Beauty Indonesia.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:01:09.334Z"
+      }
+    ],
+    "col4": [],
+    "col5": [
+      {
+        "id": "1767931264993361",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931246120/1767931264993-SURAT_PERNYATAAN_PENAPISAN__PT_JASAKA_.pdf",
+        "fileName": "SURAT PERNYATAAN PENAPISAN (PT JASAKA).pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:01:04.995Z"
+      },
+      {
+        "id": "1767931267267853",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931246120/1767931267267-Format_Surat_Kesesuaian_Tata_Ruang__PT_JASAKA_.pdf",
+        "fileName": "Format Surat Kesesuaian Tata Ruang (PT JASAKA).pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:01:07.269Z"
+      },
+      {
+        "id": "1767931337674937",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931246120/1767931337674-warkah_berita_acara_.pdf",
+        "fileName": "warkah berita acara .pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T04:02:17.699Z"
+      },
+      {
+        "id": "1767931366037872",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931246120/1767931366037-WhatsApp_Image_2025-12-09_at_16.58.01_3e01c34d.jpg",
+        "fileName": "WhatsApp Image 2025-12-09 at 16.58.01_3e01c34d.jpg",
+        "fileType": "image/jpeg",
+        "createdAt": "2026-01-09T04:02:46.039Z"
+      },
+      {
+        "id": "1767931366054672",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931246120/1767931366054-WhatsApp_Image_2025-12-09_at_16.58.02_3cefd28b.jpg",
+        "fileName": "WhatsApp Image 2025-12-09 at 16.58.02_3cefd28b.jpg",
+        "fileType": "image/jpeg",
+        "createdAt": "2026-01-09T04:02:46.055Z"
+      },
+      {
+        "id": "1767931366067014",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931246120/1767931366067-WhatsApp_Image_2025-12-09_at_16.58.02_0958ed1b.jpg",
+        "fileName": "WhatsApp Image 2025-12-09 at 16.58.02_0958ed1b.jpg",
+        "fileType": "image/jpeg",
+        "createdAt": "2026-01-09T04:02:46.069Z"
+      },
+      {
+        "id": "1767931366099393",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931246120/1767931366099-WhatsApp_Image_2025-12-09_at_16.58.03_8d950d72.jpg",
+        "fileName": "WhatsApp Image 2025-12-09 at 16.58.03_8d950d72.jpg",
+        "fileType": "image/jpeg",
+        "createdAt": "2026-01-09T04:02:46.101Z"
+      },
+      {
+        "id": "1767931366117132",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931246120/1767931366117-WhatsApp_Image_2025-12-09_at_16.58.03_8f8f0e4e.jpg",
+        "fileName": "WhatsApp Image 2025-12-09 at 16.58.03_8f8f0e4e.jpg",
+        "fileType": "image/jpeg",
+        "createdAt": "2026-01-09T04:02:46.119Z"
+      },
+      {
+        "id": "1767931366132413",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931246120/1767931366132-WhatsApp_Image_2025-12-09_at_16.58.04_2fe622c5.jpg",
+        "fileName": "WhatsApp Image 2025-12-09 at 16.58.04_2fe622c5.jpg",
+        "fileType": "image/jpeg",
+        "createdAt": "2026-01-09T04:02:46.134Z"
+      },
+      {
+        "id": "1767931366153330",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931246120/1767931366153-WhatsApp_Image_2025-12-09_at_16.58.04_16358ea8.jpg",
+        "fileName": "WhatsApp Image 2025-12-09 at 16.58.04_16358ea8.jpg",
+        "fileType": "image/jpeg",
+        "createdAt": "2026-01-09T04:02:46.155Z"
+      },
+      {
+        "id": "1767931366168915",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931246120/1767931366168-WhatsApp_Image_2025-12-09_at_16.58.05_377baa19.jpg",
+        "fileName": "WhatsApp Image 2025-12-09 at 16.58.05_377baa19.jpg",
+        "fileType": "image/jpeg",
+        "createdAt": "2026-01-09T04:02:46.169Z"
+      },
+      {
+        "id": "1767931366181256",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931246120/1767931366181-WhatsApp_Image_2025-12-09_at_16.58.05_a92bb123.jpg",
+        "fileName": "WhatsApp Image 2025-12-09 at 16.58.05_a92bb123.jpg",
+        "fileType": "image/jpeg",
+        "createdAt": "2026-01-09T04:02:46.183Z"
+      },
+      {
+        "id": "1767931366196439",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931246120/1767931366196-WhatsApp_Image_2025-12-09_at_16.58.06_1433aacc.jpg",
+        "fileName": "WhatsApp Image 2025-12-09 at 16.58.06_1433aacc.jpg",
+        "fileType": "image/jpeg",
+        "createdAt": "2026-01-09T04:02:46.197Z"
+      }
+    ],
+    "updatedAt": "2026-01-09T04:02:46.258Z"
+  },
+  {
+    "id": "1767931148376",
+    "nama": "PT AMMA GROUP INTERNATIONAL",
+    "nomor": "-4.-",
+    "tanggal": "2025-12-22",
+    "col2": [
+      {
+        "id": "1767931163434320",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931148376/1767931163434-SCAN-SALINAN-AKTA-PENDIRIAN-PT-AMMA-GROUP.pdf",
+        "fileName": "SCAN-SALINAN-AKTA-PENDIRIAN-PT-AMMA-GROUP.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:59:23.438Z"
+      },
+      {
+        "id": "1767931176838426",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931148376/1767931176838-SK-PT-AMMA-GROUP-INTERNATIONAL.pdf",
+        "fileName": "SK-PT-AMMA-GROUP-INTERNATIONAL.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:59:36.844Z"
+      }
+    ],
+    "col3": [
+      {
+        "id": "1767931178533731",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931148376/1767931178533-NPWP-PT-AMMA-GROUP-INTERNATIONAL.pdf",
+        "fileName": "NPWP-PT-AMMA-GROUP-INTERNATIONAL.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:59:38.536Z"
+      }
+    ],
+    "col4": [
+      {
+        "id": "1767931182264036",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931148376/1767931182264-NIB_PT_AMMA_GROUP_INTERNATIONAL.pdf",
+        "fileName": "NIB PT AMMA GROUP INTERNATIONAL.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:59:42.268Z"
+      },
+      {
+        "id": "1767931182284917",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931148376/1767931182284-KKPR_PT_AMMA_GROUP_INTERNATIONAL.pdf",
+        "fileName": "KKPR PT AMMA GROUP INTERNATIONAL.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:59:42.286Z"
+      },
+      {
+        "id": "1767931182298487",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931148376/1767931182298-SPPL_PT_AMMA_GROUP_INTERNATIONAL.pdf",
+        "fileName": "SPPL PT AMMA GROUP INTERNATIONAL.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:59:42.300Z"
+      }
+    ],
+    "col5": [
+      {
+        "id": "1767931195145786",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931148376/1767931195145-YouSaf_Passport_1_Page.pdf",
+        "fileName": "YouSaf Passport 1 Page.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:59:55.150Z"
+      },
+      {
+        "id": "1767931195172999",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931148376/1767931195172-CNIC_Yousaf.pdf",
+        "fileName": "CNIC Yousaf.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:59:55.174Z"
+      },
+      {
+        "id": "1767931195196891",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931148376/1767931195196-FORMULIR_PENDIRIAN_PERSEROAN_TERBATAS_PMA.pdf",
+        "fileName": "FORMULIR PENDIRIAN PERSEROAN TERBATAS PMA.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:59:55.204Z"
+      },
+      {
+        "id": "1767931195236893",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931148376/1767931195236-KTP_Moazzam_Noor.pdf",
+        "fileName": "KTP Moazzam Noor.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:59:55.238Z"
+      },
+      {
+        "id": "1767931195259271",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931148376/1767931195259-NPWP_Moazzam.pdf",
+        "fileName": "NPWP Moazzam.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:59:55.261Z"
+      }
+    ],
+    "updatedAt": "2026-01-09T03:59:55.309Z"
+  },
+  {
+    "id": "1767930413424",
+    "nama": "PT ECKERGY ENGINEERING SOLUTIONS",
+    "nomor": "1",
+    "tanggal": "2025-12-05",
+    "col2": [
+      {
+        "id": "1767930423003625",
+        "type": "file",
+        "content": "/uploads/legalitas/1767930413424/1767930423003-SK_PENDIRIAN_PT_ECKERGY_REKAYASA_OPTIMA.pdf",
+        "fileName": "SK_PENDIRIAN_PT_ECKERGY REKAYASA OPTIMA.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:47:03.005Z"
+      },
+      {
+        "id": "1767930699982454",
+        "type": "file",
+        "content": "/uploads/legalitas/1767930413424/1767930699982-AKTA_PENDIRIAN_PT_ECKERGY_REKAYASA_OPTIMA_SALINAN_.pdf",
+        "fileName": "AKTA_PENDIRIAN_PT_ECKERGY REKAYASA OPTIMA(SALINAN).pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:51:39.991Z"
+      }
+    ],
+    "col3": [
+      {
+        "id": "1767930770310533",
+        "type": "file",
+        "content": "/uploads/legalitas/1767930413424/1767930770310-SK_NPWP_PT_ECKERGY.pdf",
+        "fileName": "SK NPWP PT ECKERGY.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:52:50.312Z"
+      }
+    ],
+    "col4": [
+      {
+        "id": "1767930792291932",
+        "type": "file",
+        "content": "/uploads/legalitas/1767930413424/1767930792291-K3L_PT_ECKERGY_REKAYASA_OPTIMA.pdf",
+        "fileName": "K3L PT ECKERGY REKAYASA OPTIMA.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:53:12.293Z"
+      },
+      {
+        "id": "1767930792308625",
+        "type": "file",
+        "content": "/uploads/legalitas/1767930413424/1767930792308-KKPR_PT_ECKERGY_REKAYASA_OPTIMA.pdf",
+        "fileName": "KKPR PT ECKERGY REKAYASA OPTIMA.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:53:12.310Z"
+      },
+      {
+        "id": "1767930792350337",
+        "type": "file",
+        "content": "/uploads/legalitas/1767930413424/1767930792350-NIB_PT_ECKERGY_REKAYASA_OPTIMA.pdf",
+        "fileName": "NIB PT ECKERGY REKAYASA OPTIMA.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:53:12.352Z"
+      },
+      {
+        "id": "1767930792367345",
+        "type": "file",
+        "content": "/uploads/legalitas/1767930413424/1767930792367-SPPL_PT_ECKERGY_REKAYASA_OPTIMA.pdf",
+        "fileName": "SPPL PT ECKERGY REKAYASA OPTIMA.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:53:12.368Z"
+      },
+      {
+        "id": "1767930792386708",
+        "type": "file",
+        "content": "/uploads/legalitas/1767930413424/1767930792386-SS_RK008_KBLI_71102.pdf",
+        "fileName": "SS RK008 KBLI 71102.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:53:12.389Z"
+      },
+      {
+        "id": "1767930792401715",
+        "type": "file",
+        "content": "/uploads/legalitas/1767930413424/1767930792401-UMK_TATA_RUANG_PT_ECKERGY_REKAYASA_OPTIMA.pdf",
+        "fileName": "UMK TATA RUANG PT ECKERGY REKAYASA OPTIMA.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:53:12.402Z"
+      }
+    ],
+    "col5": [
+      {
+        "id": "1767930520709292",
+        "type": "file",
+        "content": "/uploads/legalitas/1767930413424/1767930520709-IDENTITAS-DIREKSI-PT-ECKERGY-ENGINEERING-SOLUTIONS.pdf",
+        "fileName": "IDENTITAS-DIREKSI-PT-ECKERGY-ENGINEERING-SOLUTIONS.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:48:40.710Z"
+      },
+      {
+        "id": "1767930810386256",
+        "type": "file",
+        "content": "/uploads/legalitas/1767930413424/1767930810386-Format_Surat_Kesesuaian_Tata_Ruang__PT_ECKERGY_.pdf",
+        "fileName": "Format Surat Kesesuaian Tata Ruang (PT ECKERGY).pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:53:30.388Z"
+      },
+      {
+        "id": "1767930810402584",
+        "type": "file",
+        "content": "/uploads/legalitas/1767930413424/1767930810402-SURAT_PERNYATAAN_PENAPISAN__PT_ECKERGY_.pdf",
+        "fileName": "SURAT PERNYATAAN PENAPISAN (PT ECKERGY).pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:53:30.404Z"
+      },
+      {
+        "id": "1767930819064818",
+        "type": "file",
+        "content": "/uploads/legalitas/1767930413424/1767930819064-Bukti_pemesanan_voucher_PT_ECKERGY.pdf",
+        "fileName": "Bukti_pemesanan_voucher_PT ECKERGY.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:53:39.065Z"
+      },
+      {
+        "id": "1767930825540802",
+        "type": "file",
+        "content": "/uploads/legalitas/1767930413424/1767930825540-INVOICE-Eckergy_Engineering_Solutions_Rv3.pdf",
+        "fileName": "INVOICE-Eckergy Engineering Solutions_Rv3.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-09T03:53:45.542Z"
+      }
+    ],
+    "updatedAt": "2026-01-09T03:53:45.567Z"
+  }
+]
