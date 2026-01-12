@@ -395,7 +395,7 @@ export default function LegalitasBadanPage() {
                         <h2 className="text-lg font-bold text-gray-800">{activeCatData?.label}</h2>
                         <div className="flex items-center gap-2 text-sm text-gray-500">
                             <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${activeMode === 'PPAT' ? 'bg-orange-50 text-orange-600 border-orange-200' : 'bg-blue-50 text-blue-600 border-blue-200'}`}>
-                                {activeMode} MODE
+                                {activeMode}
                             </span>
                             {activeCatData?.desc}
                         </div>
@@ -489,7 +489,7 @@ export default function LegalitasBadanPage() {
                         </div>
                         <h3 className="text-gray-800 font-bold text-xl mb-2">Belum ada data {activeMode} di sini</h3>
                         <p className="text-gray-500 max-w-xs mx-auto mb-8">
-                            Silakan tambah data baru untuk kategori ini.
+                            Silakan tambah data baru pada tab ini.
                         </p>
                         <button
                             onClick={() => setIsAdding(true)}

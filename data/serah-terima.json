@@ -544,5 +544,53 @@
         "noteType": "Fotokopi"
       }
     ]
+  },
+  {
+    "id": "1768205226149",
+    "createdAt": "2026-01-12T08:07:06.149Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": false,
+      "barang": false
+    },
+    "receiver": {
+      "name": "........................................",
+      "position": "",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "Nepi Meinti",
+      "position": "Staf Administrasi",
+      "signature": ""
+    },
+    "location": "",
+    "handoverDate": "",
+    "items": [
+      {
+        "description": "Sertipikat Hak Milik NIB 10.17.000090400.0 an. Iis Sugiwanti Sari",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "Salinan Akta Jual Beli No. 04/2025, tgl. 27-11-2025",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "Bukti Bayar & BPHTB an Iis Sugiwanti Sari",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "Bukti Bayar PBB Tahun 2025",
+        "note": "Print out foto",
+        "noteType": "Custom"
+      },
+      {
+        "description": "PBB Tahun 2025 NOP 32.07.170.005.007-0255.0",
+        "note": "",
+        "noteType": "Asli"
+      }
+    ]
   }
 ]
