@@ -1,5 +1,19 @@
 [
   {
+    "id": "WAF-1768289376256",
+    "lastUpdated": "2026-01-13T07:30:15.734Z",
+    "title": "CARA VALIDASI RDTR (Kecamatan non-RDTR Kabupaten RDTR)",
+    "message": "Drop down isi alamat di lokasi non-RDTR \n\nTextbox alamat diisi non-RDTR\n\nFile polygon berada di lokasi RDTR\n",
+    "folderId": "Lainnya"
+  },
+  {
+    "id": "WAF-1768289344802",
+    "lastUpdated": "2026-01-13T07:30:19.365Z",
+    "title": "CARA VALIDASI RDTR (GARUT)",
+    "message": "Drop down isi alamat di lokasi RDTR (TASIKMALAYA/PANGANDARAN)\n\nTextbox alamat diisi garut \n\nFile polygon berada di lokasi RDTR (TASIKMALAYA/PANGANDARAN)\n",
+    "folderId": "Lainnya"
+  },
+  {
     "id": "WAF-1767943701787",
     "lastUpdated": "2026-01-09T07:28:21.787Z",
     "title": "PAKET ADDONS",

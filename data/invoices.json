@@ -446,5 +446,51 @@
     "total": 12292000,
     "nomorInvoice": "INV/2026/428",
     "tanggalInvoice": "2026-01-06"
+  },
+  {
+    "id": "1768463930222",
+    "createdAt": "2026-01-15T07:58:50.222Z",
+    "recipient": {
+      "name": "Ibu LINA NURJAMILAH, S.SI",
+      "position": "",
+      "company": "",
+      "address": "Di tempat"
+    },
+    "items": [
+      {
+        "deskripsi": "Titipan Pajak PPH & Pajak BPHTB",
+        "biaya": 7200000,
+        "keterangan": ""
+      },
+      {
+        "deskripsi": "Proses pengukuran, peta bidang, warkah desa, pnbp & pendaftaran BPN, jasa pengurusan untuk 3 bidang AJB",
+        "biaya": 25000000,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [
+      {
+        "description": "DP/tanda jadi pada saat penyerahan dokumen AJB",
+        "amount": 5000000
+      },
+      {
+        "description": "Pembayaran selanjutnya pada saat dokumen ktp,kk penjual lengkap, termasuk pembayaran pajak",
+        "amount": 22200000
+      },
+      {
+        "description": "Pelunasan pada saat resi pendaftaram sertipikat terbit",
+        "amount": 5000000
+      }
+    ],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar, S.H., M.Kn"
+    },
+    "invoiceDate": "2026-01-15",
+    "showStamp": false,
+    "total": 32200000,
+    "nomorInvoice": "INV/2026/390",
+    "tanggalInvoice": "2026-01-15"
   }
 ]

@@ -300,5 +300,21 @@
       "fileUrl": "/uploads/chat/1767776702778-VERSI_2_PASAL_AJB_ANANG_IUS_DAN_NANDANG_07012026.doc",
       "fileSize": 135680
     }
+  },
+  {
+    "id": "1768801971041",
+    "ip": "::ffff:192.168.100.170",
+    "message": "",
+    "timestamp": "2026-01-19T05:52:51.041Z",
+    "senderName": "User .170",
+    "type": "text",
+    "attachments": [
+      {
+        "fileName": "SURAT PERNYATAAN kelebihan dan kekurangan luas.docx",
+        "fileType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "fileUrl": "/uploads/chat/1768801971037-944-SURAT_PERNYATAAN_kelebihan_dan_kekurangan_luas.docx",
+        "fileSize": 20280
+      }
+    ]
   }
 ]

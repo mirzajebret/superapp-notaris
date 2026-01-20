@@ -592,5 +592,91 @@
         "noteType": "Asli"
       }
     ]
+  },
+  {
+    "id": "1768462133030",
+    "createdAt": "2026-01-15T07:28:53.030Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": false,
+      "barang": false
+    },
+    "receiver": {
+      "name": "Nepi Meinti",
+      "position": "Staff Administrasi",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "_________________",
+      "position": "",
+      "signature": ""
+    },
+    "location": "Garut",
+    "handoverDate": "2026-01-15",
+    "items": [
+      {
+        "description": "\tAJB Nomor 27/2023 Penjual: NIA NURHAYATI ",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "\tAJB Nomor 584/2022 Penjual: DENI HERIANSYAH",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "\tAJB Nomor 299/2023 Penjual: CUCU KOMALASARI",
+        "note": "",
+        "noteType": "Asli"
+      }
+    ]
+  },
+  {
+    "id": "1768785698189",
+    "createdAt": "2026-01-19T01:21:38.189Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": false,
+      "barang": false
+    },
+    "receiver": {
+      "name": "Nepi Meinti",
+      "position": "Staff Administrasi",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "......................................",
+      "position": "",
+      "signature": ""
+    },
+    "location": "Garut",
+    "handoverDate": "2026-01-19",
+    "items": [
+      {
+        "description": "Sertipikat Hak Guna Bangunan No. 00039//Ds. Majasari, Kec. Cibiuk",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "Sertipikat Asli Hak Tanggungan No. 74/2009",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "Surat Roya No. B.08/KC.VI/ADK/02/2015",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "KTP an. Drs. H. Amar & Nana Rostiana",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "KTP, KK an. Dody",
+        "note": "",
+        "noteType": "Fotokopi"
+      }
+    ]
   }
 ]
