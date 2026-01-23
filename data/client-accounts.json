@@ -5,7 +5,9 @@
     "username": "inquiry@amma.my.id",
     "password": "@Client2025!",
     "notes": "",
-    "updatedAt": "2025-12-29T08:24:17.874Z"
+    "updatedAt": "2026-01-21T05:54:17.225Z",
+    "name": "PT AMMA",
+    "status": "Active"
   },
   {
     "id": "1766996619785",
@@ -13,7 +15,9 @@
     "username": "p4kp.pantaikarangpapak@yahoo.com",
     "password": "@Client12345!",
     "notes": "",
-    "updatedAt": "2025-12-29T08:24:13.530Z"
+    "updatedAt": "2026-01-21T05:54:47.954Z",
+    "name": "Perkumpulan Paguyuban Pengelola Pariwisata Pantai Karang Papak",
+    "status": "Active"
   },
   {
     "id": "1766996661497",
@@ -21,7 +25,9 @@
     "username": "eckergy.engineering@gmail.com",
     "password": "@Client11081225",
     "notes": "",
-    "updatedAt": "2025-12-29T08:24:59.425Z"
+    "updatedAt": "2026-01-21T05:54:01.770Z",
+    "name": "PT Eckergy Engineering",
+    "status": "Active"
   },
   {
     "id": "1766996718609",
@@ -29,7 +35,9 @@
     "username": "andrewteknologisolusindo@proton.me",
     "password": "@Client170925",
     "notes": "",
-    "updatedAt": "2025-12-29T08:26:28.129Z"
+    "updatedAt": "2026-01-21T05:53:08.122Z",
+    "name": "CV Andrew Teknologi Solusindo",
+    "status": "Active"
   },
   {
     "id": "1766996830977",
@@ -37,22 +45,438 @@
     "username": "bumilestarigarut@gmail.com",
     "password": "@Client12345",
     "notes": "",
-    "updatedAt": "2025-12-29T08:27:28.730Z"
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Koperasi Bumi Lestari Garut",
+    "status": "Active"
   },
   {
-    "id": "1767849887468",
-    "platform": "Akun GMAIL dan CORETAX WIDANINGSIH",
-    "username": "widaningsih080126@gmail.com/3205024502770004",
-    "password": "Ibuwida080126@",
+    "id": "1757473829390",
+    "platform": "Facebook & Instagram",
+    "username": "notarisppathavisakbar@gmail.com",
+    "password": "Miebaso354!",
     "notes": "",
-    "updatedAt": "2026-01-08T05:25:45.100Z"
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Notaris PPAT Havis Akbar",
+    "status": "Active"
   },
   {
-    "id": "1767927758693",
-    "platform": "Akun EMAIL dan CORETAX UJANG SUTISNA",
-    "username": "3205101511650001/ujangsutisna1511@gmail.com",
-    "password": "Ujang090126@",
+    "id": "1757473880598",
+    "platform": "meta business fb",
+    "username": "care.kantorperizinan.com",
+    "password": "miebaso354",
     "notes": "",
-    "updatedAt": "2026-01-09T06:55:42.917Z"
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Care Kantor Perizinan",
+    "status": "Active"
+  },
+  {
+    "id": "1757473896150",
+    "platform": "Instagram",
+    "username": "notppatmilakumari@gmail.com",
+    "password": "Miebaso354!",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Notaris PPAT Mila Kumari",
+    "status": "Active"
+  },
+  {
+    "id": "1757473909501",
+    "platform": "facebook",
+    "username": "encepsudira32@gmail.com",
+    "password": "Gue12345",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Encep Sudira",
+    "status": "Active"
+  },
+  {
+    "id": "1757473921221",
+    "platform": "buzz",
+    "username": "mitrabangunmalaka@gmail.com",
+    "password": "miebaso354",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Mitra Bangun Malaka",
+    "status": "Active"
+  },
+  {
+    "id": "1757473932077",
+    "platform": "Shopee",
+    "username": "care.kantorperizinan@gmail.com",
+    "password": "Copong31b",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Care Kantor Perizinan",
+    "status": "Active"
+  },
+  {
+    "id": "1757473974317",
+    "platform": "OSS",
+    "username": "cvkayabahagiasejahtera@gmail.com",
+    "password": "CvKBS2025!",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "CV Kayabahagiasejahtera",
+    "status": "Active"
+  },
+  {
+    "id": "1757473986845",
+    "platform": "OSS",
+    "username": "gentongmas407@gmail.com",
+    "password": "@Client280725",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Gentong Mas",
+    "status": "Active"
+  },
+  {
+    "id": "1757474003029",
+    "platform": "OSS",
+    "username": "hastajayaperdana@gmail.com",
+    "password": "hasta354!",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Hasta Jayaperdana",
+    "status": "Active"
+  },
+  {
+    "id": "1757474012661",
+    "platform": "OSS",
+    "username": "iksumatrabs@gmail.com",
+    "password": "Copong31!",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Iksumatrabs",
+    "status": "Active"
+  },
+  {
+    "id": "1757474021174",
+    "platform": "OSS",
+    "username": "makmursentosatwins@gmail.com",
+    "password": "Copong31b!",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Makmur Sentosa Twins",
+    "status": "Active"
+  },
+  {
+    "id": "1757474029485",
+    "platform": "OSS",
+    "username": "mitrajatinusantara@gmail.com",
+    "password": "Copong31b!",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Mitra Jati Nusantara",
+    "status": "Active"
+  },
+  {
+    "id": "1757474038965",
+    "platform": "OSS",
+    "username": "multijasatrividyaindonesia@gmail.com",
+    "password": "Copong31!",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Multi Jasa Trivida Indonesia",
+    "status": "Active"
+  },
+  {
+    "id": "1757474054741",
+    "platform": "OSS",
+    "username": "properti6194",
+    "password": "BYtYisjZKB",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Properti Mandala",
+    "status": "Active"
+  },
+  {
+    "id": "1757474064077",
+    "platform": "OSS",
+    "username": "psakotaneakdjang@gmail.com",
+    "password": "@Client12345",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "PSAKOTANEEKADJANG",
+    "status": "Active"
+  },
+  {
+    "id": "1757474072269",
+    "platform": "OSS",
+    "username": "putrawangunnusantra@gmail.com",
+    "password": "Copong31b!",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Putrawangun Nusantra",
+    "status": "Active"
+  },
+  {
+    "id": "1757474170837",
+    "platform": "Gmail",
+    "username": "jayanusantaratani@gmail.com",
+    "password": "copong31",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Jaya Nusantara Tani",
+    "status": "Active"
+  },
+  {
+    "id": "1757474191765",
+    "platform": "OSS",
+    "username": "jayanusantaratani@gmail.com",
+    "password": "Copong31!",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Jaya Nusantara Tani",
+    "status": "Active"
+  },
+  {
+    "id": "1757474235533",
+    "platform": "Gmail",
+    "username": "iksumatrabs@gmail.com",
+    "password": "copong31",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Iksumatrabs",
+    "status": "Active"
+  },
+  {
+    "id": "1757474256381",
+    "platform": "OSS",
+    "username": "iksumatrabs@gmail.com",
+    "password": "Copong31!",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Iksumatrabs",
+    "status": "Active"
+  },
+  {
+    "id": "1757474309358",
+    "platform": "Gmail",
+    "username": "makmursentosatwins@gmail.com",
+    "password": "copong31",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Makmur Sentosa Twins",
+    "status": "Active"
+  },
+  {
+    "id": "1757474357157",
+    "platform": "OSS",
+    "username": "yayasantarunamuktikagaku@gmail.com",
+    "password": "Copong31!",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Yayasan Tarunamukti Kagaku",
+    "status": "Active"
+  },
+  {
+    "id": "1757474370374",
+    "platform": "Gmail",
+    "username": "yayasantarunamuktikagaku@gmail.com\t",
+    "password": "kagaku354",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Yayasan Tarunamukti Kagaku",
+    "status": "Active"
+  },
+  {
+    "id": "1757474413509",
+    "platform": "Gmail",
+    "username": "mitrajatinusantara@gmail.com",
+    "password": "copong31",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Mitra Jati Nusantara",
+    "status": "Active"
+  },
+  {
+    "id": "1757474457341",
+    "platform": "Hostinger",
+    "username": "hello.itsme.puak@gmail.com",
+    "password": "Takagichan0192",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Hello Itsme Puak",
+    "status": "Active"
+  },
+  {
+    "id": "1757474477901",
+    "platform": "Hostinger Mail",
+    "username": "mirza@urusinlegal.com",
+    "password": "Miebaso354!",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Mirza",
+    "status": "Active"
+  },
+  {
+    "id": "1757474489317",
+    "platform": "Hostinger",
+    "username": "notarisppathavisakbar@gmail.com",
+    "password": "Mieayam354!",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Notaris PPAT Havis Akbar",
+    "status": "Active"
+  },
+  {
+    "id": "1757474638589",
+    "platform": "CORETAX",
+    "username": "1000000003964310",
+    "password": "@Client12345",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "CV Kaya Bahagia Sejahtera",
+    "status": "Active"
+  },
+  {
+    "id": "1757474681853",
+    "platform": "Gmail",
+    "username": "cvkayabahagiasejahtera@gmail.com",
+    "password": "CVKBS2025",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "CV Kaya Bahagia Sejahtera",
+    "status": "Active"
+  },
+  {
+    "id": "1757474703277",
+    "platform": "Gmail",
+    "username": "anugrahjayamp@gmail.com",
+    "password": "@client20082025",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Anugrah Jaya MP",
+    "status": "Active"
+  },
+  {
+    "id": "1758592700017",
+    "platform": "proton mail",
+    "username": "lbhgardanusa@proton.me",
+    "password": "@client12345",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "LBH Gardanusa",
+    "status": "Active"
+  },
+  {
+    "id": "1758597301614",
+    "platform": "OSS/RBA",
+    "username": "lbhgardanusa@proton.me",
+    "password": "@Client12345",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "LBH Gardanusa",
+    "status": "Active"
+  },
+  {
+    "id": "1758765294083",
+    "platform": "PROTON MAIL & OSS",
+    "username": "andrewteknologisolusindo@proton.me",
+    "password": "@Client170925",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Andrew Teknologi Solusindo",
+    "status": "Active"
+  },
+  {
+    "id": "1761205902415",
+    "platform": "Gmail",
+    "username": "multijasatrividyaindonesia@gmail.com",
+    "password": "copong31",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Multi Jasa Trivida Indonesia",
+    "status": "Active"
+  },
+  {
+    "id": "1761786545559",
+    "platform": "OSS/RBA",
+    "username": "hanum55492682025r",
+    "password": "Semelako@2025",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "PT HANUM",
+    "status": "Active"
+  },
+  {
+    "id": "1763092603828",
+    "platform": "OSS/RBA",
+    "username": "bumilestarigarut@gmail.com",
+    "password": "@Client12345",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "BUMI Lestarigarut",
+    "status": "Active"
+  },
+  {
+    "id": "1763347108139",
+    "platform": "niagahoster",
+    "username": "notarisppathavisakbar@gmail.com",
+    "password": "Mieayam354!",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Notaris PPAT Havis Akbar",
+    "status": "Active"
+  },
+  {
+    "id": "1765332710260",
+    "platform": "Gmail",
+    "username": "pengacaraterdekat@gmail.com",
+    "password": "copong31",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Pengacara Terdekat",
+    "status": "Active"
+  },
+  {
+    "id": "1765332856603",
+    "platform": "Gmail",
+    "username": "care.kantorperizinan@gmail.com",
+    "password": "Copong31b",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Care Kantor Perizinan",
+    "status": "Active"
+  },
+  {
+    "id": "1765333337011",
+    "platform": "Gmail",
+    "username": "notppatmilakumari@gmail.com",
+    "password": "miebaso354",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Notaris PPAT Milakumari",
+    "status": "Active"
+  },
+  {
+    "id": "1765333365779",
+    "platform": "OSS/RBA",
+    "username": "eckergy.engineering@gmail.com",
+    "password": "@Client11081225",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Eckergy Engineering",
+    "status": "Active"
+  },
+  {
+    "id": "1765333410979",
+    "platform": "OSS/RBA",
+    "username": "bumilestarigarut@gmail.com",
+    "password": "@Client12345",
+    "notes": "",
+    "updatedAt": "2026-01-21T05:52:49.794Z",
+    "name": "Koperasi Bumi Lestari Garut",
+    "status": "Active"
+  },
+  {
+    "id": "1768977369985",
+    "name": "ANANG IUS",
+    "platform": "Gmail/CORETAX",
+    "username": "anangius85@gmail.com/3204060707670002",
+    "password": "Anangius210126 / Anangius210126!",
+    "status": "Active",
+    "notes": "",
+    "updatedAt": "2026-01-21T06:49:12.419Z"
   }
 ]

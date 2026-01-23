@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
+import FloatingCS from "@/components/FloatingCS";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,8 +31,9 @@ export default function RootLayout({
       >
         <Sidebar />
         <main className="pl-64 min-h-screen print:pl-0 transition-all duration-300">
-            {children}
+          {children}
         </main>
+        <FloatingCS />
       </body>
     </html>
   );

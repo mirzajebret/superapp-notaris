@@ -1,0 +1,32 @@
+[
+  {
+    "id": "71040f99-64a9-430f-b844-0072932656ff",
+    "name": "Mirza",
+    "paydayDate": 18,
+    "mealAllowance": 15000,
+    "createdAt": "2026-01-20T03:47:07.575Z",
+    "attendanceOverrides": {
+      "2026-01-17": "Libur",
+      "2026-01-01": "Libur",
+      "2026-01-16": "Libur",
+      "2025-12-28": "Libur",
+      "2026-01-02": "Izin"
+    }
+  },
+  {
+    "id": "eb7ca580-51af-4776-9de0-fa1a0564dc36",
+    "name": "Nepi",
+    "paydayDate": 26,
+    "mealAllowance": 15000,
+    "createdAt": "2026-01-20T03:49:40.791Z",
+    "attendanceOverrides": {}
+  },
+  {
+    "id": "38f73438-f917-4b8d-a429-133110cae80b",
+    "name": "Bilqis",
+    "paydayDate": 15,
+    "mealAllowance": 30000,
+    "createdAt": "2026-01-20T03:50:59.399Z",
+    "attendanceOverrides": {}
+  }
+]

@@ -225,7 +225,7 @@ export default function CoverAktaModulePage() {
               </div>
 
               {/* INFORMASI AKTA - Menggunakan Grid Layout Manual untuk Presisi */}
-              <div className="w-[90%] mx-auto px-4 text-[12pt] leading-relaxed font-serif text-black">
+              <div className="w-[80%] mx-auto px-4 text-[12pt] leading-relaxed font-serif text-black">
 
                 {/* BAGIAN AKTA */}
                 <div className="flex items-start mb-6">

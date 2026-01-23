@@ -1,0 +1,482 @@
+[
+  {
+    "id": "trx-1769151898795",
+    "type": "Credit",
+    "date": "2025-07-30",
+    "category": "Operasional Kantor",
+    "nominal": 18000,
+    "description": "Beli Online Plastik Sampah",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151783299",
+    "type": "Credit",
+    "date": "2025-07-30",
+    "category": "Transport",
+    "nominal": 15000,
+    "description": "ke BPN ambil resi penataan batas, bapenda (bensin)",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151743595",
+    "type": "Credit",
+    "date": "2025-07-29",
+    "category": "Lain-lain",
+    "nominal": 15000,
+    "description": "isi ulang tinta hitam untuk cap ttd",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151711803",
+    "type": "Credit",
+    "date": "2025-07-29",
+    "category": "Transport",
+    "nominal": 5000,
+    "description": "parkir BPN & IBC",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151685460",
+    "type": "Credit",
+    "date": "2025-07-28",
+    "category": "Transport",
+    "nominal": 6000,
+    "description": "parkir IBC & Toko AA",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151652692",
+    "type": "Credit",
+    "date": "2025-07-28",
+    "category": "Lain-lain",
+    "nominal": 68500,
+    "description": "beli atk (pulpen, klip hitam kecil, stapler, buku, penggaris)",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151613260",
+    "type": "Credit",
+    "date": "2025-07-28",
+    "category": "Konsumsi",
+    "nominal": 55500,
+    "description": "Beli air mineral botol 1 dus",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151584404",
+    "type": "Credit",
+    "date": "2025-07-25",
+    "category": "Konsumsi",
+    "nominal": 28000,
+    "description": "Beli nasi padang",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151555684",
+    "type": "Debit",
+    "date": "2025-07-25",
+    "category": "Operasional Kantor",
+    "nominal": 200000,
+    "description": "TF petty cash pak Havis",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151513620",
+    "type": "Credit",
+    "date": "2025-07-23",
+    "category": "Transport",
+    "nominal": 3000,
+    "description": "Parkir IBC Bu Intan (ngambil berita acara pemeriksaan notaris 2024)\n",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151377851",
+    "type": "Credit",
+    "date": "2025-07-22",
+    "category": "Transport",
+    "nominal": 2000,
+    "description": "Parkir BPN (link NIB ke SHM pa Iip)",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151342523",
+    "type": "Credit",
+    "date": "2025-07-21",
+    "category": "Transport",
+    "nominal": 20000,
+    "description": "kurang biaya dari rincian perjalanan tgl 16-17 juli 2025 ke Banjarwangi & Cibalong",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151285459",
+    "type": "Credit",
+    "date": "2025-07-08",
+    "category": "Transport",
+    "nominal": 2000,
+    "description": "Parkir BPN (ambil peta bidang selesai)",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151249252",
+    "type": "Credit",
+    "date": "2025-07-21",
+    "category": "Konsumsi",
+    "nominal": 15000,
+    "description": "Kurang belanja sayur",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151227012",
+    "type": "Credit",
+    "date": "2025-07-08",
+    "category": "Transport",
+    "nominal": 3000,
+    "description": "Parkir IBC (bu intan) antar buku repertorium",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151185996",
+    "type": "Credit",
+    "date": "2025-07-07",
+    "category": "Transport",
+    "nominal": 2000,
+    "description": "Parkir BPN (konsul 13 SHM)",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151156452",
+    "type": "Credit",
+    "date": "2025-07-04",
+    "category": "Transport",
+    "nominal": 15000,
+    "description": "sebar laporan notaris & ppat (bensin & parkir)",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151125188",
+    "type": "Credit",
+    "date": "2025-07-01",
+    "category": "Transport",
+    "nominal": 2500,
+    "description": "admin BJB bayar BPHTB Waris an. Iip Priatna, dkk",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151077492",
+    "type": "Credit",
+    "date": "2025-07-01",
+    "category": "Konsumsi",
+    "nominal": 14500,
+    "description": "Gula putih 1/4, permen 1 bks, teh celut sachet",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769151032452",
+    "type": "Credit",
+    "date": "2025-06-26",
+    "category": "Transport",
+    "nominal": 12000,
+    "description": "Bensin & Parkir BPN Bapenda (daftar peta bidang & BPHTB Waris)",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769150938476",
+    "type": "Debit",
+    "date": "2025-06-20",
+    "category": "Operasional Kantor",
+    "nominal": 100000,
+    "description": "Pembuatan Copy Collatione an. Haynan",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769150891380",
+    "type": "Credit",
+    "date": "2025-06-20",
+    "category": "Materai",
+    "nominal": 180000,
+    "description": "Beli Materai (18)",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769150862708",
+    "type": "Credit",
+    "date": "2025-06-19",
+    "category": "Lain-lain",
+    "nominal": 12000,
+    "description": "Beli Sekat Plastik Lubang",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769150823069",
+    "type": "Credit",
+    "date": "2026-06-16",
+    "category": "Lain-lain",
+    "nominal": 29000,
+    "description": "Beli Online:\n- Dompet Lubang Plastik\n- Pelubang Kertas\n- Benang Jahit",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769150670140",
+    "type": "Credit",
+    "date": "2026-06-10",
+    "category": "Lain-lain",
+    "nominal": 29000,
+    "description": "Belanja ke Yoma",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769150635876",
+    "type": "Credit",
+    "date": "2026-06-10",
+    "category": "Lain-lain",
+    "nominal": 10000,
+    "description": "Beli Singkup & Tempat Pensil",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769150586580",
+    "type": "Credit",
+    "date": "2025-06-10",
+    "category": "Lain-lain",
+    "nominal": 205000,
+    "description": "Belanja ATK ke Toko AA",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769150555924",
+    "type": "Credit",
+    "date": "2026-06-10",
+    "category": "Transport",
+    "nominal": 10000,
+    "description": "Bensin",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1769074245621",
+    "type": "Credit",
+    "date": "2025-06-10",
+    "category": "Transport",
+    "nominal": 5000,
+    "description": "Parkir Toko AA & BPN",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Admin Notaris"
+  },
+  {
+    "id": "trx-1769074182238",
+    "type": "Credit",
+    "date": "2025-06-05",
+    "category": "Transport",
+    "nominal": 5000,
+    "description": "Parkir IBC & BPN",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Admin Notaris"
+  },
+  {
+    "id": "trx-1769074148701",
+    "type": "Credit",
+    "date": "2025-06-05",
+    "category": "Transport",
+    "nominal": 10000,
+    "description": "Bensin kirim laporan bulanan Notaris & PPAT",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Admin Notaris"
+  },
+  {
+    "id": "trx-1769074035974",
+    "type": "Debit",
+    "date": "2025-06-10",
+    "category": "Operasional Kantor",
+    "nominal": 500000,
+    "description": "Pak Havis transfer ke Mirza",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Admin Notaris"
+  }
+]

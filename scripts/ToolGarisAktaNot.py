@@ -27,6 +27,7 @@ class NotarialDeedFormatter:
         self.visual_top_adjustment = 2 
         self.header_threshold = 50 
         self.footer_zone_start = 0.95 
+        self.line_bottom_clamp = 0.90 # Batas bawah garis (90% halaman)
 
         # --- Decorative Line Parameters ---
         self.diagonal_line_length = 30
@@ -112,7 +113,7 @@ class NotarialDeedFormatter:
                 current_segment = {
                     "x": content_blocks[0][0], 
                     "y0": content_blocks[0][1] + self.visual_top_adjustment, # Tweak visual atas
-                    "y1": content_blocks[0][3]
+                    "y1": min(content_blocks[0][3], page_rect.height * self.line_bottom_clamp)
                 }
 
                 for i in range(1, len(content_blocks)):
@@ -121,7 +122,7 @@ class NotarialDeedFormatter:
                     
                     current_x = current_block[0]
                     current_y0 = current_block[1] + self.visual_top_adjustment
-                    current_y1 = current_block[3]
+                    current_y1 = min(current_block[3], page_rect.height * self.line_bottom_clamp)
 
                     is_same_indent = abs(current_x - current_segment["x"]) < self.indent_tolerance
                     

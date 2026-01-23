@@ -28,7 +28,8 @@ const menuGroups = [
     items: [
       { name: 'Dashboard', icon: LayoutDashboard, href: '/' },
       { name: 'Chat Kantor', icon: MessageCircleMoreIcon, href: '/modules/chat-kantor' },
-      { name: 'Timeline Pekerjaan', icon: CalendarSync, href: '/modules/timeline-pekerjaan' },
+      { name: 'Tracking Pekerjaan', icon: CalendarSync, href: '/modules/tracking-pekerjaan' },
+      { name: 'Daftar Pekerjaan', icon: FileText, href: '/modules/daftar-pekerjaan' },
     ]
   },
   {
@@ -46,6 +47,7 @@ const menuGroups = [
   {
     category: 'Tools',
     items: [
+      { name: 'Laporan Karyawan', icon: FileText, href: '/modules/laporan-karyawan' },
       { name: 'Draft Akta', icon: FileStack, href: '/modules/bank-draft' },
       { name: 'Penggaris Akta', icon: DraftingCompass, href: '/modules/penggaris-akta' },
       { name: 'Kalkulator Pajak', icon: Calculator, href: '/modules/kalkulator-pajak' },

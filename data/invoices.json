@@ -492,5 +492,75 @@
     "total": 32200000,
     "nomorInvoice": "INV/2026/390",
     "tanggalInvoice": "2026-01-15"
+  },
+  {
+    "id": "1768876669010",
+    "createdAt": "2026-01-20T02:37:49.010Z",
+    "recipient": {
+      "name": "",
+      "position": "",
+      "company": "",
+      "address": ""
+    },
+    "items": [
+      {
+        "deskripsi": "1. Pembuatan Akta Jual Beli",
+        "biaya": 800000,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [
+      {
+        "description": "Pembayaran pertama sebesar 70% setelah penawaran disetujui",
+        "amount": 560000
+      }
+    ],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar, S.H., M.Kn"
+    },
+    "invoiceDate": "2026-01-20",
+    "showStamp": true,
+    "total": 800000,
+    "nomorInvoice": "INV/2026/220",
+    "tanggalInvoice": "2026-01-20"
+  },
+  {
+    "id": "1768880578942",
+    "createdAt": "2026-01-20T03:42:58.942Z",
+    "recipient": {
+      "name": "Ny. Siti Jenar Rosdiana Dewi",
+      "position": "",
+      "company": "di-Tempat",
+      "address": ""
+    },
+    "items": [
+      {
+        "deskripsi": "\tPembuatan Akta  Hibah & Proses Balik Nama",
+        "biaya": 11400000,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [
+      {
+        "description": "Pembayaran Pertama",
+        "amount": 10000000
+      },
+      {
+        "description": "Pembayaran Kedua (dibayar apabila pekerjaan telah selesai)",
+        "amount": 1400000
+      }
+    ],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar, S.H., M.Kn"
+    },
+    "invoiceDate": "2026-01-20",
+    "showStamp": false,
+    "total": 11400000,
+    "nomorInvoice": "INV/2026/237",
+    "tanggalInvoice": "2026-01-20"
   }
 ]

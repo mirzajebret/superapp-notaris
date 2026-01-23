@@ -678,5 +678,38 @@
         "noteType": "Fotokopi"
       }
     ]
+  },
+  {
+    "id": "1768880339636",
+    "createdAt": "2026-01-20T03:38:59.636Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": true,
+      "barang": false
+    },
+    "receiver": {
+      "name": "Nepi Meinti",
+      "position": "Staff Administrasi",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "",
+      "position": "_________________",
+      "signature": ""
+    },
+    "location": "Garut",
+    "handoverDate": "2026-01-20",
+    "items": [
+      {
+        "description": "Sertipikat Hak Milik No. 03112//Ds. Cangkuang, Kec. Leles",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "PBB Tahun 2025 NOP 32.07.220.011.002-0025.0",
+        "note": "",
+        "noteType": "Asli"
+      }
+    ]
   }
 ]

@@ -316,5 +316,112 @@
         "fileSize": 20280
       }
     ]
+  },
+  {
+    "id": "1768876866045",
+    "ip": "::ffff:192.168.100.82",
+    "message": "Hello ",
+    "timestamp": "2026-01-20T02:41:06.045Z",
+    "senderName": "User .82",
+    "type": "text",
+    "attachments": []
+  },
+  {
+    "id": "1768983512070",
+    "ip": "::ffff:192.168.100.170",
+    "message": "",
+    "timestamp": "2026-01-21T08:18:32.070Z",
+    "senderName": "User .170",
+    "type": "text",
+    "attachments": [
+      {
+        "fileName": "SHM 3207 - ANANG IUS.pdf",
+        "fileType": "application/pdf",
+        "fileUrl": "/uploads/chat/1768983512060-209-SHM_3207_-_ANANG_IUS.pdf",
+        "fileSize": 1149337
+      }
+    ]
+  },
+  {
+    "id": "1769133742453",
+    "ip": "::ffff:192.168.100.170",
+    "message": "",
+    "timestamp": "2026-01-23T02:02:22.453Z",
+    "senderName": "User .170",
+    "type": "text",
+    "attachments": [
+      {
+        "fileName": "Akta_Pengakuan_Hutang_Novi-Sofi_Rev_Not.docx",
+        "fileType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "fileUrl": "/uploads/chat/1769133742442-723-Akta_Pengakuan_Hutang_Novi-Sofi_Rev_Not.docx",
+        "fileSize": 36550
+      },
+      {
+        "fileName": "scan salinan pengakuan hutang.pdf",
+        "fileType": "application/pdf",
+        "fileUrl": "/uploads/chat/1769133742444-28-scan_salinan_pengakuan_hutang.pdf",
+        "fileSize": 2120657
+      }
+    ]
+  },
+  {
+    "id": "1769139994181",
+    "ip": "::ffff:192.168.100.170",
+    "message": "",
+    "timestamp": "2026-01-23T03:46:34.181Z",
+    "senderName": "User .170",
+    "type": "text",
+    "attachments": [
+      {
+        "fileName": "SCAN AJB 5_2026_UJANG SUTISNA DAN DEVI.pdf",
+        "fileType": "application/pdf",
+        "fileUrl": "/uploads/chat/1769139994174-991-SCAN_AJB_5_2026_UJANG_SUTISNA_DAN_DEVI.pdf",
+        "fileSize": 965032
+      }
+    ]
+  },
+  {
+    "id": "1769140657169",
+    "ip": "::ffff:192.168.100.170",
+    "message": "",
+    "timestamp": "2026-01-23T03:57:37.169Z",
+    "senderName": "User .170",
+    "type": "text",
+    "attachments": [
+      {
+        "fileName": "scan salinan pengakuan hutang.pdf",
+        "fileType": "application/pdf",
+        "fileUrl": "/uploads/chat/1769140657105-914-scan_salinan_pengakuan_hutang.pdf",
+        "fileSize": 2120657
+      },
+      {
+        "fileName": "scan salinan ppjb.pdf",
+        "fileType": "application/pdf",
+        "fileUrl": "/uploads/chat/1769140657126-606-scan_salinan_ppjb.pdf",
+        "fileSize": 2373523
+      }
+    ]
+  },
+  {
+    "id": "1769149292017",
+    "ip": "::ffff:192.168.100.112",
+    "message": "",
+    "timestamp": "2026-01-23T06:21:32.017Z",
+    "senderName": "User .112",
+    "type": "text",
+    "attachments": [
+      {
+        "fileName": "Sirkuler PT AMMA GROUP INTERNATIONAL_Mz_Rv.pdf",
+        "fileType": "application/pdf",
+        "fileUrl": "/uploads/chat/1769149292014-313-Sirkuler_PT_AMMA_GROUP_INTERNATIONAL_Mz_Rv.pdf",
+        "fileSize": 138105
+      },
+      {
+        "fileName": "3 PKR PT. AMMA GROUP_Mz_Rv.pdf",
+        "fileType": "application/pdf",
+        "fileUrl": "/uploads/chat/1769149292015-430-3_PKR_PT._AMMA_GROUP_Mz_Rv.pdf",
+        "fileSize": 167928
+      }
+    ]
   }
 ]
