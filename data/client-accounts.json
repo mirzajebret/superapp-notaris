@@ -472,11 +472,71 @@
   {
     "id": "1768977369985",
     "name": "ANANG IUS",
-    "platform": "Gmail/CORETAX",
-    "username": "anangius85@gmail.com/3204060707670002",
-    "password": "Anangius210126 / Anangius210126!",
+    "platform": "Gmail",
+    "username": "anangius85@gmail.com",
+    "password": "ClientHA31!",
     "status": "Active",
     "notes": "",
-    "updatedAt": "2026-01-21T06:49:12.419Z"
+    "updatedAt": "2026-01-26T04:01:30.777Z"
+  },
+  {
+    "id": "1769399761188",
+    "name": "dr. R. Muhamad Wahyu Suryaputra",
+    "platform": "Gmail",
+    "username": "wahyusuryaputra04@gmail.com",
+    "password": "ClientHA31!",
+    "status": "Active",
+    "notes": "",
+    "updatedAt": "2026-01-26T04:03:03.880Z"
+  },
+  {
+    "id": "1769399881371",
+    "name": "UJANG SUTISNA",
+    "platform": "Gmail",
+    "username": "ujangsutisna1511@gmail.com",
+    "password": "ClientHA31!",
+    "status": "Active",
+    "notes": "",
+    "updatedAt": "2026-01-26T03:58:25.767Z"
+  },
+  {
+    "id": "1769399944363",
+    "name": "WIDANINGSIH",
+    "platform": "Gmail",
+    "username": "widaningsih080126@gmail.com",
+    "password": "ClientHA31!",
+    "status": "Active",
+    "notes": "",
+    "updatedAt": "2026-01-26T03:59:30.589Z"
+  },
+  {
+    "id": "1769400451081",
+    "name": "WIDANINGSIH",
+    "platform": "CORETAX",
+    "username": "3205024502770004",
+    "password": "Ibuwida080126@",
+    "status": "Active",
+    "notes": "",
+    "updatedAt": "2026-01-26T04:08:14.880Z"
+  },
+  {
+    "id": "1769400509040",
+    "name": "UJANG SUTISNA",
+    "platform": "CORETAX",
+    "username": "3205101511650001",
+    "password": "Ujang090126@",
+    "status": "Active",
+    "notes": "",
+    "updatedAt": "2026-01-26T04:08:54.106Z"
+  },
+  {
+    "id": "1769400544312",
+    "name": "ANANG IUS",
+    "platform": "CORETAX",
+    "username": "3204060707670002",
+    "password": "Anangius210126!",
+    "status": "Active",
+    "notes": "",
+    "updatedAt": "2026-01-26T04:09:34.196Z"
   }
 ]

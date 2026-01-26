@@ -711,5 +711,38 @@
         "noteType": "Asli"
       }
     ]
+  },
+  {
+    "id": "1769411009436",
+    "createdAt": "2026-01-26T07:03:29.436Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": false,
+      "barang": false
+    },
+    "receiver": {
+      "name": "",
+      "position": "___________________",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "Nepi Meinti",
+      "position": "Staff Administrasi",
+      "signature": ""
+    },
+    "location": "Garut",
+    "handoverDate": "2026-01-26",
+    "items": [
+      {
+        "description": "Salinan Akta Pengakuan Hutang No -4.- Tanggal 26 Januari 2026",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "Salinan Akta PPJB No -5.- Tanggal 26 Januari 2026",
+        "note": "",
+        "noteType": "Asli"
+      }
+    ]
   }
 ]

@@ -234,7 +234,7 @@ export default function NewInvoicePage() {
             <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500 mb-3 border-b pb-1">Penerima</h3>
             <div className="space-y-3">
               <input type="text" className="w-full border border-gray-300 rounded p-1 text-sm" placeholder="Nama Lengkap" value={formData.recipient.name} onChange={(e) => handleInputChange('recipient', 'name', e.target.value)} />
-              <input type="text" className="w-full border border-gray-300 rounded p-1 text-sm" placeholder="Perusahaan (Opsional)" value={formData.recipient.company} onChange={(e) => handleInputChange('recipient', 'company', e.target.value)} />
+              <input type="text" className="w-full border border-gray-300 rounded p-1 text-sm" placeholder="Perusahaan (Opsional)" value={formData.recipient.company} onChange={(e) => handleInputChange('recipient', 'company', e.target.value)} onBlur={() => !formData.recipient.company.trim() && handleInputChange('recipient', 'company', 'di-Tempat')} />
               <textarea className="w-full border border-gray-300 rounded p-1 text-sm" placeholder="Alamat Lengkap" value={formData.recipient.address} onChange={(e) => handleInputChange('recipient', 'address', e.target.value)} rows={2}></textarea>
             </div>
           </div>
@@ -396,7 +396,7 @@ export default function NewInvoicePage() {
                   {formData.showStamp ? (
                     <Image src="/images/cap-ttd3.png" width={160} height={160} alt="Cap TTD" className="object-contain z-10" priority />
                   ) : (
-                    <span className="text-gray-300 text-xs border border-dashed p-1">[Tanpa Cap]</span>
+                    <span className="text-gray-300 text-xs border border-dashed p-1"></span>
                   )}
                 </div>
                 <p className="font-bold underline z-20 relative">{formData.bank.accountName.split(',')[0]}, S.H., M.Kn., M.M</p>

@@ -19,7 +19,10 @@
     "paydayDate": 26,
     "mealAllowance": 15000,
     "createdAt": "2026-01-20T03:49:40.791Z",
-    "attendanceOverrides": {}
+    "attendanceOverrides": {
+      "2026-01-01": "Libur",
+      "2026-01-16": "Libur"
+    }
   },
   {
     "id": "38f73438-f917-4b8d-a429-133110cae80b",

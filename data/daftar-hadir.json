@@ -145,5 +145,41 @@
         "nama": "DEVI NURHAYATI"
       }
     ]
+  },
+  {
+    "id": "1769407045968",
+    "createdAt": "2026-01-26T05:57:25.968Z",
+    "tanggal": "2026-01-26",
+    "judul": "perjanjian pengikatan jual beli",
+    "nomorAkta": "-5.-",
+    "participants": [
+      {
+        "nama": ""
+      },
+      {
+        "nama": ""
+      },
+      {
+        "nama": ""
+      }
+    ]
+  },
+  {
+    "id": "1769407057665",
+    "createdAt": "2026-01-26T05:57:37.665Z",
+    "tanggal": "2026-01-26",
+    "judul": "pengakuan hutang",
+    "nomorAkta": "-4.-",
+    "participants": [
+      {
+        "nama": ""
+      },
+      {
+        "nama": ""
+      },
+      {
+        "nama": ""
+      }
+    ]
   }
 ]

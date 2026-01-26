@@ -431,6 +431,38 @@
         "fileName": "SK-PT-AMMA-GROUP-INTERNATIONAL.pdf",
         "fileType": "application/pdf",
         "createdAt": "2026-01-09T03:59:36.844Z"
+      },
+      {
+        "id": "1769389885174809",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931148376/1769389885174-SIRKULER-PT-AMMA.pdf",
+        "fileName": "SIRKULER-PT-AMMA.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-26T01:11:25.178Z"
+      },
+      {
+        "id": "1769389885200954",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931148376/1769389885200-SCAN_SALINAN_PKR_PT__AMMA_GROUP_FINAL.pdf",
+        "fileName": "SCAN_SALINAN_PKR_PT__AMMA_GROUP_FINAL.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-26T01:11:25.202Z"
+      },
+      {
+        "id": "1769413349509117",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931148376/1769413349509-SP_PT_AMMA_GROUP_INTERNATIONAL.pdf",
+        "fileName": "SP_PT AMMA GROUP INTERNATIONAL.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-26T07:42:29.654Z"
+      },
+      {
+        "id": "1769413349675284",
+        "type": "file",
+        "content": "/uploads/legalitas/1767931148376/1769413349675-SK_PERUBAHAN_PT_AMMA_GROUP_INTERNATIONAL.pdf",
+        "fileName": "SK_PERUBAHAN_PT AMMA GROUP INTERNATIONAL.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-26T07:42:29.678Z"
       }
     ],
     "col3": [
@@ -511,7 +543,7 @@
         "createdAt": "2026-01-09T03:59:55.261Z"
       }
     ],
-    "updatedAt": "2026-01-09T03:59:55.309Z"
+    "updatedAt": "2026-01-26T07:42:29.764Z"
   },
   {
     "id": "1767930413424",

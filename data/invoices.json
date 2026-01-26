@@ -562,5 +562,94 @@
     "total": 11400000,
     "nomorInvoice": "INV/2026/237",
     "tanggalInvoice": "2026-01-20"
+  },
+  {
+    "id": "1769410855749",
+    "createdAt": "2026-01-26T07:00:55.749Z",
+    "recipient": {
+      "name": "",
+      "position": "",
+      "company": "",
+      "address": ""
+    },
+    "items": [
+      {
+        "deskripsi": "- Pembuatan Akta Pengakuan Hutang \n- Pembuatan Akta PPBJ",
+        "biaya": 3000000,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar, S.H., M.Kn"
+    },
+    "invoiceDate": "2026-01-26",
+    "showStamp": false,
+    "total": 3000000,
+    "nomorInvoice": "INV/2026/578",
+    "tanggalInvoice": "2026-01-26"
+  },
+  {
+    "id": "1769410885349",
+    "createdAt": "2026-01-26T07:01:25.349Z",
+    "recipient": {
+      "name": "Bapak Fariz Akbar",
+      "position": "",
+      "company": "di- Tempat",
+      "address": ""
+    },
+    "items": [
+      {
+        "deskripsi": "- Pembuatan Akta Pengakuan Hutang \n- Pembuatan Akta PPBJ",
+        "biaya": 3000000,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar, S.H., M.Kn"
+    },
+    "invoiceDate": "2026-01-26",
+    "showStamp": false,
+    "total": 3000000,
+    "nomorInvoice": "INV/2026/327",
+    "tanggalInvoice": "2026-01-26"
+  },
+  {
+    "id": "1769411120741",
+    "createdAt": "2026-01-26T07:05:20.741Z",
+    "recipient": {
+      "name": "Bapak Fariz Akbar",
+      "position": "",
+      "company": "di-Tempat",
+      "address": ""
+    },
+    "items": [
+      {
+        "deskripsi": "- Pembuatan Akta PPBJ\t\n- Pembuatan Akta Pengakuan Hutang",
+        "biaya": 3500000,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [
+      {
+        "description": "Pembayaran pertama sebesar 70% setelah penawaran disetujui",
+        "amount": 2450000
+      }
+    ],
+    "bank": {
+      "name": "Bank BCA",
+      "accountNo": "2781977341",
+      "accountName": "Havis Akbar, S.H., M.Kn"
+    },
+    "invoiceDate": "2026-01-26",
+    "showStamp": false,
+    "total": 3500000,
+    "nomorInvoice": "INV/2026/36",
+    "tanggalInvoice": "2026-01-26"
   }
 ]
