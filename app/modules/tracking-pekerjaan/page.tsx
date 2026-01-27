@@ -1,20 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import {
   Briefcase,
-  Calendar,
-  CheckCircle2,
-  Clock,
-  MoreVertical,
   Plus,
   Search,
-  AlertCircle,
   X,
   Edit2,
   Trash2,
-  ChevronRight,
-  User
+  User,
 } from 'lucide-react';
 import { getJobs, saveJob, deleteJob, saveTimelineItem, deleteTimelineItem } from '@/app/actions';
 
@@ -39,12 +33,30 @@ interface Job {
   history: HistoryItem[];
 }
 
-// --- COMPONENTS ---
+// --- HELPERS ---
+const getDaysArray = (start: Date, end: Date) => {
+  const arr = [];
+  for (let dt = new Date(start); dt <= end; dt.setDate(dt.getDate() + 1)) {
+    arr.push(new Date(dt));
+  }
+  return arr;
+};
+
+const formatDateID = (date: Date) => { // format DD/MM for display
+  return date.toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit' });
+};
+
+const getMonthName = (date: Date) => {
+  return date.toLocaleDateString('id-ID', { month: 'long', year: 'numeric' });
+};
 
 export default function TimelinePekerjaanPage() {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Layout State
+  const [viewMode, setViewMode] = useState<'month' | 'week'>('month');
 
   // Modal States
   const [isJobModalOpen, setIsJobModalOpen] = useState(false);
@@ -52,7 +64,7 @@ export default function TimelinePekerjaanPage() {
 
   // Edit States
   const [editingJob, setEditingJob] = useState<Partial<Job> | null>(null);
-  const [selectedJobId, setSelectedJobId] = useState<string | null>(null); // For adding history
+  const [selectedJobId, setSelectedJobId] = useState<string | null>(null);
   const [editingHistory, setEditingHistory] = useState<Partial<HistoryItem> | null>(null);
 
   // --- DATA LOADING ---
@@ -72,7 +84,158 @@ export default function TimelinePekerjaanPage() {
     loadData();
   }, []);
 
-  // --- HANDLERS: JOB ---
+  // --- GANTT COMPUTATIONS ---
+  const { timelineStart, timelineEnd, days, months, totalDays } = useMemo(() => {
+    if (jobs.length === 0) {
+      const start = new Date();
+      start.setDate(start.getDate() - 7);
+      const end = new Date();
+      end.setDate(end.getDate() + 21);
+      return { timelineStart: start, timelineEnd: end, days: getDaysArray(start, end), months: [], totalDays: 28 };
+    }
+
+    const startDates = jobs.map(j => new Date(j.startDate).getTime()).filter(t => !isNaN(t));
+    const endDates = jobs.map(j => new Date(j.targetDate).getTime()).filter(t => !isNaN(t));
+
+    // Default range if dates are invalid
+    let minDate = startDates.length ? new Date(Math.min(...startDates)) : new Date();
+    let maxDate = endDates.length ? new Date(Math.max(...endDates)) : new Date();
+
+    // Add padding
+    minDate.setDate(minDate.getDate() - 7);
+    maxDate.setDate(maxDate.getDate() + 14);
+
+    if (maxDate <= minDate) {
+      maxDate = new Date(minDate);
+      maxDate.setDate(maxDate.getDate() + 30);
+    }
+
+    const allDays = getDaysArray(minDate, maxDate);
+
+    // Group days by month for the header
+    const monthsGroup: { name: string, days: number }[] = [];
+    let currentMonth = '';
+    let currentCount = 0;
+
+    allDays.forEach(day => {
+      const mName = getMonthName(day);
+      if (mName !== currentMonth) {
+        if (currentMonth) monthsGroup.push({ name: currentMonth, days: currentCount });
+        currentMonth = mName;
+        currentCount = 1;
+      } else {
+        currentCount++;
+      }
+    });
+    if (currentMonth) monthsGroup.push({ name: currentMonth, days: currentCount });
+
+    return {
+      timelineStart: minDate,
+      timelineEnd: maxDate,
+      days: allDays,
+      months: monthsGroup,
+      totalDays: allDays.length
+    };
+  }, [jobs]);
+
+  // --- LAYOUT COMPUTATION ---
+  const CELL_WIDTH = 40; // px per day
+
+  const filteredJobs = jobs.filter(j =>
+    j.clientName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    j.serviceName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const processedJobs = useMemo(() => {
+    return filteredJobs.map(job => {
+      // 1. Sort history
+      const sortedHistory = [...job.history]
+        .map(h => ({
+          ...h,
+          dateObj: new Date(h.date),
+          valid: !isNaN(new Date(h.date).getTime())
+        }))
+        .filter(h => h.valid)
+        .sort((a, b) => a.dateObj.getTime() - b.dateObj.getTime());
+
+      // 2. Assign Levels
+      const levels: number[] = [];
+
+      const markers = sortedHistory.map(h => {
+        const diffTime = h.dateObj.getTime() - timelineStart.getTime();
+
+        if (diffTime < 0) return null;
+
+        const diffDays = diffTime / (1000 * 60 * 60 * 24);
+        const leftPos = diffDays * CELL_WIDTH;
+
+        // Estimate width
+        const estimatedWidth = Math.min(180, Math.max(40, (h.title?.length || 0) * 8 + 30));
+        const rightPos = leftPos + estimatedWidth + 10;
+
+        // Find fit level
+        let assignedLevel = -1;
+        for (let i = 0; i < levels.length; i++) {
+          if (levels[i] < leftPos) {
+            assignedLevel = i;
+            levels[i] = rightPos;
+            break;
+          }
+        }
+
+        if (assignedLevel === -1) {
+          assignedLevel = levels.length;
+          levels.push(rightPos);
+        }
+
+        return {
+          ...h,
+          leftPos,
+          width: estimatedWidth,
+          level: assignedLevel,
+          rightPos
+        };
+      }).filter(Boolean) as (HistoryItem & { leftPos: number, width: number, level: number, rightPos: number })[];
+
+      const maxLevel = Math.max(0, ...markers.map(i => i.level), levels.length - 1);
+      const ROW_HEIGHT_PER_LEVEL = 32;
+      const BASE_ROW_HEIGHT = 60;
+      const contentHeight = (maxLevel + 1) * ROW_HEIGHT_PER_LEVEL + 20;
+      const rowHeight = Math.max(BASE_ROW_HEIGHT, contentHeight);
+
+      const maxRight = Math.max(0, ...markers.map(i => i.rightPos));
+
+      return {
+        ...job,
+        rowHeight,
+        markers,
+        maxRight
+      };
+    });
+  }, [filteredJobs, timelineStart]);
+
+  const timelineWidth = totalDays * CELL_WIDTH;
+
+  const getBarStyles = (start: string, end: string) => {
+    const sDate = new Date(start);
+    let eDate = new Date(end);
+
+    // Handle invalid end dates or end before start
+    if (isNaN(eDate.getTime()) || eDate < sDate) eDate = new Date(sDate);
+
+    const diffTime = Math.abs(sDate.getTime() - timelineStart.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    const durationTime = Math.abs(eDate.getTime() - sDate.getTime());
+    const durationDays = Math.ceil(durationTime / (1000 * 60 * 60 * 24)) + 1; // +1 to include the end day
+
+    return {
+      left: `${diffDays * CELL_WIDTH}px`,
+      width: `${durationDays * CELL_WIDTH}px`
+    };
+  };
+
+  // --- HANDLERS ---
   const handleCreateJob = () => {
     setEditingJob({
       clientName: '', serviceName: '', status: 'Baru', priority: 'Normal',
@@ -102,11 +265,10 @@ export default function TimelinePekerjaanPage() {
     }
   };
 
-  // --- HANDLERS: HISTORY ---
   const handleAddHistory = (jobId: string) => {
     setSelectedJobId(jobId);
     setEditingHistory({
-      date: new Date().toISOString(), // Simpan format ISO lengkap untuk jam
+      date: new Date().toISOString(),
       title: '',
       description: '',
       status: 'On Progress'
@@ -114,180 +276,216 @@ export default function TimelinePekerjaanPage() {
     setIsHistoryModalOpen(true);
   };
 
-  const handleEditHistory = (jobId: string, item: HistoryItem) => {
-    setSelectedJobId(jobId);
-    setEditingHistory({ ...item });
-    setIsHistoryModalOpen(true);
-  };
-
   const handleSaveHistorySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedJobId || !editingHistory) return;
-
     await saveTimelineItem(selectedJobId, editingHistory);
     setIsHistoryModalOpen(false);
     loadData();
   };
 
-  const handleDeleteHistory = async (jobId: string, historyId: string) => {
-    if (confirm('Hapus progress ini?')) {
-      await deleteTimelineItem(jobId, historyId);
-      loadData();
-    }
-  }
-
-  // --- RENDER HELPERS ---
+  // --- HELPERS FOR UI ---
   const getPriorityColor = (p: string) => {
     switch (p) {
-      case 'High': return 'bg-red-100 text-red-700 border-red-200';
-      case 'Medium': return 'bg-orange-100 text-orange-700 border-orange-200';
-      default: return 'bg-blue-100 text-blue-700 border-blue-200';
+      case 'High': return 'bg-red-500 text-white';
+      case 'Medium': return 'bg-amber-500 text-white';
+      default: return 'bg-blue-500 text-white';
     }
   };
 
-  const getStatusIcon = (s: string) => {
-    switch (s) {
-      case 'Done': return <CheckCircle2 size={16} className="text-emerald-500" />;
-      case 'Issue': return <AlertCircle size={16} className="text-red-500" />;
-      case 'Pending': return <Clock size={16} className="text-amber-500" />;
-      default: return <div className="w-3 h-3 rounded-full bg-blue-500 animate-pulse" />;
+  const getPriorityClasses = (p: string) => {
+    switch (p) {
+      case 'High': return 'text-red-600 bg-red-50 border-red-200';
+      case 'Medium': return 'text-amber-600 bg-amber-50 border-amber-200';
+      default: return 'text-blue-600 bg-blue-50 border-blue-200';
     }
   };
-
-  const filteredJobs = jobs.filter(j =>
-    j.clientName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    j.serviceName.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   return (
-    <div className="min-h-screen bg-gray-50/50 p-6 md:p-8 font-sans text-gray-800">
+    <div className="flex flex-col h-screen bg-gray-50 overflow-hidden font-sans text-gray-800">
 
-      {/* HEADER */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900 tracking-tight">Tracking Pekerjaan</h1>
-          <p className="text-gray-500 text-sm mt-1">Monitoring progres pekerjaan yang sedang berjalan.</p>
+      {/* --- TOP BAR --- */}
+      <div className="bg-white border-b border-gray-200 px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4 shrink-0 z-20 shadow-sm">
+        <div className="flex items-center gap-3">
+
+          <div>
+            <h1 className="text-xl font-bold text-gray-900 tracking-tight">Job Tracker</h1>
+            <p className="text-xs text-gray-500">Monitoring & Schedule</p>
+          </div>
         </div>
-        <button
-          onClick={handleCreateJob}
-          className="bg-black text-white px-4 py-2.5 rounded-xl font-medium text-sm flex items-center gap-2 hover:bg-gray-800 transition shadow-lg shadow-gray-200"
-        >
-          <Plus size={18} /> Pekerjaan Baru
-        </button>
+
+        <div className="flex items-center gap-3 w-full md:w-auto">
+          <div className="relative flex-1 md:w-64">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+            <input
+              type="text"
+              placeholder="Search tasks..."
+              className="w-full pl-9 pr-4 py-2 bg-gray-100 border-none rounded-lg text-sm focus:ring-2 focus:ring-black outline-none transition"
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+            />
+          </div>
+          <button
+            onClick={handleCreateJob}
+            className="bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition shadow-lg shadow-gray-200"
+          >
+            <Plus size={16} /> <span className="hidden sm:inline">Pekerjaan Baru</span>
+          </button>
+        </div>
       </div>
 
-      {/* SEARCH BAR */}
-      <div className="mb-8 relative max-w-md">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-        <input
-          type="text"
-          placeholder="Cari nama klien atau jenis layanan..."
-          className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-black focus:border-transparent outline-none transition shadow-sm"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-      </div>
+      {/* --- MAIN CONTENT AREA --- */}
+      <div className="flex flex-1 overflow-hidden relative">
 
-      {/* JOBS GRID */}
-      {loading ? (
-        <div className="text-center py-12 text-gray-400">Memuat data...</div>
-      ) : (
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-          {filteredJobs.map((job) => (
-            <div key={job.id} className="bg-white rounded-2xl border border-gray-100 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col">
+        {/* --- LEFT SIDEBAR: TASK LIST --- */}
+        <div className="w-[300px] md:w-[400px] bg-white border-r border-gray-200 flex flex-col shrink-0 z-10 shadow-[4px_0_24px_rgba(0,0,0,0.02)]">
+          {/* Header */}
+          <div className="h-[80px] border-b border-gray-200 bg-gray-50/50 flex items-end pb-2 px-4 shadow-sm z-20">
+            <div className="grid grid-cols-[1.5fr_100px_80px] w-full text-xs font-bold text-gray-400 uppercase tracking-wider">
+              <span>Nama Pekerjaan</span>
+              <span>Status</span>
+              <span>PIC</span>
+            </div>
+          </div>
 
-              {/* CARD HEADER */}
-              <div className="p-5 border-b border-gray-50 bg-gray-50/30 flex justify-between items-start">
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-bold text-lg text-gray-900">{job.clientName}</h3>
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${getPriorityColor(job.priority)}`}>
-                      {job.priority}
+          {/* List */}
+          <div className="overflow-y-auto flex-1 scrollbar-hide">
+            {processedJobs.map(job => (
+              <div key={job.id} style={{ height: `${job.rowHeight}px` }} className="border-b border-gray-100 px-4 hover:bg-blue-50/30 transition-colors flex items-center group relative">
+                <div className="grid grid-cols-[1.5fr_100px_80px] w-full items-center gap-2">
+                  <div className="min-w-0 pr-2">
+                    <div className="font-semibold text-sm text-gray-900 truncate" title={job.serviceName}>{job.serviceName}</div>
+                    <div className="text-[10px] text-gray-500 truncate" title={job.clientName}>{job.clientName}</div>
+                  </div>
+                  <div>
+                    <span className={`text-[10px] font-bold px-2 py-1 rounded-full border ${getPriorityClasses(job.priority)}`}>
+                      {job.status}
                     </span>
                   </div>
-                  <p className="text-gray-600 font-medium text-sm flex items-center gap-1.5">
-                    <Briefcase size={14} className="text-gray-400" /> {job.serviceName}
-                  </p>
+                  <div className="flex items-center gap-1 text-xs text-gray-600 truncate">
+                    <User size={12} className="text-gray-400 shrink-0" /> {job.pic.split(' ')[0]}
+                  </div>
                 </div>
-                <div className="flex gap-2">
-                  <button onClick={() => handleEditJob(job)} className="p-2 text-gray-400 hover:bg-gray-100 rounded-lg transition hover:text-blue-600">
-                    <Edit2 size={16} />
-                  </button>
-                  <button onClick={() => handleDeleteJob(job.id)} className="p-2 text-gray-400 hover:bg-red-50 rounded-lg transition hover:text-red-600">
-                    <Trash2 size={16} />
-                  </button>
+
+                {/* Quick Actions overlay on hover */}
+                <div className="absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-white/80 backdrop-blur-sm shadow-sm border rounded-md flex">
+                  <button onClick={() => handleEditJob(job)} className="p-1.5 hover:text-blue-600"><Edit2 size={14} /></button>
+                  <button onClick={() => handleDeleteJob(job.id)} className="p-1.5 hover:text-red-600"><Trash2 size={14} /></button>
                 </div>
               </div>
+            ))}
+            {processedJobs.length === 0 && <div className="p-8 text-center text-gray-400 text-sm">No tasks found</div>}
+          </div>
+        </div>
 
-              {/* INFO ROW */}
-              <div className="px-5 py-3 grid grid-cols-2 gap-4 bg-white text-xs border-b border-gray-50">
-                <div className="flex items-center gap-2 text-gray-500">
-                  <User size={14} /> PIC: <span className="font-semibold text-gray-700">{job.pic}</span>
-                </div>
-                <div className="flex items-center gap-2 text-gray-500 justify-end">
-                  <Calendar size={14} /> Target: <span className="font-semibold text-red-600">{new Date(job.targetDate).toLocaleDateString('id-ID')}</span>
-                </div>
+        {/* --- RIGHT SIDE: CHART --- */}
+        <div className="flex-1 overflow-auto bg-white relative">
+          <div style={{ width: timelineWidth }} className="min-w-full">
+
+            {/* Timeline Header (Sticky) */}
+            <div className="sticky top-0 z-10 bg-white border-b border-gray-200">
+              {/* Month Row */}
+              <div className="h-[40px] flex border-b border-gray-100 bg-gray-50/50">
+                {months.map((m, idx) => (
+                  <div key={idx} style={{ width: m.days * CELL_WIDTH }} className="flex items-center justify-center text-xs font-bold text-gray-500 border-r border-gray-200/50 uppercase tracking-widest sticky-left">
+                    {m.name}
+                  </div>
+                ))}
+              </div>
+              {/* Day Row */}
+              <div className="h-[40px] flex bg-white">
+                {days.map((d, idx) => {
+                  const isWeekend = d.getDay() === 0 || d.getDay() === 6;
+                  const isToday = d.toDateString() === new Date().toDateString();
+                  return (
+                    <div key={idx} style={{ width: CELL_WIDTH }} className={`flex items-center justify-center text-[11px] border-r border-gray-100 ${isToday ? 'bg-blue-50 text-blue-600 font-bold' : isWeekend ? 'bg-red-100/50 text-red-400' : 'text-gray-600'}`}>
+                      <div className="flex flex-col items-center leading-none gap-0.5">
+                        <span>{d.getDate()}</span>
+                        <span className="text-[10px] opacity-80">{d.toLocaleDateString('id-ID', { weekday: 'short' }).slice(0, 1)}</span>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Timeline Body */}
+            <div className="relative">
+              {/* Background Grid Lines */}
+              <div className="absolute inset-0 flex pointer-events-none">
+                {days.map((d, idx) => {
+                  const isWeekend = d.getDay() === 0 || d.getDay() === 6;
+                  const isToday = d.toDateString() === new Date().toDateString();
+                  return (
+                    <div key={idx} style={{ width: CELL_WIDTH }} className={`border-r border-gray-100 h-full ${isToday ? 'bg-blue-50/30' : isWeekend ? 'bg-gray-50/20' : ''}`}></div>
+                  )
+                })}
+                {/* Current Time Line */}
+                {/* (Ideally we calculate offset for the current time line) */}
               </div>
 
-              {/* TIMELINE AREA */}
-              <div className="p-5 flex-1 bg-white">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Timeline Progress</span>
-                  <button
-                    onClick={() => handleAddHistory(job.id)}
-                    className="text-xs font-semibold text-blue-600 hover:bg-blue-50 px-2 py-1 rounded transition flex items-center gap-1"
-                  >
-                    <Plus size={12} /> Update Progress
-                  </button>
-                </div>
+              {/* Bars Rows */}
+              {processedJobs.map(job => {
+                return (
+                  <div key={job.id} style={{ height: `${job.rowHeight}px` }} className="border-b border-gray-100 relative group hover:bg-blue-50/10 transition-all">
 
-                <div className="relative pl-2 ml-2 space-y-6 before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-[2px] before:bg-gray-100">
-                  {job.history.length === 0 && (
-                    <div className="text-xs text-gray-400 italic pl-6">Belum ada progress tercatat.</div>
-                  )}
-                  {job.history
-                    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) // Sort Newest First
-                    .map((item) => (
-                      <div key={item.id} className="relative pl-6 group">
-                        {/* Timeline Dot */}
-                        <div className={`absolute left-0 top-1 w-4 h-4 rounded-full border-2 border-white shadow-sm flex items-center justify-center ${item.status === 'Done' ? 'bg-emerald-500' :
-                          item.status === 'Issue' ? 'bg-red-500' :
-                            item.status === 'Pending' ? 'bg-gray-300' : 'bg-blue-500'
-                          }`}>
-                        </div>
+                    {/* Background Row Highlight on Hover */}
+                    <div className="absolute inset-0 bg-transparent group-hover:bg-blue-50/5 pointer-events-none" />
 
-                        {/* Content */}
-                        <div className="bg-gray-50 rounded-xl p-3 border border-gray-100 hover:border-blue-200 transition group-hover:shadow-sm">
-                          <div className="flex justify-between items-start mb-1">
-                            <span className="text-[10px] font-bold text-gray-400">
-                              {new Date(item.date).toLocaleString('id-ID', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
-                            </span>
-                            <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition">
-                              <button onClick={() => handleEditHistory(job.id, item)} className="p-1 hover:text-blue-600"><Edit2 size={10} /></button>
-                              <button onClick={() => handleDeleteHistory(job.id, item.id)} className="p-1 hover:text-red-600"><Trash2 size={10} /></button>
-                            </div>
-                          </div>
-                          <h4 className="text-sm font-bold text-gray-800 mb-0.5">{item.title}</h4>
-                          <p className="text-xs text-gray-600 leading-relaxed">{item.description}</p>
-                          <div className="mt-2 flex items-center gap-1.5">
-                            {getStatusIcon(item.status)}
-                            <span className="text-[10px] font-medium text-gray-500">{item.status}</span>
-                          </div>
-                        </div>
+                    {/* History Markers (Stacked) */}
+                    {job.markers.map((h) => (
+                      <div
+                        key={h.id}
+                        className={`absolute px-3 shadow-sm z-30 cursor-pointer flex items-center justify-between gap-2 border border-white/20 backdrop-blur-sm transition-all ${h.status === 'Done' ? 'bg-emerald-500 text-white' :
+                          h.status === 'Issue' ? 'bg-red-500 text-white' :
+                            h.status === 'Pending' ? 'bg-amber-500 text-white' : 'bg-blue-500 text-white'
+                          }`}
+                        style={{
+                          left: `${h.leftPos}px`,
+                          top: `${10 + (h.level * 32)}px`,
+                          height: '28px',
+                          width: `${h.width}px`
+                        }}
+                        title={`${new Date(h.date).toLocaleDateString('id-ID')} - ${h.title} (${h.status})${h.description ? `\n${h.description}` : ''}`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedJobId(job.id);
+                          setEditingHistory({ ...h });
+                          setIsHistoryModalOpen(true);
+                        }}
+                      >
+                        <span className="text-[12px] truncate leading-none">{h.title}</span>
                       </div>
                     ))}
-                </div>
-              </div>
 
+                    {/* Add Progress Button */}
+                    <button
+                      onClick={(e) => { e.stopPropagation(); handleAddHistory(job.id); }}
+                      className="absolute ml-4 p-2 rounded-full bg-white border border-gray-200 shadow-md text-gray-500 opacity-0 group-hover:opacity-100 hover:text-blue-600 hover:border-blue-300 hover:shadow-lg transition-all z-40 flex items-center gap-1"
+                      style={{
+                        left: `${job.maxRight}px`,
+                        top: '50%',
+                        transform: 'translateY(-50%)'
+                      }}
+                      title="Add Progress"
+                    >
+                      <Plus size={14} />
+                    </button>
+
+                  </div>
+                );
+              })}
+
+              {processedJobs.length === 0 && <div className="h-[200px]"></div>}
             </div>
-          ))}
+          </div>
         </div>
-      )}
+      </div>
 
       {/* --- MODAL EDIT/ADD JOB --- */}
       {isJobModalOpen && editingJob && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/30 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             <div className="p-5 border-b flex justify-between items-center bg-gray-50">
               <h3 className="font-bold text-lg">Kelola Data Pekerjaan</h3>
               <button onClick={() => setIsJobModalOpen(false)}><X size={20} className="text-gray-400 hover:text-black" /></button>
@@ -295,20 +493,20 @@ export default function TimelinePekerjaanPage() {
             <form onSubmit={handleSaveJobSubmit} className="p-6 space-y-4">
               <div>
                 <label className="text-xs font-bold text-gray-500 block mb-1">Nama Klien</label>
-                <input required className="w-full border rounded-lg p-2 text-sm" value={editingJob.clientName} onChange={e => setEditingJob({ ...editingJob, clientName: e.target.value })} placeholder="Contoh: PT. MAJU MUNDUR" />
+                <input required className="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-black outline-none" value={editingJob.clientName} onChange={e => setEditingJob({ ...editingJob, clientName: e.target.value })} placeholder="Contoh: PT. MAJU MUNDUR" />
               </div>
               <div>
                 <label className="text-xs font-bold text-gray-500 block mb-1">Layanan</label>
-                <input required className="w-full border rounded-lg p-2 text-sm" value={editingJob.serviceName} onChange={e => setEditingJob({ ...editingJob, serviceName: e.target.value })} placeholder="Contoh: Pendirian PT" />
+                <input required className="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-black outline-none" value={editingJob.serviceName} onChange={e => setEditingJob({ ...editingJob, serviceName: e.target.value })} placeholder="Contoh: Pendirian PT" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs font-bold text-gray-500 block mb-1">PIC</label>
-                  <input required className="w-full border rounded-lg p-2 text-sm" value={editingJob.pic} onChange={e => setEditingJob({ ...editingJob, pic: e.target.value })} />
+                  <input required className="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-black outline-none" value={editingJob.pic} onChange={e => setEditingJob({ ...editingJob, pic: e.target.value })} />
                 </div>
                 <div>
                   <label className="text-xs font-bold text-gray-500 block mb-1">Prioritas</label>
-                  <select className="w-full border rounded-lg p-2 text-sm" value={editingJob.priority} onChange={e => setEditingJob({ ...editingJob, priority: e.target.value as any })}>
+                  <select className="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-black outline-none" value={editingJob.priority} onChange={e => setEditingJob({ ...editingJob, priority: e.target.value as any })}>
                     <option value="Normal">Normal</option>
                     <option value="Medium">Medium</option>
                     <option value="High">High</option>
@@ -318,18 +516,21 @@ export default function TimelinePekerjaanPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs font-bold text-gray-500 block mb-1">Tgl Mulai</label>
-                  <input type="date" className="w-full border rounded-lg p-2 text-sm" value={editingJob.startDate} onChange={e => setEditingJob({ ...editingJob, startDate: e.target.value })} />
+                  <input type="date" className="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-black outline-none" value={editingJob.startDate} onChange={e => setEditingJob({ ...editingJob, startDate: e.target.value })} />
                 </div>
                 <div>
                   <label className="text-xs font-bold text-gray-500 block mb-1">Target Selesai</label>
-                  <input type="date" className="w-full border rounded-lg p-2 text-sm" value={editingJob.targetDate} onChange={e => setEditingJob({ ...editingJob, targetDate: e.target.value })} />
+                  <input type="date" className="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-black outline-none" value={editingJob.targetDate} onChange={e => setEditingJob({ ...editingJob, targetDate: e.target.value })} />
                 </div>
               </div>
               <div>
                 <label className="text-xs font-bold text-gray-500 block mb-1">Status Umum</label>
-                <input className="w-full border rounded-lg p-2 text-sm" value={editingJob.status} onChange={e => setEditingJob({ ...editingJob, status: e.target.value })} placeholder="Contoh: Proses di Kemenkumham" />
+                <input className="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-black outline-none" value={editingJob.status} onChange={e => setEditingJob({ ...editingJob, status: e.target.value })} placeholder="Contoh: Proses di Kemenkumham" />
               </div>
-              <button type="submit" className="w-full bg-black text-white py-3 rounded-xl font-bold hover:bg-gray-800 transition">Simpan Pekerjaan</button>
+
+              {/* History List preview in Edit (optional) */}
+
+              <button type="submit" className="w-full bg-black text-white py-3 rounded-xl font-bold hover:bg-gray-800 transition shadow-lg">Simpan Pekerjaan</button>
             </form>
           </div>
         </div>
@@ -338,7 +539,7 @@ export default function TimelinePekerjaanPage() {
       {/* --- MODAL EDIT/ADD HISTORY --- */}
       {isHistoryModalOpen && editingHistory && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/30 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             <div className="p-5 border-b flex justify-between items-center bg-gray-50">
               <h3 className="font-bold text-lg">Update Progress Timeline</h3>
               <button onClick={() => setIsHistoryModalOpen(false)}><X size={20} className="text-gray-400 hover:text-black" /></button>
@@ -349,18 +550,18 @@ export default function TimelinePekerjaanPage() {
                 <input
                   type="datetime-local"
                   required
-                  className="w-full border rounded-lg p-2 text-sm"
+                  className="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-black outline-none"
                   value={editingHistory.date ? new Date(new Date(editingHistory.date).getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 16) : ''}
                   onChange={e => setEditingHistory({ ...editingHistory, date: new Date(e.target.value).toISOString() })}
                 />
               </div>
               <div>
                 <label className="text-xs font-bold text-gray-500 block mb-1">Judul Aktivitas</label>
-                <input required className="w-full border rounded-lg p-2 text-sm" value={editingHistory.title} onChange={e => setEditingHistory({ ...editingHistory, title: e.target.value })} placeholder="Contoh: Upload Berkas" />
+                <input required className="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-black outline-none" value={editingHistory.title} onChange={e => setEditingHistory({ ...editingHistory, title: e.target.value })} placeholder="Contoh: Upload Berkas" />
               </div>
               <div>
                 <label className="text-xs font-bold text-gray-500 block mb-1">Deskripsi Detail</label>
-                <textarea className="w-full border rounded-lg p-2 text-sm" rows={3} value={editingHistory.description} onChange={e => setEditingHistory({ ...editingHistory, description: e.target.value })} placeholder="Keterangan tambahan..." />
+                <textarea className="w-full border rounded-lg p-2 text-sm focus:ring-2 focus:ring-black outline-none" rows={3} value={editingHistory.description} onChange={e => setEditingHistory({ ...editingHistory, description: e.target.value })} placeholder="Keterangan tambahan..." />
               </div>
               <div>
                 <label className="text-xs font-bold text-gray-500 block mb-1">Status Tahapan</label>
@@ -370,14 +571,33 @@ export default function TimelinePekerjaanPage() {
                       key={s}
                       type="button"
                       onClick={() => setEditingHistory({ ...editingHistory, status: s as any })}
-                      className={`text-xs py-2 rounded-lg border font-medium transition ${editingHistory.status === s ? 'bg-black text-white border-black' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'}`}
+                      className={`text-xs py-2 rounded-lg border font-medium transition ${editingHistory.status === s ? 'bg-black text-white border-black shadow-md' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'}`}
                     >
                       {s}
                     </button>
                   ))}
                 </div>
               </div>
-              <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition">Simpan Progress</button>
+              <div className="flex gap-2">
+                {editingHistory.id && (
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      if (confirm('Hapus histori ini?')) {
+                        if (selectedJobId && editingHistory.id) {
+                          await deleteTimelineItem(selectedJobId, editingHistory.id);
+                          setIsHistoryModalOpen(false);
+                          loadData();
+                        }
+                      }
+                    }}
+                    className="flex-1 bg-red-100 text-red-600 py-3 rounded-xl font-bold hover:bg-red-200 transition"
+                  >
+                    Hapus
+                  </button>
+                )}
+                <button type="submit" className="flex-1 bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg">Simpan Progress</button>
+              </div>
             </form>
           </div>
         </div>

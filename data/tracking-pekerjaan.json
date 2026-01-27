@@ -15,7 +15,13 @@
         "date": "2025-11-24T04:30:00.000Z",
         "title": "Input AHU",
         "description": "Input Akta & Data Perkumpulan ke AHU",
-        "status": "Done"
+        "status": "Done",
+        "dateObj": "2025-11-24T04:30:00.000Z",
+        "valid": true,
+        "leftPos": 447.5,
+        "width": 102,
+        "level": 1,
+        "rightPos": 559.5
       },
       {
         "id": "h1764320615048",
@@ -91,11 +97,11 @@
     "id": "JOB-002",
     "clientName": "PT. MINI AIR MENGALIR",
     "serviceName": "Perubahan Data Perseroan",
-    "status": "Terkendala",
+    "status": "Selesai",
     "priority": "Normal",
     "startDate": "2025-11-25",
-    "targetDate": "0001-01-01",
-    "pic": "Mirza, Teh Nepi",
+    "targetDate": "2025-11-27",
+    "pic": "Mirza",
     "history": [
       {
         "id": "h1764564773805",
@@ -123,7 +129,13 @@
         "date": "2025-11-27T07:36:00.000Z",
         "title": "Beli Voucher & Input AHU",
         "description": "Beli Voucher Perubahan PT & Input AHU\n\n* Untuk sementara perseroan MINI AIR MENGALIR tidak dapat melakukan akses perubahan",
-        "status": "Issue"
+        "status": "Done",
+        "dateObj": "2025-11-27T07:36:00.000Z",
+        "valid": true,
+        "leftPos": 572.6666666666666,
+        "width": 180,
+        "level": 0,
+        "rightPos": 762.6666666666666
       },
       {
         "id": "h1764317312223",
@@ -153,15 +165,84 @@
         "description": "",
         "status": "On Progress"
       }
-    ]
+    ],
+    "rowHeight": 148,
+    "markers": [
+      {
+        "id": "h1764319735759",
+        "date": "2025-11-27T07:36:00.000Z",
+        "title": "Beli Voucher & Input AHU",
+        "description": "Beli Voucher Perubahan PT & Input AHU\n\n* Untuk sementara perseroan MINI AIR MENGALIR tidak dapat melakukan akses perubahan",
+        "status": "Done",
+        "dateObj": "2025-11-27T07:36:00.000Z",
+        "valid": true,
+        "leftPos": 572.6666666666666,
+        "width": 180,
+        "level": 0,
+        "rightPos": 762.6666666666666
+      },
+      {
+        "id": "h1764319783561",
+        "date": "2025-11-27T07:49:00.000Z",
+        "title": "Pengkinian Data PT ",
+        "description": "Pembuatan surat kuasa & proses pengkinian data di bo.ahu.go.id",
+        "status": "Done",
+        "dateObj": "2025-11-27T07:49:00.000Z",
+        "valid": true,
+        "leftPos": 573.0277777777778,
+        "width": 180,
+        "level": 1,
+        "rightPos": 763.0277777777778
+      },
+      {
+        "id": "h1764321132059",
+        "date": "2025-11-28T09:10:19.419Z",
+        "title": "Email Permohonan cabut blokir PT",
+        "description": "Beremail ke AHU untuk cabut blokir PT Mini Air Mengalir\n- followup.bo@ahu.go.id\n- cs@ahu.go.id",
+        "status": "Done",
+        "dateObj": "2025-11-28T09:10:19.419Z",
+        "valid": true,
+        "leftPos": 615.2867680555555,
+        "width": 180,
+        "level": 2,
+        "rightPos": 805.2867680555555
+      },
+      {
+        "id": "h1764564773805",
+        "date": "2025-12-01T04:52:44.959Z",
+        "title": "Menunggu Update Dari AHU",
+        "description": "",
+        "status": "Done",
+        "dateObj": "2025-12-01T04:52:44.959Z",
+        "valid": true,
+        "leftPos": 728.131925462963,
+        "width": 180,
+        "level": 3,
+        "rightPos": 918.131925462963
+      },
+      {
+        "id": "h1765531877206",
+        "date": "2025-12-12T09:30:59.631Z",
+        "title": "Menunggu Verifikasi Perubahan Data di AHU",
+        "description": "",
+        "status": "On Progress",
+        "dateObj": "2025-12-12T09:30:59.631Z",
+        "valid": true,
+        "leftPos": 1175.8609402777777,
+        "width": 180,
+        "level": 0,
+        "rightPos": 1365.8609402777777
+      }
+    ],
+    "maxRight": 1365.8609402777777
   },
   {
     "id": "JOB-003",
-    "clientName": "Koperasi Produsen BLG",
-    "serviceName": "Daftar NIB (OSS)",
-    "status": "Proses",
-    "priority": "High",
-    "startDate": "2025-11-27",
+    "clientName": "Bumi Lestari Garut",
+    "serviceName": "Pendirian Koperasi",
+    "status": "Selesai",
+    "priority": "Normal",
+    "startDate": "2025-11-22",
     "targetDate": "2025-11-29",
     "pic": "Mirza",
     "history": [
@@ -195,18 +276,93 @@
       },
       {
         "id": "h1764319849700",
-        "date": "2025-11-28T08:50:11.171Z",
-        "title": "Membuat Akta Pendirian Koperasi ",
+        "date": "2025-11-27T08:50:00.000Z",
+        "title": "Drafting Akta Pendirian  ",
         "description": "Membuat Draft Akta Pendirian Koperasi Bumi Lestari Garut",
         "status": "Done"
+      }
+    ],
+    "rowHeight": 148,
+    "markers": [
+      {
+        "id": "h1764319849700",
+        "date": "2025-11-27T08:50:00.000Z",
+        "title": "Drafting Akta Pendirian  ",
+        "description": "Membuat Draft Akta Pendirian Koperasi Bumi Lestari Garut",
+        "status": "Done",
+        "dateObj": "2025-11-27T08:50:00.000Z",
+        "valid": true,
+        "leftPos": 574.7222222222222,
+        "width": 180,
+        "level": 0,
+        "rightPos": 764.7222222222222
+      },
+      {
+        "id": "h1764319873550",
+        "date": "2025-11-28T08:50:52.643Z",
+        "title": "Akad",
+        "description": "Akad Akta & TTD Minuta",
+        "status": "Done",
+        "dateObj": "2025-11-28T08:50:52.643Z",
+        "valid": true,
+        "leftPos": 614.7465939814815,
+        "width": 62,
+        "level": 1,
+        "rightPos": 686.7465939814815
+      },
+      {
+        "id": "h1764319889126",
+        "date": "2025-11-28T08:51:16.020Z",
+        "title": "Input AHU",
+        "description": "Upload Akta dan isi data Koperasi di AHU",
+        "status": "Done",
+        "dateObj": "2025-11-28T08:51:16.020Z",
+        "valid": true,
+        "leftPos": 614.7574166666666,
+        "width": 102,
+        "level": 2,
+        "rightPos": 726.7574166666666
+      },
+      {
+        "id": "h1764319986022",
+        "date": "2025-11-28T08:52:07.268Z",
+        "title": "Cetak SK & NPWP Koperasi",
+        "description": "Cetak SK & Daftar NPWP di Coretax",
+        "status": "Done",
+        "dateObj": "2025-11-28T08:52:07.268Z",
+        "valid": true,
+        "leftPos": 614.7811425925926,
+        "width": 180,
+        "level": 3,
+        "rightPos": 804.7811425925926
+      },
+      {
+        "id": "h1764320023750",
+        "date": "2025-12-01T06:28:00.000Z",
+        "title": "Daftar NIB Koperasi",
+        "description": "> Membuat file polygon\n> Input profil badan usaha\n> Menunggu verifikasi persyaratan dasar\n> Status Pengiriman Data \"Terkirim\"\n> Menghubungi Kementerian ATR/BPN untuk progres PKKPR lebih lanjut ke email: surat@atrbpn.go.id & pelayananpublik.djtr@gmail.com ",
+        "status": "On Progress",
+        "dateObj": "2025-12-01T06:28:00.000Z",
+        "valid": true,
+        "leftPos": 730.7777777777778,
+        "width": 180,
+        "level": 1,
+        "rightPos": 920.7777777777778
       },
       {
         "id": "h1764816204954",
         "date": "2025-12-04T02:24:23.802Z",
         "title": "koordinat lokasi",
         "description": "-7.273411,107.790436\nhttps://bhumi.atrbpn.go.id/shortlink?id=gle0pn8\n\nhttps://earth.google.com/web/@-7.27319018,107.79012637,1128.51546572a,281.33187972d,30y,0h,0t,0r/data=CgRCAggBMikKJwolCiExWVk4VXp6a29aUGxDNVZKQjhCZ0RzY1VIWlFCalhmcGIgAToDCgEwQgIIAEoICOeHjrICEAE",
-        "status": "On Progress"
+        "status": "On Progress",
+        "dateObj": "2025-12-04T02:24:23.802Z",
+        "valid": true,
+        "leftPos": 844.0110194444445,
+        "width": 158,
+        "level": 0,
+        "rightPos": 1012.0110194444445
       }
-    ]
+    ],
+    "maxRight": 1012.0110194444445
   }
 ]

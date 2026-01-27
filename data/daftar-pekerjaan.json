@@ -1,5 +1,74 @@
 [
   {
+    "id": "JOB-002",
+    "createdAt": "2026-01-27T02:34:00.801Z",
+    "history": [
+      {
+        "id": "h1764564773805",
+        "date": "2025-12-01T04:52:44.959Z",
+        "title": "Menunggu Update Dari AHU",
+        "description": "",
+        "status": "Done"
+      },
+      {
+        "id": "h1764321132059",
+        "date": "2025-11-28T09:10:19.419Z",
+        "title": "Email Permohonan cabut blokir PT",
+        "description": "Beremail ke AHU untuk cabut blokir PT Mini Air Mengalir\n- followup.bo@ahu.go.id\n- cs@ahu.go.id",
+        "status": "Done"
+      },
+      {
+        "id": "h1764319783561",
+        "date": "2025-11-27T07:49:00.000Z",
+        "title": "Pengkinian Data PT ",
+        "description": "Pembuatan surat kuasa & proses pengkinian data di bo.ahu.go.id",
+        "status": "Done"
+      },
+      {
+        "id": "h1764319735759",
+        "date": "2025-11-27T07:36:00.000Z",
+        "title": "Beli Voucher & Input AHU",
+        "description": "Beli Voucher Perubahan PT & Input AHU\n\n* Untuk sementara perseroan MINI AIR MENGALIR tidak dapat melakukan akses perubahan",
+        "status": "Issue"
+      },
+      {
+        "id": "h1764317312223",
+        "date": "2025-11-11T07:32:00.000Z",
+        "title": "Kirim Hard Copy Akta Perubahan ",
+        "description": "Kirim Minuta Akta Perubahan ke Kota Jakarta via JNE",
+        "status": "Done"
+      },
+      {
+        "id": "h2",
+        "date": "2025-11-04T09:54:00.000Z",
+        "title": "Drafting Akta ",
+        "description": "Membuat draft perubahan Saham dan Direksi dengan data terlampir.\n- Sirkuler PT Mini Air Mengalir\n- Jual Beli Saham PT Mini Air Mengalir (2)\n- PKR PT Mini Air Mengalir",
+        "status": "Done"
+      },
+      {
+        "id": "h1",
+        "date": "2025-10-04T06:40:00.000Z",
+        "title": "Berkas Masuk ",
+        "description": "Berkas Masuk dari Klien & Pembuatan Invoice",
+        "status": "Done"
+      },
+      {
+        "id": "h1765531877206",
+        "date": "2025-12-12T09:30:59.631Z",
+        "title": "Menunggu Verifikasi Perubahan Data di AHU",
+        "description": "",
+        "status": "On Progress"
+      }
+    ],
+    "clientName": "PT. MINI AIR MENGALIR",
+    "serviceName": "Perubahan Data Perseroan",
+    "status": "Terkendala",
+    "priority": "Normal",
+    "startDate": "2025-11-25",
+    "targetDate": "2025-11-26",
+    "pic": "Mirza, Teh Nepi"
+  },
+  {
     "id": "JOB-1769416327713",
     "createdAt": "2026-01-26T08:32:07.713Z",
     "history": [],

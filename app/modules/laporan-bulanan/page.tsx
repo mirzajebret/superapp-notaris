@@ -25,6 +25,8 @@ import {
   Trash2,
   Plus,
   Minus,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 
 // --- CONSTANTS ---
@@ -181,7 +183,26 @@ export default function LapbulModulePage() {
   const ppatRecords = monthlyDeeds.filter(d => d.jenis === 'PPAT');
   const notarisRecords = monthlyDeeds.filter(d => d.jenis === 'Notaris');
 
-  // --- HANDLERS ---
+  // --- HANDLERS NAVIGATION ---
+  const handlePrevMonth = () => {
+    if (selectedMonth === 1) {
+      setSelectedMonth(12);
+      setSelectedYear(prev => prev - 1);
+    } else {
+      setSelectedMonth(prev => prev - 1);
+    }
+  };
+
+  const handleNextMonth = () => {
+    if (selectedMonth === 12) {
+      setSelectedMonth(1);
+      setSelectedYear(prev => prev + 1);
+    } else {
+      setSelectedMonth(prev => prev + 1);
+    }
+  };
+
+  // --- HANDLERS DATA ---
   const handleSave = async () => {
     if (!formState.nomorAkta) return alert("Nomor Akta wajib diisi");
     const payload = {
@@ -426,13 +447,26 @@ export default function LapbulModulePage() {
           <h1 className="text-2xl font-bold text-gray-900">Laporan Bulanan Kantor Notaris & PPAT Havis Akbar</h1>
           <p className="text-sm text-gray-500">Periode: {MONTHS[selectedMonth - 1]} {selectedYear}</p>
         </div>
-        <div className="flex gap-3">
-          <select value={selectedMonth} onChange={e => setSelectedMonth(Number(e.target.value))} className="border p-2 rounded-lg">
-            {MONTHS.map((m, i) => <option key={m} value={i + 1}>{m}</option>)}
-          </select>
-          <select value={selectedYear} onChange={e => setSelectedYear(Number(e.target.value))} className="border p-2 rounded-lg">
-            {YEAR_RANGE.map(y => <option key={y} value={y}>{y}</option>)}
-          </select>
+        <div className="flex items-center gap-2 bg-white border px-2 py-1 rounded-lg shadow-sm">
+          <button
+            onClick={handlePrevMonth}
+            className="p-1 hover:bg-gray-100 rounded-lg text-gray-600 transition-colors"
+            title="Bulan Sebelumnya"
+          >
+            <ChevronLeft size={20} />
+          </button>
+
+          <span className="text-sm font-semibold text-gray-800 min-w-[120px] text-center select-none">
+            {MONTHS[selectedMonth - 1]} {selectedYear}
+          </span>
+
+          <button
+            onClick={handleNextMonth}
+            className="p-1 hover:bg-gray-100 rounded-lg text-gray-600 transition-colors"
+            title="Bulan Selanjutnya"
+          >
+            <ChevronRight size={20} />
+          </button>
         </div>
       </div>
 
@@ -458,10 +492,10 @@ export default function LapbulModulePage() {
             </div>
 
             <div className="space-y-3 text-sm">
-              <div><label className="block text-xs font-bold text-gray-500 mb-1">NO URUT BULANAN</label><input className="w-full border p-2 rounded" value={formState.nomorAkta} onChange={e => setFormState({ ...formState, nomorAkta: e.target.value })} placeholder="1 atau 01/2025" /></div>
+              <div><label className="block text-xs font-bold text-gray-500 mb-1">NOMOR AKTA</label><input className="w-full border p-2 rounded" value={formState.nomorAkta} onChange={e => setFormState({ ...formState, nomorAkta: e.target.value })} placeholder="1 atau 01/2025" /></div>
 
               {formState.jenis === 'Notaris' && (
-                <div><label className="block text-xs font-bold text-gray-500 mb-1">NOMOR AKTA</label><input className="w-full border p-2 rounded" value={formState.nomorBulanan} onChange={e => setFormState({ ...formState, nomorBulanan: e.target.value })} placeholder="1" /></div>
+                <div><label className="block text-xs font-bold text-gray-500 mb-1">NOMOR REPORTORIUM</label><input className="w-full border p-2 rounded" value={formState.nomorBulanan} onChange={e => setFormState({ ...formState, nomorBulanan: e.target.value })} placeholder="1" /></div>
               )}
 
               <div><label className="block text-xs font-bold text-gray-500 mb-1">TANGGAL AKTA</label><input type="date" className="w-full border p-2 rounded" value={formState.tanggalAkta} onChange={e => setFormState({ ...formState, tanggalAkta: e.target.value })} /></div>

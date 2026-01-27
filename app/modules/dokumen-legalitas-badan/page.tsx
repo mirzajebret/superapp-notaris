@@ -164,7 +164,7 @@ const DocColumn = ({ title, items, onUpdate, entityId, colorTheme }: DocColumnPr
                 {items.length === 0 && !showNoteInput && (
                     <div className="flex flex-col items-center justify-center h-full text-gray-400 opacity-60 pointer-events-none py-10">
                         <UploadCloud size={32} className="mb-2" />
-                        <p className="text-[10px] font-bold uppercase tracking-widest">Drop Files Here</p>
+                        <p className="text-[10px] font-bold uppercase tracking-widest">Drop Files</p>
                     </div>
                 )}
 

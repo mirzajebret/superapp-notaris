@@ -5,20 +5,29 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import {
   LayoutDashboard,
-  FileText,
   FolderInput,
   Users,
   BookOpen,
-  CalendarSync,
   Calculator,
-  DraftingCompass,
-  FileStack,
   MessageCircleMoreIcon,
   Scale,
   ChevronLeft,
   ChevronRight,
   Search,
-  X
+  X,
+  Activity,
+  ClipboardList,
+  Receipt,
+  UserCheck,
+  FileBarChart,
+  FileClock,
+  Folders,
+  FileUser,
+  FileSignature,
+  Ruler,
+  MessageSquareText,
+  User,
+  Building2
 } from 'lucide-react';
 
 // Grouped menu items for better organization
@@ -28,37 +37,37 @@ const menuGroups = [
     items: [
       { name: 'Dashboard', icon: LayoutDashboard, href: '/' },
       { name: 'Chat Kantor', icon: MessageCircleMoreIcon, href: '/modules/chat-kantor' },
-      { name: 'Tracking Pekerjaan', icon: CalendarSync, href: '/modules/tracking-pekerjaan' },
-      { name: 'Daftar Pekerjaan', icon: FileText, href: '/modules/daftar-pekerjaan' },
+      { name: 'Tracking Pekerjaan', icon: Activity, href: '/modules/tracking-pekerjaan' },
+      { name: 'Daftar Pekerjaan', icon: ClipboardList, href: '/modules/daftar-pekerjaan' },
     ]
   },
   {
     category: 'Dokumen',
     items: [
-      { name: 'Invoice', icon: FileText, href: '/modules/invoice' },
+      { name: 'Invoice', icon: Receipt, href: '/modules/invoice' },
       { name: 'Serah Terima Dokumen', icon: FolderInput, href: '/modules/serah-terima' },
-      { name: 'Daftar Hadir', icon: Users, href: '/modules/daftar-hadir' },
+      { name: 'Daftar Hadir', icon: UserCheck, href: '/modules/daftar-hadir' },
       { name: 'Cover Akta', icon: BookOpen, href: '/modules/cover-akta' },
-      { name: 'Laporan Bulanan', icon: CalendarSync, href: '/modules/laporan-bulanan' },
-      { name: 'Riwayat Dokumen', icon: FileStack, href: '/modules/riwayat' },
-      { name: 'Manajemen Dokumen', icon: BookOpen, href: '/modules/dokumen-legalitas-badan' },
+      { name: 'Laporan Bulanan', icon: FileBarChart, href: '/modules/laporan-bulanan' },
+      { name: 'Riwayat Dokumen', icon: FileClock, href: '/modules/riwayat' },
+      { name: 'Manajemen Dokumen', icon: Folders, href: '/modules/dokumen-legalitas-badan' },
     ]
   },
   {
     category: 'Tools',
     items: [
-      { name: 'Laporan Karyawan', icon: FileText, href: '/modules/laporan-karyawan' },
-      { name: 'Draft Akta', icon: FileStack, href: '/modules/bank-draft' },
-      { name: 'Penggaris Akta', icon: DraftingCompass, href: '/modules/penggaris-akta' },
+      { name: 'Laporan Karyawan', icon: FileUser, href: '/modules/laporan-karyawan' },
+      { name: 'Draft Akta', icon: FileSignature, href: '/modules/bank-draft' },
+      { name: 'Penggaris Akta', icon: Ruler, href: '/modules/penggaris-akta' },
       { name: 'Kalkulator Pajak', icon: Calculator, href: '/modules/kalkulator-pajak' },
-      { name: 'WhatsApp Forms', icon: FileStack, href: '/modules/whatsapp-forms' },
+      { name: 'WhatsApp Forms', icon: MessageSquareText, href: '/modules/whatsapp-forms' },
     ]
   },
   {
     category: 'Client',
     items: [
-      { name: 'CDD Perorangan', icon: FileText, href: '/modules/cdd-perorangan' },
-      { name: 'CDD Korporasi', icon: FileText, href: '/modules/cdd-korporasi' },
+      { name: 'CDD Perorangan', icon: User, href: '/modules/cdd-perorangan' },
+      { name: 'CDD Korporasi', icon: Building2, href: '/modules/cdd-korporasi' },
       { name: 'Akun Client', icon: Users, href: '/modules/akun-client' },
     ]
   }

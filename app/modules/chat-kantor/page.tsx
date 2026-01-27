@@ -6,7 +6,8 @@ import {
     Send, Monitor, Paperclip, X, FileText,
     Image as ImageIcon, Download, Save, StickyNote,
     Search, MessageSquarePlus, Clock, UploadCloud,
-    FolderOpen, LayoutGrid, List as ListIcon, Filter
+    FolderOpen, LayoutGrid, List as ListIcon, Filter,
+    MessageCircleMoreIcon
 } from 'lucide-react';
 
 // Template Pesan Cepat
@@ -263,7 +264,7 @@ export default function ChatKantorPage() {
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                         <div className="bg-blue-600 p-2 rounded-full text-white">
-                            <Monitor size={20} />
+                            <MessageCircleMoreIcon size={20} />
                         </div>
                         <div>
                             <h1 className="font-bold text-gray-800 text-lg hidden sm:block">Chat Kantor</h1>
