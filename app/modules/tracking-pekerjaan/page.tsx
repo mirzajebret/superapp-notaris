@@ -327,7 +327,7 @@ export default function TimelinePekerjaanPage() {
           </div>
           <button
             onClick={handleCreateJob}
-            className="bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition shadow-lg shadow-gray-200"
+            className="bg-blue-600 hover:bg-blue-900 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition shadow-lg shadow-gray-200"
           >
             <Plus size={16} /> <span className="hidden sm:inline">Pekerjaan Baru</span>
           </button>
@@ -430,13 +430,13 @@ export default function TimelinePekerjaanPage() {
                   <div key={job.id} style={{ height: `${job.rowHeight}px` }} className="border-b border-gray-100 relative group hover:bg-blue-50/10 transition-all">
 
                     {/* Background Row Highlight on Hover */}
-                    <div className="absolute inset-0 bg-transparent group-hover:bg-blue-50/5 pointer-events-none" />
+                    <div className="absolute inset-0 bg-transparent group-hover:bg-blue-50/5 pointer-events-none " />
 
                     {/* History Markers (Stacked) */}
                     {job.markers.map((h) => (
                       <div
                         key={h.id}
-                        className={`absolute px-3 shadow-sm z-30 cursor-pointer flex items-center justify-between gap-2 border border-white/20 backdrop-blur-sm transition-all ${h.status === 'Done' ? 'bg-emerald-500 text-white' :
+                        className={`absolute px-3 shadow-sm z-30 cursor-pointer flex items-center justify-between gap-2 border border-white/20 backdrop-blur-sm ${h.status === 'Done' ? 'bg-emerald-500 text-white' :
                           h.status === 'Issue' ? 'bg-red-500 text-white' :
                             h.status === 'Pending' ? 'bg-amber-500 text-white' : 'bg-blue-500 text-white'
                           }`}
@@ -530,7 +530,7 @@ export default function TimelinePekerjaanPage() {
 
               {/* History List preview in Edit (optional) */}
 
-              <button type="submit" className="w-full bg-black text-white py-3 rounded-xl font-bold hover:bg-gray-800 transition shadow-lg">Simpan Pekerjaan</button>
+              <button type="submit" className="w-full bg-blue-600 hover:bg-blue-900 text-white py-3 rounded-xl font-bold hover:bg-gray-800 transition shadow-lg">Simpan Pekerjaan</button>
             </form>
           </div>
         </div>

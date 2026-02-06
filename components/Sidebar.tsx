@@ -36,7 +36,11 @@ const menuGroups = [
     category: 'Utama',
     items: [
       { name: 'Dashboard', icon: LayoutDashboard, href: '/' },
-      { name: 'Chat Kantor', icon: MessageCircleMoreIcon, href: '/modules/chat-kantor' },
+      { name: 'Invoice', icon: Receipt, href: '/modules/invoice' },
+      { name: 'kwitansi', icon: Receipt, href: '/modules/kwitansi' },
+      { name: 'Serah Terima Dokumen', icon: FolderInput, href: '/modules/serah-terima' },
+      { name: 'Daftar Hadir', icon: UserCheck, href: '/modules/daftar-hadir' },
+      { name: 'Cover Akta', icon: BookOpen, href: '/modules/cover-akta' },
       { name: 'Tracking Pekerjaan', icon: Activity, href: '/modules/tracking-pekerjaan' },
       { name: 'Daftar Pekerjaan', icon: ClipboardList, href: '/modules/daftar-pekerjaan' },
     ]
@@ -44,23 +48,18 @@ const menuGroups = [
   {
     category: 'Dokumen',
     items: [
-      { name: 'Invoice', icon: Receipt, href: '/modules/invoice' },
-      { name: 'Serah Terima Dokumen', icon: FolderInput, href: '/modules/serah-terima' },
-      { name: 'Daftar Hadir', icon: UserCheck, href: '/modules/daftar-hadir' },
-      { name: 'Cover Akta', icon: BookOpen, href: '/modules/cover-akta' },
+
       { name: 'Laporan Bulanan', icon: FileBarChart, href: '/modules/laporan-bulanan' },
       { name: 'Riwayat Dokumen', icon: FileClock, href: '/modules/riwayat' },
       { name: 'Manajemen Dokumen', icon: Folders, href: '/modules/dokumen-legalitas-badan' },
+      { name: 'Draft Akta', icon: FileSignature, href: '/modules/bank-draft' },
     ]
   },
   {
     category: 'Tools',
     items: [
-      { name: 'Laporan Karyawan', icon: FileUser, href: '/modules/laporan-karyawan' },
-      { name: 'Draft Akta', icon: FileSignature, href: '/modules/bank-draft' },
       { name: 'Penggaris Akta', icon: Ruler, href: '/modules/penggaris-akta' },
       { name: 'Kalkulator Pajak', icon: Calculator, href: '/modules/kalkulator-pajak' },
-      { name: 'WhatsApp Forms', icon: MessageSquareText, href: '/modules/whatsapp-forms' },
     ]
   },
   {
@@ -69,6 +68,17 @@ const menuGroups = [
       { name: 'CDD Perorangan', icon: User, href: '/modules/cdd-perorangan' },
       { name: 'CDD Korporasi', icon: Building2, href: '/modules/cdd-korporasi' },
       { name: 'Akun Client', icon: Users, href: '/modules/akun-client' },
+      { name: 'WhatsApp Forms', icon: MessageSquareText, href: '/modules/whatsapp-forms' },
+
+    ]
+  },
+  {
+    category: 'Misc',
+    items: [
+      { name: 'Laporan Karyawan', icon: FileUser, href: '/modules/laporan-karyawan' },
+      { name: 'Sistem Petty Cash', icon: FileBarChart, href: '/modules/petty-cash' },
+      { name: 'Chat Kantor', icon: MessageCircleMoreIcon, href: '/modules/chat-kantor' },
+
     ]
   }
 ];

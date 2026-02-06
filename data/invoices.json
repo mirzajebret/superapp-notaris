@@ -651,5 +651,158 @@
     "total": 3500000,
     "nomorInvoice": "INV/2026/36",
     "tanggalInvoice": "2026-01-26"
+  },
+  {
+    "id": "1770194849439",
+    "createdAt": "2026-02-04T08:47:29.439Z",
+    "recipient": {
+      "name": "Bpk. Wawan Setiawan",
+      "position": "",
+      "company": "",
+      "address": "di Tempat"
+    },
+    "items": [
+      {
+        "deskripsi": "Cek sertipikat utk waris : 500.000\nAlih media : 500.000\nPloting/validasi : 600.000\nBalik nama waris : 2.000.000\nPajak penjual : 2.000.000\nCek sertipikat utk bn : 500.000\nAkta jual beli : 3.500.000\nBalik nama : 2.000.000",
+        "biaya": 11600000,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [
+      {
+        "description": "Pembayaran pertama sebesar 20% atau pembulatan setelah penawaran disetujui",
+        "amount": 2350000
+      },
+      {
+        "description": "Pembayaran kedua sebesar 70% atau pembulatan pada saat penandatanganan akta",
+        "amount": 8150000
+      },
+      {
+        "description": "Pembayaran ketiga/pelunasan apabila proses telah selesai",
+        "amount": 1100000
+      }
+    ],
+    "bank": {
+      "name": "Bank Mandiri",
+      "accountNo": "1320030720180",
+      "accountName": "Havis Akbar"
+    },
+    "invoiceDate": "2026-02-04",
+    "showStamp": true,
+    "total": 11600000,
+    "nomorInvoice": "INV/2026/761",
+    "tanggalInvoice": "2026-02-04"
+  },
+  {
+    "id": "1770257046044",
+    "createdAt": "2026-02-05T02:04:06.044Z",
+    "recipient": {
+      "name": "Pimpinan PT. MINISO LIFESTYLE TRADING INDONESIA",
+      "position": "",
+      "company": "",
+      "address": "di-Tempat"
+    },
+    "items": [
+      {
+        "deskripsi": "Pembuatan Akta \"BERITA ACARA PENENTUAN PEMENANG \nUNDIAN GRATIS BERHADIAH TIDAK LANGSUNG \nPROGRAM PROMO MINISO STAMP & WIN\"",
+        "biaya": 3000000,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [],
+    "bank": {
+      "name": "Bank BNI",
+      "accountNo": "2010782015",
+      "accountName": "Havis Akbar"
+    },
+    "invoiceDate": "2026-02-05",
+    "showStamp": true,
+    "total": 3000000,
+    "nomorInvoice": "INV/2026/837",
+    "tanggalInvoice": "2026-02-05"
+  },
+  {
+    "id": "1770257582546",
+    "createdAt": "2026-02-05T02:13:02.546Z",
+    "recipient": {
+      "name": "Pimpinan PT. MINI AIR MENGALIR",
+      "position": "",
+      "company": "di-Tempat",
+      "address": ""
+    },
+    "items": [
+      {
+        "deskripsi": "- Pembuatan Draft Keputusan Sirkuler\n- Pembuatan Akta PKDR (Pernyataan Keputusan Diluar\nRapat)",
+        "biaya": 7500000,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [],
+    "bank": {
+      "name": "Bank BNI",
+      "accountNo": "2010782015",
+      "accountName": "Havis Akbar"
+    },
+    "invoiceDate": "2026-02-05",
+    "showStamp": true,
+    "total": 7500000,
+    "nomorInvoice": "INV/2026/533",
+    "tanggalInvoice": "2026-02-05"
+  },
+  {
+    "id": "1770257675188",
+    "createdAt": "2026-02-05T02:14:35.188Z",
+    "recipient": {
+      "name": "Pimpinan PT. AFALINDO BERKAH UTAMA",
+      "position": "",
+      "company": "di-Tempat",
+      "address": ""
+    },
+    "items": [
+      {
+        "deskripsi": "- Pembuatan Draft Keputusan Sirkuler\n- Akta PKDR (Pernyataan Keputusan Diluar Rapat)\n- Pengkinian Data Perseroan di AHU \n- Pengkinian Data Pemilik Manfaat Perseroan di AHU\n- Pembukaan Blokir AHU",
+        "biaya": 8000000,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [],
+    "bank": {
+      "name": "Bank BNI",
+      "accountNo": "2010782015",
+      "accountName": "Havis Akbar"
+    },
+    "invoiceDate": "2026-02-05",
+    "showStamp": true,
+    "total": 8000000,
+    "nomorInvoice": "INV/2026/176",
+    "tanggalInvoice": "2026-02-05"
+  },
+  {
+    "id": "1770258060735",
+    "createdAt": "2026-02-05T02:21:00.735Z",
+    "recipient": {
+      "name": "Pimpinan PT.  BAGUS NIAGA INDONESIA",
+      "position": "",
+      "company": "di-Tempat",
+      "address": ""
+    },
+    "items": [
+      {
+        "deskripsi": "PAKET PEMBUBARAN PT: \n- Pembuatan draft sirkuler RUPS Pembubaran  \n- Pembuatan akta Notaris untuk Pembubaran PT ke-1 \n- Publikasi Koran ke-1 \n- Pencabutan NIB di OSS \n- Penonaktifan NPWP dan SKT PT \n- Pembuatan akta Notaris untuk Pembubaran PT ke-2 \n- Publikasi Koran ke-2 \n- Pendaftaran SK Kemenkum untuk pembubaran \n- Publikasi Koran ke-3 ",
+        "biaya": 16000000,
+        "keterangan": ""
+      }
+    ],
+    "paymentSchemes": [],
+    "bank": {
+      "name": "Bank BNI",
+      "accountNo": "2010782015",
+      "accountName": "Havis Akbar"
+    },
+    "invoiceDate": "2026-02-05",
+    "showStamp": true,
+    "total": 16000000,
+    "nomorInvoice": "INV/2026/467",
+    "tanggalInvoice": "2026-02-05"
   }
 ]

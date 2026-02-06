@@ -270,7 +270,7 @@ export default function CDDKorporasiPage() {
                 <div className="p-4 border-b border-slate-100 bg-white shadow-sm flex justify-between items-center">
                     <button onClick={() => setMode('list')} className="text-slate-500 hover:text-slate-800 text-sm font-medium">← Kembali</button>
                     <div className="flex gap-2">
-                        <button onClick={() => window.print()} className="bg-slate-800 hover:bg-slate-900 text-white px-3 py-1.5 rounded text-sm font-medium">🖨️ Print</button>
+                        <button onClick={() => window.print()} className="bg-slate-800 hover:bg-slate-900 text-white px-3 py-1.5 rounded text-sm font-medium">Print</button>
                         <button onClick={handleSave} disabled={isLoading} className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded text-sm font-medium">{isLoading ? '...' : 'Simpan'}</button>
                     </div>
                 </div>

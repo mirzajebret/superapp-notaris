@@ -27,6 +27,7 @@ import {
   Minus,
   ChevronLeft,
   ChevronRight,
+  Maximize2,
 } from 'lucide-react';
 
 // --- CONSTANTS ---
@@ -156,6 +157,7 @@ export default function LapbulModulePage() {
   const [loading, setLoading] = useState(true);
   const [formState, setFormState] = useState<LapbulFormState>(createEmptyFormState(selectedMonth, selectedYear));
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [fitToPageHeight, setFitToPageHeight] = useState(false);
 
   // Refs
   const ppatLetterRef = useRef<HTMLDivElement>(null);
@@ -277,6 +279,58 @@ export default function LapbulModulePage() {
   const handlePrintLampiran = useCallback(() => {
     // 1. Buat Style Khusus Print secara dinamis
     const style = document.createElement('style');
+    const fitToHeightStyles = fitToPageHeight ? `
+        /* Fit content to page height when toggle is on */
+        .lampiran-content {
+          transform-origin: top left;
+          width: 297mm !important;
+          height: 210mm !important;
+          max-height: 210mm !important;
+          overflow: hidden !important;
+        }
+        
+        .lampiran-content > * {
+          transform: scale(var(--print-scale, 1));
+          transform-origin: top left;
+        }
+        
+        .fit-to-page {
+          display: flex;
+          flex-direction: column;
+          height: 210mm !important;
+          justify-content: flex-start;
+          overflow: hidden !important;
+        }
+        
+        .fit-to-page table {
+          font-size: 5pt !important;
+        }
+        
+        .fit-to-page .text-\\[6pt\\] {
+          font-size: 5pt !important;
+        }
+        
+        .fit-to-page .text-\\[10pt\\] {
+          font-size: 8pt !important;
+        }
+        
+        .fit-to-page .text-\\[11pt\\] {
+          font-size: 9pt !important;
+        }
+        
+        .fit-to-page .mb-12 {
+          margin-bottom: 1.5rem !important;
+        }
+        
+        .fit-to-page .mt-8 {
+          margin-top: 1rem !important;
+        }
+        
+        .fit-to-page .h-20 {
+          height: 3rem !important;
+        }
+    ` : '';
+
     style.innerHTML = `
       @media print {
         /* Sembunyikan semua elemen body */
@@ -295,6 +349,7 @@ export default function LapbulModulePage() {
           left: 0;
           top: 0;
           width: 100%;
+          height: 100%;
           margin: 0;
           padding: 0;
         }
@@ -329,6 +384,8 @@ export default function LapbulModulePage() {
         .no-print {
             display: none !important;
         }
+        
+        ${fitToHeightStyles}
       }
     `;
 
@@ -338,7 +395,7 @@ export default function LapbulModulePage() {
       window.print();
       document.head.removeChild(style);
     }, 100);
-  }, []);
+  }, [fitToPageHeight]);
 
   // --- PRINT HANDLER KHUSUS SURAT PENGANTAR (PORTRAIT) ---
   const handlePrintSurat = useCallback(() => {
@@ -588,8 +645,8 @@ export default function LapbulModulePage() {
                 <div className="bg-blue-50 p-3 rounded-lg space-y-2 mt-4">
                   <p className="text-xs font-bold text-blue-700 uppercase">Detail PPAT</p>
                   <input className="w-full border p-2 rounded text-xs" placeholder="Pihak yang Menerima" value={formState.detailPPAT.pihakPenerima} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, pihakPenerima: e.target.value } })} />
-                  <input className="w-full border p-2 rounded text-xs" placeholder="Jenis & No Hak (SERTIFIKAT HAK MILIK NOMOR .../KELURAHAN ..)" value={formState.detailPPAT.jenisHak} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, jenisHak: e.target.value } })} />
-                  <textarea className="w-full border p-2 rounded text-xs" placeholder="Lokasi Tanah (Jalan ..., Kelurahan ..., Kecamatan ..., Kabupaten ...)" value={formState.detailPPAT.lokasiObjek} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, lokasiObjek: e.target.value } })} />
+                  <input className="w-full border p-2 rounded text-xs" placeholder="SERTIFIKAT HAK MILIK NOMOR 03874/KELURAHAN KOTA KULON" value={formState.detailPPAT.jenisHak} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, jenisHak: e.target.value } })} />
+                  <textarea className="w-full border p-2 rounded text-xs" placeholder="Jalan Karacak Nomor 18, Kelurahan Kota Kulon, Kecamatan Garut Kota, Kabupaten Garut" value={formState.detailPPAT.lokasiObjek} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, lokasiObjek: e.target.value } })} />
                   <div className="grid grid-cols-2 gap-2"><input className="border p-2 rounded text-xs" placeholder="Luas Tanah (m2)" value={formState.detailPPAT.luasTanah} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, luasTanah: e.target.value } })} /><input className="border p-2 rounded text-xs" placeholder="Luas Bangunan (m2)" value={formState.detailPPAT.luasBangunan} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, luasBangunan: e.target.value } })} /></div>
                   <div className="grid grid-cols-2 gap-2"><input className="border p-2 rounded text-xs" placeholder="Harga Transaksi (Rp)" value={formState.detailPPAT.nilaiTransaksi} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, nilaiTransaksi: e.target.value } })} /><input className="border p-2 rounded text-xs" placeholder="NJOP (Rp)" value={formState.detailPPAT.njop} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, njop: e.target.value } })} /></div>
                   <input className="w-full border p-2 rounded text-xs" placeholder="NOP (32.07.170.005.007-0255.0 2025)" value={formState.detailPPAT.nop} onChange={e => setFormState({ ...formState, detailPPAT: { ...formState.detailPPAT, nop: e.target.value } })} />
@@ -647,6 +704,31 @@ export default function LapbulModulePage() {
                 Print Lampiran
               </button>
 
+              {/* Toggle Fit to Page Height */}
+              <div className="mt-4 pt-4 border-t border-gray-200">
+                <label className="flex items-center gap-3 cursor-pointer group">
+                  <div className="relative">
+                    <input
+                      type="checkbox"
+                      checked={fitToPageHeight}
+                      onChange={(e) => setFitToPageHeight(e.target.checked)}
+                      className="sr-only peer"
+                    />
+                    <div className="w-10 h-5 bg-gray-200 rounded-full peer peer-checked:bg-blue-600 transition-colors"></div>
+                    <div className="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow peer-checked:translate-x-5 transition-transform"></div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Maximize2 size={14} className="text-gray-500 group-hover:text-blue-600" />
+                    <span className="text-xs text-gray-600 group-hover:text-gray-800">
+                      Fit to Paper Height
+                    </span>
+                  </div>
+                </label>
+                <p className="text-[10px] text-gray-400 mt-1 pl-[52px]">
+                  Aktifkan jika konten melebihi 1 halaman
+                </p>
+              </div>
+
             </div>
           </div>
           <div className="lg:col-span-9 space-y-8 overflow-auto h-[calc(100vh-150px)] pr-2">
@@ -669,9 +751,9 @@ export default function LapbulModulePage() {
                           {/* Kolom 1: Label Kiri (15%) */}
                           <td className="w-[15%] align-top py-0.5">Nomor</td>
                           {/* Kolom 2: Isi Kiri (40%) */}
-                          <td className="w-[40%] align-top py-0.5">: {(idx + 1).toString().padStart(2, '0')}/PPAT/HA/{getRomanMonth(selectedMonth)}/{selectedYear + 1}</td>
+                          <td className="w-[40%] align-top py-0.5">: {(idx + 1).toString().padStart(2, '0')}/PPAT/HA/{getRomanMonth(selectedMonth)}/{selectedYear}</td>
                           {/* Kolom 3: Kanan (45%) - Ada padding kiri agar tidak mepet */}
-                          <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 6).toISOString())}</td>
+                          <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 5).toISOString())}</td>
                         </tr>
 
                         {/* BARIS 2: Lampiran & Kepada Yth */}
@@ -746,7 +828,7 @@ export default function LapbulModulePage() {
                 { to: 'Kepala Kantor\nPelayanan Pajak Pratama Garut', address: 'Jl. Pembangunan No.224, Sukagalih, Kec. Tarogong Kidul, Kabupaten Garut 44151' }
               ].map((r, idx) => (
                 <div key={idx} className="print-item-wrapper">
-                  <div className="bg-white p-8 print-wrapper print-clean" style={{ width: '297mm', minHeight: '210mm' }}>
+                  <div className={`bg-white p-8 print-wrapper print-clean ${fitToPageHeight ? 'fit-to-page' : ''}`} style={{ width: '297mm', minHeight: '210mm', maxHeight: fitToPageHeight ? '210mm' : undefined }}>
 
                     <div className="flex justify-between items-start mb-12 font-serif text-[10pt] font-bold">
                       <div className="w-[60%]">
@@ -813,7 +895,7 @@ export default function LapbulModulePage() {
                       </thead>
                       <tbody>
                         {ppatRecords.length === 0 ? (
-                          <tr><td colSpan={18} className="text-center py-6 text-gray-500 text-sm">0 (nihil)</td></tr>
+                          <tr><td colSpan={18} className="text-center py-6 text-gray-500 text-sm">0 (NIHIL)</td></tr>
                         ) : (
                           ppatRecords.map((record, index) => {
                             const mengalihkan = record.pihak.filter(p => /penjual|pemberi|ahli waris|pemilik/i.test(p.role)).map(p => p.name).join(', ');
@@ -848,7 +930,7 @@ export default function LapbulModulePage() {
                     </table>
 
                     <div className="mt-8 flex justify-end text-[10pt] font-serif text-center">
-                      <div><p>Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 6).toISOString())}</p><div className="h-20"></div><p className="font-bold underline">HAVIS AKBAR, S.H., M.Kn.</p></div>
+                      <div><p>Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 5).toISOString())}</p><div className="h-20"></div><p className="font-bold underline">HAVIS AKBAR, S.H., M.Kn.</p></div>
                     </div>
                   </div>
                   {/* Spacer no-print */}
@@ -868,6 +950,31 @@ export default function LapbulModulePage() {
               <h3 className="font-bold mb-4 text-gray-700">Cetak Laporan</h3>
               <button onClick={handlePrintSurat} className="w-full bg-gray-800 text-white py-2 px-4 rounded mb-3 flex items-center justify-center gap-2 text-sm"><Printer size={16} /> Print Surat Pengantar</button>
               <button onClick={handlePrintLampiran} className="w-full border border-gray-300 text-gray-700 py-2 px-4 rounded flex items-center justify-center gap-2 text-sm"><Printer size={16} /> Print Lampiran</button>
+
+              {/* Toggle Fit to Page Height */}
+              <div className="mt-4 pt-4 border-t border-gray-200">
+                <label className="flex items-center gap-3 cursor-pointer group">
+                  <div className="relative">
+                    <input
+                      type="checkbox"
+                      checked={fitToPageHeight}
+                      onChange={(e) => setFitToPageHeight(e.target.checked)}
+                      className="sr-only peer"
+                    />
+                    <div className="w-10 h-5 bg-gray-200 rounded-full peer peer-checked:bg-blue-600 transition-colors"></div>
+                    <div className="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow peer-checked:translate-x-5 transition-transform"></div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Maximize2 size={14} className="text-gray-500 group-hover:text-blue-600" />
+                    <span className="text-xs text-gray-600 group-hover:text-gray-800">
+                      Fit to Paper Height
+                    </span>
+                  </div>
+                </label>
+                <p className="text-[10px] text-gray-400 mt-1 pl-[52px]">
+                  Aktifkan jika konten melebihi 1 halaman
+                </p>
+              </div>
             </div>
           </div>
 
@@ -885,9 +992,9 @@ export default function LapbulModulePage() {
                         {/* Kolom 1: Label Kiri (15%) */}
                         <td className="w-[15%] align-top py-0.5">Nomor</td>
                         {/* Kolom 2: Isi Kiri (40%) */}
-                        <td className="w-[40%] align-top py-0.5">: 01/NOT/HA/{getRomanMonth(selectedMonth)}/{selectedYear + 1}</td>
+                        <td className="w-[40%] align-top py-0.5">: 02/NOT/HA/{getRomanMonth(selectedMonth)}/{selectedYear}</td>
                         {/* Kolom 3: Kanan (45%) - Ada padding kiri agar tidak mepet */}
-                        <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 6).toISOString())}</td>
+                        <td className="w-[45%] align-top py-0.5 pl-8">Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 5).toISOString())}</td>
                       </tr>
 
                       {/* BARIS 2: Lampiran & Kepada Yth */}
@@ -947,7 +1054,7 @@ export default function LapbulModulePage() {
                 { code: 'N-4', title: 'SALINAN PROTES', filter: 'Protes', cols: ['No. Urut', 'Nomor Akta', 'Tanggal', 'Yang Ditagih', 'Yang Menagih', 'Tanggal Wesel/ Cheque', 'Tanggal Jatuh Tempo Wesel/ Cheque'] }
               ].map((m, idx) => (
                 <div key={m.code} className="print-item-wrapper">
-                  <A4Container className="print-wrapper print-clean font-serif text-black w-[297mm] min-h-[210mm]">
+                  <A4Container className={`print-wrapper print-clean font-serif text-black w-[297mm] min-h-[210mm] ${fitToPageHeight ? 'fit-to-page max-h-[210mm]' : ''}`}>
                     <div className="text-center">
                       <h3 className="uppercase text-[11pt] font-bold">{m.title}</h3>
                       <p className="text-[11pt] font-normal pb-2">Bulan {MONTHS[selectedMonth - 1]} {selectedYear}</p>
@@ -1106,7 +1213,7 @@ export default function LapbulModulePage() {
                     </table>
                     <div className="mt-5 text-[11pt] text-right">
                       <p>Salinan ini sesuai dengan aslinya,</p>
-                      <p>Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 6).toISOString())}</p>
+                      <p>Garut, {formatDateLong(new Date(selectedYear, selectedMonth - 0, 5).toISOString())}</p>
                       <div className="h-16"></div>
                       <p className="font-bold">(HAVIS AKBAR, S.H., M.Kn.)</p>
                     </div>

@@ -1,50 +1,274 @@
 [
   {
-    "id": "1768192304514",
-    "category": "NOTARIS",
-    "docType": "PPAT",
-    "nama": "Cek Sertifikat Waris (Indra Irawan)",
+    "id": "1770371015917",
+    "category": "CLIENT",
+    "docType": "LEGALITAS",
+    "nama": "PT BAGUS NIAGA INDONESIA",
     "nomor": "",
-    "tanggal": "",
+    "tanggal": "2026-02-06",
     "col2": [
       {
-        "id": "1768195225506094",
+        "id": "1770371026720506",
         "type": "file",
-        "content": "/uploads/legalitas/1768192304514/1768195225506-shm_nib.pdf",
-        "fileName": "shm nib.pdf",
+        "content": "/uploads/legalitas/1770371015917/1770371026720-SCAN_SALINAN_PKR_PT_BAGUS_NIAGA_INDONESIA.pdf",
+        "fileName": "SCAN SALINAN_PKR_PT_BAGUS_NIAGA_INDONESIA.pdf",
         "fileType": "application/pdf",
-        "createdAt": "2026-01-12T05:20:25.508Z"
+        "createdAt": "2026-02-06T09:43:46.722Z"
+      },
+      {
+        "id": "1770371498180",
+        "type": "note",
+        "content": "06-02-2026 - PKR\n03-02-2026 - Sirkuler",
+        "createdAt": "2026-02-06T09:51:38.181Z"
       }
     ],
     "col3": [
       {
-        "id": "1768196371227110",
+        "id": "1770371500821",
+        "type": "note",
+        "content": "BAGUS NIAGA INDONESIA \nAHU-0093301.AH.01.01.TAHUN 2024\n25-11-2024\n\nSANTY SAGITA\nNomor 4288 \n22-11-2024",
+        "createdAt": "2026-02-06T09:51:40.821Z"
+      }
+    ],
+    "col4": [],
+    "col5": [
+      {
+        "id": "1770371032359857",
         "type": "file",
-        "content": "/uploads/legalitas/1768192304514/1768196371227-1768192311928-Pernyataan_Keabsahan.doc",
-        "fileName": "1768192311928-Pernyataan_Keabsahan.doc",
-        "fileType": "application/msword",
-        "createdAt": "2026-01-12T05:39:31.229Z"
+        "content": "/uploads/legalitas/1770371015917/1770371032359-Bukti_pemesanan_voucher_9926020654782929.pdf",
+        "fileName": "Bukti_pemesanan_voucher_9926020654782929.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-02-06T09:43:52.360Z"
       },
       {
-        "id": "1768196371245666",
+        "id": "1770371046976975",
         "type": "file",
-        "content": "/uploads/legalitas/1768192304514/1768196371245-1768192311943-surat_kuasa.docx",
-        "fileName": "1768192311943-surat_kuasa.docx",
-        "fileType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        "createdAt": "2026-01-12T05:39:31.247Z"
+        "content": "/uploads/legalitas/1770371015917/1770371046976-WhatsApp_Image_2026-02-06_at_16.23.20.jpeg",
+        "fileName": "WhatsApp Image 2026-02-06 at 16.23.20.jpeg",
+        "fileType": "image/jpeg",
+        "createdAt": "2026-02-06T09:44:06.978Z"
+      }
+    ],
+    "updatedAt": "2026-02-06T09:51:40.914Z"
+  },
+  {
+    "id": "1770100252466",
+    "category": "NOTARIS",
+    "docType": "LEGALITAS",
+    "nama": "PT MINI AIR MENGALIR",
+    "nomor": "",
+    "tanggal": "",
+    "col2": [
+      {
+        "id": "1770100276376097",
+        "type": "file",
+        "content": "/uploads/legalitas/1770100252466/1770100276376-PT._Mini_Air_Mengalir_-_Akta_Pendirian.pdf",
+        "fileName": "PT. Mini Air Mengalir - Akta Pendirian.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-02-03T06:31:16.378Z"
       },
       {
-        "id": "1768196371261754",
+        "id": "1770100276392899",
         "type": "file",
-        "content": "/uploads/legalitas/1768192304514/1768196371261-Lampiran_13_Pengecekan_Sertifikat.doc",
-        "fileName": "Lampiran 13 Pengecekan Sertifikat.doc",
+        "content": "/uploads/legalitas/1770100252466/1770100276392-PT._Mini_Air_Mengalir_-_SK_Kemenkumham.pdf",
+        "fileName": "PT. Mini Air Mengalir - SK Kemenkumham.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-02-03T06:31:16.394Z"
+      }
+    ],
+    "col3": [],
+    "col4": [],
+    "col5": [
+      {
+        "id": "1770100294133645",
+        "type": "file",
+        "content": "/uploads/legalitas/1770100252466/1770100294133-SCAN_SALINAN_AKTA_PKR_PT.MINI_AIR_MENGALIR.pdf",
+        "fileName": "SCAN SALINAN AKTA PKR PT.MINI AIR MENGALIR.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-02-03T06:31:34.147Z"
+      },
+      {
+        "id": "1770100294189320",
+        "type": "file",
+        "content": "/uploads/legalitas/1770100252466/1770100294189-sirkuler_pt._mini_air_mengalir.pdf",
+        "fileName": "sirkuler pt. mini air mengalir.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-02-03T06:31:34.193Z"
+      },
+      {
+        "id": "1770100294278791",
+        "type": "file",
+        "content": "/uploads/legalitas/1770100252466/1770100294278-1_SALINAN_JUAL_BELI_SAHAM_ANDRIAWAN___SUTINA.pdf",
+        "fileName": "1 SALINAN JUAL BELI SAHAM ANDRIAWAN & SUTINA.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-02-03T06:31:34.292Z"
+      },
+      {
+        "id": "1770100294406813",
+        "type": "file",
+        "content": "/uploads/legalitas/1770100252466/1770100294406-2_SALINAN_JUAL_BELI_SAHAM_ANDRIAWAN___OCTARIO_CIAMI.pdf",
+        "fileName": "2 SALINAN JUAL BELI SAHAM ANDRIAWAN & OCTARIO CIAMI.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-02-03T06:31:34.420Z"
+      },
+      {
+        "id": "1770100294433597",
+        "type": "file",
+        "content": "/uploads/legalitas/1770100252466/1770100294433-cetak_sp_4025122431226429.pdf",
+        "fileName": "cetak_sp_4025122431226429.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-02-03T06:31:34.435Z"
+      }
+    ],
+    "updatedAt": "2026-02-03T06:31:34.468Z"
+  },
+  {
+    "id": "1769667127011",
+    "category": "CLIENT",
+    "docType": "PPAT",
+    "nama": "HIBAH - IKIN, SITI JENAR",
+    "nomor": "",
+    "tanggal": "",
+    "col2": [],
+    "col3": [
+      {
+        "id": "1769667448062569",
+        "type": "file",
+        "content": "/uploads/legalitas/1769667127011/1769667448062-HIBAH_IKIN_KURNIA.doc",
+        "fileName": "HIBAH_IKIN KURNIA.doc",
         "fileType": "application/msword",
-        "createdAt": "2026-01-12T05:39:31.263Z"
+        "createdAt": "2026-01-29T06:17:28.063Z"
       }
     ],
     "col4": [],
     "col5": [],
-    "updatedAt": "2026-01-12T06:57:35.308Z"
+    "updatedAt": "2026-01-29T06:17:28.149Z"
+  },
+  {
+    "id": "1769665625203",
+    "category": "CLIENT",
+    "docType": "PPAT",
+    "nama": "AJB Ujang & Devi",
+    "nomor": "",
+    "tanggal": "",
+    "col2": [],
+    "col3": [
+      {
+        "id": "1769667414285422",
+        "type": "file",
+        "content": "/uploads/legalitas/1769665625203/1769667414285-SCAN_AJB_5_2026_UJANG_SUTISNA-DEVI.pdf",
+        "fileName": "SCAN AJB 5_2026_UJANG SUTISNA-DEVI.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-29T06:16:54.288Z"
+      }
+    ],
+    "col4": [],
+    "col5": [],
+    "updatedAt": "2026-01-29T06:16:54.418Z"
+  },
+  {
+    "id": "1769665598444",
+    "category": "CLIENT",
+    "docType": "PPAT",
+    "nama": "AJB Anang Ius & Nandang",
+    "nomor": "",
+    "tanggal": "",
+    "col2": [],
+    "col3": [
+      {
+        "id": "1769667395858596",
+        "type": "file",
+        "content": "/uploads/legalitas/1769665598444/1769667395858-SACN_AJB_04-2026_0001.pdf",
+        "fileName": "SACN AJB 04-2026_0001.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-29T06:16:35.875Z"
+      }
+    ],
+    "col4": [],
+    "col5": [],
+    "updatedAt": "2026-01-29T06:16:35.987Z"
+  },
+  {
+    "id": "1769665532571",
+    "category": "CLIENT",
+    "docType": "PPAT",
+    "nama": "AJB Enad & Persita Hadi",
+    "nomor": "",
+    "tanggal": "",
+    "col2": [],
+    "col3": [
+      {
+        "id": "1769667379871428",
+        "type": "file",
+        "content": "/uploads/legalitas/1769665532571/1769667379871-SCAN-AJB-ENAD-PERSITA_HADI_0001.pdf",
+        "fileName": "SCAN-AJB-ENAD-PERSITA_HADI_0001.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-29T06:16:19.875Z"
+      }
+    ],
+    "col4": [],
+    "col5": [],
+    "updatedAt": "2026-01-29T06:16:19.992Z"
+  },
+  {
+    "id": "1769665506683",
+    "category": "CLIENT",
+    "docType": "PPAT",
+    "nama": "AJB Pak Wahyu & Ida Farida",
+    "nomor": "",
+    "tanggal": "",
+    "col2": [],
+    "col3": [
+      {
+        "id": "1769667369009362",
+        "type": "file",
+        "content": "/uploads/legalitas/1769665506683/1769667369009-SCAN_AJB_2_2026_MUHAMAD_WAHYU_SURYAPUTRA.pdf",
+        "fileName": "SCAN AJB 2_2026_MUHAMAD WAHYU SURYAPUTRA.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-29T06:16:09.023Z"
+      }
+    ],
+    "col4": [],
+    "col5": [],
+    "updatedAt": "2026-01-29T06:16:09.141Z"
+  },
+  {
+    "id": "1769584654556",
+    "category": "NOTARIS",
+    "docType": "LEGALITAS",
+    "nama": "OSS PP 28 Tahun 2025",
+    "nomor": "",
+    "tanggal": "2026-01-28",
+    "col2": [
+      {
+        "id": "1769584658757042",
+        "type": "file",
+        "content": "/uploads/legalitas/1769584654556/1769584658757-Perubahan_PP_28_Tahun_2025.pdf.pdf",
+        "fileName": "Perubahan PP 28 Tahun 2025.pdf.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-28T07:17:38.765Z"
+      },
+      {
+        "id": "1769584658805875",
+        "type": "file",
+        "content": "/uploads/legalitas/1769584654556/1769584658805-Persyaratan_Dasar.pdf.pdf",
+        "fileName": "Persyaratan Dasar.pdf.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-28T07:17:38.814Z"
+      },
+      {
+        "id": "1769584658835892",
+        "type": "file",
+        "content": "/uploads/legalitas/1769584654556/1769584658835-PBBR___PB_UMKU.pdf.pdf",
+        "fileName": "PBBR & PB UMKU.pdf.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-28T07:17:38.840Z"
+      }
+    ],
+    "col3": [],
+    "col4": [],
+    "col5": [],
+    "updatedAt": "2026-01-28T07:17:38.867Z"
   },
   {
     "id": "1767943283638",
@@ -87,10 +311,19 @@
         "createdAt": "2026-01-09T08:01:22.748Z"
       }
     ],
-    "col3": [],
+    "col3": [
+      {
+        "id": "1769668510015919",
+        "type": "file",
+        "content": "/uploads/legalitas/1767943283638/1769668510015-15_scan_ajb_widaningsih-kiki_ramdani.pdf",
+        "fileName": "15 scan ajb widaningsih-kiki ramdani.pdf",
+        "fileType": "application/pdf",
+        "createdAt": "2026-01-29T06:35:10.105Z"
+      }
+    ],
     "col4": [],
     "col5": [],
-    "updatedAt": "2026-01-09T08:01:22.813Z"
+    "updatedAt": "2026-01-29T06:35:10.214Z"
   },
   {
     "id": "1767942863122",

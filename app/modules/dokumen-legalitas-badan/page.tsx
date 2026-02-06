@@ -17,21 +17,21 @@ type DocMode = 'LEGALITAS' | 'PPAT';
 const CATEGORIES: { id: Category; label: string; icon: any; color: string; desc: string }[] = [
     {
         id: 'CLIENT',
-        label: 'TAB 1',
+        label: '2026',
         icon: FolderOpen,
         color: 'text-blue-600 border-blue-600 bg-blue-50',
         desc: ' '
     },
     {
         id: 'NOTARIS',
-        label: 'TAB 2',
+        label: '2025',
         icon: FolderOpen,
         color: 'text-emerald-600 border-emerald-600 bg-emerald-50',
         desc: ' '
     },
     {
         id: 'INSTANSI',
-        label: 'TAB 3',
+        label: 'LAIN-LAIN',
         icon: FolderOpen,
         color: 'text-purple-600 border-purple-600 bg-purple-50',
         desc: ' '

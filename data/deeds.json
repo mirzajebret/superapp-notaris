@@ -424,5 +424,347 @@
     "bulanPelaporan": 12,
     "tahunPelaporan": 2025,
     "nomorBulanan": "63"
+  },
+  {
+    "id": "1769664143815",
+    "createdAt": "2026-01-29T05:22:23.815Z",
+    "jenis": "Notaris",
+    "nomorAkta": "1",
+    "tanggalAkta": "2026-01-22",
+    "judulAkta": "PERNYATAAN KEPUTUSAN PARA PEMEGANG SAHAM PT. AMMA GROUP INTERNATIONAL",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "Tn. Moazzam Noor",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "both",
+        "representedParties": [
+          "Tn. Muhammad Yousaf"
+        ]
+      }
+    ],
+    "bulanPelaporan": 1,
+    "tahunPelaporan": 2026,
+    "nomorBulanan": "66"
+  },
+  {
+    "id": "1769664284316",
+    "createdAt": "2026-01-29T05:24:44.316Z",
+    "jenis": "Notaris",
+    "nomorAkta": "2",
+    "tanggalAkta": "2026-01-23",
+    "judulAkta": "KUASA UNTUK MENJUAL",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "Tn. Ivan Sukma Endah Aenal Latipan",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      },
+      {
+        "name": "Ny. Risna Yanti",
+        "role": "",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "bulanPelaporan": 1,
+    "tahunPelaporan": 2026,
+    "nomorBulanan": "67"
+  },
+  {
+    "id": "1769664341551",
+    "createdAt": "2026-01-29T05:25:41.551Z",
+    "jenis": "Notaris",
+    "nomorAkta": "3",
+    "tanggalAkta": "2026-01-23",
+    "judulAkta": "PERJANJIAN KAWIN",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "Tn. Ivan Sukma Endah Aenal Latipan",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      },
+      {
+        "name": "Ny. Risna Yanti",
+        "role": "",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "bulanPelaporan": 1,
+    "tahunPelaporan": 2026,
+    "nomorBulanan": "68"
+  },
+  {
+    "id": "1769664420773",
+    "createdAt": "2026-01-29T05:27:00.773Z",
+    "jenis": "Notaris",
+    "nomorAkta": "4",
+    "tanggalAkta": "2026-01-26",
+    "judulAkta": "PENGAKUAN HUTANG",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "Tn. Yusuf Sugianto",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      },
+      {
+        "name": "Ny. Risa Anggraeni",
+        "role": "",
+        "actingCapacity": "self",
+        "representedParties": []
+      },
+      {
+        "name": "Tn. Fariz Akbar",
+        "role": "",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "bulanPelaporan": 1,
+    "tahunPelaporan": 2026,
+    "nomorBulanan": "69"
+  },
+  {
+    "id": "1769664466634",
+    "createdAt": "2026-01-29T05:27:46.634Z",
+    "jenis": "Notaris",
+    "nomorAkta": "5",
+    "tanggalAkta": "2026-01-26",
+    "judulAkta": "PERJANJIAN PENGIKATAN JUAL BELI",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "Ny. Risa Anggraeni",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      },
+      {
+        "name": "Tn. Yusuf Sugianto",
+        "role": "",
+        "actingCapacity": "self",
+        "representedParties": []
+      },
+      {
+        "name": "Tn. Fariz Akbar",
+        "role": "",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "bulanPelaporan": 1,
+    "tahunPelaporan": 2026,
+    "nomorBulanan": "70"
+  },
+  {
+    "id": "1769665431060",
+    "createdAt": "2026-01-29T05:43:51.060Z",
+    "jenis": "PPAT",
+    "nomorAkta": "01/2026",
+    "tanggalAkta": "2026-01-14",
+    "judulAkta": "Akta Jual Beli",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "Ny. WIDANINGSIH, Tn. ANDRI HADIANSYAH, Kp. Cibangban, RT 003/RW 005, Desa Karangmulya, Kecamatan Karangpawitan, Kabupaten Garut ",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "detailPPAT": {
+      "nop": "32.07.180.018.006-0305.0",
+      "njop": "41708000",
+      "luasTanah": "83 m2",
+      "luasBangunan": "83 m2",
+      "lokasiObjek": "Kampung Cibangban, Desa Karangmulya, Kecamatan Karangpawitan, Kabupaten Garut",
+      "nilaiTransaksi": "100000000",
+      "ssp": "2500000",
+      "tglSsp": "2026-01-09",
+      "ssb": "1000000",
+      "tglSsb": "2026-01-06",
+      "jenisHak": "SERTIFIKAT HAK MILIK NOMOR 00725/KELURAHAN KARANGMULYA",
+      "pihakPenerima": "Tn. KIKI RAMDANI, Kp. Karang Tengah, RT 003/RW 006, Desa Karangmulya, Kecamatan Karangpawitan, Kabupaten Garut"
+    },
+    "bulanPelaporan": 1,
+    "tahunPelaporan": 2026,
+    "nomorBulanan": ""
+  },
+  {
+    "id": "1769669861655",
+    "createdAt": "2026-01-29T06:57:41.655Z",
+    "jenis": "PPAT",
+    "nomorAkta": "02/2026",
+    "tanggalAkta": "2026-01-14",
+    "judulAkta": "Akta Jual Beli",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "Tn. dr. Rd. MUHAMAD WAHYU SURYAPUTRA, Ny. R. NENENG HAYATI, Jl. Cipedes Tengah No. 43, RT 001/RW 005, Desa Sukagalih, Kecamatan Sukajadi, Kota Bandung ",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "detailPPAT": {
+      "nop": "32.07.180.017.010-0038.0",
+      "njop": "14820000",
+      "luasTanah": "741 m2",
+      "luasBangunan": "",
+      "lokasiObjek": "Desa Jatisari, Kecamatan Karangpawitan, Kabupaten Garut",
+      "nilaiTransaksi": "60000000",
+      "ssp": "1500000",
+      "tglSsp": "2026-01-07",
+      "ssb": "NIHIL",
+      "tglSsb": "2026-01-06",
+      "jenisHak": "SERTIFIKAT HAK MILIK NOMOR 99/DESA JATISARI",
+      "pihakPenerima": "Ny. IDA FARIDA, Bumi Panyileukan I.5 No. 4, RT 002/RW 008, Kelurahan Cipadung Kidul, Kecamatan Panyileukan, Kota Bandung"
+    },
+    "bulanPelaporan": 1,
+    "tahunPelaporan": 2026,
+    "nomorBulanan": ""
+  },
+  {
+    "id": "1769670239376",
+    "createdAt": "2026-01-29T07:03:59.376Z",
+    "jenis": "PPAT",
+    "nomorAkta": "03/2026",
+    "tanggalAkta": "2026-01-21",
+    "judulAkta": "Akta Jual Beli",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "Tn. ENAD, Ny. ROSITA, Kp. Pamegatan, RT 006/RW 003, Desa Cipaganti, Kecamatan Cisurupan, Kabupaten Garut",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "detailPPAT": {
+      "nop": "32.07.140.013.009-0115.0",
+      "njop": "8460000",
+      "luasTanah": "846 m2",
+      "luasBangunan": "",
+      "lokasiObjek": "Blok Kubang, Desa Pangauban, Kecamatan Cisurupan, Kabupaten Garut",
+      "nilaiTransaksi": "50000000",
+      "ssp": "",
+      "tglSsp": "",
+      "ssb": "NIHIL",
+      "tglSsb": "2026-01-21",
+      "jenisHak": "HAK MILIK ADAT,  PERSIL No. 78A KELAS IV, BLOK KUBANG, KOHIR C No. 211",
+      "pihakPenerima": "Ny. PERSITA HADI, Perum Tran Depok Cyber Village Blok B 2 No. 5, RT 007/RW 008, Kelurahan Kalimulya, Kecamatan Cilodong, Kota Depok"
+    },
+    "bulanPelaporan": 1,
+    "tahunPelaporan": 2026,
+    "nomorBulanan": ""
+  },
+  {
+    "id": "1769671013155",
+    "createdAt": "2026-01-29T07:16:53.155Z",
+    "jenis": "PPAT",
+    "nomorAkta": "04/2026",
+    "tanggalAkta": "2026-01-21",
+    "judulAkta": "Akta Jual Beli",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "Tn. ANANG IUS, Ny. EUIS SUPRIATI, Kp. Pasir Leutik, RT 005/RW 003, Kelurahan Padasuka, Kecamatan Cimenyan, Kabupaten Bandung",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "detailPPAT": {
+      "nop": "32.07.240.004.009-0202.0",
+      "njop": "5688000",
+      "luasTanah": "158 m2",
+      "luasBangunan": "",
+      "lokasiObjek": "Desa Talagasari, Kecamatan Kadungora, Kabupaten Garut",
+      "nilaiTransaksi": "60000000",
+      "ssp": "1500000",
+      "tglSsp": "2026-01-23",
+      "ssb": "NIHIL",
+      "tglSsb": "2026-01-21",
+      "jenisHak": "SERTIFIKAT HAK MILIK NOMOR 03207/DESA TALAGASARI",
+      "pihakPenerima": "Tn. NANDANG an. MUHAMMAD FANZI A'NAM,  Kp. Pataruman, RT 002/RW 015, Desa Talagasari, Kecamatan Kadungora, Kabupaten Garut"
+    },
+    "bulanPelaporan": 1,
+    "tahunPelaporan": 2026,
+    "nomorBulanan": ""
+  },
+  {
+    "id": "1769671215049",
+    "createdAt": "2026-01-29T07:20:15.049Z",
+    "jenis": "PPAT",
+    "nomorAkta": "05/2026",
+    "tanggalAkta": "2026-01-22",
+    "judulAkta": "Akta Jual Beli",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "Tn. UJANG SUTISNA, Ny. SANTI SRINARTI, Kp. Lunjuk Girang, RT 001/RW 010, Desa Talagasari, Kecamatan Kadungora, Kabupaten Garut,",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "detailPPAT": {
+      "nop": "32.07.240.004.009-0117.0",
+      "njop": "5436000",
+      "luasTanah": "151 M2",
+      "luasBangunan": "",
+      "lokasiObjek": "Desa Talagasari, Kecamatan Kadungora, Kabupaten Garut",
+      "nilaiTransaksi": "60000000",
+      "ssp": "1500000",
+      "tglSsp": "2026-01-23",
+      "ssb": "NIHIL",
+      "tglSsb": "2026-01-21",
+      "jenisHak": "SERTIFIKAT HAK MILIK NOMOR 03543/DESA TALAGASARI",
+      "pihakPenerima": "Ny. DEVI NURHAYATI, Kp. Pataruman, RT 002/RW 015, Desa Talagasari, Kecamatan Kadungora, Kabupaten Garut"
+    },
+    "bulanPelaporan": 1,
+    "tahunPelaporan": 2026,
+    "nomorBulanan": ""
+  },
+  {
+    "id": "1770188008605",
+    "createdAt": "2026-02-04T06:53:28.605Z",
+    "jenis": "PPAT",
+    "nomorAkta": "06/2026",
+    "tanggalAkta": "2026-01-30",
+    "judulAkta": "Akta Hibah",
+    "kategori": "Akta",
+    "pihak": [
+      {
+        "name": "Ny. SITI JENAR ROSDIANA DEWI, Kp. Cerelek, RT 004/RW 012, Desa Cangkuang, Kecamatan Leles, Kabupaten Garut",
+        "role": "Pihak Pengalih / Penghadap",
+        "actingCapacity": "self",
+        "representedParties": []
+      }
+    ],
+    "detailPPAT": {
+      "nop": "32.07.220.011.002.0025.0",
+      "njop": "55000000",
+      "luasTanah": "2254 M2",
+      "luasBangunan": "25M2",
+      "lokasiObjek": "Desa Cangkuang, Kecamatan Leles, Kabupaten Garut",
+      "nilaiTransaksi": "150000000",
+      "ssp": "NIHIL",
+      "tglSsp": "2026-01-30",
+      "ssb": "3500000",
+      "tglSsb": "2026-01-29",
+      "jenisHak": "SERTIFIKAT HAK MILIK NOMOR 03112/DESA CANGKUANG",
+      "pihakPenerima": "Tn. IKIN KURNIA, Ny. DEDE ROHANI, Kp. Cerelek, RT 004/RW 012, Desa Cangkuang, Kecamatan Leles, Kabupaten Garut"
+    },
+    "bulanPelaporan": 1,
+    "tahunPelaporan": 2026,
+    "nomorBulanan": ""
   }
 ]

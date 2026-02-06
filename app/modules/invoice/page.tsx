@@ -56,9 +56,9 @@ export default function NewInvoicePage() {
     items: [{ deskripsi: '', biaya: 0, keterangan: '' }],
     paymentSchemes: [{ description: 'Pembayaran pertama sebesar 70% setelah penawaran disetujui', amount: 0 }],
     bank: {
-      name: 'Bank BCA',
-      accountNo: '2781977341',
-      accountName: 'Havis Akbar, S.H., M.Kn'
+      name: 'Bank BNI',
+      accountNo: '2010782015',
+      accountName: 'Havis Akbar'
     },
     invoiceDate: new Date().toISOString().split('T')[0],
     showStamp: true

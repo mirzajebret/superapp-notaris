@@ -423,5 +423,39 @@
         "fileSize": 167928
       }
     ]
+  },
+  {
+    "id": "1770102588678",
+    "ip": "::ffff:192.168.100.112",
+    "message": "",
+    "timestamp": "2026-02-03T07:09:48.678Z",
+    "senderName": "User .112",
+    "type": "text",
+    "attachments": [
+      {
+        "fileName": "stamp-kotak-kantor.png",
+        "fileType": "image/png",
+        "fileUrl": "/uploads/chat/1770102588671-217-stamp-kotak-kantor.png",
+        "fileSize": 132988
+      },
+      {
+        "fileName": "stamp-n.png",
+        "fileType": "image/png",
+        "fileUrl": "/uploads/chat/1770102588673-905-stamp-n.png",
+        "fileSize": 190133
+      },
+      {
+        "fileName": "ttd-pak-havis-akbar.png",
+        "fileType": "image/png",
+        "fileUrl": "/uploads/chat/1770102588675-372-ttd-pak-havis-akbar.png",
+        "fileSize": 15666
+      },
+      {
+        "fileName": "stamp-p.png",
+        "fileType": "image/png",
+        "fileUrl": "/uploads/chat/1770102588676-205-stamp-p.png",
+        "fileSize": 176155
+      }
+    ]
   }
 ]

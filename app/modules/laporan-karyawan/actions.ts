@@ -13,6 +13,8 @@ export type Employee = {
     createdAt: string
     // Key: YYYY-MM-DD, Value: Status (Hadir, Sakit, Izin, Libur)
     attendanceOverrides: Record<string, string>
+    // Key: YYYY-MM-DD, Value: Jam Masuk (e.g., "08:30")
+    entryTimes?: Record<string, string>
 }
 
 // Helper untuk memastikan file ada
@@ -40,7 +42,9 @@ export async function saveEmployee(employee: Employee): Promise<boolean> {
 
     const index = employees.findIndex(e => e.id === employee.id)
     if (index >= 0) {
-        employees[index] = employee
+        // Merge existing data to preserve fields if partial update (though we usually send full obj)
+        // Ensure entryTimes is preserved if not present in payload but present in existing
+        employees[index] = { ...employees[index], ...employee }
     } else {
         employees.push(employee)
     }
@@ -73,6 +77,26 @@ export async function updateAttendance(employeeId: string, date: string, status:
         delete employee.attendanceOverrides[date]
     } else {
         employee.attendanceOverrides[date] = status
+    }
+
+    await saveEmployee(employee)
+    return true
+}
+
+export async function updateEntryTime(employeeId: string, date: string, time: string): Promise<boolean> {
+    const employees = await getEmployees()
+    const employee = employees.find(e => e.id === employeeId)
+
+    if (!employee) return false
+
+    if (!employee.entryTimes) {
+        employee.entryTimes = {}
+    }
+
+    if (!time) {
+        delete employee.entryTimes[date]
+    } else {
+        employee.entryTimes[date] = time
     }
 
     await saveEmployee(employee)
