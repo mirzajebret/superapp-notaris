@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { processGarisAkta } from '@/app/actions';
-import { UploadCloud, FileText, ArrowRight, Download, Loader2 } from 'lucide-react';
+import { UploadCloud, FileText, Download, Loader2 } from 'lucide-react';
 
 export default function PenggarisAktaPage() {
     const [file, setFile] = useState<File | null>(null);

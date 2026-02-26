@@ -51,6 +51,7 @@ const menuGroups = [
 
       { name: 'Laporan Bulanan', icon: FileBarChart, href: '/modules/laporan-bulanan' },
       { name: 'Riwayat Dokumen', icon: FileClock, href: '/modules/riwayat' },
+      { name: 'Form Badan Usaha', icon: FileSignature, href: '/modules/webform' },
       { name: 'Manajemen Dokumen', icon: Folders, href: '/modules/dokumen-legalitas-badan' },
       { name: 'Draft Akta', icon: FileSignature, href: '/modules/bank-draft' },
     ]

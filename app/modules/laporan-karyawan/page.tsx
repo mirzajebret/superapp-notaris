@@ -117,6 +117,9 @@ export default function LaporanKaryawanPage() {
             if (status === 'Hadir') {
                 workDays++
             }
+            else if (status === 'Sakit') {
+                workDays++
+            }
         })
         return {
             totalDays: dateRange.length,
@@ -268,8 +271,8 @@ export default function LaporanKaryawanPage() {
                             key={emp.id}
                             onClick={() => setSelectedEmployeeId(emp.id)}
                             className={`w-full text-left px-3 py-2.5 rounded-lg text-sm transition-all flex items-center justify-between group ${selectedEmployeeId === emp.id
-                                    ? 'bg-blue-50 text-blue-700 font-medium ring-1 ring-blue-200 shadow-sm'
-                                    : 'hover:bg-gray-50 text-gray-600'
+                                ? 'bg-blue-50 text-blue-700 font-medium ring-1 ring-blue-200 shadow-sm'
+                                : 'hover:bg-gray-50 text-gray-600'
                                 }`}
                         >
                             <span>{emp.name}</span>
@@ -399,7 +402,7 @@ export default function LaporanKaryawanPage() {
                                                 <span className="font-bold text-2xl tracking-wide">{formatRupiah(calculation.totalAllowance)}</span>
                                             </div>
                                             <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">
-                                                Based on {calculation.workDays} work days @ {formatRupiah(selectedEmployee.mealAllowance)}
+                                                Berdasarkan {calculation.workDays} hari kerja x {formatRupiah(selectedEmployee.mealAllowance)}
                                             </div>
                                         </td>
                                     </tr>
@@ -437,8 +440,8 @@ export default function LaporanKaryawanPage() {
                                             key={status}
                                             onClick={() => setDetailStatus(status)}
                                             className={`py-2 px-3 rounded-lg text-sm font-medium transition-all border ${detailStatus === status
-                                                    ? 'bg-gray-900 text-white border-gray-900 shadow-md'
-                                                    : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                                                ? 'bg-gray-900 text-white border-gray-900 shadow-md'
+                                                : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300 hover:bg-gray-50'
                                                 }`}
                                         >
                                             {status}

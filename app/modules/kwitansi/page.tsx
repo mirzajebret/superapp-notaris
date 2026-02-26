@@ -69,7 +69,7 @@ export default function KwitansiPage() {
             i++;
         }
         const final = result.trim();
-        return (final.charAt(0).toUpperCase() + final.slice(1)) + ' Rupiah';
+        return (final.charAt(0).toUpperCase() + final.slice(1));
     };
 
     // --- HANDLERS ---
@@ -98,8 +98,8 @@ export default function KwitansiPage() {
           html, body { height: auto; overflow: hidden; margin: 0; padding: 0; background: white; }
           #kwitansi-print-wrapper, #kwitansi-print-wrapper * { visibility: visible; }
           #kwitansi-print-wrapper {
-            position: absolute; left: 0; top: 0; width: 100%; margin: 0 !important; padding: 10mm 20mm !important;
-            transform: none !important; box-shadow: none !important; background: white;
+            position: absolute; left: 0; top: 0; width: 100%; margin: 0 !important; padding: 8mm 12mm !important;
+            transform: none !important; box-shadow: 1 !important; background: white;
           }
           .no-print { display: none !important; }
         }
@@ -111,7 +111,7 @@ export default function KwitansiPage() {
 
                 <div className="space-y-4">
                     {/* Tanggal & Lokasi */}
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-2">
                         <div>
                             <label className="block text-xs font-semibold text-gray-500 mb-1">Tanggal</label>
                             <input type="date" className="w-full border border-gray-300 rounded p-2 text-sm"
@@ -193,18 +193,18 @@ export default function KwitansiPage() {
             </div>
 
             {/* PREVIEW */}
-            <div className="flex-1 flex flex-col items-center h-screen print:h-auto print:block bg-gray-50 print:bg-white p-4">
-                <div className="w-full max-w-[800px] bg-white p-8 shadow-lg print:shadow-none print:p-0">
-                    <A4Wrapper ref={kwitansiRef} id="kwitansi-print-wrapper">
+            <div className="flex-1 flex flex-col items-center h-screen print:h-auto print:block bg-gray-50 print:bg-white p-12">
+                <div className="w-full max-w-[800px] p-8  print:shadow-none print:p-0">
+                    <A4Wrapper ref={kwitansiRef} id="kwitansi-print-wrapper" height="99mm" className="!p-[12mm]">
 
                         {/* KOP - Pastikan KopKwitansi memiliki border double di bawahnya sesuai inv.jpg */}
                         <KopKwitansi />
 
                         {/* Garis Ganda Pemisah Kop (Jika belum ada di dalam komponen KopKwitansi) */}
 
-                        <h2 className="text-center font-bold text-[16pt] mb-8 mt-3 tracking-widest">KWITANSI PEMBAYARAN</h2>
+                        <h2 className="text-center font-bold text-[14pt] mb-4 mt-2 tracking-widest">KWITANSI PEMBAYARAN</h2>
 
-                        <div className="space-y-4 text-[11pt] font-serif">
+                        <div className="space-y-2 text-[10pt] font-serif">
                             {/* Row 1: Telah Diterima Dari */}
                             <div className="flex items-end">
                                 <div className="w-56 font-bold whitespace-nowrap">TELAH DITERIMA DARI</div>
@@ -228,63 +228,68 @@ export default function KwitansiPage() {
                                 <div className="w-56 font-bold whitespace-nowrap pt-1">UNTUK PEMBAYARAN</div>
                                 <div className="px-2 pt-1">:</div>
                                 <div className="flex-1">
-                                    <div className="border-b border-dotted border-black min-h-[1.5em] px-2">
-                                        {formData.purpose}
+                                    <div
+                                        className="min-h-[1em] leading-[2em] break-words whitespace-pre-wrap px-2"
+                                        style={{
+                                            backgroundImage: 'linear-gradient(to bottom, transparent 97%, black 97%)',
+                                            backgroundSize: '100% 2em',
+                                            backgroundPosition: '0 1.7em'
+                                        }}
+                                    >
+                                        {formData.purpose || ''}
                                     </div>
-                                    {/* Baris kedua untuk Pembayaran (agar identik dengan inv.jpg) */}
-                                    <div className="border-b border-dotted border-black h-7"></div>
                                 </div>
                             </div>
                         </div>
 
                         {/* Footer Area */}
-                        <div className="mt-12 flex justify-between items-start">
+                        <div className="mt-6 flex justify-between items-start">
 
                             {/* Bagian Kiri: Nominal & Checkbox */}
                             <div className="w-1/2">
                                 {/* Box Nominal (Sesuai inv.jpg: border hitam, bg abu-abu di bagian angka) */}
-                                <div className="flex items-center border border-black w-fit mb-6">
-                                    <div className="px-3 py-2 font-bold text-[14pt] border-r border-black">Rp.</div>
-                                    <div className="bg-[#e5e7eb] px-6 py-2 font-bold text-[18pt] min-w-[200px] italic">
+                                <div className="flex items-center border-t border-b border-black w-fit mb-3">
+                                    <div className="px-2 py-1 font-bold text-[14pt]">Rp.</div>
+                                    <div className="bg-[#e5e7eb] px-4  font-bold text-[18pt] min-w-[250px] italic">
                                         {formData.amount ? formData.amount.toLocaleString('id-ID') : '0'}
                                     </div>
                                 </div>
 
                                 {/* Checkboxes */}
-                                <div className="space-y-1 ml-1">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-4 h-4 border border-black flex items-center justify-center">
-                                            {formData.paymentMethod === 'Cash' && <span className="text-[10px]">✓</span>}
+                                <div className="space-y-0.5 ml-1">
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-3.5 h-3.5 border border-black flex items-center justify-center">
+                                            {formData.paymentMethod === 'Cash' && <span className="text-[9px]">✓</span>}
                                         </div>
-                                        <span className="text-[11pt]">Cash</span>
+                                        <span className="text-[10pt]">Cash</span>
                                     </div>
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-4 h-4 border border-black flex items-center justify-center">
-                                            {formData.paymentMethod === 'Transfer' && <span className="text-[10px]">✓</span>}
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-3.5 h-3.5 border border-black flex items-center justify-center">
+                                            {formData.paymentMethod === 'Transfer' && <span className="text-[9px]">✓</span>}
                                         </div>
-                                        <span className="text-[11pt]">Transfer</span>
+                                        <span className="text-[10pt]">Transfer</span>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Bagian Kanan: Tanggal & Tanda Tangan */}
                             <div className="w-[90%] text-right">
-                                <div className="mb-16">
-                                    Garut, <span className="inline-block min-w-[150px] text-center">
+                                <div className="mb-8">
+                                    {formData.city}, <span className="inline-block text-center">
                                         {getDisplayDate()}
                                     </span>
                                 </div>
 
-                                <div className="flex justify-between gap-24">
+                                <div className="flex justify-between gap-16">
                                     <div className="text-center flex-1">
-                                        <div className="h-20"></div>
-                                        <div className="border-t border-black pt-1 text-[11pt] font-bold">
+                                        <div className="h-12"></div>
+                                        <div className="border-t border-black pt-1 text-[10pt] font-bold">
                                             {formData.recipientName}
                                         </div>
                                     </div>
                                     <div className="text-center flex-1">
-                                        <div className="h-20"></div>
-                                        <div className="border-t border-black pt-1 text-[11pt] font-bold">
+                                        <div className="h-12"></div>
+                                        <div className="border-t border-black pt-1 text-[10pt] font-bold">
                                             {formData.payerName}
                                         </div>
                                     </div>

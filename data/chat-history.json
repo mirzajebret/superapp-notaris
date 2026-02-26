@@ -457,5 +457,21 @@
         "fileSize": 176155
       }
     ]
+  },
+  {
+    "id": "1770877882104",
+    "ip": "::ffff:192.168.100.112",
+    "message": "",
+    "timestamp": "2026-02-12T06:31:22.104Z",
+    "senderName": "User .112",
+    "type": "text",
+    "attachments": [
+      {
+        "fileName": "WhatsApp Image 2026-02-12 at 13.29.29.jpeg",
+        "fileType": "image/jpeg",
+        "fileUrl": "/uploads/chat/1770877882096-696-WhatsApp_Image_2026-02-12_at_13.29.29.jpeg",
+        "fileSize": 165280
+      }
+    ]
   }
 ]

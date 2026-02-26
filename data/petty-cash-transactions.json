@@ -1,7 +1,41 @@
 [
   {
+    "id": "trx-1770772768686",
+    "type": "Debit",
+    "transactionType": "work-handling",
+    "date": "2026-02-10",
+    "category": "Pemasukan",
+    "nominal": 10000000,
+    "description": "TF untuk pengurusan kerjaan PPATs",
+    "method": "Transfer",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti"
+  },
+  {
+    "id": "trx-1770715349475",
+    "type": "Credit",
+    "transactionType": "office-operational",
+    "date": "2026-02-10",
+    "category": "Lain-lain",
+    "nominal": 20000,
+    "description": "test",
+    "method": "Cash",
+    "flags": {
+      "urgent": false,
+      "reimburse": false,
+      "relatedToClient": false
+    },
+    "personInCharge": "Nepi Meinti",
+    "proof": ""
+  },
+  {
     "id": "trx-1769151898795",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-30",
     "category": "Operasional Kantor",
     "nominal": 18000,
@@ -17,6 +51,7 @@
   {
     "id": "trx-1769151783299",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-30",
     "category": "Transport",
     "nominal": 15000,
@@ -32,6 +67,7 @@
   {
     "id": "trx-1769151743595",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-29",
     "category": "Lain-lain",
     "nominal": 15000,
@@ -47,6 +83,7 @@
   {
     "id": "trx-1769151711803",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-29",
     "category": "Transport",
     "nominal": 5000,
@@ -62,6 +99,7 @@
   {
     "id": "trx-1769151685460",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-28",
     "category": "Transport",
     "nominal": 6000,
@@ -77,6 +115,7 @@
   {
     "id": "trx-1769151652692",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-28",
     "category": "Lain-lain",
     "nominal": 68500,
@@ -92,6 +131,7 @@
   {
     "id": "trx-1769151613260",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-28",
     "category": "Konsumsi",
     "nominal": 55500,
@@ -107,6 +147,7 @@
   {
     "id": "trx-1769151584404",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-25",
     "category": "Konsumsi",
     "nominal": 28000,
@@ -122,6 +163,7 @@
   {
     "id": "trx-1769151555684",
     "type": "Debit",
+    "transactionType": "office-operational",
     "date": "2025-07-25",
     "category": "Operasional Kantor",
     "nominal": 200000,
@@ -137,6 +179,7 @@
   {
     "id": "trx-1769151513620",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-23",
     "category": "Transport",
     "nominal": 3000,
@@ -152,6 +195,7 @@
   {
     "id": "trx-1769151377851",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-22",
     "category": "Transport",
     "nominal": 2000,
@@ -167,6 +211,7 @@
   {
     "id": "trx-1769151342523",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-21",
     "category": "Transport",
     "nominal": 20000,
@@ -182,6 +227,7 @@
   {
     "id": "trx-1769151285459",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-08",
     "category": "Transport",
     "nominal": 2000,
@@ -197,6 +243,7 @@
   {
     "id": "trx-1769151249252",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-21",
     "category": "Konsumsi",
     "nominal": 15000,
@@ -212,6 +259,7 @@
   {
     "id": "trx-1769151227012",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-08",
     "category": "Transport",
     "nominal": 3000,
@@ -227,6 +275,7 @@
   {
     "id": "trx-1769151185996",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-07",
     "category": "Transport",
     "nominal": 2000,
@@ -242,6 +291,7 @@
   {
     "id": "trx-1769151156452",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-04",
     "category": "Transport",
     "nominal": 15000,
@@ -257,6 +307,7 @@
   {
     "id": "trx-1769151125188",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-01",
     "category": "Transport",
     "nominal": 2500,
@@ -272,6 +323,7 @@
   {
     "id": "trx-1769151077492",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-07-01",
     "category": "Konsumsi",
     "nominal": 14500,
@@ -287,6 +339,7 @@
   {
     "id": "trx-1769151032452",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-06-26",
     "category": "Transport",
     "nominal": 12000,
@@ -302,6 +355,7 @@
   {
     "id": "trx-1769150938476",
     "type": "Debit",
+    "transactionType": "office-operational",
     "date": "2025-06-20",
     "category": "Operasional Kantor",
     "nominal": 100000,
@@ -317,6 +371,7 @@
   {
     "id": "trx-1769150891380",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-06-20",
     "category": "Materai",
     "nominal": 180000,
@@ -332,6 +387,7 @@
   {
     "id": "trx-1769150862708",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-06-19",
     "category": "Lain-lain",
     "nominal": 12000,
@@ -347,6 +403,7 @@
   {
     "id": "trx-1769150823069",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2026-06-16",
     "category": "Lain-lain",
     "nominal": 29000,
@@ -362,6 +419,7 @@
   {
     "id": "trx-1769150670140",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2026-06-10",
     "category": "Lain-lain",
     "nominal": 29000,
@@ -377,6 +435,7 @@
   {
     "id": "trx-1769150635876",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2026-06-10",
     "category": "Lain-lain",
     "nominal": 10000,
@@ -392,6 +451,7 @@
   {
     "id": "trx-1769150586580",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-06-10",
     "category": "Lain-lain",
     "nominal": 205000,
@@ -407,6 +467,7 @@
   {
     "id": "trx-1769150555924",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2026-06-10",
     "category": "Transport",
     "nominal": 10000,
@@ -422,6 +483,7 @@
   {
     "id": "trx-1769074245621",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-06-10",
     "category": "Transport",
     "nominal": 5000,
@@ -437,6 +499,7 @@
   {
     "id": "trx-1769074182238",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-06-05",
     "category": "Transport",
     "nominal": 5000,
@@ -452,6 +515,7 @@
   {
     "id": "trx-1769074148701",
     "type": "Credit",
+    "transactionType": "office-operational",
     "date": "2025-06-05",
     "category": "Transport",
     "nominal": 10000,
@@ -467,6 +531,7 @@
   {
     "id": "trx-1769074035974",
     "type": "Debit",
+    "transactionType": "office-operational",
     "date": "2025-06-10",
     "category": "Operasional Kantor",
     "nominal": 500000,

@@ -27,6 +27,19 @@
         "width": 174,
         "level": 0,
         "rightPos": 3439.25
+      },
+      {
+        "id": "h1770859240384",
+        "date": "2026-02-12T01:20:33.549Z",
+        "title": "TEST",
+        "description": "TEST",
+        "status": "Pending",
+        "dateObj": "2026-02-12T01:20:33.549Z",
+        "valid": true,
+        "leftPos": 3642.237754166667,
+        "width": 62,
+        "level": 0,
+        "rightPos": 3714.237754166667
       }
     ],
     "clientName": "PT AFALINDO BERKAH UTAMA",

@@ -196,5 +196,44 @@
         "nama": "MOAZZAM NOOR"
       }
     ]
+  },
+  {
+    "id": "1770694517185",
+    "createdAt": "2026-02-10T03:35:17.185Z",
+    "tanggal": "2026-02-05",
+    "judul": "PERNYATAAN KEPUTUSAN PARA PEMEGANG SAHAM PT. MINI AIR MENGALIR",
+    "nomorAkta": "-1.-",
+    "participants": [
+      {
+        "nama": "Tuan OCTARIO CIAMI"
+      }
+    ]
+  },
+  {
+    "id": "1770696198863",
+    "createdAt": "2026-02-10T04:03:18.863Z",
+    "tanggal": "",
+    "judul": "PERNYATAAN KEPUTUSAN PARA PEMEGANG SAHAM  PT. BAGUS NIAGA INDONESIA",
+    "nomorAkta": " ",
+    "participants": [
+      {
+        "nama": "Tuan BELLY WIJAYA"
+      }
+    ]
+  },
+  {
+    "id": "1770868439026",
+    "createdAt": "2026-02-12T03:53:59.026Z",
+    "tanggal": "2026-02-09",
+    "judul": "AKTA PENDIRIAN PERSEROAN TERBATAS PT. TARUNA MUKTI KAGAKU GAKUIN CENTRE",
+    "nomorAkta": "-2.-",
+    "participants": [
+      {
+        "nama": "Tuan BAMBANG SYAFRUDIN"
+      },
+      {
+        "nama": "Tuan DWI DERMA SOLIHQIN"
+      }
+    ]
   }
 ]

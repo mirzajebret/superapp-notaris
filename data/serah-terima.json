@@ -744,5 +744,119 @@
         "noteType": "Asli"
       }
     ]
+  },
+  {
+    "id": "1770697383312",
+    "createdAt": "2026-02-10T04:23:03.312Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": false,
+      "barang": false
+    },
+    "receiver": {
+      "name": "Mirza Alby Assidiqie",
+      "position": "Staff Administrasi",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "Nepi Meinti",
+      "position": "Client",
+      "signature": ""
+    },
+    "location": "Garut",
+    "handoverDate": "2026-02-10",
+    "items": [
+      {
+        "description": "SALINAN PERNYATAAN KEPUTUSAN PARA PEMEGANG SAHAM PT. MINI AIR MENGALIR Nomor -1.- Tanggal 05-02-2026",
+        "note": "",
+        "noteType": "Asli"
+      }
+    ]
+  },
+  {
+    "id": "1770862380262",
+    "createdAt": "2026-02-12T02:13:00.262Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": false,
+      "barang": false
+    },
+    "receiver": {
+      "name": "Nepi Meinti",
+      "position": "Staff Administrasi",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "",
+      "position": "__________________",
+      "signature": ""
+    },
+    "location": "Garut",
+    "handoverDate": "2026-02-12",
+    "items": [
+      {
+        "description": "SPPT PBB Tahun 2024 NOP 32.07.250.001.009-0015.0",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "Sertipikat Hak Milik No. 00924//Ds. Cibatu, Kec. Cibatu",
+        "note": "",
+        "noteType": "Asli"
+      }
+    ]
+  },
+  {
+    "id": "1770868286507",
+    "createdAt": "2026-02-12T03:51:26.507Z",
+    "documentTypes": {
+      "dokumen": true,
+      "surat": true,
+      "barang": false
+    },
+    "receiver": {
+      "name": "",
+      "position": "__________________",
+      "signature": ""
+    },
+    "deliverer": {
+      "name": "Mirza Alby Assidiqie",
+      "position": "Staff Administrasi",
+      "signature": ""
+    },
+    "location": "",
+    "handoverDate": "",
+    "items": [
+      {
+        "description": "SALINAN AKTA PENDIRIAN PT. TARUNA MUKTI KAGAKU GAKUIN CENTRE",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "SK Kemenkum Pengesahan Pendirian Badan Hukum Perseroan Terbatas Nomor AHU-0011922.AH.01.01.TAHUN 2026",
+        "note": "",
+        "noteType": "Asli"
+      },
+      {
+        "description": "NIB PT. TARUNA MUKTI KAGAKU GAKUIN CENTRE",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "Pernyataan Mandiri PT. TARUNA MUKTI KAGAKU GAKUIN CENTRE",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "Pernyataan K3L PT. TARUNA MUKTI KAGAKU GAKUIN CENTRE",
+        "note": "",
+        "noteType": "Fotokopi"
+      },
+      {
+        "description": "NPWP PT. TARUNA MUKTI KAGAKU GAKUIN CENTRE",
+        "note": "",
+        "noteType": "Fotokopi"
+      }
+    ]
   }
 ]

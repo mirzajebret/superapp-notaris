@@ -154,6 +154,35 @@ export default function WhatsappFormsPage() {
         setFormFolderId('uncategorized');
     };
 
+    const copyToClipboard = async (text: string) => {
+        try {
+            if (navigator.clipboard) {
+                await navigator.clipboard.writeText(text);
+            } else {
+                // Fallback for non-secure contexts or older browsers
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                textArea.style.position = "absolute";
+                textArea.style.left = "-999999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                } catch (err) {
+                    console.error('Fallback copy failed', err);
+                    throw new Error("Gagal menyalin via fallback");
+                } finally {
+                    textArea.remove();
+                }
+            }
+            alert('Pesan berhasil disalin!');
+        } catch (err) {
+            console.error('Copy failed', err);
+            alert('Gagal menyalin pesan. Silakan coba manual.');
+        }
+    };
+
     // --- FILTERING ---
     const filteredForms = forms.filter(f => {
         if (selectedFolderId === 'all') return true;
@@ -261,10 +290,7 @@ export default function WhatsappFormsPage() {
                                         </span>
                                         <div className="flex gap-2">
                                             <button
-                                                onClick={() => {
-                                                    navigator.clipboard.writeText(form.message);
-                                                    alert('Pesan berhasil disalin!');
-                                                }}
+                                                onClick={() => copyToClipboard(form.message)}
                                                 className="p-1.5 text-blue-600 hover:bg-blue-50 rounded transition"
                                                 title="Copy message"
                                             >

@@ -798,6 +798,7 @@ export async function getGlobalHistory() {
         continue; // Skip jika file belum dibuat
       }
 
+
       const fileContent = await fs.readFile(filePath, 'utf8');
       const data = JSON.parse(fileContent);
 
@@ -823,4 +824,55 @@ export async function getGlobalHistory() {
 
   // Sort dari yang paling baru
   return allDocs.sort((a, b) => new Date(b.date) - new Date(a.date));
+}
+
+// --- WEBFORM ACTIONS ---
+
+export async function getWebForms() {
+  const filePath = await ensureFile('webforms.json');
+  const data = await readJson(filePath);
+  return data.sort((a, b) => new Date(b.updatedAt || b.createdAt) - new Date(a.updatedAt || a.createdAt));
+}
+
+export async function getWebFormById(id) {
+  const filePath = await ensureFile('webforms.json');
+  const forms = await readJson(filePath);
+  return forms.find(f => f.id === id) || null;
+}
+
+export async function saveWebForm(formData) {
+  const filePath = await ensureFile('webforms.json');
+  const forms = await readJson(filePath);
+
+  const existingIndex = forms.findIndex(f => f.id === formData.id);
+
+  if (existingIndex > -1) {
+    // Update existing
+    forms[existingIndex] = {
+      ...forms[existingIndex],
+      ...formData,
+      updatedAt: new Date().toISOString()
+    };
+  } else {
+    // Create new
+    const newForm = {
+      id: `WF-${Date.now()}`,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      status: 'draft',
+      ...formData
+    };
+    forms.unshift(newForm);
+  }
+
+  await writeJson(filePath, forms);
+  return { success: true };
+}
+
+export async function deleteWebForm(id) {
+  const filePath = await ensureFile('webforms.json');
+  let forms = await readJson(filePath);
+  forms = forms.filter(f => f.id !== id);
+  await writeJson(filePath, forms);
+  return { success: true };
 }

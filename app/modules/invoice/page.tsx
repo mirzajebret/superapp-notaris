@@ -40,6 +40,21 @@ interface InvoiceData {
   showStamp: boolean;
 }
 
+const BANK_OPTIONS = [
+  {
+    id: 'bni',
+    name: 'Bank BNI',
+    accountNo: '2010782015',
+    accountName: 'Havis Akbar'
+  },
+  {
+    id: 'mandiri',
+    name: 'Bank Mandiri',
+    accountNo: '1320030720180',
+    accountName: 'Havis Akbar'
+  }
+];
+
 // --- KOMPONEN UTAMA ---
 export default function NewInvoicePage() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -63,6 +78,23 @@ export default function NewInvoicePage() {
     invoiceDate: new Date().toISOString().split('T')[0],
     showStamp: true
   });
+
+  const [selectedBankId, setSelectedBankId] = useState<string>('bni');
+
+  // --- EFFECT: UPDATE BANK DATA ---
+  useEffect(() => {
+    const selectedBank = BANK_OPTIONS.find(b => b.id === selectedBankId);
+    if (selectedBank) {
+      setFormData(prev => ({
+        ...prev,
+        bank: {
+          name: selectedBank.name,
+          accountNo: selectedBank.accountNo,
+          accountName: selectedBank.accountName
+        }
+      }));
+    }
+  }, [selectedBankId]);
 
   // --- HELPER: CALCULATE TOTAL ---
   const calculateTotalBiaya = (): number => {
@@ -226,6 +258,29 @@ export default function NewInvoicePage() {
                 <input type="checkbox" className="sr-only peer" checked={formData.showStamp} onChange={(e) => setFormData(prev => ({ ...prev, showStamp: e.target.checked }))} />
                 <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
               </label>
+            </div>
+          </div>
+
+          {/* Pengaturan Rekening */}
+          <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 space-y-3">
+            <h3 className="text-xs font-bold uppercase text-blue-600 tracking-wider">Rekening Pembayaran</h3>
+            <div className="space-y-2">
+              {BANK_OPTIONS.map((option) => (
+                <label key={option.id} className="flex items-center space-x-3 cursor-pointer p-2 rounded hover:bg-blue-100/50 transition border border-transparent hover:border-blue-200">
+                  <input
+                    type="radio"
+                    name="bank_account"
+                    value={option.id}
+                    checked={selectedBankId === option.id}
+                    onChange={(e) => setSelectedBankId(e.target.value)}
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+                  />
+                  <div className="text-sm">
+                    <div className="font-semibold text-gray-700">{option.name}</div>
+                    <div className="text-xs text-gray-500">{option.accountNo} - {option.accountName}</div>
+                  </div>
+                </label>
+              ))}
             </div>
           </div>
 
